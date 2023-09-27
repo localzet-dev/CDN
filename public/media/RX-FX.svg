@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Creator: localzet SVG Generator -->
+
+<svg
+   xml:space="preserve"
+   width="86.698601mm"
+   height="86.698601mm"
+   version="1.1"
+   style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+   viewBox="0 0 8669.86 8669.86"
+   id="svg17"
+   sodipodi:docname="RX-FX.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+   id="namedview1865"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:document-units="mm"
+   showgrid="false"
+   inkscape:zoom="2.5482197"
+   inkscape:cx="163.83988"
+   inkscape:cy="164.23231"
+   inkscape:window-width="1920"
+   inkscape:window-height="1002"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Слой_x0020_1" />
+     <defs
+   id="defs7">
+          <linearGradient
+   id="rootx_theme"
+   x1="551.83008"
+   y1="178.43462"
+   x2="8499.457"
+   y2="178.43462"
+   gradientTransform="scale(0.9578582,1.0439959)"
+   gradientUnits="userSpaceOnUse">
+               <stop
+   offset="0%"
+   style="stop-color:rgb(166,92,225);stop-opacity:1"
+   id="stop2" />
+               <stop
+   offset="100%"
+   style="stop-color:rgb(4, 200, 200);stop-opacity:1"
+   id="stop4" />
+          </linearGradient>
+     </defs>
+     <g
+   id="Слой_x0020_1"
+   inkscape:label="Слой 1">
+          <metadata
+   id="CorelCorpID_0Corel-Layer" />
+          <path
+   fill="none"
+   stroke="url(#rootx_theme)"
+   stroke-width="677.33"
+   stroke-miterlimit="22.9256"
+   d="m 867.24,2965.72 v 2738.42 c 0,342.39 243.99,745.54 526.73,931.78 154.71,101.9 300.02,175.73 458.49,270.77 599.03,359.21 1249.82,710.61 1848.78,1068.24 174.62,104.26 374.18,160.89 575.91,169.98 h 115.56 c 201.72,-9.07 401.29,-65.72 575.91,-169.98 445.02,-265.73 951.73,-536.2 1387.65,-800.1 154.76,-93.69 305.7,-174.96 461.13,-268.14 303.53,-182.04 628.62,-317.11 811.49,-647.01 75.55,-136.29 173.72,-353.55 173.72,-555.54 V 2965.72 c 0,-342.39 -243.98,-745.54 -526.72,-931.78 C 7036.54,1876.28 6213.41,1408.05 5893.03,1229.02 5732.76,1139.46 5591.9,1049.48 5431.15,961.66 4974.51,712.2 4815.27,524.95 4260.52,524.95 c -359.93,0 -719.19,271.38 -1021.82,436.71 l -925.11,533.37 c -270.48,163.74 -676,378.44 -919.62,538.91 -282.74,186.24 -526.73,589.39 -526.73,931.78 z"
+   id="path10"
+   style="stroke:url(#rootx_theme)" />
+
+
+          <text
+   xml:space="preserve"
+   style="font-size:4586.11px;mix-blend-mode:normal;fill:url(#rootx_theme);stroke:none;stroke-width:150;stroke-dasharray:none;stroke-opacity:1;-inkscape-font-specification:'Nunito, @wght=700';font-family:Nunito;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variation-settings:'wght' 700;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill-rule:nonzero"
+   x="1543.7186"
+   y="5892.5928"
+   id="text176">
+               <tspan
+   id="tspan174"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4586.1097583px;font-family:Nunito;-inkscape-font-specification:'Nunito, @wght=700';stroke:none;stroke-width:150;stroke-dasharray:none;stroke-opacity:1;font-variation-settings:'wght' 700;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill-rule:nonzero"
+   x="1543.7186"
+   y="5892.5928">FX</tspan>
+          </text>
+     </g>
+</svg>
