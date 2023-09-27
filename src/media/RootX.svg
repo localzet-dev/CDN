@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Creator: localzet SVG Generator -->
+
+<svg
+   xml:space="preserve"
+   width="86.6986mm"
+   height="86.6986mm"
+   version="1.1"
+   style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+   viewBox="0 0 8669.86 8669.86"
+   id="svg17"
+   sodipodi:docname="RootX.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+   id="namedview19"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:document-units="mm"
+   showgrid="false"
+   inkscape:zoom="1.9205491"
+   inkscape:cx="193.69461"
+   inkscape:cy="178.33442"
+   inkscape:window-width="1920"
+   inkscape:window-height="1000"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Слой_x0020_1" />
+    <defs
+   id="defs7">
+        <linearGradient
+   id="rootx_theme"
+   x1="0%"
+   y1="0%"
+   x2="100%"
+   y2="0%">
+            <stop
+   offset="0%"
+   style="stop-color:rgb(166,92,225);stop-opacity:1"
+   id="stop2" />
+            <stop
+   offset="100%"
+   style="stop-color:rgb(4, 200, 200);stop-opacity:1"
+   id="stop4" />
+        </linearGradient>
+    </defs>
+    <g
+   id="Слой_x0020_1"
+   inkscape:label="Слой 1">
+        <metadata
+   id="CorelCorpID_0Corel-Layer" />
+        <path
+   fill="none"
+   stroke="url(#rootx_theme)"
+   stroke-width="677.33"
+   stroke-miterlimit="22.9256"
+   d="M867.24 2965.72l0 2738.42c0,342.39 243.99,745.54 526.73,931.78 154.71,101.9 300.02,175.73 458.49,270.77 599.03,359.21 1249.82,710.61 1848.78,1068.24 174.62,104.26 374.18,160.89 575.91,169.98l115.56 0c201.72,-9.07 401.29,-65.72 575.91,-169.98 445.02,-265.73 951.73,-536.2 1387.65,-800.1 154.76,-93.69 305.7,-174.96 461.13,-268.14 303.53,-182.04 628.62,-317.11 811.49,-647.01 75.55,-136.29 173.72,-353.55 173.72,-555.54l0 -2738.42c0,-342.39 -243.98,-745.54 -526.72,-931.78 -239.35,-157.66 -1062.48,-625.89 -1382.86,-804.92 -160.27,-89.56 -301.13,-179.54 -461.88,-267.36 -456.64,-249.46 -615.88,-436.71 -1170.63,-436.71 -359.93,0 -719.19,271.38 -1021.82,436.71l-925.11 533.37c-270.48,163.74 -676,378.44 -919.62,538.91 -282.74,186.24 -526.73,589.39 -526.73,931.78z"
+   id="path10" />
+        <path
+   fill="url(#rootx_theme)"
+   d="M2110.06 3171.18c0,289.82 128.38,335.42 419.94,582.4l651.53 558.19 -856.81 733.09c-185.31,143.94 -214.66,202.42 -214.66,407.5 0,167.94 293.88,461.46 609.36,177.31l805.31 -680.9c72.65,-58.67 134.74,-112.19 205.95,-174.26 41.89,-36.47 60.69,-46.37 103.22,-86.89 42.52,-40.49 62.2,-47.92 103.96,-86.13 190.72,-174.52 196.52,-393.05 8.82,-570.97 -42.54,-40.34 -62.4,-47.25 -104.1,-86.02l-1114.22 -942.31c-157.74,-138.49 -352.47,-184.27 -511.23,-35.01 -41.55,39.05 -107.07,130.84 -107.07,204z"
+   id="path12" />
+        <path
+   fill="url(#rootx_theme)"
+   d="M4218.41 5383.22c0,114.12 33.8,192.03 90.9,254.74 48.27,53.03 140.83,108.18 237.46,108.18l1589.91 0c185.11,0 328.36,-175.6 328.36,-293.78l0 -86.41c0,-159.41 -151.68,-311.07 -311.07,-311.07l-1641.75 0c-118.21,0 -293.81,143.23 -293.81,328.34z"
+   id="path14" />
+    </g>
+</svg>

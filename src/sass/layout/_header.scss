@@ -1,0 +1,52 @@
+//
+// Header
+//
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+	.app-header {
+		background-color: transparent;
+		box-shadow: none;
+
+		[data-app-header-sticky="on"] & {
+			background-color: transparent;
+			box-shadow: none;
+			$offset: divide($app-container-padding-x, 2);
+
+			.app-container {
+				padding-right: 0 !important;	
+			}
+
+			.app-header-wrapper {
+				margin-left: -#{$offset};	
+				padding-left: $offset;
+				padding-right: $offset;
+				background-color: var(--#{$prefix}body-bg);
+				box-shadow: var(--#{$prefix}box-shadow-xs);
+				@include border-bottom-radius($card-border-radius);
+			}			
+
+			.btn.bg-body {
+				@include button-custom-variant(
+					$color: null, 
+					$icon-color: null, 
+					$border-color: null, 
+					$bg-color: var(--#{$prefix}gray-100) !important, 
+					$color-active: null, 
+					$icon-color-active: null, 
+					$border-color-active: null, 
+					$bg-color-active: var(--#{$prefix}gray-200), 
+				);	
+			}
+		}
+	}
+}
+
+// Tablet & mobile modes
+@include media-breakpoint-down(lg) {
+	.app-header { 
+		.page-title {
+            display: none !important;    
+        }
+	}
+}

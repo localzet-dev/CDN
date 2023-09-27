@@ -1,0 +1,35 @@
+//
+// Root
+//
+
+// Light mode
+@include color-mode(light) {
+    // Reboot
+    --#{$prefix}app-bg-color: #{$app-bg-color};
+    --#{$prefix}app-blank-bg-color: #{$app-blank-bg-color};
+
+    // Header base     
+    --#{$prefix}app-header-base-bg-color-mobile: #{$app-header-base-bg-color-mobile};     
+    --#{$prefix}app-header-base-box-shadow-mobile: #{$app-header-base-box-shadow-mobile};
+     
+    // Aside base
+    --#{$prefix}app-aside-base-bg-color: #{$app-aside-base-bg-color};
+    --#{$prefix}app-aside-base-border-start: #{$app-aside-base-border-start};
+    --#{$prefix}app-toolbar-sticky-border-bottom: #{$app-toolbar-sticky-border-bottom};   
+}
+
+// Dark mode
+@include color-mode(dark) {
+	// Reboot
+    --#{$prefix}app-bg-color: #{$app-bg-color-dark};
+    --#{$prefix}app-blank-bg-color: #{$app-blank-bg-color-dark};
+
+    // Header base     
+    --#{$prefix}app-header-base-bg-color-mobile: #{$app-header-base-bg-color-mobile-dark};     
+    --#{$prefix}app-header-base-box-shadow-mobile: #{$app-header-base-box-shadow-mobile-dark};
+     
+    // Aside base
+    --#{$prefix}app-aside-base-bg-color: #{$app-aside-base-bg-color-dark};
+    --#{$prefix}app-aside-base-border-start: #{$app-aside-base-border-start-dark};
+    --#{$prefix}app-toolbar-sticky-border-bottom: #{$app-toolbar-sticky-border-bottom-dark};
+}

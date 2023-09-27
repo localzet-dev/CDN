@@ -1,0 +1,74 @@
+//
+// Light Sidebar(used by Light Sidebar layout only)
+//
+
+.app-sidebar-menu {
+    .menu {
+        > .menu-item { 
+            padding-top: 0.1rem !important;
+            padding-bottom: 0.1rem !important;
+
+            > .menu-link {
+                .menu-icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 50px;
+                    height: 50px;
+                    @include border-radius($border-radius);
+
+                    i {
+                        line-height: 0 !important;   
+                    }
+                }    
+            }
+
+            @include menu-link-default($all-links: false) {
+                .menu-icon {
+                    i,
+                    .svg-icon {
+                        color: $white !important;    
+                    }
+                }
+            }
+
+            @include menu-link-hover($all-links: false) {
+                .menu-icon {
+                    //background: $app-sidebar-base-menu-icon-bg-color-active;
+                }
+            }
+                
+            @include menu-link-active($all-links: false) {
+                .menu-icon {
+                    background: $app-sidebar-base-menu-icon-bg-color-active;
+                }
+            }
+
+            @include menu-link-show($all-links: false) {
+                .menu-icon {
+                    //background: $app-sidebar-base-menu-icon-bg-color-active;
+                }
+            }
+
+            @include menu-link-here($all-links: false) {
+                .menu-icon {
+                    background: $app-sidebar-base-menu-icon-bg-color-active;
+                }
+            }
+        }
+    }
+} 
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+    .app-sidebar {
+        @include border-radius($app-sidebar-border-radius);    
+    }
+}
+
+// Tablet & mobile modes
+@include media-breakpoint-down(lg) {
+    .app-sidebar-logo {
+        display: none;
+    }
+}

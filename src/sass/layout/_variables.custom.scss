@@ -1,0 +1,82 @@
+//
+// Variables
+//
+
+// Reboot
+$app-bg-color: #F4F6FA;
+$app-bg-color-dark:#151521; 
+$app-blank-body-bg-color: $body-bg;
+
+// General
+$app-general-root-font-size-desktop: 13px;
+$app-general-root-font-size-tablet: 12px;
+$app-general-root-font-size-mobile: 12px;
+
+// Container
+$app-container-padding-x: 50px;
+
+// Content
+$app-content-padding-y: 50px;
+$app-content-padding-y-mobile: 20px;
+
+// Header base
+$app-header-base-height: 140px;
+
+$app-header-base-height-mobile: 60px;
+$app-header-base-bg-color: $body-bg;
+$app-header-base-bg-color-dark: #1e1e2d;
+$app-header-base-box-shadow: 0px 10px 30px 0px rgba(82,63,105,0.05);
+$app-header-base-box-shadow-dark: none;
+
+// Toolbar sticky
+$app-header-sticky-z-index: 99;
+$app-header-sticky-height: 70px;
+$app-header-sticky-bg-color: $body-bg;
+$app-header-sticky-bg-color-dark: $body-bg-dark;
+
+// Sidebar base
+$app-sidebar-base-gap-top: 50px;
+$app-sidebar-base-gap-start: 50px;
+$app-sidebar-base-gap-bottom: 50px;
+
+$app-sidebar-border-radius: 20px;
+$app-sidebar-base-width: 100px;
+$app-sidebar-base-gap-start: 50px;
+$app-sidebar-base-gap-top: 50px;
+$app-sidebar-base-gap-bottom: 50px;
+$app-sidebar-base-bg-color: #181C32;
+$app-sidebar-base-bg-color-dark: $body-bg-dark;
+$app-sidebar-base-menu-icon-bg-color-active: linear-gradient(135deg, #793AFF 0%, #9D6FFF 100%);
+
+// Aside base
+$app-aside-base-width: 350px;
+$app-aside-base-bg-color: $white;
+$app-aside-base-bg-color-dark:  $body-bg-dark;
+$app-aside-base-border-start: 2px solid #EEF2F8;
+$app-aside-base-border-start-dark: 2px solid $gray-100-dark;
+
+// Toolbar sticky
+$app-toolbar-sticky-z-index: 99;
+$app-toolbar-sticky-height: 70px;
+
+// Footer
+$app-footer-height: 60px;
+$app-footer-height-mobile: auto;
+
+// Engage toolbar
+$app-engage-toolbar-z-index: 105;
+
+// Scrolltop
+$scrolltop-bottom: 43px;
+$scrolltop-bottom-mobile: 23px;
+$scrolltop-end: 7px;
+$scrolltop-end-mobile: 5px; 
+$scrolltop-z-index: 105;
+
+// Layout builder toggle(used for Demo purposes only)
+$app-layout-builder-toggle-bg-color:$body-bg;
+$app-layout-builder-toggle-end: 50px;
+$app-layout-builder-toggle-end-mobile: 40px;
+$app-layout-builder-toggle-bottom: 40px;
+$app-layout-builder-toggle-bottom-mobile: 20px;
+$app-layout-builder-toggle-z-index: 105;

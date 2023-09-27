@@ -1,0 +1,14 @@
+//
+// Content
+//
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+	.app-content {
+		padding-top: 0;
+
+		[data-app-aside-enabled="true"] & {
+			padding-top: $app-content-padding-y;
+		}		
+	}
+}

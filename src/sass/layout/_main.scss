@@ -1,0 +1,36 @@
+//
+// Root
+//
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+    // Base
+    .app-main {
+        [data-app-toolbar-enabled="true"] & {
+		    padding-top: $app-content-padding-y;
+	    }
+    }
+
+    // Aside enabled mode
+    [data-app-aside-enabled="true"] {
+        // Engage toolbar
+        .engage-toolbar {
+            z-index: $app-engage-toolbar-z-index !important;
+        }
+
+        // Scrolltop
+        .scrolltop {
+            right: calc($scrolltop-end + var(--#{$prefix}app-aside-width, 0));
+        }
+    } 
+}
+
+// Tablet & mobile modes
+@include media-breakpoint-down(lg) {
+    // Base
+    .app-main {
+        [data-app-toolbar-enabled="true"] & {
+		    padding-top: $app-content-padding-y-mobile;
+	    }
+    }
+}
