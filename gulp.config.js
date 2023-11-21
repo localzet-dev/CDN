@@ -1,28 +1,38 @@
 const gulpConfig = {
     name: 'localzet-cdn',
     desc: "Localzet CDN Project",
-    version: "8.1.8",
+    version: "8.2.0",
     config: {
         debug: false,
         compile: {
+            rtl: {
+                enabled: false,
+                skip: [
+                    "select2",
+                    "keenicons",
+                    "line-awesome",
+                    "fontawesome5",
+                    "nouislider",
+                    "tinymce",
+                    "sweetalert2",
+                ],
+            },
             jsMinify: true,
             cssMinify: true,
             jsSourcemaps: true,
             cssSourcemaps: true,
         },
         path: {
-            src: "./src",
-            common_src: "./src",
+            src: "src",
+            common_src: "src",
             node_modules: "node_modules",
         },
-        dist: [
-            "./public"
-        ],
+        dist: ["public"],
     },
     build: {
         base: {
             src: {
-                styles: ["{$config.path.src}/sass/styles.scss"],
+                styles: ["{$config.path.src}/sass/style.scss"],
                 scripts: [
                     "{$config.path.common_src}/js/components/**/*.js",
                     "{$config.path.common_src}/js/layout/**/*.js",
@@ -30,7 +40,7 @@ const gulpConfig = {
                 ]
             },
             dist: {
-                styles: "{$config.dist}/css/styles.css",
+                styles: "{$config.dist}/css/style.css",
                 scripts: "{$config.dist}/js/scripts.js",
             }
         },
@@ -295,7 +305,7 @@ const gulpConfig = {
                         ],
                     },
                     dist: {
-                        scripts: "{$config.dist}/plugins/custom/draggable.js",
+                        scripts: "{$config.dist}/plugins/custom/draggable/draggable.js",
                     },
                 },
                 prismjs: {
@@ -320,8 +330,8 @@ const gulpConfig = {
                         ],
                     },
                     dist: {
-                        styles: "{$config.dist}/plugins/custom/prismjs.css",
-                        scripts: "{$config.dist}/plugins/custom/prismjs.js",
+                        styles: "{$config.dist}/plugins/custom/prismjs/prismjs.css",
+                        scripts: "{$config.dist}/plugins/custom/prismjs/prismjs.js",
                     },
                 },
                 datatables: {
@@ -372,8 +382,8 @@ const gulpConfig = {
                         ],
                     },
                     dist: {
-                        styles: "{$config.dist}/plugins/custom/datatables.css",
-                        scripts: "{$config.dist}/plugins/custom/datatables.js",
+                        styles: "{$config.dist}/plugins/custom/datatables/datatables.css",
+                        scripts: "{$config.dist}/plugins/custom/datatables/datatables.js",
                     }
                 },
                 leaflet: {
@@ -389,8 +399,8 @@ const gulpConfig = {
                         ],
                     },
                     dist: {
-                        styles: "{$config.dist}/plugins/custom/leaflet.css",
-                        scripts: "{$config.dist}/plugins/custom/leaflet.js",
+                        styles: "{$config.dist}/plugins/custom/leaflet/leaflet.css",
+                        scripts: "{$config.dist}/plugins/custom/leaflet/leaflet.js",
                     }
                 },
                 fslightbox: {
@@ -400,7 +410,7 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        scripts: "{$config.dist}/plugins/custom/fslightbox.js",
+                        scripts: "{$config.dist}/plugins/custom/fslightbox/fslightbox.js",
                     }
                 },
                 typedjs: {
@@ -408,7 +418,7 @@ const gulpConfig = {
                         scripts: ["{$config.path.node_modules}/typed.js/dist/typed.umd.js"],
                     },
                     dist: {
-                        scripts: "{$config.dist}/plugins/custom/typedjs.js",
+                        scripts: "{$config.dist}/plugins/custom/typedjs/typedjs.js",
                     }
                 },
                 fullcalendar: {
@@ -420,8 +430,8 @@ const gulpConfig = {
                         ],
                     },
                     dist: {
-                        styles: "{$config.dist}/plugins/custom/fullcalendar.css",
-                        scripts: "{$config.dist}/plugins/custom/fullcalendar.js",
+                        styles: "{$config.dist}/plugins/custom/fullcalendar/fullcalendar.css",
+                        scripts: "{$config.dist}/plugins/custom/fullcalendar/fullcalendar.js",
                     },
                 },
                 tinymcejs: {
@@ -435,7 +445,7 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        scripts: "{$config.dist}/plugins/custom/tinymce.js",
+                        scripts: "{$config.dist}/plugins/custom/tinymce/tinymce.js",
                     }
                 },
                 ckeditorclassic: {
@@ -445,7 +455,7 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        scripts: "{$config.dist}/plugins/custom/ckeditor-classic.js"
+                        scripts: "{$config.dist}/plugins/custom/ckeditor/ckeditor-classic.js"
                     }
                 },
                 ckeditorinline: {
@@ -455,7 +465,7 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        scripts: "{$config.dist}/plugins/custom/ckeditor-inline.js"
+                        scripts: "{$config.dist}/plugins/custom/ckeditor/ckeditor-inline.js"
                     }
                 },
                 ckeditorballoon: {
@@ -465,7 +475,7 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        scripts: "{$config.dist}/plugins/custom/ckeditor-balloon.js"
+                        scripts: "{$config.dist}/plugins/custom/ckeditor/ckeditor-balloon.js"
                     }
                 },
                 ckeditorballoonblock: {
@@ -475,7 +485,7 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        scripts: "{$config.dist}/plugins/custom/ckeditor-balloon-block.js"
+                        scripts: "{$config.dist}/plugins/custom/ckeditor/ckeditor-balloon-block.js"
                     }
                 },
                 ckeditordecoupleddocument: {
@@ -485,7 +495,7 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        scripts: "{$config.dist}/plugins/custom/ckeditor-document.js"
+                        scripts: "{$config.dist}/plugins/custom/ckeditor/ckeditor-document.js"
                     }
                 },
                 cropperjs: {
@@ -498,8 +508,8 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        styles: "{$config.dist}/plugins/custom/cropper.css",
-                        scripts: "{$config.dist}/plugins/custom/cropper.js"
+                        styles: "{$config.dist}/plugins/custom/cropper/cropper.css",
+                        scripts: "{$config.dist}/plugins/custom/cropper/cropper.js"
                     }
                 },
                 jkanban: {
@@ -512,8 +522,8 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        styles: "{$config.dist}/plugins/custom/jkanban.css",
-                        scripts: "{$config.dist}/plugins/custom/jkanban.js"
+                        styles: "{$config.dist}/plugins/custom/jkanban/jkanban.css",
+                        scripts: "{$config.dist}/plugins/custom/jkanban/jkanban.js"
                     }
                 },
                 flot: {
@@ -529,7 +539,7 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        scripts: "{$config.dist}/plugins/custom/flotcharts.js"
+                        scripts: "{$config.dist}/plugins/custom/flotcharts/flotcharts.js"
                     }
                 },
                 vistimeline: {
@@ -543,8 +553,8 @@ const gulpConfig = {
                         ],
                     },
                     dist: {
-                        styles: "{$config.dist}/plugins/custom/vis-timeline.css",
-                        scripts: "{$config.dist}/plugins/custom/vis-timeline.js"
+                        styles: "{$config.dist}/plugins/custom/vis-timeline/vis-timeline.css",
+                        scripts: "{$config.dist}/plugins/custom/vis-timeline/vis-timeline.js"
                     },
                 },
                 jstree: {
@@ -561,9 +571,9 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        styles: "{$config.dist}/plugins/custom/jstree.css",
-                        scripts: "{$config.dist}/plugins/custom/jstree.js",
-                        images: "{$config.dist}/plugins/custom/images/jstree"
+                        styles: "{$config.dist}/plugins/custom/jstree/jstree.css",
+                        scripts: "{$config.dist}/plugins/custom/jstree/jstree.js",
+                        images: "{$config.dist}/plugins/custom/jstree/images/jstree"
                     }
                 },
                 formrepeater: {
@@ -575,7 +585,7 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        scripts: "{$config.dist}/plugins/custom/formrepeater.js",
+                        scripts: "{$config.dist}/plugins/custom/formrepeater/formrepeater.js",
                     }
                 },
                 cookiealert: {
@@ -588,8 +598,8 @@ const gulpConfig = {
                         ]
                     },
                     dist: {
-                        styles: "{$config.dist}/plugins/custom/cookiealert.css",
-                        scripts: "{$config.dist}/plugins/custom/cookiealert.js",
+                        styles: "{$config.dist}/plugins/custom/cookiealert/cookiealert.css",
+                        scripts: "{$config.dist}/plugins/custom/cookiealert/cookiealert.js",
                     }
                 }
             }
@@ -618,8 +628,8 @@ const gulpConfig = {
                 ],
             },
             dist: {
-                styles: "{$config.dist}/css/",
-                scripts: "{$config.dist}/js/",
+                styles: "{$config.dist}/css/custom/",
+                scripts: "{$config.dist}/js/custom/",
             },
         },
         media: {
