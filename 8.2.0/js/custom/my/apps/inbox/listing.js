@@ -1,0 +1,2 @@
+"use strict";var AppInboxListing=function(){var n,t,e=()=>{document.querySelector("#inbox_listing_wrapper > .row").classList.add("px-9","pt-3","pb-5")};return{init:function(){(n=document.querySelector("#inbox_listing"))&&((t=$(n).DataTable({info:!1,order:[]})).on("draw",(function(){e()})),document.querySelector('[data-inbox-listing-filter="search"]').addEventListener("keyup",(function(n){t.search(n.target.value).draw()})),e())}}}();Util.onDOMContentLoaded((function(){AppInboxListing.init()}));
+//# sourceMappingURL=listing.js.map

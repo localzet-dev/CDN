@@ -1,0 +1,2 @@
+"use strict";var ModalCreateProjectComplete=function(){var e;return{init:function(){ModalCreateProject.getForm(),e=ModalCreateProject.getStepperObj(),ModalCreateProject.getStepper().querySelector('[data-element="complete-start"]').addEventListener("click",(function(){e.goTo(1)}))}}}();"undefined"!=typeof module&&void 0!==module.exports&&(window.ModalCreateProjectComplete=module.exports=ModalCreateProjectComplete);
+//# sourceMappingURL=complete.js.map
