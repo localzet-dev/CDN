@@ -101,9 +101,7 @@
         "@babel/plugin-transform-modules-commonjs": "^7.22.5",
         "@babel/preset-env": "^7.22.5",
         "@babel/register": "^7.22.5",
-        "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^5.2.7",
-        "css-minimizer-webpack-plugin": "^5.0.1",
         "del": "^6.1.1",
         "extract-loader": "^5.1.0",
         "file-loader": "^6.2.0",
@@ -124,27 +122,14 @@
         "mini-css-extract-plugin": "^2.7.6",
         "postcss-loader": "^7.3.3",
         "pretty": "^2.0.0",
-        "replace-in-file-webpack-plugin": "^1.0.6",
         "sass-loader": "^13.3.2",
         "script-loader": "^0.7.2",
-        "terser-webpack-plugin": "^5.3.9",
         "url-loader": "^4.1.1",
         "yargs": "^17.7.2",
-        "yarn-install": "^1.0.0",
-        "webpack": "^5.88.1",
-        "webpack-cli": "^5.1.4",
-        "webpack-dev-server": "^4.15.1",
-        "webpack-exclude-assets-plugin": "^0.1.1",
-        "webpack-log": "^3.0.2",
-        "webpack-merge-and-include-globally": "^2.3.4",
-        "webpack-messages": "^2.0.4"
-    },
+        "yarn-install": "^1.0.0"
+        },
     "scripts": {
         "build": "gulp",
-        "localhost": "gulp localhost",
-        "w-build": "webpack",
-        "w-watch": "webpack --watch",
-        "w-localhost": "webpack serve",
-        "w-sync": "node sync.js"
+        "localhost": "gulp localhost"
     }
 }
