@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: *
+Host: cdn.localzet.com
