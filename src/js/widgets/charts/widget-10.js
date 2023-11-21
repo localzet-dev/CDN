@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget10 = function () {
+// Class definition
+var KTChartsWidget10 = function () {
     var chart1 = {
         self: null,
         rendered: false
@@ -30,9 +30,9 @@ var ChartsWidget10 = function () {
             return;
         }
         
-        var height = parseInt(Util.css(element, 'height'));
-        var labelColor = Util.getCssVariableValue('--bs-gray-900');
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');    
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-900');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');    
 
         var options = {
             series: [{
@@ -87,7 +87,7 @@ var ChartsWidget10 = function () {
                 },
                 labels: {
                     style: {
-                        colors: Util.getCssVariableValue('--bs-gray-500'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-500'),
                         fontSize: '13px'
                     }                    
                 },
@@ -103,7 +103,7 @@ var ChartsWidget10 = function () {
             yaxis: {
                 labels: {
                     style: {
-                        colors: Util.getCssVariableValue('--bs-gray-500'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-500'),
                         fontSize: '13px'
                     },
                     formatter: function (val) {
@@ -145,7 +145,7 @@ var ChartsWidget10 = function () {
                     }
                 }
             },
-            colors: [Util.getCssVariableValue('--bs-primary'), Util.getCssVariableValue('--bs-primary-light')],
+            colors: [KTUtil.getCssVariableValue('--bs-primary'), KTUtil.getCssVariableValue('--bs-primary-light')],
             grid: {
                 borderColor: borderColor,
                 strokeDashArray: 4,
@@ -176,24 +176,24 @@ var ChartsWidget10 = function () {
         });
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {  
             var chart1Data = [30, 18, 43, 70, 13, 37, 23];
-            initChart(chart1, '#rts_widget_10_tab_1', '#ch#_widget_10_chart_1', chart1Data, true);
+            initChart(chart1, '#kt_charts_widget_10_tab_1', '#kt_charts_widget_10_chart_1', chart1Data, true);
 
             var chart2Data = [25, 55, 35, 50, 45, 20, 31];
-            initChart(chart2, '#rts_widget_10_tab_2', '#ch#_widget_10_chart_2', chart2Data, false);
+            initChart(chart2, '#kt_charts_widget_10_tab_2', '#kt_charts_widget_10_chart_2', chart2Data, false);
 
             var chart3Data = [45, 15, 35, 70, 45, 50, 21];
-            initChart(chart3, '#rts_widget_10_tab_3', '#ch#_widget_10_chart_3', chart3Data, false);
+            initChart(chart3, '#kt_charts_widget_10_tab_3', '#kt_charts_widget_10_chart_3', chart3Data, false);
 
             var chart4Data = [15, 55, 25, 50, 25, 60, 31];
-            initChart(chart4, '#rts_widget_10_tab_4', '#ch#_widget_10_chart_4', chart4Data, false);
+            initChart(chart4, '#kt_charts_widget_10_tab_4', '#kt_charts_widget_10_chart_4', chart4Data, false);
 
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            KTThemeMode.on("kt.thememode.change", function() {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -210,10 +210,10 @@ var ChartsWidget10 = function () {
                     chart4.self.destroy();
                 }
                 
-                initChart(chart1, '#rts_widget_10_tab_1', '#ch#_widget_10_chart_1', chart1Data, chart1.rendered);
-                initChart(chart2, '#rts_widget_10_tab_2', '#ch#_widget_10_chart_2', chart2Data, chart2.rendered);  
-                initChart(chart3, '#rts_widget_10_tab_3', '#ch#_widget_10_chart_3', chart3Data, chart3.rendered);
-                initChart(chart4, '#rts_widget_10_tab_4', '#ch#_widget_10_chart_4', chart4Data, chart4.rendered);                  
+                initChart(chart1, '#kt_charts_widget_10_tab_1', '#kt_charts_widget_10_chart_1', chart1Data, chart1.rendered);
+                initChart(chart2, '#kt_charts_widget_10_tab_2', '#kt_charts_widget_10_chart_2', chart2Data, chart2.rendered);  
+                initChart(chart3, '#kt_charts_widget_10_tab_3', '#kt_charts_widget_10_chart_3', chart3Data, chart3.rendered);
+                initChart(chart4, '#kt_charts_widget_10_tab_4', '#kt_charts_widget_10_chart_4', chart4Data, chart4.rendered);                  
             });      
         }   
     }
@@ -221,12 +221,12 @@ var ChartsWidget10 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget10;
+    module.exports = KTChartsWidget10;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget10.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget10.init();
 });
 
 

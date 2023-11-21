@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget2 = function () {
+// Class definition
+var KTChartsWidget2 = function () {
     var chart = {
         self: null,
         rendered: false
@@ -9,18 +9,18 @@ var ChartsWidget2 = function () {
 
     // Private methods
     var initChart = function() {
-        var element = document.getElementById("charts_widget_2");
+        var element = document.getElementById("kt_charts_widget_2");
 
         if (!element) {
             return;
         }
 
-        var color = element.getAttribute('data-chart-color');
-        var height = parseInt(Util.css(element, 'height'));
-        var labelColor = Util.getCssVariableValue('--bs-gray-800');
-        var strokeColor = Util.getCssVariableValue('--bs-border-dashed-color');
-        var baseColor = Util.getCssVariableValue('--bs-' + color);
-        var lightColor = Util.getCssVariableValue('--bs-' + color + '-light');
+        var color = element.getAttribute('data-kt-chart-color');
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-800');
+        var strokeColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
+        var lightColor = KTUtil.getCssVariableValue('--bs-' + color + '-light');
 
         var options = {
             series: [{
@@ -150,13 +150,13 @@ var ChartsWidget2 = function () {
         }, 200); 
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart();
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            KTThemeMode.on("kt.thememode.change", function() {                
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
@@ -169,10 +169,10 @@ var ChartsWidget2 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget2;
+    module.exports = KTChartsWidget2;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget2.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget2.init();
 });

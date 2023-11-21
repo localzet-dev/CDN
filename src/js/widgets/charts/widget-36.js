@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget36 = function () {
+// Class definition
+var KTChartsWidget36 = function () {
     var chart = {
         self: null,
         rendered: false
@@ -9,19 +9,19 @@ var ChartsWidget36 = function () {
 
     // Private methods
     var initChart = function(chart) {
-        var element = document.getElementById("charts_widget_36");
+        var element = document.getElementById("kt_charts_widget_36");
 
         if (!element) {
             return;
         }
         
-        var height = parseInt(Util.css(element, 'height'));
-        var labelColor = Util.getCssVariableValue('--bs-gray-500');
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');
-        var baseprimaryColor = Util.getCssVariableValue('--bs-primary');
-        var lightprimaryColor = Util.getCssVariableValue('--bs-primary');
-        var basesuccessColor = Util.getCssVariableValue('--bs-success');
-        var lightsuccessColor = Util.getCssVariableValue('--bs-success');
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseprimaryColor = KTUtil.getCssVariableValue('--bs-primary');
+        var lightprimaryColor = KTUtil.getCssVariableValue('--bs-primary');
+        var basesuccessColor = KTUtil.getCssVariableValue('--bs-success');
+        var lightsuccessColor = KTUtil.getCssVariableValue('--bs-success');
 
         var options = {
             series: [{
@@ -159,13 +159,13 @@ var ChartsWidget36 = function () {
         }, 200);      
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            KTThemeMode.on("kt.thememode.change", function() {                
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
@@ -178,10 +178,10 @@ var ChartsWidget36 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget36;
+    module.exports = KTChartsWidget36;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget36.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget36.init();
 });

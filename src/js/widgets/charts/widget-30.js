@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget30 = (function () {
+// Class definition
+var KTChartsWidget30 = (function () {
     // Private methods
     var initChart = function () {
         // Check if amchart library is included
@@ -9,7 +9,7 @@ var ChartsWidget30 = (function () {
             return;
         }
 
-        var element = document.getElementById("charts_widget_30_chart");
+        var element = document.getElementById("kt_charts_widget_30_chart");
 
         if (!element) {
             return;
@@ -54,7 +54,7 @@ var ChartsWidget30 = (function () {
             series.labels.template.setAll({
                 fontWeight: "400",
                 fontSize: 13,
-                fill: am5.color(Util.getCssVariableValue('--bs-gray-500'))
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500'))
             });
 
             series.states.create("hidden", {
@@ -73,12 +73,12 @@ var ChartsWidget30 = (function () {
             // Set data
             // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
             series.data.setAll([
-                { value: 10, category: "One", fill: am5.color(Util.getCssVariableValue('--bs-primary')) },
-                { value: 9, category: "Two", fill: am5.color(Util.getCssVariableValue('--bs-success')) },
-                { value: 6, category: "Three", fill: am5.color(Util.getCssVariableValue('--bs-danger')) },
-                { value: 5, category: "Four", fill: am5.color(Util.getCssVariableValue('--bs-warning')) },
-                { value: 4, category: "Five", fill: am5.color(Util.getCssVariableValue('--bs-info')) },
-                { value: 3, category: "Six", fill: am5.color(Util.getCssVariableValue('--bs-secondary')) }
+                { value: 10, category: "One", fill: am5.color(KTUtil.getCssVariableValue('--bs-primary')) },
+                { value: 9, category: "Two", fill: am5.color(KTUtil.getCssVariableValue('--bs-success')) },
+                { value: 6, category: "Three", fill: am5.color(KTUtil.getCssVariableValue('--bs-danger')) },
+                { value: 5, category: "Four", fill: am5.color(KTUtil.getCssVariableValue('--bs-warning')) },
+                { value: 4, category: "Five", fill: am5.color(KTUtil.getCssVariableValue('--bs-info')) },
+                { value: 3, category: "Six", fill: am5.color(KTUtil.getCssVariableValue('--bs-secondary')) }
             ]);
 
             series.appear(1000, 100);
@@ -89,7 +89,7 @@ var ChartsWidget30 = (function () {
         });
 
         // Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
+		KTThemeMode.on("kt.thememode.change", function() {     
 			// Destroy chart
 			root.dispose();
 
@@ -98,7 +98,7 @@ var ChartsWidget30 = (function () {
 		});
     };
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart();
@@ -108,10 +108,10 @@ var ChartsWidget30 = (function () {
 
 // Webpack support
 if (typeof module !== "undefined") {
-    module.exports = ChartsWidget30;
+    module.exports = KTChartsWidget30;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function () {
-    ChartsWidget30.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTChartsWidget30.init();
 });

@@ -1,5 +1,5 @@
-// Определение класса
-var ChartsWidget23 = (function () {
+// Class definition
+var KTChartsWidget23 = (function () {
 	// Private methods
 	var initChart = function () {
 		// Check if amchart library is included
@@ -7,7 +7,7 @@ var ChartsWidget23 = (function () {
 			return;
 		}
 
-		var element = document.getElementById("charts_widget_23");
+		var element = document.getElementById("kt_charts_widget_23");
 
 		if (!element) {
 			return;
@@ -40,7 +40,7 @@ var ChartsWidget23 = (function () {
 					income: 23.5,
 					expenses: 21.1,
 					columnSettings: {
-						fill: am5.color(Util.getCssVariableValue("--bs-primary")),
+						fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 					},
 				},
 				{
@@ -48,7 +48,7 @@ var ChartsWidget23 = (function () {
 					income: 26.2,
 					expenses: 30.5,
 					columnSettings: {
-						fill: am5.color(Util.getCssVariableValue("--bs-primary")),
+						fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 					},
 				},
 				{
@@ -56,7 +56,7 @@ var ChartsWidget23 = (function () {
 					income: 30.1,
 					expenses: 34.9,
 					columnSettings: {
-						fill: am5.color(Util.getCssVariableValue("--bs-primary")),
+						fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 					},
 				},
 				{
@@ -64,7 +64,7 @@ var ChartsWidget23 = (function () {
 					income: 29.5,
 					expenses: 31.1,
 					columnSettings: {
-						fill: am5.color(Util.getCssVariableValue("--bs-primary")),
+						fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 					},
 				},
 				{
@@ -76,7 +76,7 @@ var ChartsWidget23 = (function () {
 						strokeDasharray: [5, 5],
 					},
 					columnSettings: {
-						fill: am5.color(Util.getCssVariableValue("--bs-primary")),
+						fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 					},
 				},
 				{
@@ -88,7 +88,7 @@ var ChartsWidget23 = (function () {
 						strokeDasharray: [5, 5],
 					},
 					columnSettings: {
-						fill: am5.color(Util.getCssVariableValue("--bs-primary")),
+						fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 					},
 				},
 				{
@@ -100,7 +100,7 @@ var ChartsWidget23 = (function () {
 						strokeDasharray: [5, 5],
 					},
 					columnSettings: {
-						fill: am5.color(Util.getCssVariableValue("--bs-primary")),
+						fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 					},
 				},
 			];
@@ -121,7 +121,7 @@ var ChartsWidget23 = (function () {
 				paddingTop: 20,
 				fontWeight: "400",
 				fontSize: 11,
-				fill: am5.color(Util.getCssVariableValue("--bs-gray-500")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-500")),
 			});
 
 			xAxis.get("renderer").grid.template.setAll({
@@ -141,11 +141,11 @@ var ChartsWidget23 = (function () {
 				paddingTop: 0,
 				fontWeight: "400",
 				fontSize: 11,
-				fill: am5.color(Util.getCssVariableValue("--bs-gray-500")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-500")),
 			});
 
 			yAxis.get("renderer").grid.template.setAll({
-				stroke: am5.color(Util.getCssVariableValue("--bs-gray-300")),
+				stroke: am5.color(KTUtil.getCssVariableValue("--bs-gray-300")),
 				strokeWidth: 1,
 				strokeOpacity: 1,
 				strokeDasharray: [3],
@@ -181,8 +181,8 @@ var ChartsWidget23 = (function () {
 					yAxis: yAxis,
 					valueYField: "expenses",
 					categoryXField: "year",
-					fill: am5.color(Util.getCssVariableValue("--bs-success")),
-					stroke: am5.color(Util.getCssVariableValue("--bs-success")),
+					fill: am5.color(KTUtil.getCssVariableValue("--bs-success")),
+					stroke: am5.color(KTUtil.getCssVariableValue("--bs-success")),
 					tooltip: am5.Tooltip.new(root, {
 						pointerOrientation: "horizontal",
 						labelText: "{name} in {categoryX}: {valueY} {info}",
@@ -191,7 +191,7 @@ var ChartsWidget23 = (function () {
 			);
 
 			series2.strokes.template.setAll({
-				stroke: am5.color(Util.getCssVariableValue("--bs-success")),
+				stroke: am5.color(KTUtil.getCssVariableValue("--bs-success")),
 			});
 
 			series2.strokes.template.setAll({
@@ -205,9 +205,9 @@ var ChartsWidget23 = (function () {
 				return am5.Bullet.new(root, {
 					sprite: am5.Circle.new(root, {
 						strokeWidth: 3,
-						stroke: am5.color(Util.getCssVariableValue("--bs-success")),
+						stroke: am5.color(KTUtil.getCssVariableValue("--bs-success")),
 						radius: 5,
-						fill: am5.color(Util.getCssVariableValue("--bs-success-light")),
+						fill: am5.color(KTUtil.getCssVariableValue("--bs-success-light")),
 					}),
 				});
 			});
@@ -238,7 +238,7 @@ var ChartsWidget23 = (function () {
 			legend.labels.template.setAll({
 				fontWeight: "600",
 				fontSize: 14,
-				fill: am5.color(Util.getCssVariableValue("--bs-gray-700")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-700")),
 			});
 
 			// Make stuff animate on load
@@ -252,7 +252,7 @@ var ChartsWidget23 = (function () {
 		}); // end am5.ready()
 
 		// Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
+		KTThemeMode.on("kt.thememode.change", function() {     
 			// Destroy chart
 			root.dispose();
 
@@ -261,7 +261,7 @@ var ChartsWidget23 = (function () {
 		});
 	};
 
-	// Публичные методы
+	// Public methods
 	return {
 		init: function () {
 			initChart();
@@ -271,10 +271,10 @@ var ChartsWidget23 = (function () {
 
 // Webpack support
 if (typeof module !== "undefined") {
-	module.exports = ChartsWidget23;
+	module.exports = KTChartsWidget23;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function () {
-	ChartsWidget23.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+	KTChartsWidget23.init();
 });

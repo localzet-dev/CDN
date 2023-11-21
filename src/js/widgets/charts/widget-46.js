@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget46 = function () {
+// Class definition
+var KTChartsWidget46 = function () {
     var chart = {
         self: null,
         rendered: false
@@ -9,19 +9,19 @@ var ChartsWidget46 = function () {
 
     // Private methods
     var initChart = function() {
-        var element = document.getElementById("charts_widget_46");
+        var element = document.getElementById("kt_charts_widget_46");
 
         if (!element) {
             return;
         }
 
-        var negativeColor = element.hasAttribute('data-negative-color') ? element.getAttribute('data-negative-color') : Util.getCssVariableValue('--bs-gary-500');
+        var negativeColor = element.hasAttribute('data-kt-negative-color') ? element.getAttribute('data-kt-negative-color') : KTUtil.getCssVariableValue('--bs-gary-500');
 
-        var height = parseInt(Util.css(element, 'height'));
-        var labelColor = Util.getCssVariableValue('--bs-gray-500');
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
 
-        var baseColor = Util.getCssVariableValue('--bs-gray-800');
+        var baseColor = KTUtil.getCssVariableValue('--bs-gray-800');
 
         var options = {
             series: [{
@@ -149,13 +149,13 @@ var ChartsWidget46 = function () {
         }, 200); 
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart();
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            KTThemeMode.on("kt.thememode.change", function() {                
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
@@ -168,10 +168,10 @@ var ChartsWidget46 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget46;
+    module.exports = KTChartsWidget46;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget46.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget46.init();
 });

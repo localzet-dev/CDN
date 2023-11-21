@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget11 = function () {
+// Class definition
+var KTChartsWidget11 = function () {
     var chart1 = {
         self: null,
         rendered: false
@@ -20,15 +20,15 @@ var ChartsWidget11 = function () {
     // Private methods
     var initChart = function(chart, toggle, chartSelector, data, initByDefault) {
         var element = document.querySelector(chartSelector);  
-        var height = parseInt(Util.css(element, 'height'));
+        var height = parseInt(KTUtil.css(element, 'height'));
 
         if (!element) {
             return;
         }        
         
-        var labelColor = Util.getCssVariableValue('--bs-gray-500');
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');
-        var baseColor = Util.getCssVariableValue('--bs-success');         
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-success');         
 
         var options = {
             series: [{
@@ -177,20 +177,20 @@ var ChartsWidget11 = function () {
         });
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () { 
             var chart1Data = [16, 19, 19, 16, 16, 14, 15, 15, 17, 17, 19, 19, 18, 18, 20, 20, 18, 18, 22, 22, 20, 20, 18, 18, 20, 20, 18, 20, 20, 22];
-            initChart(chart1, '#rts_widget_11_tab_1', '#ch#_widget_11_chart_1', chart1Data, false);
+            initChart(chart1, '#kt_charts_widget_11_tab_1', '#kt_charts_widget_11_chart_1', chart1Data, false);
 
             var chart2Data = [18, 18, 20, 20, 18, 18, 22, 22, 20, 20, 18, 18, 20, 20, 18, 18, 20, 20, 22, 15, 18, 18, 17, 17, 15, 15, 17, 17, 19, 17];
-            initChart(chart2, '#rts_widget_11_tab_2', '#ch#_widget_11_chart_2', chart2Data, false);
+            initChart(chart2, '#kt_charts_widget_11_tab_2', '#kt_charts_widget_11_chart_2', chart2Data, false);
 
             var chart3Data = [17, 20, 20, 19, 19, 17, 17, 19, 19, 21, 21, 19, 19, 21, 21, 18, 18, 16, 17, 17, 19, 19, 21, 21, 19, 19, 17, 17, 18, 18];
-            initChart(chart3, '#rts_widget_11_tab_3', '#ch#_widget_11_chart_3', chart3Data, true);
+            initChart(chart3, '#kt_charts_widget_11_tab_3', '#kt_charts_widget_11_chart_3', chart3Data, true);
            
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            KTThemeMode.on("kt.thememode.change", function() {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -203,9 +203,9 @@ var ChartsWidget11 = function () {
                     chart3.self.destroy();
                 } 
                 
-                initChart(chart1, '#rts_widget_11_tab_1', '#ch#_widget_11_chart_1', chart1Data, chart1.rendered);
-                initChart(chart2, '#rts_widget_11_tab_2', '#ch#_widget_11_chart_2', chart2Data, chart2.rendered);  
-                initChart(chart3, '#rts_widget_11_tab_3', '#ch#_widget_11_chart_3', chart3Data, chart3.rendered);                                           
+                initChart(chart1, '#kt_charts_widget_11_tab_1', '#kt_charts_widget_11_chart_1', chart1Data, chart1.rendered);
+                initChart(chart2, '#kt_charts_widget_11_tab_2', '#kt_charts_widget_11_chart_2', chart2Data, chart2.rendered);  
+                initChart(chart3, '#kt_charts_widget_11_tab_3', '#kt_charts_widget_11_chart_3', chart3Data, chart3.rendered);                                           
             });             
         }   
     }
@@ -213,10 +213,10 @@ var ChartsWidget11 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget11;
+    module.exports = KTChartsWidget11;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget11.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget11.init();
 });

@@ -1,20 +1,20 @@
 "use strict";
 
-// Определение класса
-var CardsWidget4 = function () {
+// Class definition
+var KTCardsWidget4 = function () {
     // Private methods
     var initChart = function() {
-        var el = document.getElementById('card_widget_4_chart'); 
+        var el = document.getElementById('kt_card_widget_4_chart'); 
 
         if (!el) {
             return;
         }
 
         var options = {
-            size: el.getAttribute('data-size') ? parseInt(el.getAttribute('data-size')) : 70,
-            lineWidth: el.getAttribute('data-line') ? parseInt(el.getAttribute('data-line')) : 11,
-            rotate: el.getAttribute('data-rotate') ? parseInt(el.getAttribute('data-rotate')) : 145,            
-            //percent:  el.getAttribute('data-percent') ,
+            size: el.getAttribute('data-kt-size') ? parseInt(el.getAttribute('data-kt-size')) : 70,
+            lineWidth: el.getAttribute('data-kt-line') ? parseInt(el.getAttribute('data-kt-line')) : 11,
+            rotate: el.getAttribute('data-kt-rotate') ? parseInt(el.getAttribute('data-kt-rotate')) : 145,            
+            //percent:  el.getAttribute('data-kt-percent') ,
         }
 
         var canvas = document.createElement('canvas');
@@ -48,11 +48,11 @@ var CardsWidget4 = function () {
 
         // Init 
         drawCircle('#E4E6EF', options.lineWidth, 100 / 100); 
-        drawCircle(Util.getCssVariableValue('--bs-danger'), options.lineWidth, 100 / 150);
-        drawCircle(Util.getCssVariableValue('--bs-primary'), options.lineWidth, 100 / 250);   
+        drawCircle(KTUtil.getCssVariableValue('--bs-danger'), options.lineWidth, 100 / 150);
+        drawCircle(KTUtil.getCssVariableValue('--bs-primary'), options.lineWidth, 100 / 250);   
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart();
@@ -62,12 +62,12 @@ var CardsWidget4 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = CardsWidget4;
+    module.exports = KTCardsWidget4;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    CardsWidget4.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTCardsWidget4.init();
 });
    
         

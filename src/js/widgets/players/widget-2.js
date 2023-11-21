@@ -1,28 +1,28 @@
 "use strict";
 
-// Определение класса
-var PlayersWidget2 = function () {
+// Class definition
+var KTPlayersWidget2 = function () {
     // Private methods
     var initPlayer = function() {
         // https://www.w3schools.com/jsref/dom_obj_audio.asp
-        var element = document.getElementById("player_widget_2");
+        var element = document.getElementById("kt_player_widget_2");
 
         if ( !element ) {
             return;
         }
 
-        var audio = element.querySelector('[data-element="audio-track-1"]');
-        var progress = element.querySelector('[data-element="progress"]');        
-        var currentTime = element.querySelector('[data-element="current-time"]');
-        var duration = element.querySelector('[data-element="duration"]');
-        var playButton = element.querySelector('[data-element="play-button"]');
-        var playIcon = element.querySelector('[data-element="play-icon"]');
-        var pauseIcon = element.querySelector('[data-element="pause-icon"]');
+        var audio = element.querySelector('[data-kt-element="audio-track-1"]');
+        var progress = element.querySelector('[data-kt-element="progress"]');        
+        var currentTime = element.querySelector('[data-kt-element="current-time"]');
+        var duration = element.querySelector('[data-kt-element="duration"]');
+        var playButton = element.querySelector('[data-kt-element="play-button"]');
+        var playIcon = element.querySelector('[data-kt-element="play-icon"]');
+        var pauseIcon = element.querySelector('[data-kt-element="pause-icon"]');
 
-        var replayButton = element.querySelector('[data-element="replay-button"]');
-        var shuffleButton = element.querySelector('[data-element="shuffle-button"]');
-        var playNextButton = element.querySelector('[data-element="play-next-button"]');
-        var playPrevButton = element.querySelector('[data-element="play-prev-button"]');
+        var replayButton = element.querySelector('[data-kt-element="replay-button"]');
+        var shuffleButton = element.querySelector('[data-kt-element="shuffle-button"]');
+        var playNextButton = element.querySelector('[data-kt-element="play-next-button"]');
+        var playPrevButton = element.querySelector('[data-kt-element="play-prev-button"]');
 
         var formatTime = function(time) {
             var s = parseInt(time % 60);
@@ -122,7 +122,7 @@ var PlayersWidget2 = function () {
         });
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initPlayer();
@@ -132,10 +132,10 @@ var PlayersWidget2 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = PlayersWidget2;
+    module.exports = KTPlayersWidget2;
 }
 
 // Window load
 window.addEventListener("load", function() {
-    PlayersWidget2.init();
+    KTPlayersWidget2.init();
 }); 

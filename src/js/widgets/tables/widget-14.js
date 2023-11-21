@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var TablesWidget14 = function () {
+// Class definition
+var KTTablesWidget14 = function () {
     var chart1 = {
         self: null,
         rendered: false
@@ -35,12 +35,12 @@ var TablesWidget14 = function () {
             return;
         }
         
-        var height = parseInt(Util.css(element, 'height'));
-        var color = element.getAttribute('data-chart-color');
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var color = element.getAttribute('data-kt-chart-color');
        
-        var strokeColor = Util.getCssVariableValue('--bs-' + 'gray-300');
-        var baseColor = Util.getCssVariableValue('--bs-' + color);
-        var lightColor = Util.getCssVariableValue('--bs-body-bg');
+        var strokeColor = KTUtil.getCssVariableValue('--bs-' + 'gray-300');
+        var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
+        var lightColor = KTUtil.getCssVariableValue('--bs-body-bg');
 
         var options = {
             series: [{
@@ -151,26 +151,26 @@ var TablesWidget14 = function () {
         }            
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () { 
             var chart1Data = [7, 10, 5, 21, 6, 11, 5, 23, 5, 11, 18, 7, 21,13];            
-            initChart(chart1, '#table_widget_14_chart_1', chart1Data, true);
+            initChart(chart1, '#kt_table_widget_14_chart_1', chart1Data, true);
 
             var chart2Data = [17, 5, 23, 2, 21, 9, 17, 23, 4, 24, 9, 17, 21,7];            
-            initChart(chart2, '#table_widget_14_chart_2', chart2Data, true);
+            initChart(chart2, '#kt_table_widget_14_chart_2', chart2Data, true);
 
             var chart3Data = [2, 24, 5, 17, 7, 2, 12, 24, 5, 24, 2, 8, 12,7];            
-            initChart(chart3, '#table_widget_14_chart_3', chart3Data, true);
+            initChart(chart3, '#kt_table_widget_14_chart_3', chart3Data, true);
 
             var chart4Data = [24, 3, 5, 19, 3, 7, 25, 14, 5, 14, 2, 8, 5,17];            
-            initChart(chart4, '#table_widget_14_chart_4', chart4Data, true);
+            initChart(chart4, '#kt_table_widget_14_chart_4', chart4Data, true);
 
             var chart5Data = [3, 23, 1, 19, 3, 17, 3, 9, 25, 4, 2, 18, 25,3];            
-            initChart(chart5, '#table_widget_14_chart_5', chart5Data, true); 
+            initChart(chart5, '#kt_table_widget_14_chart_5', chart5Data, true); 
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            KTThemeMode.on("kt.thememode.change", function() {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -191,11 +191,11 @@ var TablesWidget14 = function () {
                     chart5.self.destroy();
                 }
 
-                initChart(chart1, '#table_widget_14_chart_1', chart1Data, chart1.rendered);
-                initChart(chart2, '#table_widget_14_chart_2', chart2Data, chart2.rendered);  
-                initChart(chart3, '#table_widget_14_chart_3', chart3Data, chart3.rendered);
-                initChart(chart4, '#table_widget_14_chart_4', chart4Data, chart4.rendered); 
-                initChart(chart5, '#table_widget_14_chart_5', chart5Data, chart5.rendered); 
+                initChart(chart1, '#kt_table_widget_14_chart_1', chart1Data, chart1.rendered);
+                initChart(chart2, '#kt_table_widget_14_chart_2', chart2Data, chart2.rendered);  
+                initChart(chart3, '#kt_table_widget_14_chart_3', chart3Data, chart3.rendered);
+                initChart(chart4, '#kt_table_widget_14_chart_4', chart4Data, chart4.rendered); 
+                initChart(chart5, '#kt_table_widget_14_chart_5', chart5Data, chart5.rendered); 
             });
         }   
     }
@@ -203,12 +203,12 @@ var TablesWidget14 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = TablesWidget14;
+    module.exports = KTTablesWidget14;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    TablesWidget14.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTTablesWidget14.init();
 });
 
 

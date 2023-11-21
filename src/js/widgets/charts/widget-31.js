@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget31 = (function () {
+// Class definition
+var KTChartsWidget31 = (function () {
 	// Private methods
 	var initChart1 = function () {
 		// Check if amchart library is included
@@ -9,7 +9,7 @@ var ChartsWidget31 = (function () {
 			return;
 		}
 
-		var element = document.getElementById("charts_widget_31_chart");
+		var element = document.getElementById("kt_charts_widget_31_chart");
 
 		if (!element) {
 			return;
@@ -64,13 +64,13 @@ var ChartsWidget31 = (function () {
 				centerY: am5.p50,
 				fontWeight: "400",
 				fontSize: 11,
-				fill: am5.color(Util.getCssVariableValue("--bs-gray-800")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-800")),
 			});
 
 			xRenderer.grid.template.setAll({
 				location: 0.5,
 				strokeDasharray: [2, 2],
-				stroke: Util.getCssVariableValue('--bs-gray-400')
+				stroke: KTUtil.getCssVariableValue('--bs-gray-400')
 			});
 
 			var xAxis = chart.xAxes.push(
@@ -88,7 +88,7 @@ var ChartsWidget31 = (function () {
 			yRenderer.labels.template.setAll({
 				fontWeight: "500",
 				fontSize: 12,
-				fill: am5.color(Util.getCssVariableValue("--bs-gray-700")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-700")),
 			});
 
 			var yAxis = chart.yAxes.push(
@@ -99,7 +99,7 @@ var ChartsWidget31 = (function () {
 
 			yRenderer.grid.template.setAll({
 				strokeDasharray: [2, 2],
-				stroke: Util.getCssVariableValue('--bs-gray-400')				
+				stroke: KTUtil.getCssVariableValue('--bs-gray-400')				
 			});
 
 			// Create series
@@ -111,7 +111,7 @@ var ChartsWidget31 = (function () {
 					yAxis: yAxis,
 					valueYField: "value1",
 					categoryXField: "name",
-					fill: am5.color(Util.getCssVariableValue("--bs-primary")),
+					fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 				})
 			);
 
@@ -121,7 +121,7 @@ var ChartsWidget31 = (function () {
 
 			series1.fills.template.setAll({
 				visible: true,
-				fill: am5.color(Util.getCssVariableValue("--bs-primary")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 				fillOpacity: 0.5,
 			});
 
@@ -136,7 +136,7 @@ var ChartsWidget31 = (function () {
 					tooltip: am5.Tooltip.new(root, {
 						labelText: "Revenue: {value1}\nExpense:{value2}",
 					}),
-					fill: am5.color(Util.getCssVariableValue("--bs-success")),
+					fill: am5.color(KTUtil.getCssVariableValue("--bs-success")),
 				})
 			);
 
@@ -146,7 +146,7 @@ var ChartsWidget31 = (function () {
 
 			series2.fills.template.setAll({
 				visible: true,
-				fill: am5.color(Util.getCssVariableValue("--bs-primary")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 				fillOpacity: 0.5,
 			});
 
@@ -162,7 +162,7 @@ var ChartsWidget31 = (function () {
 			legend.labels.template.setAll({
 				fontWeight: "600",
 				fontSize: 13,
-				fill: am5.color(Util.getCssVariableValue("--bs-gray-700")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-700")),
 			});
 
 			// Set data
@@ -307,7 +307,7 @@ var ChartsWidget31 = (function () {
 		}); // end am5.ready()
 
 		// Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
+		KTThemeMode.on("kt.thememode.change", function() {     
 			// Destroy chart
 			root.dispose();
 
@@ -316,7 +316,7 @@ var ChartsWidget31 = (function () {
 		});
 	};
 
-	// Публичные методы
+	// Public methods
 	return {
 		init: function () {
 			initChart1();
@@ -326,10 +326,10 @@ var ChartsWidget31 = (function () {
 
 // Webpack support
 if (typeof module !== "undefined") {
-	module.exports = ChartsWidget31;
+	module.exports = KTChartsWidget31;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function () {
-	ChartsWidget31.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+	KTChartsWidget31.init();
 });

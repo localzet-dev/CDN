@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget18 = function () {
+// Class definition
+var KTChartsWidget18 = function () {
     var chart = {
         self: null,
         rendered: false
@@ -9,15 +9,15 @@ var ChartsWidget18 = function () {
 
     // Private methods
     var initChart = function(chart) {
-        var element = document.getElementById("charts_widget_18_chart");
+        var element = document.getElementById("kt_charts_widget_18_chart");
 
         if (!element) {
             return;
         }
         
-        var height = parseInt(Util.css(element, 'height'));
-        var labelColor = Util.getCssVariableValue('--bs-gray-900');
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');    
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-900');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');    
 
         var options = {
             series: [{
@@ -72,7 +72,7 @@ var ChartsWidget18 = function () {
                 },
                 labels: {
                     style: {
-                        colors: Util.getCssVariableValue('--bs-gray-500'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-500'),
                         fontSize: '13px'
                     }                  
                 },
@@ -88,7 +88,7 @@ var ChartsWidget18 = function () {
             yaxis: {
                 labels: {
                     style: {
-                        colors: Util.getCssVariableValue('--bs-gray-500'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-500'),
                         fontSize: '13px'
                     },
                     formatter: function(val) {
@@ -130,7 +130,7 @@ var ChartsWidget18 = function () {
                     }
                 } 
             },
-            colors: [Util.getCssVariableValue('--bs-primary'), Util.getCssVariableValue('--bs-primary-light')],
+            colors: [KTUtil.getCssVariableValue('--bs-primary'), KTUtil.getCssVariableValue('--bs-primary-light')],
             grid: {
                 borderColor: borderColor,
                 strokeDashArray: 4,
@@ -151,13 +151,13 @@ var ChartsWidget18 = function () {
         }, 200);           
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            KTThemeMode.on("kt.thememode.change", function() {                
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
@@ -170,12 +170,12 @@ var ChartsWidget18 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget18;
+    module.exports = KTChartsWidget18;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget18.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget18.init();
 });
 
 

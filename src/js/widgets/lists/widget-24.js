@@ -1,17 +1,17 @@
 "use strict";
 
-// Определение класса
-var TimelineWidget24 = function () {
+// Class definition
+var KTTimelineWidget24 = function () {
     // Private methods
     var handleActions = function() {
-        var card = document.querySelector('#t_widget_24');        
+        var card = document.querySelector('#kt_list_widget_24');        
         
         if ( !card ) {
             return;
         }
 
         // Checkbox Handler
-        Util.on(card, '[data-element="follow"]', 'click', function (e) {
+        KTUtil.on(card, '[data-kt-element="follow"]', 'click', function (e) {
             if ( this.innerText === 'Following' ) {
                 this.innerText = 'Follow';
                 this.classList.add('btn-light-primary');
@@ -26,7 +26,7 @@ var TimelineWidget24 = function () {
         });
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {           
             handleActions();             
@@ -36,10 +36,10 @@ var TimelineWidget24 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = TimelineWidget24;
+    module.exports = KTTimelineWidget24;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    TimelineWidget24.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTTimelineWidget24.init();
 }); 

@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget4 = function () {
+// Class definition
+var KTChartsWidget4 = function () {
     var chart = {
         self: null,
         rendered: false
@@ -9,17 +9,17 @@ var ChartsWidget4 = function () {
 
     // Private methods
     var initChart = function() {
-        var element = document.getElementById("charts_widget_4");
+        var element = document.getElementById("kt_charts_widget_4");
 
         if (!element) {
             return;
         }
         
-        var height = parseInt(Util.css(element, 'height'));
-        var labelColor = Util.getCssVariableValue('--bs-gray-500');
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');
-        var baseColor = Util.getCssVariableValue('--bs-primary');
-        var lightColor = Util.getCssVariableValue('--bs-primary');
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-primary');
+        var lightColor = KTUtil.getCssVariableValue('--bs-primary');
 
         var options = {
             series: [{
@@ -162,13 +162,13 @@ var ChartsWidget4 = function () {
         }, 200);          
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart();
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            KTThemeMode.on("kt.thememode.change", function() {                
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
@@ -181,10 +181,10 @@ var ChartsWidget4 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget4;
+    module.exports = KTChartsWidget4;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget4.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget4.init();
 });

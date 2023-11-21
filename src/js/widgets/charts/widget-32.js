@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget32 = function () {
+// Class definition
+var KTChartsWidget32 = function () {
     var chart1 = {
         self: null,
         rendered: false
@@ -25,10 +25,10 @@ var ChartsWidget32 = function () {
             return;
         }
         
-        var height = parseInt(Util.css(element, 'height'));
-        var labelColor = Util.getCssVariableValue('--bs-gray-900');
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-900');
 
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');    
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');    
 
         var options = {
             series: [{
@@ -80,7 +80,7 @@ var ChartsWidget32 = function () {
                 },
                 labels: {
                     style: {
-                        colors: Util.getCssVariableValue('--bs-gray-500'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-500'),
                         fontSize: '13px'
                     }                    
                 },
@@ -96,7 +96,7 @@ var ChartsWidget32 = function () {
             yaxis: {
                 labels: {
                     style: {
-                        colors: Util.getCssVariableValue('--bs-gray-500'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-500'),
                         fontSize: '13px'
                     }
                 }
@@ -130,7 +130,7 @@ var ChartsWidget32 = function () {
                     fontSize: '12px'
                 }
             },
-            colors: [Util.getCssVariableValue('--bs-primary'), Util.getCssVariableValue('--bs-primary-light')],
+            colors: [KTUtil.getCssVariableValue('--bs-primary'), KTUtil.getCssVariableValue('--bs-primary-light')],
             grid: {
                 borderColor: borderColor,
                 strokeDashArray: 4,
@@ -161,20 +161,20 @@ var ChartsWidget32 = function () {
         });
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {   
             var chart1Data = [54, 42, 75, 110, 23, 87, 50];
-            initChart(chart1, '#charts_widget_32_tab_1', '#charts_widget_32_chart_1', chart1Data, true);
+            initChart(chart1, '#kt_charts_widget_32_tab_1', '#kt_charts_widget_32_chart_1', chart1Data, true);
 
             var chart2Data = [25, 55, 35, 50, 45, 20, 31];
-            initChart(chart2, '#charts_widget_32_tab_2', '#charts_widget_32_chart_2', chart2Data, false);
+            initChart(chart2, '#kt_charts_widget_32_tab_2', '#kt_charts_widget_32_chart_2', chart2Data, false);
 
             var chart3Data = [45, 15, 35, 70, 45, 50, 21];
-            initChart(chart3, '#charts_widget_32_tab_3', '#charts_widget_32_chart_3', chart3Data, false);          
+            initChart(chart3, '#kt_charts_widget_32_tab_3', '#kt_charts_widget_32_chart_3', chart3Data, false);          
             
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            KTThemeMode.on("kt.thememode.change", function() {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -187,9 +187,9 @@ var ChartsWidget32 = function () {
                     chart3.self.destroy();
                 } 
                 
-                initChart(chart1, '#charts_widget_32_tab_1', '#charts_widget_32_chart_1', chart1Data, chart1.rendered);
-                initChart(chart2, '#charts_widget_32_tab_2', '#charts_widget_32_chart_2', chart2Data, chart2.rendered);  
-                initChart(chart3, '#charts_widget_32_tab_3', '#charts_widget_32_chart_3', chart3Data, chart3.rendered);                                           
+                initChart(chart1, '#kt_charts_widget_32_tab_1', '#kt_charts_widget_32_chart_1', chart1Data, chart1.rendered);
+                initChart(chart2, '#kt_charts_widget_32_tab_2', '#kt_charts_widget_32_chart_2', chart2Data, chart2.rendered);  
+                initChart(chart3, '#kt_charts_widget_32_tab_3', '#kt_charts_widget_32_chart_3', chart3Data, chart3.rendered);                                           
             });         
         }        
     }
@@ -197,12 +197,12 @@ var ChartsWidget32 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget32;
+    module.exports = KTChartsWidget32;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget32.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget32.init();
 });
 
 

@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var TablesWidget5 = function () {
+// Class definition
+var KTTablesWidget5 = function () {
     var table;
     var datatable;
 
@@ -31,7 +31,7 @@ var TablesWidget5 = function () {
 
     // Handle status filter
     const handleStatusFilter = () => {
-        const select = document.querySelector('[data-table-widget-5="filter_status"]');
+        const select = document.querySelector('[data-kt-table-widget-5="filter_status"]');
 
         $(select).on('select2:select', function (e) {
             const value = $(this).val();
@@ -43,10 +43,10 @@ var TablesWidget5 = function () {
         });
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
-            table = document.querySelector('#table_widget_5_table');
+            table = document.querySelector('#kt_table_widget_5_table');
 
             if (!table) {
                 return;
@@ -60,10 +60,10 @@ var TablesWidget5 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = TablesWidget5;
+    module.exports = KTTablesWidget5;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function () {
-    TablesWidget5.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTTablesWidget5.init();
 });

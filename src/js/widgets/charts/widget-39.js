@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget39 = (function () {
+// Class definition
+var KTChartsWidget39 = (function () {
 	// Private methods
 	var initChart = function () {
 		// Check if amchart library is included
@@ -9,7 +9,7 @@ var ChartsWidget39 = (function () {
 			return;
 		}
 
-		var element = document.querySelector('#charts_widget_39_chart');
+		var element = document.querySelector('#kt_charts_widget_39_chart');
 
 		if ( !element ) {
 			return;
@@ -49,7 +49,7 @@ var ChartsWidget39 = (function () {
 			});
 
 			xRenderer.grid.template.setAll({
-				stroke: am5.color(Util.getCssVariableValue("--bs-gray-700"))
+				stroke: am5.color(KTUtil.getCssVariableValue("--bs-gray-700"))
 			});
 
 			var yRenderer = am5radar.AxisRendererRadial.new(root, {
@@ -57,7 +57,7 @@ var ChartsWidget39 = (function () {
 			});	
 			
 			yRenderer.grid.template.setAll({
-				stroke: am5.color(Util.getCssVariableValue("--bs-gray-700"))
+				stroke: am5.color(KTUtil.getCssVariableValue("--bs-gray-700"))
 			});
 
 			var xAxis = chart.xAxes.push(
@@ -79,12 +79,12 @@ var ChartsWidget39 = (function () {
 
 			xRenderer.labels.template.setAll({
 				fontSize: 11,
-				fill: am5.color(Util.getCssVariableValue("--bs-gray-800")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-800")),
 			});
 
 			yRenderer.labels.template.setAll({
 				fontSize: 11,
-				fill: am5.color(Util.getCssVariableValue("--bs-gray-800")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-800")),
 			});
 
 			//yAxis.get("renderer").labels.template.set("forceHidden", true);
@@ -183,7 +183,7 @@ var ChartsWidget39 = (function () {
 		}); // end am5.ready()
 
 		// Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
+		KTThemeMode.on("kt.thememode.change", function() {     
 			// Destroy chart
 			root.dispose();
 
@@ -192,7 +192,7 @@ var ChartsWidget39 = (function () {
 		});
 	};
 
-	// Публичные методы
+	// Public methods
 	return {
 		init: function () {
 			initChart();
@@ -202,10 +202,10 @@ var ChartsWidget39 = (function () {
 
 // Webpack support
 if (typeof module !== "undefined") {
-	module.exports = ChartsWidget39;
+	module.exports = KTChartsWidget39;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function () {
-	ChartsWidget39.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+	KTChartsWidget39.init();
 });

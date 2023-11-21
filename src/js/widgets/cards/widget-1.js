@@ -1,21 +1,21 @@
 "use strict";
 
-// Определение класса
-var CardsWidget1 = function () {
+// Class definition
+var KTCardsWidget1 = function () {
     // Private methods
     var initChart = function() {
-        var element = document.getElementById("card_widget_1_chart");
+        var element = document.getElementById("kt_card_widget_1_chart");
         
         if (!element) {
             return;
         }
 
-        var color = element.getAttribute('data-chart-color');
+        var color = element.getAttribute('data-kt-chart-color');
         
-        var height = parseInt(Util.css(element, 'height'));
-        var labelColor = Util.getCssVariableValue('--bs-gray-500');         
-        var baseColor = Util.isHexColor(color) ? color : Util.getCssVariableValue('--bs-' + color);
-        var secondaryColor = Util.getCssVariableValue('--bs-gray-300');        
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');         
+        var baseColor = KTUtil.isHexColor(color) ? color : KTUtil.getCssVariableValue('--bs-' + color);
+        var secondaryColor = KTUtil.getCssVariableValue('--bs-gray-300');        
 
         var options = {
             series: [{
@@ -147,7 +147,7 @@ var CardsWidget1 = function () {
         }, 300);  
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart();
@@ -157,12 +157,12 @@ var CardsWidget1 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = CardsWidget1;
+    module.exports = KTCardsWidget1;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    CardsWidget1.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTCardsWidget1.init();
 });
    
         

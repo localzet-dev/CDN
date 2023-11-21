@@ -1,10 +1,10 @@
 "use strict";
 
-// Определение класса
-var FormsWidget1 = (function () {
+// Class definition
+var KTFormsWidget1 = (function () {
     // Private methods
     var initForm1 = function () {
-        var element = document.querySelector('#ms_widget_1_select_1');
+        var element = document.querySelector('#kt_forms_widget_1_select_1');
 
         if ( !element ) {
             return;
@@ -18,7 +18,7 @@ var FormsWidget1 = (function () {
             var span = document.createElement('span');
             var template = '';
 
-            template += '<img src="' + item.element.getAttribute('data-select2-icon') + '" class="rounded-circle h-20px me-2" alt="image"/>';
+            template += '<img src="' + item.element.getAttribute('data-kt-select2-icon') + '" class="rounded-circle h-20px me-2" alt="image"/>';
             template += item.text;
 
             span.innerHTML = template;
@@ -36,7 +36,7 @@ var FormsWidget1 = (function () {
     };
 
     var initForm2 = function () {
-        var element = document.querySelector('#ms_widget_1_select_2');
+        var element = document.querySelector('#kt_forms_widget_1_select_2');
 
         if ( !element ) {
             return;
@@ -50,7 +50,7 @@ var FormsWidget1 = (function () {
             var span = document.createElement('span');
             var template = '';
 
-            template += '<img src="' + item.element.getAttribute('data-select2-icon') + '" class="rounded-circle h-20px me-2" alt="image"/>';
+            template += '<img src="' + item.element.getAttribute('data-kt-select2-icon') + '" class="rounded-circle h-20px me-2" alt="image"/>';
             template += item.text;
 
             span.innerHTML = template;
@@ -67,7 +67,7 @@ var FormsWidget1 = (function () {
         });
     };
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initForm1();
@@ -78,10 +78,10 @@ var FormsWidget1 = (function () {
 
 // Webpack support
 if (typeof module !== "undefined") {
-    module.exports = FormsWidget1;
+    module.exports = KTFormsWidget1;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function () {
-    FormsWidget1.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTFormsWidget1.init();
 });

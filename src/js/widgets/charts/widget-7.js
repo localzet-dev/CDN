@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget7 = function () {
+// Class definition
+var KTChartsWidget7 = function () {
     // Private methods
     var initChart = function(chartSelector) {
         var element = document.querySelector(chartSelector);
@@ -10,8 +10,8 @@ var ChartsWidget7 = function () {
             return;
         }
 
-        var height = parseInt(Util.css(element, 'height'));
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
 
         var options = {
             series: [{
@@ -57,7 +57,7 @@ var ChartsWidget7 = function () {
                 },
                 labels: {
                     style: {
-                        colors: Util.getCssVariableValue('--bs-gray-700'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-700'),
                         fontSize: '12px'
                     }
                 }
@@ -65,7 +65,7 @@ var ChartsWidget7 = function () {
             yaxis: {
                 labels: {
                     style: {
-                        colors: Util.getCssVariableValue('--bs-gray-700'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-700'),
                         fontSize: '12px'
                     }
                 }
@@ -104,7 +104,7 @@ var ChartsWidget7 = function () {
                     }
                 }
             },
-            colors: [Util.getCssVariableValue('--bs-primary'), Util.getCssVariableValue('--bs-primary-light')],
+            colors: [KTUtil.getCssVariableValue('--bs-primary'), KTUtil.getCssVariableValue('--bs-primary-light')],
             grid: {
                 borderColor: borderColor,
                 strokeDashArray: 4,
@@ -137,25 +137,25 @@ var ChartsWidget7 = function () {
         chart.render();   
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {          
-            initChart('#chart_widget_7_tab_1', '#chart_widget_7_chart_1', [44, 55, 57, 56, 61, 58], [76, 85, 101, 98, 87, 105], true);
-            initChart('#chart_widget_7_tab_2', '#chart_widget_7_chart_2', [35, 60, 35, 50, 45, 30], [65, 80, 50, 80, 75, 105], false);
-            initChart('#chart_widget_7_tab_3', '#chart_widget_7_chart_3', [25, 40, 45, 50, 40, 60], [76, 85, 101, 98, 87, 105], false);
-            initChart('#chart_widget_7_tab_4', '#chart_widget_7_chart_4', [50, 35, 45, 55, 30, 40], [76, 85, 101, 98, 87, 105], false);             
+            initChart('#kt_chart_widget_7_tab_1', '#kt_chart_widget_7_chart_1', [44, 55, 57, 56, 61, 58], [76, 85, 101, 98, 87, 105], true);
+            initChart('#kt_chart_widget_7_tab_2', '#kt_chart_widget_7_chart_2', [35, 60, 35, 50, 45, 30], [65, 80, 50, 80, 75, 105], false);
+            initChart('#kt_chart_widget_7_tab_3', '#kt_chart_widget_7_chart_3', [25, 40, 45, 50, 40, 60], [76, 85, 101, 98, 87, 105], false);
+            initChart('#kt_chart_widget_7_tab_4', '#kt_chart_widget_7_chart_4', [50, 35, 45, 55, 30, 40], [76, 85, 101, 98, 87, 105], false);             
         }   
     }
 }();
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget7;
+    module.exports = KTChartsWidget7;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    //ChartsWidget7.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    //KTChartsWidget7.init();
 });
 
 

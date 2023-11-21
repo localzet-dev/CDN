@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var CardWidget9 = function () {
+// Class definition
+var KTCardWidget9 = function () {
     var chart = {
         self: null,
         rendered: false
@@ -9,16 +9,16 @@ var CardWidget9 = function () {
     
     // Private methods
     var initChart = function(chart) {
-        var element = document.getElementById("card_widget_9_chart");
+        var element = document.getElementById("kt_card_widget_9_chart");
 
         if (!element) {
             return;
         }
 
-        var height = parseInt(Util.css(element, 'height'));       
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');
-        var baseColor = Util.getCssVariableValue('--bs-gray-800');
-        var lightColor = Util.getCssVariableValue('--bs-success');
+        var height = parseInt(KTUtil.css(element, 'height'));       
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-gray-800');
+        var lightColor = KTUtil.getCssVariableValue('--bs-success');
 
         var options = {
             series: [{
@@ -148,13 +148,13 @@ var CardWidget9 = function () {
         }, 200);   
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            KTThemeMode.on("kt.thememode.change", function() {                
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
@@ -167,10 +167,10 @@ var CardWidget9 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = CardWidget9;
+    module.exports = KTCardWidget9;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    CardWidget9.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTCardWidget9.init();
 });

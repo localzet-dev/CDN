@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget22 = function () {
+// Class definition
+var KTChartsWidget22 = function () {
     // Private methods
     var initChart = function(tabSelector, chartSelector, data, initByDefault) {
         var element = document.querySelector(chartSelector);        
@@ -10,7 +10,7 @@ var ChartsWidget22 = function () {
             return;
         }  
           
-        var height = parseInt(Util.css(element, 'height'));
+        var height = parseInt(KTUtil.css(element, 'height'));
         
         var options = {
             series: data,                 
@@ -32,10 +32,10 @@ var ChartsWidget22 = function () {
                 }
             },
             colors: [
-                Util.getCssVariableValue('--bs-info'), 
-                Util.getCssVariableValue('--bs-success'), 
-                Util.getCssVariableValue('--bs-primary'), 
-                Util.getCssVariableValue('--bs-danger') 
+                KTUtil.getCssVariableValue('--bs-info'), 
+                KTUtil.getCssVariableValue('--bs-success'), 
+                KTUtil.getCssVariableValue('--bs-primary'), 
+                KTUtil.getCssVariableValue('--bs-danger') 
             ],           
             stroke: {
               width: 0
@@ -68,21 +68,21 @@ var ChartsWidget22 = function () {
         })
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {           
-            initChart('#chart_widgets_22_tab_1', '#chart_widgets_22_chart_1', [20, 100, 15, 25], true);
-            initChart('#chart_widgets_22_tab_2', '#chart_widgets_22_chart_2', [70, 13, 11, 2], false);              
+            initChart('#kt_chart_widgets_22_tab_1', '#kt_chart_widgets_22_chart_1', [20, 100, 15, 25], true);
+            initChart('#kt_chart_widgets_22_tab_2', '#kt_chart_widgets_22_chart_2', [70, 13, 11, 2], false);              
         }   
     }
 }();
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget22;
+    module.exports = KTChartsWidget22;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget22.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget22.init();
 });

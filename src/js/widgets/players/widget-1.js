@@ -1,17 +1,17 @@
 "use strict";
 
-// Определение класса
-var PlayersWidget1 = function () {
+// Class definition
+var KTPlayersWidget1 = function () {
     // Private methods
     var initPlayers = function() {
         // https://www.w3schools.com/jsref/dom_obj_audio.asp
         // Toggle Handler
-        Util.on(document.body, '[data-element="list-play-button"]', 'click', function (e) {
+        KTUtil.on(document.body, '[data-kt-element="list-play-button"]', 'click', function (e) {
             var currentButton = this;
 
-            var audio = document.querySelector('[data-element="audio-track-1"]');
-            var playIcon = this.querySelector('[data-element="list-play-icon"]');
-            var pauseIcon = this.querySelector('[data-element="list-pause-icon"]');
+            var audio = document.querySelector('[data-kt-element="audio-track-1"]');
+            var playIcon = this.querySelector('[data-kt-element="list-play-icon"]');
+            var pauseIcon = this.querySelector('[data-kt-element="list-pause-icon"]');
 
             if (pauseIcon.classList.contains('d-none')) {
                 audio.play();
@@ -25,11 +25,11 @@ var PlayersWidget1 = function () {
                 pauseIcon.classList.add('d-none');
             }
             
-            var buttons = [].slice.call(document.querySelectorAll('[data-element="list-play-button"]'));
+            var buttons = [].slice.call(document.querySelectorAll('[data-kt-element="list-play-button"]'));
             buttons.map(function (button) {
                 if (button !== currentButton) {
-                    var playIcon = button.querySelector('[data-element="list-play-icon"]');
-                    var pauseIcon = button.querySelector('[data-element="list-pause-icon"]');
+                    var playIcon = button.querySelector('[data-kt-element="list-play-icon"]');
+                    var pauseIcon = button.querySelector('[data-kt-element="list-pause-icon"]');
 
                     playIcon.classList.remove('d-none');
                     pauseIcon.classList.add('d-none');
@@ -38,7 +38,7 @@ var PlayersWidget1 = function () {
         });
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initPlayers();
@@ -48,12 +48,12 @@ var PlayersWidget1 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = PlayersWidget1;
+    module.exports = KTPlayersWidget1;
 }
 
 // Window load
 window.addEventListener("load", function() {
-    PlayersWidget1.init();
+    KTPlayersWidget1.init();
 }); 
         
         

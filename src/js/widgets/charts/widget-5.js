@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget5 = function () {
+// Class definition
+var KTChartsWidget5 = function () {
     var chart = {
         self: null,
         rendered: false
@@ -9,13 +9,13 @@ var ChartsWidget5 = function () {
 
     // Private methods
     var initChart = function(chart) {
-        var element = document.getElementById("charts_widget_5"); 
+        var element = document.getElementById("kt_charts_widget_5"); 
 
         if (!element) {
             return;
         }
         
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
         
         var options = {
             series: [{
@@ -51,7 +51,7 @@ var ChartsWidget5 = function () {
                       return val + "K"
                     },
                     style: {
-                        colors: Util.getCssVariableValue('--bs-gray-400'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-400'),
                         fontSize: '14px',
                         fontWeight: '600',
                         align: 'left'                                              
@@ -64,7 +64,7 @@ var ChartsWidget5 = function () {
             yaxis: {
                 labels: {                   
                     style: {
-                        colors: Util.getCssVariableValue('--bs-gray-800'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-800'),
                         fontSize: '14px',
                         fontWeight: '600'                                                                 
                     },
@@ -97,13 +97,13 @@ var ChartsWidget5 = function () {
         }, 200); 
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            KTThemeMode.on("kt.thememode.change", function() {                
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
@@ -116,12 +116,12 @@ var ChartsWidget5 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget5;
+    module.exports = KTChartsWidget5;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget5.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget5.init();
 });
 
 

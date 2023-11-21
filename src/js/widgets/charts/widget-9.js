@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget9 = function () {
+// Class definition
+var KTChartsWidget9 = function () {
     var chart = {
         self: null,
         rendered: false
@@ -9,18 +9,18 @@ var ChartsWidget9 = function () {
 
     // Private methods
     var initChart = function() {
-        var element = document.getElementById("charts_widget_9");
+        var element = document.getElementById("kt_charts_widget_9");
 
         if (!element) {
             return;
         }
 
-        var height = parseInt(Util.css(element, 'height'));
-        var labelColor = Util.getCssVariableValue('--bs-gray-400');
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');    
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-400');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');    
 
-        var baseColor = Util.getCssVariableValue('--bs-gray-200');
-        var secondaryColor = Util.getCssVariableValue('--bs-primary');
+        var baseColor = KTUtil.getCssVariableValue('--bs-gray-200');
+        var secondaryColor = KTUtil.getCssVariableValue('--bs-primary');
 
 
         var options = {
@@ -128,7 +128,7 @@ var ChartsWidget9 = function () {
                 show: true,
                 position: 'front',
                 stroke: {
-                    color: Util.getCssVariableValue('--bs-border-dashed-color'),
+                    color: KTUtil.getCssVariableValue('--bs-border-dashed-color'),
                     width: 1,
                     dashArray: 0,
                 },
@@ -145,7 +145,7 @@ var ChartsWidget9 = function () {
             },
             markers: {
                 colors: [baseColor, secondaryColor],
-                strokeColor: [Util.getCssVariableValue('--bs-primary'), Util.getCssVariableValue('--bs-gray-300')],
+                strokeColor: [KTUtil.getCssVariableValue('--bs-primary'), KTUtil.getCssVariableValue('--bs-gray-300')],
                 strokeWidth: 3
             }
         };        
@@ -159,13 +159,13 @@ var ChartsWidget9 = function () {
         }, 200);       
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart();
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            KTThemeMode.on("kt.thememode.change", function() {                
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
@@ -178,12 +178,12 @@ var ChartsWidget9 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget9;
+    module.exports = KTChartsWidget9;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget9.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget9.init();
 });
 
 

@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var TablesWidget4 = function () {
+// Class definition
+var KTTablesWidget4 = function () {
     var table;
     var datatable;
     var template;
@@ -9,7 +9,7 @@ var TablesWidget4 = function () {
     // Private methods
     const initDatatable = () => {
         // Get subtable template
-        const subtable = document.querySelector('[data-table-widget-4="subtable_template"]');
+        const subtable = document.querySelector('[data-kt-table-widget-4="subtable_template"]');
         template = subtable.cloneNode(true);
         template.classList.remove('d-none');
 
@@ -39,7 +39,7 @@ var TablesWidget4 = function () {
 
     // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
     var handleSearchDatatable = () => {
-        const filterSearch = document.querySelector('[data-table-widget-4="search"]');
+        const filterSearch = document.querySelector('[data-kt-table-widget-4="search"]');
         filterSearch.addEventListener('keyup', function (e) {
             datatable.search(e.target.value).draw();
         });
@@ -47,7 +47,7 @@ var TablesWidget4 = function () {
 
     // Handle status filter
     const handleStatusFilter = () => {
-        const select = document.querySelector('[data-table-widget-4="filter_status"]');
+        const select = document.querySelector('[data-kt-table-widget-4="filter_status"]');
 
         $(select).on('select2:select', function (e) {
             const value = $(this).val();
@@ -110,7 +110,7 @@ var TablesWidget4 = function () {
 
     // Handle action button
     const handleActionButton = () => {
-        const buttons = document.querySelectorAll('[data-table-widget-4="expand_row"]');
+        const buttons = document.querySelectorAll('[data-kt-table-widget-4="expand_row"]');
 
         // Sample row items counter --- for demo purpose only, remove this variable in your project
         const rowItems = [3, 1, 3, 1, 2, 1];
@@ -133,7 +133,7 @@ var TablesWidget4 = function () {
                 // Handle subtable expanded state
                 if (row.classList.contains('isOpen')) {
                     // Remove all subtables from current order row
-                    while (row.nextSibling && row.nextSibling.getAttribute('data-table-widget-4') === 'subtable_template') {
+                    while (row.nextSibling && row.nextSibling.getAttribute('data-kt-table-widget-4') === 'subtable_template') {
                         row.nextSibling.parentNode.removeChild(row.nextSibling);
                     }
                     row.classList.remove(...rowClasses);
@@ -158,17 +158,17 @@ var TablesWidget4 = function () {
             const inStock = `<div class="badge badge-light-success">In Stock</div>`;
 
             // Select data elements
-            const image = newTemplate.querySelector('[data-table-widget-4="template_image"]');
-            const name = newTemplate.querySelector('[data-table-widget-4="template_name"]');
-            const description = newTemplate.querySelector('[data-table-widget-4="template_description"]');
-            const cost = newTemplate.querySelector('[data-table-widget-4="template_cost"]');
-            const qty = newTemplate.querySelector('[data-table-widget-4="template_qty"]');
-            const total = newTemplate.querySelector('[data-table-widget-4="template_total"]');
-            const stock = newTemplate.querySelector('[data-table-widget-4="template_stock"]');
+            const image = newTemplate.querySelector('[data-kt-table-widget-4="template_image"]');
+            const name = newTemplate.querySelector('[data-kt-table-widget-4="template_name"]');
+            const description = newTemplate.querySelector('[data-kt-table-widget-4="template_description"]');
+            const cost = newTemplate.querySelector('[data-kt-table-widget-4="template_cost"]');
+            const qty = newTemplate.querySelector('[data-kt-table-widget-4="template_qty"]');
+            const total = newTemplate.querySelector('[data-kt-table-widget-4="template_total"]');
+            const stock = newTemplate.querySelector('[data-kt-table-widget-4="template_stock"]');
 
             // Populate elements with data
-            const imageSrc = image.getAttribute('data-src-path');
-            image.setAttribute('src', imageSrc + d.image + '.gif');
+            const imageSrc = image.getAttribute('data-kt-src-path');
+            image.setAttribute('src', imageSrc + d.image + '.png');
             name.innerText = d.name;
             description.innerText = d.description;
             cost.innerText = d.cost;
@@ -217,7 +217,7 @@ var TablesWidget4 = function () {
 
     // Reset subtable
     const resetSubtable = () => {
-        const subtables = document.querySelectorAll('[data-table-widget-4="subtable_template"]');
+        const subtables = document.querySelectorAll('[data-kt-table-widget-4="subtable_template"]');
         subtables.forEach(st => {
             st.parentNode.removeChild(st);
         });
@@ -225,16 +225,16 @@ var TablesWidget4 = function () {
         const rows = table.querySelectorAll('tbody tr');
         rows.forEach(r => {
             r.classList.remove('isOpen');
-            if (r.querySelector('[data-table-widget-4="expand_row"]')) {
-                r.querySelector('[data-table-widget-4="expand_row"]').classList.remove('active');
+            if (r.querySelector('[data-kt-table-widget-4="expand_row"]')) {
+                r.querySelector('[data-kt-table-widget-4="expand_row"]').classList.remove('active');
             }
         });
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
-            table = document.querySelector('#table_widget_4_table');
+            table = document.querySelector('#kt_table_widget_4_table');
 
             if (!table) {
                 return;
@@ -250,10 +250,10 @@ var TablesWidget4 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = TablesWidget4;
+    module.exports = KTTablesWidget4;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function () {
-    TablesWidget4.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTTablesWidget4.init();
 });

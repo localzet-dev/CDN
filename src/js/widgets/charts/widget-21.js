@@ -1,10 +1,10 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget21 = (function () {
+// Class definition
+var KTChartsWidget21 = (function () {
     // Private methods
     var initChart = function() {
-        var element = document.getElementById("charts_widget_21");
+        var element = document.getElementById("kt_charts_widget_21");
 
         if (!element) {
             return;
@@ -240,7 +240,7 @@ var ChartsWidget21 = (function () {
         }, 200);  
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart();
@@ -250,10 +250,10 @@ var ChartsWidget21 = (function () {
 
 // Webpack support
 if (typeof module !== "undefined") {
-    module.exports = ChartsWidget21;
+    module.exports = KTChartsWidget21;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function () {
-    ChartsWidget21.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTChartsWidget21.init();
 });

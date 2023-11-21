@@ -1,21 +1,21 @@
 "use strict";
 
-// Определение класса
-var TimelineWidget2 = function () {
+// Class definition
+var KTTimelineWidget2 = function () {
     // Private methods
     var handleCheckbox = function() {
-        var card = document.querySelector('#timeline_widget_2_card');        
+        var card = document.querySelector('#kt_timeline_widget_2_card');        
         
         if (!card) {
             return;
         }
 
         // Checkbox Handler
-        Util.on(card, '[data-element="checkbox"]', 'change', function (e) {
+        KTUtil.on(card, '[data-kt-element="checkbox"]', 'change', function (e) {
             var check = this.closest('.form-check');
             var tr = this.closest('tr');
-            var bullet = tr.querySelector('[data-element="bullet"]');
-            var status = tr.querySelector('[data-element="status"]');
+            var bullet = tr.querySelector('[data-kt-element="bullet"]');
+            var status = tr.querySelector('[data-kt-element="status"]');
 
             if ( this.checked === true ) {
                 check.classList.add('form-check-success');
@@ -39,7 +39,7 @@ var TimelineWidget2 = function () {
         });
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {           
             handleCheckbox();             
@@ -49,12 +49,12 @@ var TimelineWidget2 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = TimelineWidget2;
+    module.exports = KTTimelineWidget2;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    TimelineWidget2.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTTimelineWidget2.init();
 });
 
 

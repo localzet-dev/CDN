@@ -1,21 +1,21 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget27 = function () {
+// Class definition
+var KTChartsWidget27 = function () {
     var chart = {
         self: null,
         rendered: false
     };
     // Private methods
     var initChart = function(chart) {
-        var element = document.getElementById("charts_widget_27"); 
+        var element = document.getElementById("kt_charts_widget_27"); 
 
         if (!element) {
             return;
         }
         
-        var labelColor = Util.getCssVariableValue('--bs-gray-800');    
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-800');    
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
         var maxValue = 18;
         
         var options = {
@@ -137,13 +137,13 @@ var ChartsWidget27 = function () {
         }, 200);        
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            KTThemeMode.on("kt.thememode.change", function() {                
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
@@ -156,12 +156,12 @@ var ChartsWidget27 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget27;
+    module.exports = KTChartsWidget27;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget27.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget27.init();
 });
 
 

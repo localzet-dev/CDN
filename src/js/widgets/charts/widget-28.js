@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget28 = function () {
+// Class definition
+var KTChartsWidget28 = function () {
     var chart = {
         self: null,
         rendered: false
@@ -9,16 +9,16 @@ var ChartsWidget28 = function () {
     
     // Private methods
     var initChart = function(chart) {
-        var element = document.getElementById("charts_widget_28");
+        var element = document.getElementById("kt_charts_widget_28");
 
         if (!element) {
             return;
         }
         
-        var height = parseInt(Util.css(element, 'height'));
-        var labelColor = Util.getCssVariableValue('--bs-gray-500');
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');
-        var baseColor = Util.getCssVariableValue('--bs-info');         
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-info');         
 
         var options = {
             series: [{
@@ -159,13 +159,13 @@ var ChartsWidget28 = function () {
         }, 200);  
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            KTThemeMode.on("kt.thememode.change", function() {                
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
@@ -178,10 +178,10 @@ var ChartsWidget28 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget28;
+    module.exports = KTChartsWidget28;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget28.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget28.init();
 });

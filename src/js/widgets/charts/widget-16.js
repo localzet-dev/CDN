@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget16 = (function () {
+// Class definition
+var KTChartsWidget16 = (function () {
     // Private methods
     var initChart = function () {
         // Check if amchart library is included
@@ -9,7 +9,7 @@ var ChartsWidget16 = (function () {
             return;
         }
 
-        var element = document.getElementById("charts_widget_16_chart");
+        var element = document.getElementById("kt_charts_widget_16_chart");
 
         if (!element) {
             return;
@@ -124,7 +124,7 @@ var ChartsWidget16 = (function () {
                 paddingTop: 10,
                 fontWeight: "400",
                 fontSize: 13,
-                fill: am5.color(Util.getCssVariableValue('--bs-gray-500'))
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500'))
             });
 
             xAxis.get("renderer").grid.template.setAll({
@@ -144,11 +144,11 @@ var ChartsWidget16 = (function () {
                 paddingLeft: 10,
                 fontWeight: "400",
                 fontSize: 13,
-                fill: am5.color(Util.getCssVariableValue('--bs-gray-500'))
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500'))
             });
 
             yAxis.get("renderer").grid.template.setAll({
-                stroke: am5.color(Util.getCssVariableValue('--bs-gray-300')),
+                stroke: am5.color(KTUtil.getCssVariableValue('--bs-gray-300')),
                 strokeWidth: 1,
                 strokeOpacity: 1,
                 strokeDasharray: [3]
@@ -170,7 +170,7 @@ var ChartsWidget16 = (function () {
             paretoAxis.get("renderer").labels.template.setAll({
                 fontWeight: "400",
                 fontSize: 13,
-                fill: am5.color(Util.getCssVariableValue('--bs-gray-500'))
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500'))
             });
 
             paretoAxisRenderer.grid.template.set("forceHidden", true);
@@ -211,7 +211,7 @@ var ChartsWidget16 = (function () {
                     yAxis: paretoAxis,
                     valueYField: "pareto",
                     categoryXField: "country",
-                    stroke: am5.color(Util.getCssVariableValue('--bs-dark')),
+                    stroke: am5.color(KTUtil.getCssVariableValue('--bs-dark')),
                     maskBullets: false,
                 })
             );
@@ -221,8 +221,8 @@ var ChartsWidget16 = (function () {
                     locationY: 1,
                     sprite: am5.Circle.new(root, {
                         radius: 5,
-                        fill: am5.color(Util.getCssVariableValue('--bs-primary')),
-                        stroke: am5.color(Util.getCssVariableValue('--bs-dark'))
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary')),
+                        stroke: am5.color(KTUtil.getCssVariableValue('--bs-dark'))
                     }),
                 });
             });
@@ -241,7 +241,7 @@ var ChartsWidget16 = (function () {
         });
 
         // Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
+		KTThemeMode.on("kt.thememode.change", function() {     
 			// Destroy chart
 			root.dispose();
 
@@ -250,7 +250,7 @@ var ChartsWidget16 = (function () {
 		});
     };
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart();
@@ -260,10 +260,10 @@ var ChartsWidget16 = (function () {
 
 // Webpack support
 if (typeof module !== "undefined") {
-    module.exports = ChartsWidget16;
+    module.exports = KTChartsWidget16;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function () {
-    ChartsWidget16.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTChartsWidget16.init();
 });

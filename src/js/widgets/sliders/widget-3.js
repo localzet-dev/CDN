@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var SlidersWidget3 = function () {
+// Class definition
+var KTSlidersWidget3 = function () {
     var chart1 = {
         self: null,
         rendered: false
@@ -24,10 +24,10 @@ var SlidersWidget3 = function () {
             return;
         }
 
-        var height = parseInt(Util.css(element, 'height'));
-        var labelColor = Util.getCssVariableValue('--bs-gray-500');
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');
-        var baseColor = Util.getCssVariableValue('--bs-' + color);
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
 
         var options = {
             series: [{
@@ -160,16 +160,16 @@ var SlidersWidget3 = function () {
         element.classList.add('initialized');   
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             var data1 = [19, 21, 21, 20, 20, 18, 18, 20, 20, 22, 22, 21, 21, 22];
             var data2 = [18, 22, 22, 20, 20, 18, 18, 20, 20, 18, 18, 20, 20, 22];
             
             // Init default chart
-            initChart(chart1, '#ders_widget_3_chart_1', 'danger', data1);
+            initChart(chart1, '#kt_sliders_widget_3_chart_1', 'danger', data1);
 
-            var carousel = document.querySelector('#ders_widget_3_slider');
+            var carousel = document.querySelector('#kt_sliders_widget_3_slider');
 
             if ( !carousel ){
                 return;
@@ -178,12 +178,12 @@ var SlidersWidget3 = function () {
             carousel.addEventListener('slid.bs.carousel', function (e) {
                 if (e.to === 1) {
                     // Init second chart
-                    initChart(chart2, '#ders_widget_3_chart_2', 'primary', data2);
+                    initChart(chart2, '#kt_sliders_widget_3_chart_2', 'primary', data2);
                 }                
             });
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            KTThemeMode.on("kt.thememode.change", function() {                
                 if (chart1.rendered) {
                     chart1.self.destroy();
                     chart1.rendered = false;
@@ -194,8 +194,8 @@ var SlidersWidget3 = function () {
                     chart2.rendered = false;
                 }
 
-                initChart(chart1, '#ders_widget_3_chart_1', 'danger', data1);
-                initChart(chart2, '#ders_widget_3_chart_2', 'primary', data2);
+                initChart(chart1, '#kt_sliders_widget_3_chart_1', 'danger', data1);
+                initChart(chart2, '#kt_sliders_widget_3_chart_2', 'primary', data2);
             });
         }   
     }
@@ -203,10 +203,10 @@ var SlidersWidget3 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = SlidersWidget3;
+    module.exports = KTSlidersWidget3;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    SlidersWidget3.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTSlidersWidget3.init();
 });

@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var SlidersWidget1 = function() {
+// Class definition
+var KTSlidersWidget1 = function() {
     var chart1 = {
         self: null,
         rendered: false
@@ -29,9 +29,9 @@ var SlidersWidget1 = function() {
             return;
         }
 
-        var height = parseInt(Util.css(element, 'height'));
-        var baseColor = Util.getCssVariableValue('--bs-' + 'primary');
-        var lightColor = Util.getCssVariableValue('--bs-' + 'primary-light' );         
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var baseColor = KTUtil.getCssVariableValue('--bs-' + 'primary');
+        var lightColor = KTUtil.getCssVariableValue('--bs-' + 'primary-light' );         
 
         var options = {
             series: [data],
@@ -78,13 +78,13 @@ var SlidersWidget1 = function() {
         element.classList.add('initialized');
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             // Init default chart
-            initChart(chart1, '#slider_widget_1_chart_1', 76);
+            initChart(chart1, '#kt_slider_widget_1_chart_1', 76);
 
-            var carousel = document.querySelector('#sliders_widget_1_slider');
+            var carousel = document.querySelector('#kt_sliders_widget_1_slider');
             
             if ( !carousel ) {
                 return;
@@ -94,17 +94,17 @@ var SlidersWidget1 = function() {
             carousel.addEventListener('slid.bs.carousel', function (e) {
                 if (e.to === 1) {
                     // Init second chart
-                    initChart(chart2, '#slider_widget_1_chart_2', 55);
+                    initChart(chart2, '#kt_slider_widget_1_chart_2', 55);
                 }
 
                 if (e.to === 2) {
                     // Init third chart
-                    initChart(chart3, '#slider_widget_1_chart_3', 25);
+                    initChart(chart3, '#kt_slider_widget_1_chart_3', 25);
                 }
             });
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            KTThemeMode.on("kt.thememode.change", function() {                
                 if (chart1.rendered) {
                     chart1.self.destroy();
                     chart1.rendered = false;
@@ -120,9 +120,9 @@ var SlidersWidget1 = function() {
                     chart3.rendered = false;
                 }
 
-                initChart(chart1, '#slider_widget_1_chart_1', 76);
-                initChart(chart2, '#slider_widget_1_chart_2', 55);
-                initChart(chart3, '#slider_widget_1_chart_3', 25);
+                initChart(chart1, '#kt_slider_widget_1_chart_1', 76);
+                initChart(chart2, '#kt_slider_widget_1_chart_2', 55);
+                initChart(chart3, '#kt_slider_widget_1_chart_3', 25);
             });
         }   
     }        
@@ -131,12 +131,12 @@ var SlidersWidget1 = function() {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = SlidersWidget1;
+    module.exports = KTSlidersWidget1;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    SlidersWidget1.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTSlidersWidget1.init();
 });
    
         

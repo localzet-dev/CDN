@@ -1,12 +1,12 @@
 "use strict";
 
-// Определение класса
-var TimelineWidget4 = function () {
+// Class definition
+var KTTimelineWidget4 = function () {
     // Private methods
     // Day timeline
     const initTimelineDay = () => {
         // Detect element
-        const element = document.querySelector('#timeline_widget_4_1');
+        const element = document.querySelector('#kt_timeline_widget_4_1');
         if (!element) {
             return;
         }
@@ -17,7 +17,7 @@ var TimelineWidget4 = function () {
 
         // Set variables
         var now = Date.now();
-        var rootImagePath = element.getAttribute('data-timeline-widget-4-image-root');
+        var rootImagePath = element.getAttribute('data-kt-timeline-widget-4-image-root');
 
         // Build vis-timeline datasets
         var groups = new vis.DataSet([
@@ -121,7 +121,7 @@ var TimelineWidget4 = function () {
                 filterOptions: {
                     whiteList: {
                         div: ['class', 'style'],
-                        img: ['data-timeline-avatar-src', 'alt'],
+                        img: ['data-kt-timeline-avatar-src', 'alt'],
                         a: ['href', 'class']
                     },
                 },
@@ -132,7 +132,7 @@ var TimelineWidget4 = function () {
                 const users = item.users;
                 let userTemplate = '';
                 users.forEach(user => {
-                    userTemplate += `<div class="symbol symbol-circle symbol-25px"><img data-timeline-avatar-src="${rootImagePath + user}" alt="" /></div>`;
+                    userTemplate += `<div class="symbol symbol-circle symbol-25px"><img data-kt-timeline-avatar-src="${rootImagePath + user}" alt="" /></div>`;
                 });
 
                 return `<div class="rounded-pill bg-light-${item.color} d-flex align-items-center position-relative h-40px w-100 p-2 overflow-hidden">
@@ -157,8 +157,8 @@ var TimelineWidget4 = function () {
             onInitialDrawComplete: function () {
                 handleAvatarPath();
 
-                const target = element.closest('[data-timeline-widget-4-blockui="true"]');
-                const blockUI = BlockUI.getInstance(target);
+                const target = element.closest('[data-kt-timeline-widget-4-blockui="true"]');
+                const blockUI = KTBlockUI.getInstance(target);
 
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
@@ -181,7 +181,7 @@ var TimelineWidget4 = function () {
     // Week timeline
     const initTimelineWeek = () => {
         // Detect element
-        const element = document.querySelector('#timeline_widget_4_2');
+        const element = document.querySelector('#kt_timeline_widget_4_2');
         if (!element) {
             return;
         }
@@ -192,7 +192,7 @@ var TimelineWidget4 = function () {
 
         // Set variables
         var now = Date.now();
-        var rootImagePath = element.getAttribute('data-timeline-widget-4-image-root');
+        var rootImagePath = element.getAttribute('data-kt-timeline-widget-4-image-root');
 
         // Build vis-timeline datasets
         var groups = new vis.DataSet([
@@ -297,7 +297,7 @@ var TimelineWidget4 = function () {
                 filterOptions: {
                     whiteList: {
                         div: ['class', 'style'],
-                        img: ['data-timeline-avatar-src', 'alt'],
+                        img: ['data-kt-timeline-avatar-src', 'alt'],
                         a: ['href', 'class']
                     },
                 },
@@ -308,7 +308,7 @@ var TimelineWidget4 = function () {
                 const users = item.users;
                 let userTemplate = '';
                 users.forEach(user => {
-                    userTemplate += `<div class="symbol symbol-circle symbol-25px"><img data-timeline-avatar-src="${rootImagePath + user}" alt="" /></div>`;
+                    userTemplate += `<div class="symbol symbol-circle symbol-25px"><img data-kt-timeline-avatar-src="${rootImagePath + user}" alt="" /></div>`;
                 });
 
                 return `<div class="rounded-pill bg-light-${item.color} d-flex align-items-center position-relative h-40px w-100 p-2 overflow-hidden">
@@ -333,8 +333,8 @@ var TimelineWidget4 = function () {
             onInitialDrawComplete: function () {
                 handleAvatarPath();
 
-                const target = element.closest('[data-timeline-widget-4-blockui="true"]');
-                const blockUI = BlockUI.getInstance(target);
+                const target = element.closest('[data-kt-timeline-widget-4-blockui="true"]');
+                const blockUI = KTBlockUI.getInstance(target);
 
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
@@ -357,7 +357,7 @@ var TimelineWidget4 = function () {
     // Month timeline
     const initTimelineMonth = () => {
         // Detect element
-        const element = document.querySelector('#timeline_widget_4_3');
+        const element = document.querySelector('#kt_timeline_widget_4_3');
         if (!element) {
             return;
         }
@@ -368,7 +368,7 @@ var TimelineWidget4 = function () {
 
         // Set variables
         var now = Date.now();
-        var rootImagePath = element.getAttribute('data-timeline-widget-4-image-root');
+        var rootImagePath = element.getAttribute('data-kt-timeline-widget-4-image-root');
 
         // Build vis-timeline datasets
         var groups = new vis.DataSet([
@@ -473,7 +473,7 @@ var TimelineWidget4 = function () {
                 filterOptions: {
                     whiteList: {
                         div: ['class', 'style'],
-                        img: ['data-timeline-avatar-src', 'alt'],
+                        img: ['data-kt-timeline-avatar-src', 'alt'],
                         a: ['href', 'class']
                     },
                 },
@@ -484,7 +484,7 @@ var TimelineWidget4 = function () {
                 const users = item.users;
                 let userTemplate = '';
                 users.forEach(user => {
-                    userTemplate += `<div class="symbol symbol-circle symbol-25px"><img data-timeline-avatar-src="${rootImagePath + user}" alt="" /></div>`;
+                    userTemplate += `<div class="symbol symbol-circle symbol-25px"><img data-kt-timeline-avatar-src="${rootImagePath + user}" alt="" /></div>`;
                 });
 
                 return `<div class="rounded-pill bg-light-${item.color} d-flex align-items-center position-relative h-40px w-100 p-2 overflow-hidden">
@@ -509,8 +509,8 @@ var TimelineWidget4 = function () {
             onInitialDrawComplete: function () {
                 handleAvatarPath();
                 
-                const target = element.closest('[data-timeline-widget-4-blockui="true"]');
-                const blockUI = BlockUI.getInstance(target);
+                const target = element.closest('[data-kt-timeline-widget-4-blockui="true"]');
+                const blockUI = KTBlockUI.getInstance(target);
 
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
@@ -533,7 +533,7 @@ var TimelineWidget4 = function () {
     // 2022 timeline
     const initTimeline2022 = () => {
         // Detect element
-        const element = document.querySelector('#timeline_widget_4_4');
+        const element = document.querySelector('#kt_timeline_widget_4_4');
         if (!element) {
             return;
         }
@@ -544,7 +544,7 @@ var TimelineWidget4 = function () {
 
         // Set variables
         var now = Date.now();
-        var rootImagePath = element.getAttribute('data-timeline-widget-4-image-root');
+        var rootImagePath = element.getAttribute('data-kt-timeline-widget-4-image-root');
 
         // Build vis-timeline datasets
         var groups = new vis.DataSet([
@@ -649,7 +649,7 @@ var TimelineWidget4 = function () {
                 filterOptions: {
                     whiteList: {
                         div: ['class', 'style'],
-                        img: ['data-timeline-avatar-src', 'alt'],
+                        img: ['data-kt-timeline-avatar-src', 'alt'],
                         a: ['href', 'class']
                     },
                 },
@@ -660,7 +660,7 @@ var TimelineWidget4 = function () {
                 const users = item.users;
                 let userTemplate = '';
                 users.forEach(user => {
-                    userTemplate += `<div class="symbol symbol-circle symbol-25px"><img data-timeline-avatar-src="${rootImagePath + user}" alt="" /></div>`;
+                    userTemplate += `<div class="symbol symbol-circle symbol-25px"><img data-kt-timeline-avatar-src="${rootImagePath + user}" alt="" /></div>`;
                 });
 
                 return `<div class="rounded-pill bg-light-${item.color} d-flex align-items-center position-relative h-40px w-100 p-2 overflow-hidden">
@@ -685,8 +685,8 @@ var TimelineWidget4 = function () {
             onInitialDrawComplete: function () {
                 handleAvatarPath();
                 
-                const target = element.closest('[data-timeline-widget-4-blockui="true"]');
-                const blockUI = BlockUI.getInstance(target);
+                const target = element.closest('[data-kt-timeline-widget-4-blockui="true"]');
+                const blockUI = KTBlockUI.getInstance(target);
 
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
@@ -708,11 +708,11 @@ var TimelineWidget4 = function () {
     // Handle BlockUI
     const handleBlockUI = () => {
         // Select block ui elements
-        const elements = document.querySelectorAll('[data-timeline-widget-4-blockui="true"]');
+        const elements = document.querySelectorAll('[data-kt-timeline-widget-4-blockui="true"]');
 
         // Init block ui
         elements.forEach(element => {
-            const blockUI = new BlockUI(element, {
+            const blockUI = new KTBlockUI(element, {
                 overlayClass: "bg-body",
             });
 
@@ -722,22 +722,22 @@ var TimelineWidget4 = function () {
 
     // Handle tabs visibility
     const tabsVisibility = () => {
-        const tabs = document.querySelectorAll('[data-timeline-widget-4="tab"]');
+        const tabs = document.querySelectorAll('[data-kt-timeline-widget-4="tab"]');
 
         tabs.forEach(tab => {
             tab.addEventListener('shown.bs.tab', e => {
                 // Week tab
-                if(tab.getAttribute('href') === '#timeline_widget_4_tab_week'){
+                if(tab.getAttribute('href') === '#kt_timeline_widget_4_tab_week'){
                     initTimelineWeek();
                 }
 
                 // Month tab
-                if(tab.getAttribute('href') === '#timeline_widget_4_tab_month'){
+                if(tab.getAttribute('href') === '#kt_timeline_widget_4_tab_month'){
                     initTimelineMonth();
                 }
 
                 // 2022 tab
-                if(tab.getAttribute('href') === '#timeline_widget_4_tab_2022'){
+                if(tab.getAttribute('href') === '#kt_timeline_widget_4_tab_2022'){
                     initTimeline2022();
                 }
             });
@@ -746,19 +746,19 @@ var TimelineWidget4 = function () {
 
     // Handle avatar path conflict
     const handleAvatarPath = () => {
-        const avatars = document.querySelectorAll('[data-timeline-avatar-src]');
+        const avatars = document.querySelectorAll('[data-kt-timeline-avatar-src]');
 
         if(!avatars){
             return;
         }
 
         avatars.forEach(avatar => {
-            avatar.setAttribute('src', avatar.getAttribute('data-timeline-avatar-src'));
-            avatar.removeAttribute('data-timeline-avatar-src');
+            avatar.setAttribute('src', avatar.getAttribute('data-kt-timeline-avatar-src'));
+            avatar.removeAttribute('data-kt-timeline-avatar-src');
         });
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initTimelineDay();
@@ -770,10 +770,10 @@ var TimelineWidget4 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = TimelineWidget4;
+    module.exports = KTTimelineWidget4;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function () {
-    TimelineWidget4.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTTimelineWidget4.init();
 });

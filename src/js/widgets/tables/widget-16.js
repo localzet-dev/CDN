@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var TablesWidget16 = function () {
+// Class definition
+var KTTablesWidget16 = function () {
     var chart1 = {
         self: null,
         rendered: false
@@ -110,12 +110,12 @@ var TablesWidget16 = function () {
             return;
         }
         
-        var height = parseInt(Util.css(element, 'height'));
-        var color = element.getAttribute('data-chart-color');
-        var labelColor = Util.getCssVariableValue('--bs-gray-800');
-        var strokeColor = Util.getCssVariableValue('--bs-gray-300');
-        var baseColor = Util.getCssVariableValue('--bs-' + color);
-        var lightColor = Util.getCssVariableValue('--bs-body-bg');
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var color = element.getAttribute('data-kt-chart-color');
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-800');
+        var strokeColor = KTUtil.getCssVariableValue('--bs-gray-300');
+        var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
+        var lightColor = KTUtil.getCssVariableValue('--bs-body-bg');
 
         var options = {
             series: [{
@@ -235,75 +235,75 @@ var TablesWidget16 = function () {
         });
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {  
             var chart1Data = [16, 10, 15, 21, 6, 11, 5, 23, 5, 11, 18, 7, 21, 13];  
-            initChart(chart1, '#stats_widget_16_tab_link_1', '#table_widget_16_chart_1_1', chart1Data, true);        
+            initChart(chart1, '#kt_stats_widget_16_tab_link_1', '#kt_table_widget_16_chart_1_1', chart1Data, true);        
              
             var chart2Data = [8, 5, 16, 3, 23, 16, 11, 15, 3, 11, 15, 7, 17, 9];  
-            initChart(chart2, '#stats_widget_16_tab_link_1', '#table_widget_16_chart_1_2', chart2Data, true);    
+            initChart(chart2, '#kt_stats_widget_16_tab_link_1', '#kt_table_widget_16_chart_1_2', chart2Data, true);    
             
             var chart3Data = [8, 6, 16, 3, 23, 16, 11, 14, 3, 11, 15, 8, 17, 9];  
-            initChart(chart3, '#stats_widget_16_tab_link_1', '#table_widget_16_chart_1_3', chart3Data, true);  
+            initChart(chart3, '#kt_stats_widget_16_tab_link_1', '#kt_table_widget_16_chart_1_3', chart3Data, true);  
             
             var chart4Data = [12, 5, 23, 12, 21, 9, 17, 20, 4, 24, 9, 13, 18, 9];  
-            initChart(chart4, '#stats_widget_16_tab_link_1', '#table_widget_16_chart_1_4', chart4Data, true); 
+            initChart(chart4, '#kt_stats_widget_16_tab_link_1', '#kt_table_widget_16_chart_1_4', chart4Data, true); 
 
 
             var chart5Data = [13, 10, 15, 21, 6, 11, 5, 21, 5, 12, 18, 7, 21, 13];  
-            initChart(chart5, '#stats_widget_16_tab_link_2', '#table_widget_16_chart_2_1', chart5Data, false);        
+            initChart(chart5, '#kt_stats_widget_16_tab_link_2', '#kt_table_widget_16_chart_2_1', chart5Data, false);        
              
             var chart6Data = [13, 5, 21, 12, 21, 9, 17, 20, 4, 23, 9, 17, 21, 7];  
-            initChart(chart6, '#stats_widget_16_tab_link_2', '#table_widget_16_chart_2_2', chart6Data, false);    
+            initChart(chart6, '#kt_stats_widget_16_tab_link_2', '#kt_table_widget_16_chart_2_2', chart6Data, false);    
             
             var chart7Data = [8, 10, 14, 21, 6, 31, 5, 21, 5, 11, 15, 7, 23, 13];  
-            initChart(chart7, '#stats_widget_16_tab_link_2', '#table_widget_16_chart_2_3', chart7Data, false);  
+            initChart(chart7, '#kt_stats_widget_16_tab_link_2', '#kt_table_widget_16_chart_2_3', chart7Data, false);  
             
             var chart8Data = [6, 10, 12, 21, 6, 11, 7, 23, 5, 12, 18, 7, 21, 15];  
-            initChart(chart8, '#stats_widget_16_tab_link_2', '#table_widget_16_chart_2_4', chart8Data, false); 
+            initChart(chart8, '#kt_stats_widget_16_tab_link_2', '#kt_table_widget_16_chart_2_4', chart8Data, false); 
 
 
             var chart9Data = [7, 10, 5, 21, 6, 11, 5, 23, 5, 11, 18, 7, 21,13];  
-            initChart(chart9, '#stats_widget_16_tab_link_3', '#table_widget_16_chart_3_1', chart9Data, false);        
+            initChart(chart9, '#kt_stats_widget_16_tab_link_3', '#kt_table_widget_16_chart_3_1', chart9Data, false);        
              
             var chart10Data = [8, 5, 16, 2, 19, 9, 17, 21, 4, 24, 4, 13, 21,5];  
-            initChart(chart10, '#stats_widget_16_tab_link_3', '#table_widget_16_chart_3_2', chart10Data, false);    
+            initChart(chart10, '#kt_stats_widget_16_tab_link_3', '#kt_table_widget_16_chart_3_2', chart10Data, false);    
             
             var chart11Data = [15, 10, 12, 21, 6, 11, 23, 11, 5, 12, 18, 7, 21, 15];  
-            initChart(chart11, '#stats_widget_16_tab_link_3', '#table_widget_16_chart_3_3', chart11Data, false);  
+            initChart(chart11, '#kt_stats_widget_16_tab_link_3', '#kt_table_widget_16_chart_3_3', chart11Data, false);  
             
             var chart12Data = [3, 9, 12, 23, 6, 11, 7, 23, 5, 12, 14, 7, 21, 8];  
-            initChart(chart12, '#stats_widget_16_tab_link_3', '#table_widget_16_chart_3_4', chart12Data, false);
+            initChart(chart12, '#kt_stats_widget_16_tab_link_3', '#kt_table_widget_16_chart_3_4', chart12Data, false);
 
 
             var chart13Data = [9, 14, 15, 21, 8, 11, 5, 23, 5, 11, 18, 5, 23, 8];  
-            initChart(chart13, '#stats_widget_16_tab_link_4', '#table_widget_16_chart_4_1', chart13Data, false);        
+            initChart(chart13, '#kt_stats_widget_16_tab_link_4', '#kt_table_widget_16_chart_4_1', chart13Data, false);        
              
             var chart14Data = [7, 5, 23, 12, 21, 9, 17, 15, 4, 24, 9, 17, 21, 7];  
-            initChart(chart14, '#stats_widget_16_tab_link_4', '#table_widget_16_chart_4_2', chart14Data, false);    
+            initChart(chart14, '#kt_stats_widget_16_tab_link_4', '#kt_table_widget_16_chart_4_2', chart14Data, false);    
             
             var chart15Data = [8, 10, 14, 21, 6, 31, 8, 23, 5, 3, 14, 7, 21, 12];  
-            initChart(chart15, '#stats_widget_16_tab_link_4', '#table_widget_16_chart_4_3', chart15Data, false);  
+            initChart(chart15, '#kt_stats_widget_16_tab_link_4', '#kt_table_widget_16_chart_4_3', chart15Data, false);  
             
             var chart16Data = [6, 12, 12, 19, 6, 11, 7, 23, 5, 12, 18, 7, 21, 15];  
-            initChart(chart16, '#stats_widget_16_tab_link_4', '#table_widget_16_chart_4_4', chart16Data, false);
+            initChart(chart16, '#kt_stats_widget_16_tab_link_4', '#kt_table_widget_16_chart_4_4', chart16Data, false);
 
 
             var chart17Data = [5, 10, 15, 21, 6, 11, 5, 23, 5, 11, 17, 7, 21, 13];  
-            initChart(chart17, '#stats_widget_16_tab_link_5', '#table_widget_16_chart_5_1', chart17Data, false);        
+            initChart(chart17, '#kt_stats_widget_16_tab_link_5', '#kt_table_widget_16_chart_5_1', chart17Data, false);        
              
             var chart18Data = [4, 5, 23, 12, 21, 9, 17, 15, 4, 24, 9, 17, 21, 7];  
-            initChart(chart18, '#stats_widget_16_tab_link_5', '#table_widget_16_chart_5_2', chart18Data, false);    
+            initChart(chart18, '#kt_stats_widget_16_tab_link_5', '#kt_table_widget_16_chart_5_2', chart18Data, false);    
             
             var chart19Data = [7, 10, 14, 21, 6, 31, 5, 23, 5, 11, 15, 7, 21, 17];  
-            initChart(chart19, '#stats_widget_16_tab_link_5', '#table_widget_16_chart_5_3', chart19Data, false);  
+            initChart(chart19, '#kt_stats_widget_16_tab_link_5', '#kt_table_widget_16_chart_5_3', chart19Data, false);  
             
             var chart20Data = [3, 10, 12, 23, 6, 11, 7, 22, 5, 12, 18, 7, 21, 14];  
-            initChart(chart20, '#stats_widget_16_tab_link_5', '#table_widget_16_chart_5_4', chart20Data, false);
+            initChart(chart20, '#kt_stats_widget_16_tab_link_5', '#kt_table_widget_16_chart_5_4', chart20Data, false);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            KTThemeMode.on("kt.thememode.change", function() {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -384,30 +384,30 @@ var TablesWidget16 = function () {
                     chart20.self.destroy();
                 }                
 
-                initChart(chart1, '#stats_widget_16_tab_link_1', '#table_widget_16_chart_1_1', chart1Data, chart1.rendered);
-                initChart(chart2, '#stats_widget_16_tab_link_1', '#table_widget_16_chart_1_2', chart2Data, chart2.rendered);  
-                initChart(chart3, '#stats_widget_16_tab_link_1', '#table_widget_16_chart_1_3', chart3Data, chart3.rendered);
-                initChart(chart4, '#stats_widget_16_tab_link_1', '#table_widget_16_chart_1_4', chart4Data, chart4.rendered); 
+                initChart(chart1, '#kt_stats_widget_16_tab_link_1', '#kt_table_widget_16_chart_1_1', chart1Data, chart1.rendered);
+                initChart(chart2, '#kt_stats_widget_16_tab_link_1', '#kt_table_widget_16_chart_1_2', chart2Data, chart2.rendered);  
+                initChart(chart3, '#kt_stats_widget_16_tab_link_1', '#kt_table_widget_16_chart_1_3', chart3Data, chart3.rendered);
+                initChart(chart4, '#kt_stats_widget_16_tab_link_1', '#kt_table_widget_16_chart_1_4', chart4Data, chart4.rendered); 
 
-                initChart(chart5, '#stats_widget_16_tab_link_2', '#table_widget_16_chart_2_1', chart5Data, chart5.rendered);
-                initChart(chart6, '#stats_widget_16_tab_link_2', '#table_widget_16_chart_2_2', chart6Data, chart6.rendered);  
-                initChart(chart7, '#stats_widget_16_tab_link_2', '#table_widget_16_chart_2_3', chart7Data, chart7.rendered);
-                initChart(chart8, '#stats_widget_16_tab_link_2', '#table_widget_16_chart_2_4', chart8Data, chart8.rendered); 
+                initChart(chart5, '#kt_stats_widget_16_tab_link_2', '#kt_table_widget_16_chart_2_1', chart5Data, chart5.rendered);
+                initChart(chart6, '#kt_stats_widget_16_tab_link_2', '#kt_table_widget_16_chart_2_2', chart6Data, chart6.rendered);  
+                initChart(chart7, '#kt_stats_widget_16_tab_link_2', '#kt_table_widget_16_chart_2_3', chart7Data, chart7.rendered);
+                initChart(chart8, '#kt_stats_widget_16_tab_link_2', '#kt_table_widget_16_chart_2_4', chart8Data, chart8.rendered); 
 
-                initChart(chart9, '#stats_widget_16_tab_link_3', '#table_widget_16_chart_3_1', chart9Data, chart9.rendered);
-                initChart(chart10, '#stats_widget_16_tab_link_3', '#table_widget_16_chart_3_2', chart10Data, chart10.rendered);  
-                initChart(chart11, '#stats_widget_16_tab_link_3', '#table_widget_16_chart_3_3', chart11Data, chart11.rendered);
-                initChart(chart12, '#stats_widget_16_tab_link_3', '#table_widget_16_chart_3_4', chart12Data, chart12.rendered); 
+                initChart(chart9, '#kt_stats_widget_16_tab_link_3', '#kt_table_widget_16_chart_3_1', chart9Data, chart9.rendered);
+                initChart(chart10, '#kt_stats_widget_16_tab_link_3', '#kt_table_widget_16_chart_3_2', chart10Data, chart10.rendered);  
+                initChart(chart11, '#kt_stats_widget_16_tab_link_3', '#kt_table_widget_16_chart_3_3', chart11Data, chart11.rendered);
+                initChart(chart12, '#kt_stats_widget_16_tab_link_3', '#kt_table_widget_16_chart_3_4', chart12Data, chart12.rendered); 
 
-                initChart(chart13, '#stats_widget_16_tab_link_4', '#table_widget_16_chart_4_1', chart13Data, chart13.rendered);
-                initChart(chart14, '#stats_widget_16_tab_link_4', '#table_widget_16_chart_4_2', chart14Data, chart14.rendered);  
-                initChart(chart15, '#stats_widget_16_tab_link_4', '#table_widget_16_chart_4_3', chart15Data, chart15.rendered);
-                initChart(chart16, '#stats_widget_16_tab_link_4', '#table_widget_16_chart_4_4', chart16Data, chart16.rendered); 
+                initChart(chart13, '#kt_stats_widget_16_tab_link_4', '#kt_table_widget_16_chart_4_1', chart13Data, chart13.rendered);
+                initChart(chart14, '#kt_stats_widget_16_tab_link_4', '#kt_table_widget_16_chart_4_2', chart14Data, chart14.rendered);  
+                initChart(chart15, '#kt_stats_widget_16_tab_link_4', '#kt_table_widget_16_chart_4_3', chart15Data, chart15.rendered);
+                initChart(chart16, '#kt_stats_widget_16_tab_link_4', '#kt_table_widget_16_chart_4_4', chart16Data, chart16.rendered); 
 
-                initChart(chart17, '#stats_widget_16_tab_link_5', '#table_widget_16_chart_5_1', chart17Data, chart17.rendered);
-                initChart(chart18, '#stats_widget_16_tab_link_5', '#table_widget_16_chart_5_2', chart18Data, chart18.rendered);  
-                initChart(chart19, '#stats_widget_16_tab_link_5', '#table_widget_16_chart_5_3', chart19Data, chart19.rendered);
-                initChart(chart20, '#stats_widget_16_tab_link_5', '#table_widget_16_chart_5_4', chart20Data, chart20.rendered);                 
+                initChart(chart17, '#kt_stats_widget_16_tab_link_5', '#kt_table_widget_16_chart_5_1', chart17Data, chart17.rendered);
+                initChart(chart18, '#kt_stats_widget_16_tab_link_5', '#kt_table_widget_16_chart_5_2', chart18Data, chart18.rendered);  
+                initChart(chart19, '#kt_stats_widget_16_tab_link_5', '#kt_table_widget_16_chart_5_3', chart19Data, chart19.rendered);
+                initChart(chart20, '#kt_stats_widget_16_tab_link_5', '#kt_table_widget_16_chart_5_4', chart20Data, chart20.rendered);                 
             });            
         }   
     }
@@ -415,12 +415,12 @@ var TablesWidget16 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = TablesWidget16;
+    module.exports = KTTablesWidget16;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    TablesWidget16.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTTablesWidget16.init();
 });
 
 

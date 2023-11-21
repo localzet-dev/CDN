@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var MapsWidget2 = (function () {
+// Class definition
+var KTMapsWidget2 = (function () {
     // Private methods
     var initMap = function () {
         // Check if amchart library is included
@@ -9,7 +9,7 @@ var MapsWidget2 = (function () {
             return;
         }
 
-        var element = document.getElementById("maps_widget_2_map");
+        var element = document.getElementById("kt_maps_widget_2_map");
 
         if (!element) {
             return;
@@ -53,15 +53,15 @@ var MapsWidget2 = (function () {
                 tooltipText: "{name}",
                 toggleKey: "active",
                 interactive: true,
-				fill: am5.color(Util.getCssVariableValue('--bs-gray-300')),
+				fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-300')),
             });
 
             polygonSeries.mapPolygons.template.states.create("hover", {
-                fill: am5.color(Util.getCssVariableValue('--bs-success')),
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-success')),
             });
 
             polygonSeries.mapPolygons.template.states.create("active", {
-                fill: am5.color(Util.getCssVariableValue('--bs-success')),
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-success')),
             });
 
             // Highlighted Series
@@ -85,7 +85,7 @@ var MapsWidget2 = (function () {
 
             polygonSeriesHighlighted.mapPolygons.template.set(
                 "fill",
-				am5.color(Util.getCssVariableValue('--bs-primary')),
+				am5.color(KTUtil.getCssVariableValue('--bs-primary')),
             );
 
             polygonSeriesHighlighted.mapPolygons.template.states.create("hover", {
@@ -117,7 +117,7 @@ var MapsWidget2 = (function () {
         }); // end am5.ready()
 
         // Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
+		KTThemeMode.on("kt.thememode.change", function() {     
 			// Destroy chart
 			root.dispose();
 
@@ -126,7 +126,7 @@ var MapsWidget2 = (function () {
 		});
     };
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initMap();
@@ -136,10 +136,10 @@ var MapsWidget2 = (function () {
 
 // Webpack support
 if (typeof module !== "undefined") {
-    module.exports = MapsWidget2;
+    module.exports = KTMapsWidget2;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function () {
-    MapsWidget2.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTMapsWidget2.init();
 });

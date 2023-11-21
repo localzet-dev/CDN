@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget8 = function () {
+// Class definition
+var KTChartsWidget8 = function () {
     var chart1 = {
         self: null,
         rendered: false
@@ -20,8 +20,8 @@ var ChartsWidget8 = function () {
             return;
         }
 
-        var height = parseInt(Util.css(element, 'height'));    
-        var borderColor = Util.getCssVariableValue('--bs-border-dashed-color');    
+        var height = parseInt(KTUtil.css(element, 'height'));    
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');    
 
         var options = {
             series: [
@@ -83,7 +83,7 @@ var ChartsWidget8 = function () {
                     show: true,
                     trim: true,
                     style: {
-                        colors: Util.getCssVariableValue('--bs-gray-500'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-500'),
                         fontSize: '13px'
                     }
                 }
@@ -94,7 +94,7 @@ var ChartsWidget8 = function () {
                 max: 700,
                 labels: {
                     style: {
-                        colors: Util.getCssVariableValue('--bs-gray-500'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-500'),
                         fontSize: '13px'
                     }
                 }               
@@ -121,17 +121,17 @@ var ChartsWidget8 = function () {
                 show: true,
                 position: 'front',
                 stroke: {
-                    color: Util.getCssVariableValue('--bs-border-dashed-color'),
+                    color: KTUtil.getCssVariableValue('--bs-border-dashed-color'),
                     width: 1,
                     dashArray: 0,
                 }
             },           
             colors: [
-                Util.getCssVariableValue('--bs-primary'),
-                Util.getCssVariableValue('--bs-success'),   
-                Util.getCssVariableValue('--bs-warning'),
-                Util.getCssVariableValue('--bs-danger'),
-                Util.getCssVariableValue('--bs-info'),
+                KTUtil.getCssVariableValue('--bs-primary'),
+                KTUtil.getCssVariableValue('--bs-success'),   
+                KTUtil.getCssVariableValue('--bs-warning'),
+                KTUtil.getCssVariableValue('--bs-danger'),
+                KTUtil.getCssVariableValue('--bs-info'),
                 '#43CED7'
             ],
             fill: {
@@ -173,7 +173,7 @@ var ChartsWidget8 = function () {
         });
     }
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {    
             var data1 = [
@@ -184,11 +184,11 @@ var ChartsWidget8 = function () {
                 [[125, 300, 40]], [[250, 350, 35]], [[350, 450, 30]], [[450, 250, 25]], [[500, 500, 30]], [[600, 250, 28]]
             ];
 
-            initChart(chart1, '#chart_widget_8_week_toggle', '#chart_widget_8_week_chart', data1, false);
-            initChart(chart2, '#chart_widget_8_month_toggle', '#chart_widget_8_month_chart', data2, true);    
+            initChart(chart1, '#kt_chart_widget_8_week_toggle', '#kt_chart_widget_8_week_chart', data1, false);
+            initChart(chart2, '#kt_chart_widget_8_month_toggle', '#kt_chart_widget_8_month_chart', data2, true);    
 
             // Update chart on theme mode change
-            var handlerId = ThemeMode.on("kt.thememode.change", function() {
+            var handlerId = KTThemeMode.on("kt.thememode.change", function() {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -197,8 +197,8 @@ var ChartsWidget8 = function () {
                     chart2.self.destroy();
                 }
 
-                initChart(chart1, '#chart_widget_8_week_toggle', '#chart_widget_8_week_chart', data1, chart1.rendered);
-                initChart(chart2, '#chart_widget_8_month_toggle', '#chart_widget_8_month_chart', data2, chart2.rendered);  
+                initChart(chart1, '#kt_chart_widget_8_week_toggle', '#kt_chart_widget_8_week_chart', data1, chart1.rendered);
+                initChart(chart2, '#kt_chart_widget_8_month_toggle', '#kt_chart_widget_8_month_chart', data2, chart2.rendered);  
             });
         }   
     }
@@ -206,12 +206,12 @@ var ChartsWidget8 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    module.exports = ChartsWidget8;
+    module.exports = KTChartsWidget8;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    ChartsWidget8.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTChartsWidget8.init();
 });
 
 

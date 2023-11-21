@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ChartsWidget14 = (function () {
+// Class definition
+var KTChartsWidget14 = (function () {
     // Private methods
     var initChart = function () {
         // Check if amchart library is included
@@ -9,7 +9,7 @@ var ChartsWidget14 = (function () {
             return;
         }
 
-        var element = document.getElementById("charts_widget_14_chart");
+        var element = document.getElementById("kt_charts_widget_14_chart");
 
         if (!element) {
             return;
@@ -46,7 +46,7 @@ var ChartsWidget14 = (function () {
                     full: 100,
                     columnSettings: {
                         fillOpacity: 1,
-                        fill: am5.color(Util.getCssVariableValue('--bs-info')),
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-info')),
                     },
                 },
                 {
@@ -55,7 +55,7 @@ var ChartsWidget14 = (function () {
                     full: 100,
                     columnSettings: {
                         fillOpacity: 1,
-                        fill: am5.color(Util.getCssVariableValue('--bs-danger')),
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-danger')),
                     },
                 },
                 {
@@ -64,7 +64,7 @@ var ChartsWidget14 = (function () {
                     full: 100,
                     columnSettings: {
                         fillOpacity: 1,
-                        fill: am5.color(Util.getCssVariableValue('--bs-primary')),
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary')),
                     },
                 },
                 {
@@ -73,7 +73,7 @@ var ChartsWidget14 = (function () {
                     full: 100,
                     columnSettings: {
                         fillOpacity: 1,
-                        fill: am5.color(Util.getCssVariableValue('--bs-success')),
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-success')),
                     },
                 },
             ];
@@ -115,7 +115,7 @@ var ChartsWidget14 = (function () {
             );
 
             xAxis.get("renderer").labels.template.setAll({
-                fill: am5.color(Util.getCssVariableValue('--bs-gray-500')),
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500')),
                 fontWeight: "500",
                 fontSize: 16,
             });
@@ -128,7 +128,7 @@ var ChartsWidget14 = (function () {
                 centerX: am5.p100,
                 fontWeight: "500",
                 fontSize: 18,
-                fill: am5.color(Util.getCssVariableValue('--bs-gray-500')),
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500')),
                 templateField: "columnSettings",
             });
 
@@ -195,7 +195,7 @@ var ChartsWidget14 = (function () {
         });
     };
 
-    // Публичные методы
+    // Public methods
     return {
         init: function () {
             initChart();
@@ -205,10 +205,10 @@ var ChartsWidget14 = (function () {
 
 // Webpack support
 if (typeof module !== "undefined") {
-    module.exports = ChartsWidget14;
+    module.exports = KTChartsWidget14;
 }
 
-// При загрузке документа
-Util.onDOMContentLoaded(function () {
-    ChartsWidget14.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTChartsWidget14.init();
 });
