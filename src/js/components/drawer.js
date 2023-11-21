@@ -1,9 +1,9 @@
 "use strict";
 
-var DrawerHandlersInitialized = false; 
+var KTDrawerHandlersInitialized = false; 
 
-// Определение класса
-var Drawer = function(element, options) {
+// Class definition
+var KTDrawer = function(element, options) {
     //////////////////////////////
     // ** Private variables  ** //
     //////////////////////////////
@@ -26,8 +26,8 @@ var Drawer = function(element, options) {
     ////////////////////////////
 
     var _construct = function() {
-        if ( Util.data(element).has('drawer') ) {
-            the = Util.data(element).get('drawer');
+        if ( KTUtil.data(element).has('drawer') ) {
+            the = KTUtil.data(element).get('drawer');
         } else {
             _init();
         }
@@ -35,17 +35,17 @@ var Drawer = function(element, options) {
 
     var _init = function() {
         // Variables
-        the.options = Util.deepExtend({}, defaultOptions, options);
-        the.uid = Util.getUniqueId('drawer');
+        the.options = KTUtil.deepExtend({}, defaultOptions, options);
+        the.uid = KTUtil.getUniqueId('drawer');
         the.element = element;
         the.overlayElement = null;
-        the.name = the.element.getAttribute('data-drawer-name');
+        the.name = the.element.getAttribute('data-kt-drawer-name');
         the.shown = false;
         the.lastWidth;
         the.toggleElement = null;
 
         // Set initialized
-        the.element.setAttribute('data-drawer', 'true');
+        the.element.setAttribute('data-kt-drawer', 'true');
 
         // Event Handlers
         _handlers();
@@ -54,7 +54,7 @@ var Drawer = function(element, options) {
         _update();
 
         // Bind Instance
-        Util.data(the.element).set('drawer', the);
+        KTUtil.data(the.element).set('drawer', the);
     }
 
     var _handlers = function() {
@@ -62,7 +62,7 @@ var Drawer = function(element, options) {
         var closers = _getOption('close');
 
         if ( togglers !== null && togglers.length > 0 ) {
-            Util.on(document.body, togglers, 'click', function(e) {
+            KTUtil.on(document.body, togglers, 'click', function(e) {
                 e.preventDefault();
 
                 the.toggleElement = this;
@@ -71,7 +71,7 @@ var Drawer = function(element, options) {
         }
 
         if ( closers !== null && closers.length > 0 ) {
-            Util.on(document.body, closers, 'click', function(e) {
+            KTUtil.on(document.body, closers, 'click', function(e) {
                 e.preventDefault();
 
                 the.closeElement = this;
@@ -81,7 +81,7 @@ var Drawer = function(element, options) {
     }
 
     var _toggle = function() {
-        if ( EventHandler.trigger(the.element, 'kt.drawer.toggle', the) === false ) {
+        if ( KTEventHandler.trigger(the.element, 'kt.drawer.toggle', the) === false ) {
             return;
         }
 
@@ -91,11 +91,11 @@ var Drawer = function(element, options) {
             _show();
         }
 
-        EventHandler.trigger(the.element, 'kt.drawer.toggled', the);
+        KTEventHandler.trigger(the.element, 'kt.drawer.toggled', the);
     }
 
     var _hide = function() {
-        if ( EventHandler.trigger(the.element, 'kt.drawer.hide', the) === false ) {
+        if ( KTEventHandler.trigger(the.element, 'kt.drawer.hide', the) === false ) {
             return;
         }
 
@@ -103,36 +103,36 @@ var Drawer = function(element, options) {
 
         _deleteOverlay();
 
-        document.body.removeAttribute('data-drawer-' + the.name, 'on');
-        document.body.removeAttribute('data-drawer');
+        document.body.removeAttribute('data-kt-drawer-' + the.name, 'on');
+        document.body.removeAttribute('data-kt-drawer');
 
-        Util.removeClass(the.element, the.options.baseClass + '-on');
+        KTUtil.removeClass(the.element, the.options.baseClass + '-on');
 
         if ( the.toggleElement !== null ) {
-            Util.removeClass(the.toggleElement, 'active');
+            KTUtil.removeClass(the.toggleElement, 'active');
         }
 
-        EventHandler.trigger(the.element, 'kt.drawer.after.hidden', the) === false
+        KTEventHandler.trigger(the.element, 'kt.drawer.after.hidden', the) === false
     }
 
     var _show = function() {
-        if ( EventHandler.trigger(the.element, 'kt.drawer.show', the) === false ) {
+        if ( KTEventHandler.trigger(the.element, 'kt.drawer.show', the) === false ) {
             return;
         }
 
         the.shown = true;
 
         _createOverlay();
-        document.body.setAttribute('data-drawer-' + the.name, 'on');
-        document.body.setAttribute('data-drawer', 'on');
+        document.body.setAttribute('data-kt-drawer-' + the.name, 'on');
+        document.body.setAttribute('data-kt-drawer', 'on');
 
-        Util.addClass(the.element, the.options.baseClass + '-on');
+        KTUtil.addClass(the.element, the.options.baseClass + '-on');
 
         if ( the.toggleElement !== null ) {
-            Util.addClass(the.toggleElement, 'active');
+            KTUtil.addClass(the.toggleElement, 'active');
         }
 
-        EventHandler.trigger(the.element, 'kt.drawer.shown', the);
+        KTEventHandler.trigger(the.element, 'kt.drawer.shown', the);
     }
 
     var _update = function() {
@@ -145,7 +145,7 @@ var Drawer = function(element, options) {
         var end = _getOption('end');
 
         // Reset state
-        if ( Util.hasClass(the.element, the.options.baseClass + '-on') === true && String(document.body.getAttribute('data-drawer-' + the.name + '-')) === 'on' ) {
+        if ( KTUtil.hasClass(the.element, the.options.baseClass + '-on') === true && String(document.body.getAttribute('data-kt-drawer-' + the.name + '-')) === 'on' ) {
             the.shown = true;
         } else {
             the.shown = false;
@@ -153,62 +153,62 @@ var Drawer = function(element, options) {
 
         // Activate/deactivate
         if ( _getOption('activate') === true ) {
-            Util.addClass(the.element, the.options.baseClass);
-            Util.addClass(the.element, the.options.baseClass + '-' + direction);
+            KTUtil.addClass(the.element, the.options.baseClass);
+            KTUtil.addClass(the.element, the.options.baseClass + '-' + direction);
             
-            Util.css(the.element, 'width', width, true);
+            KTUtil.css(the.element, 'width', width, true);
             the.lastWidth = width;
 
             if (top) {
-                Util.css(the.element, 'top', top);
+                KTUtil.css(the.element, 'top', top);
             }
 
             if (bottom) {
-                Util.css(the.element, 'bottom', bottom);
+                KTUtil.css(the.element, 'bottom', bottom);
             }
 
             if (start) {
-                if (Util.isRTL()) {
-                    Util.css(the.element, 'right', start);
+                if (KTUtil.isRTL()) {
+                    KTUtil.css(the.element, 'right', start);
                 } else {
-                    Util.css(the.element, 'left', start);
+                    KTUtil.css(the.element, 'left', start);
                 }
             }
 
             if (end) {
-                if (Util.isRTL()) {
-                    Util.css(the.element, 'left', end);
+                if (KTUtil.isRTL()) {
+                    KTUtil.css(the.element, 'left', end);
                 } else {
-                    Util.css(the.element, 'right', end);
+                    KTUtil.css(the.element, 'right', end);
                 }
             }
         } else {
-            Util.removeClass(the.element, the.options.baseClass);
-            Util.removeClass(the.element, the.options.baseClass + '-' + direction);
+            KTUtil.removeClass(the.element, the.options.baseClass);
+            KTUtil.removeClass(the.element, the.options.baseClass + '-' + direction);
 
-            Util.css(the.element, 'width', '');
+            KTUtil.css(the.element, 'width', '');
 
             if (top) {
-                Util.css(the.element, 'top', '');
+                KTUtil.css(the.element, 'top', '');
             }
 
             if (bottom) {
-                Util.css(the.element, 'bottom', '');
+                KTUtil.css(the.element, 'bottom', '');
             }
 
             if (start) {
-                if (Util.isRTL()) {
-                    Util.css(the.element, 'right', '');
+                if (KTUtil.isRTL()) {
+                    KTUtil.css(the.element, 'right', '');
                 } else {
-                    Util.css(the.element, 'left', '');
+                    KTUtil.css(the.element, 'left', '');
                 }
             }
 
             if (end) {
-                if (Util.isRTL()) {
-                    Util.css(the.element, 'left', '');
+                if (KTUtil.isRTL()) {
+                    KTUtil.css(the.element, 'left', '');
                 } else {
-                    Util.css(the.element, 'right', '');
+                    KTUtil.css(the.element, 'right', '');
                 }
             }
 
@@ -220,13 +220,13 @@ var Drawer = function(element, options) {
         if ( _getOption('overlay') === true ) {
             the.overlayElement = document.createElement('DIV');
 
-            Util.css(the.overlayElement, 'z-index', Util.css(the.element, 'z-index') - 1); // update
+            KTUtil.css(the.overlayElement, 'z-index', KTUtil.css(the.element, 'z-index') - 1); // update
 
             document.body.append(the.overlayElement);
 
-            Util.addClass(the.overlayElement, _getOption('overlay-class'));
+            KTUtil.addClass(the.overlayElement, _getOption('overlay-class'));
 
-            Util.addEvent(the.overlayElement, 'click', function(e) {
+            KTUtil.addEvent(the.overlayElement, 'click', function(e) {
                 e.preventDefault();
 
                 if ( _getOption('permanent') !== true ) {
@@ -238,14 +238,14 @@ var Drawer = function(element, options) {
 
     var _deleteOverlay = function() {
         if ( the.overlayElement !== null ) {
-            Util.remove(the.overlayElement);
+            KTUtil.remove(the.overlayElement);
         }
     }
 
     var _getOption = function(name) {
-        if ( the.element.hasAttribute('data-drawer-' + name) === true ) {
-            var attr = the.element.getAttribute('data-drawer-' + name);
-            var value = Util.getResponsiveValue(attr);
+        if ( the.element.hasAttribute('data-kt-drawer-' + name) === true ) {
+            var attr = the.element.getAttribute('data-kt-drawer-' + name);
+            var value = KTUtil.getResponsiveValue(attr);
 
             if ( value !== null && String(value) === 'true' ) {
                 value = true;
@@ -255,10 +255,10 @@ var Drawer = function(element, options) {
 
             return value;
         } else {
-            var optionName = Util.snakeToCamel(name);
+            var optionName = KTUtil.snakeToCamel(name);
 
             if ( the.options[optionName] ) {
-                return Util.getResponsiveValue(the.options[optionName]);
+                return KTUtil.getResponsiveValue(the.options[optionName]);
             } else {
                 return null;
             }
@@ -269,14 +269,14 @@ var Drawer = function(element, options) {
         var width = _getOption('width');
 
         if ( width === 'auto') {
-            width = Util.css(the.element, 'width');
+            width = KTUtil.css(the.element, 'width');
         }
 
         return width;
     }
 
     var _destroy = function() {
-        Util.data(the.element).remove('drawer');
+        KTUtil.data(the.element).remove('drawer');
     }
 
     // Construct class
@@ -317,39 +317,39 @@ var Drawer = function(element, options) {
 
     // Event API
     the.on = function(name, handler) {
-        return EventHandler.on(the.element, name, handler);
+        return KTEventHandler.on(the.element, name, handler);
     }
 
     the.one = function(name, handler) {
-        return EventHandler.one(the.element, name, handler);
+        return KTEventHandler.one(the.element, name, handler);
     }
 
     the.off = function(name, handlerId) {
-        return EventHandler.off(the.element, name, handlerId);
+        return KTEventHandler.off(the.element, name, handlerId);
     }
 
     the.trigger = function(name, event) {
-        return EventHandler.trigger(the.element, name, event, the, event);
+        return KTEventHandler.trigger(the.element, name, event, the, event);
     }
 };
 
 // Static methods
-Drawer.getInstance = function(element) {
-    if (element !== null && Util.data(element).has('drawer')) {
-        return Util.data(element).get('drawer');
+KTDrawer.getInstance = function(element) {
+    if (element !== null && KTUtil.data(element).has('drawer')) {
+        return KTUtil.data(element).get('drawer');
     } else {
         return null;
     }
 }
 
 // Hide all drawers and skip one if provided
-Drawer.hideAll = function(skip = null, selector = '[data-drawer="true"]') {
+KTDrawer.hideAll = function(skip = null, selector = '[data-kt-drawer="true"]') {
     var items = document.querySelectorAll(selector);
 
     if (items && items.length > 0) {
         for (var i = 0, len = items.length; i < len; i++) {
             var item = items[i];
-            var drawer = Drawer.getInstance(item);
+            var drawer = KTDrawer.getInstance(item);
 
             if (!drawer) {
                 continue;
@@ -367,12 +367,12 @@ Drawer.hideAll = function(skip = null, selector = '[data-drawer="true"]') {
 }
 
 // Update all drawers
-Drawer.updateAll = function(selector = '[data-drawer="true"]') {
+KTDrawer.updateAll = function(selector = '[data-kt-drawer="true"]') {
     var items = document.querySelectorAll(selector);
 
     if (items && items.length > 0) {
         for (var i = 0, len = items.length; i < len; i++) {
-            var drawer = Drawer.getInstance(items[i]);
+            var drawer = KTDrawer.getInstance(items[i]);
 
             if (drawer) {
                 drawer.update();
@@ -382,39 +382,62 @@ Drawer.updateAll = function(selector = '[data-drawer="true"]') {
 }
 
 // Create instances
-Drawer.createInstances = function(selector = '[data-drawer="true"]') {
+KTDrawer.createInstances = function(selector = '[data-kt-drawer="true"]') {
     // Initialize Menus
     var elements = document.querySelectorAll(selector);
 
     if ( elements && elements.length > 0 ) {
         for (var i = 0, len = elements.length; i < len; i++) {
-            new Drawer(elements[i]);
+            new KTDrawer(elements[i]);
         }
     }
 }
 
 // Toggle instances
-Drawer.handleShow = function() {
+KTDrawer.handleShow = function() {
     // External drawer toggle handler
-    Util.on(document.body,  '[data-drawer-show="true"][data-drawer-target]', 'click', function(e) {
+    KTUtil.on(document.body,  '[data-kt-drawer-show="true"][data-kt-drawer-target]', 'click', function(e) {
         e.preventDefault();
         
-        var element = document.querySelector(this.getAttribute('data-drawer-target'));
+        var element = document.querySelector(this.getAttribute('data-kt-drawer-target'));
 
         if (element) {
-            Drawer.getInstance(element).show();
+            KTDrawer.getInstance(element).show();
         } 
     });
 }
 
+// Handle escape key press
+KTDrawer.handleEscapeKey = function() {
+    document.addEventListener('keydown', (event) => {        
+        if (event.key === 'Escape') {
+            //if esc key was not pressed in combination with ctrl or alt or shift
+            const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
+            if (isNotCombinedKey) {
+                var elements = document.querySelectorAll('.drawer-on[data-kt-drawer="true"]:not([data-kt-drawer-escape="false"])');
+                var drawer;
+
+                if ( elements && elements.length > 0 ) {
+                    for (var i = 0, len = elements.length; i < len; i++) {
+                        drawer = KTDrawer.getInstance(elements[i]);
+                        if (drawer.isShown()) {
+                            drawer.hide();
+                        }
+                    }
+                }              
+            }
+        }
+    });
+}
+
 // Dismiss instances
-Drawer.handleDismiss = function() {
+KTDrawer.handleDismiss = function() {
     // External drawer toggle handler
-    Util.on(document.body,  '[data-drawer-dismiss="true"]', 'click', function(e) {
-        var element = this.closest('[data-drawer="true"]');
+    KTUtil.on(document.body,  '[data-kt-drawer-dismiss="true"]', 'click', function(e) {
+        var element = this.closest('[data-kt-drawer="true"]');
 
         if (element) {
-            var drawer = Drawer.getInstance(element);
+            var drawer = KTDrawer.getInstance(element);
             if (drawer.isShown()) {
                 drawer.hide();
             }
@@ -423,18 +446,18 @@ Drawer.handleDismiss = function() {
 }
 
 // Handle resize
-Drawer.handleResize = function() {
+KTDrawer.handleResize = function() {
     // Window resize Handling
     window.addEventListener('resize', function() {
         var timer;
 
-        Util.throttle(timer, function() {
+        KTUtil.throttle(timer, function() {
             // Locate and update drawer instances on window resize
-            var elements = document.querySelectorAll('[data-drawer="true"]');
+            var elements = document.querySelectorAll('[data-kt-drawer="true"]');
 
             if ( elements && elements.length > 0 ) {
                 for (var i = 0, len = elements.length; i < len; i++) {
-                    var drawer = Drawer.getInstance(elements[i]);
+                    var drawer = KTDrawer.getInstance(elements[i]);
                     if (drawer) {
                         drawer.update();
                     }
@@ -445,19 +468,20 @@ Drawer.handleResize = function() {
 }
 
 // Global initialization
-Drawer.init = function() {
-    Drawer.createInstances();
+KTDrawer.init = function() {
+    KTDrawer.createInstances();
 
-    if (DrawerHandlersInitialized === false) {
-        Drawer.handleResize();
-        Drawer.handleShow();
-        Drawer.handleDismiss();
+    if (KTDrawerHandlersInitialized === false) {
+        KTDrawer.handleResize();
+        KTDrawer.handleShow();
+        KTDrawer.handleDismiss();
+        KTDrawer.handleEscapeKey();
 
-        DrawerHandlersInitialized = true;
+        KTDrawerHandlersInitialized = true;
     }
 };
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = Drawer;
+    module.exports = KTDrawer;
 }

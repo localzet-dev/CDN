@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var Toggle = function(element, options) {
+// Class definition
+var KTToggle = function(element, options) {
     ////////////////////////////
     // ** Private variables  ** //
     ////////////////////////////
@@ -21,8 +21,8 @@ var Toggle = function(element, options) {
     ////////////////////////////
 
     var _construct = function() {
-        if ( Util.data(element).has('toggle') === true ) {
-            the = Util.data(element).get('toggle');
+        if ( KTUtil.data(element).has('toggle') === true ) {
+            the = KTUtil.data(element).get('toggle');
         } else {
             _init();
         }
@@ -30,26 +30,26 @@ var Toggle = function(element, options) {
 
     var _init = function() {
         // Variables
-        the.options = Util.deepExtend({}, defaultOptions, options);
-        the.uid = Util.getUniqueId('toggle');
+        the.options = KTUtil.deepExtend({}, defaultOptions, options);
+        the.uid = KTUtil.getUniqueId('toggle');
 
         // Elements
         the.element = element;
 
-        the.target = document.querySelector(the.element.getAttribute('data-toggle-target')) ? document.querySelector(the.element.getAttribute('data-toggle-target')) : the.element;
-        the.state = the.element.hasAttribute('data-toggle-state') ? the.element.getAttribute('data-toggle-state') : '';
-        the.mode = the.element.hasAttribute('data-toggle-mode') ? the.element.getAttribute('data-toggle-mode') : '';
-        the.attribute = 'data-' + the.element.getAttribute('data-toggle-name');
+        the.target = document.querySelector(the.element.getAttribute('data-kt-toggle-target')) ? document.querySelector(the.element.getAttribute('data-kt-toggle-target')) : the.element;
+        the.state = the.element.hasAttribute('data-kt-toggle-state') ? the.element.getAttribute('data-kt-toggle-state') : '';
+        the.mode = the.element.hasAttribute('data-kt-toggle-mode') ? the.element.getAttribute('data-kt-toggle-mode') : '';
+        the.attribute = 'data-kt-' + the.element.getAttribute('data-kt-toggle-name');
 
         // Event Handlers
         _handlers();
 
         // Bind Instance
-        Util.data(the.element).set('toggle', the);
+        KTUtil.data(the.element).set('toggle', the);
     }
 
     var _handlers = function() {
-        Util.addEvent(the.element, 'click', function(e) {
+        KTUtil.addEvent(the.element, 'click', function(e) {
             e.preventDefault();
 
             if ( the.mode !== '' ) {
@@ -67,7 +67,7 @@ var Toggle = function(element, options) {
     // Event handlers
     var _toggle = function() {
         // Trigger "after.toggle" event
-        EventHandler.trigger(the.element, 'kt.toggle.change', the);
+        KTEventHandler.trigger(the.element, 'kt.toggle.change', the);
 
         if ( _isEnabled() ) {
             _disable();
@@ -76,7 +76,7 @@ var Toggle = function(element, options) {
         }       
 
         // Trigger "before.toggle" event
-        EventHandler.trigger(the.element, 'kt.toggle.changed', the);
+        KTEventHandler.trigger(the.element, 'kt.toggle.changed', the);
 
         return the;
     }
@@ -86,7 +86,7 @@ var Toggle = function(element, options) {
             return;
         }
 
-        EventHandler.trigger(the.element, 'kt.toggle.enable', the);
+        KTEventHandler.trigger(the.element, 'kt.toggle.enable', the);
 
         the.target.setAttribute(the.attribute, 'on');
 
@@ -94,11 +94,11 @@ var Toggle = function(element, options) {
             the.element.classList.add(the.state);
         }        
 
-        if ( typeof Cookie !== 'undefined' && the.options.saveState === true ) {
-            Cookie.set(the.attribute, 'on');
+        if ( typeof KTCookie !== 'undefined' && the.options.saveState === true ) {
+            KTCookie.set(the.attribute, 'on');
         }
 
-        EventHandler.trigger(the.element, 'kt.toggle.enabled', the);
+        KTEventHandler.trigger(the.element, 'kt.toggle.enabled', the);
 
         return the;
     }
@@ -108,7 +108,7 @@ var Toggle = function(element, options) {
             return;
         }
 
-        EventHandler.trigger(the.element, 'kt.toggle.disable', the);
+        KTEventHandler.trigger(the.element, 'kt.toggle.disable', the);
 
         the.target.removeAttribute(the.attribute);
 
@@ -116,11 +116,11 @@ var Toggle = function(element, options) {
             the.element.classList.remove(the.state);
         } 
 
-        if ( typeof Cookie !== 'undefined' && the.options.saveState === true ) {
-            Cookie.remove(the.attribute);
+        if ( typeof KTCookie !== 'undefined' && the.options.saveState === true ) {
+            KTCookie.remove(the.attribute);
         }
 
-        EventHandler.trigger(the.element, 'kt.toggle.disabled', the);
+        KTEventHandler.trigger(the.element, 'kt.toggle.disabled', the);
 
         return the;
     }
@@ -130,7 +130,7 @@ var Toggle = function(element, options) {
     }
 
     var _destroy = function() {
-        Util.data(the.element).remove('toggle');
+        KTUtil.data(the.element).remove('toggle');
     }
 
     // Construct class
@@ -167,50 +167,50 @@ var Toggle = function(element, options) {
 
     // Event API
     the.on = function(name, handler) {
-        return EventHandler.on(the.element, name, handler);
+        return KTEventHandler.on(the.element, name, handler);
     }
 
     the.one = function(name, handler) {
-        return EventHandler.one(the.element, name, handler);
+        return KTEventHandler.one(the.element, name, handler);
     }
 
     the.off = function(name, handlerId) {
-        return EventHandler.off(the.element, name, handlerId);
+        return KTEventHandler.off(the.element, name, handlerId);
     }
 
     the.trigger = function(name, event) {
-        return EventHandler.trigger(the.element, name, event, the, event);
+        return KTEventHandler.trigger(the.element, name, event, the, event);
     }
 };
 
 // Static methods
-Toggle.getInstance = function(element) {
-    if ( element !== null && Util.data(element).has('toggle') ) {
-        return Util.data(element).get('toggle');
+KTToggle.getInstance = function(element) {
+    if ( element !== null && KTUtil.data(element).has('toggle') ) {
+        return KTUtil.data(element).get('toggle');
     } else {
         return null;
     }
 }
 
 // Create instances
-Toggle.createInstances = function(selector = '[data-toggle]') {
+KTToggle.createInstances = function(selector = '[data-kt-toggle]') {
     // Get instances
     var elements = document.body.querySelectorAll(selector);
 
     if ( elements && elements.length > 0 ) {
         for (var i = 0, len = elements.length; i < len; i++) {
             // Initialize instances
-            new Toggle(elements[i]);
+            new KTToggle(elements[i]);
         }
     }
 }
 
 // Global initialization
-Toggle.init = function() {
-    Toggle.createInstances();
+KTToggle.init = function() {
+    KTToggle.createInstances();
 };
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = Toggle;
+    module.exports = KTToggle;
 }

@@ -1,9 +1,9 @@
 "use strict";
 
-var SwapperHandlersInitialized = false;
+var KTSwapperHandlersInitialized = false;
 
-// Определение класса
-var Swapper = function(element, options) {
+// Class definition
+var KTSwapper = function(element, options) {
     ////////////////////////////
     // ** Private Variables  ** //
     ////////////////////////////
@@ -23,8 +23,8 @@ var Swapper = function(element, options) {
     ////////////////////////////
 
     var _construct = function() {
-        if ( Util.data(element).has('swapper') === true ) {
-            the = Util.data(element).get('swapper');
+        if ( KTUtil.data(element).has('swapper') === true ) {
+            the = KTUtil.data(element).get('swapper');
         } else {
             _init();
         }
@@ -32,16 +32,16 @@ var Swapper = function(element, options) {
 
     var _init = function() {
         the.element = element;
-        the.options = Util.deepExtend({}, defaultOptions, options);
+        the.options = KTUtil.deepExtend({}, defaultOptions, options);
 
         // Set initialized
-        the.element.setAttribute('data-swapper', 'true');
+        the.element.setAttribute('data-kt-swapper', 'true');
 
         // Initial update
         _update();
 
         // Bind Instance
-        Util.data(the.element).set('swapper', the);
+        KTUtil.data(the.element).set('swapper', the);
     }
 
     var _update = function(e) {
@@ -61,9 +61,9 @@ var Swapper = function(element, options) {
     }
 
     var _getOption = function(name) {
-        if ( the.element.hasAttribute('data-swapper-' + name) === true ) {
-            var attr = the.element.getAttribute('data-swapper-' + name);
-            var value = Util.getResponsiveValue(attr);
+        if ( the.element.hasAttribute('data-kt-swapper-' + name) === true ) {
+            var attr = the.element.getAttribute('data-kt-swapper-' + name);
+            var value = KTUtil.getResponsiveValue(attr);
 
             if ( value !== null && String(value) === 'true' ) {
                 value = true;
@@ -73,10 +73,10 @@ var Swapper = function(element, options) {
 
             return value;
         } else {
-            var optionName = Util.snakeToCamel(name);
+            var optionName = KTUtil.snakeToCamel(name);
 
             if ( the.options[optionName] ) {
-                return Util.getResponsiveValue(the.options[optionName]);
+                return KTUtil.getResponsiveValue(the.options[optionName]);
             } else {
                 return null;
             }
@@ -84,7 +84,7 @@ var Swapper = function(element, options) {
     }
 
     var _destroy = function() {
-        Util.data(the.element).remove('swapper');
+        KTUtil.data(the.element).remove('swapper');
     }
 
     // Construct Class
@@ -105,56 +105,56 @@ var Swapper = function(element, options) {
 
     // Event API
     the.on = function(name, handler) {
-        return EventHandler.on(the.element, name, handler);
+        return KTEventHandler.on(the.element, name, handler);
     }
 
     the.one = function(name, handler) {
-        return EventHandler.one(the.element, name, handler);
+        return KTEventHandler.one(the.element, name, handler);
     }
 
     the.off = function(name, handlerId) {
-        return EventHandler.off(the.element, name, handlerId);
+        return KTEventHandler.off(the.element, name, handlerId);
     }
 
     the.trigger = function(name, event) {
-        return EventHandler.trigger(the.element, name, event, the, event);
+        return KTEventHandler.trigger(the.element, name, event, the, event);
     }
 };
 
 // Static methods
-Swapper.getInstance = function(element) {
-    if ( element !== null && Util.data(element).has('swapper') ) {
-        return Util.data(element).get('swapper');
+KTSwapper.getInstance = function(element) {
+    if ( element !== null && KTUtil.data(element).has('swapper') ) {
+        return KTUtil.data(element).get('swapper');
     } else {
         return null;
     }
 }
 
 // Create instances
-Swapper.createInstances = function(selector = '[data-swapper="true"]') {
+KTSwapper.createInstances = function(selector = '[data-kt-swapper="true"]') {
     // Initialize Menus
     var elements = document.querySelectorAll(selector);
     var swapper;
 
     if ( elements && elements.length > 0 ) {
         for (var i = 0, len = elements.length; i < len; i++) {
-            swapper = new Swapper(elements[i]);
+            swapper = new KTSwapper(elements[i]);
         }
     }
 }
 
 // Window resize handler
-Swapper.handleResize = function() {
+KTSwapper.handleResize = function() {
     window.addEventListener('resize', function() {
         var timer;
     
-        Util.throttle(timer, function() {
+        KTUtil.throttle(timer, function() {
             // Locate and update Offcanvas instances on window resize
-            var elements = document.querySelectorAll('[data-swapper="true"]');
+            var elements = document.querySelectorAll('[data-kt-swapper="true"]');
     
             if ( elements && elements.length > 0 ) {
                 for (var i = 0, len = elements.length; i < len; i++) {
-                    var swapper = Swapper.getInstance(elements[i]);
+                    var swapper = KTSwapper.getInstance(elements[i]);
                     if (swapper) {
                         swapper.update();
                     }                
@@ -165,16 +165,16 @@ Swapper.handleResize = function() {
 };
 
 // Global initialization
-Swapper.init = function() {
-    Swapper.createInstances();
+KTSwapper.init = function() {
+    KTSwapper.createInstances();
 
-    if (SwapperHandlersInitialized === false) {
-        Swapper.handleResize();
-        SwapperHandlersInitialized = true;
+    if (KTSwapperHandlersInitialized === false) {
+        KTSwapper.handleResize();
+        KTSwapperHandlersInitialized = true;
     }
 };
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = Swapper;
+    module.exports = KTSwapper;
 }

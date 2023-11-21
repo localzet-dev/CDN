@@ -1,40 +1,42 @@
-// Глобальная инициализация основных компонентов
+//
+// Global init of core components
+//
 
-// Инициализация компонентов
-var Components = function () {
-	// Публичные методы
-	return {
-		init: function () {
-			App.init(); // Инициализация компонента "App"
-			Drawer.init(); // Инициализация компонента "Drawer"
-			Menu.init(); // Инициализация компонента "Menu"
-			Scroll.init(); // Инициализация компонента "Scroll"
-			Sticky.init(); // Инициализация компонента "Sticky"
-			Swapper.init(); // Инициализация компонента "Swapper"
-			Toggle.init(); // Инициализация компонента "Toggle"
-			Scrolltop.init(); // Инициализация компонента "Scrolltop"
-			Dialer.init(); // Инициализация компонента "Dialer"
-			ImageInput.init(); // Инициализация компонента "ImageInput"
-			PasswordMeter.init(); // Инициализация компонента "PasswordMeter"
-		}
-	}
+// Init components
+var KTComponents = function () {
+    // Public methods
+    return {
+        init: function () {
+            KTApp.init();
+			KTDrawer.init();
+			KTMenu.init();
+			KTScroll.init();
+			KTSticky.init();
+			KTSwapper.init();
+			KTToggle.init();
+			KTScrolltop.init();
+			KTDialer.init();	
+			KTImageInput.init();
+			KTPasswordMeter.init();	
+        }
+    }	
 }();
 
-// При загрузке документа
+// On document ready
 if (document.readyState === "loading") {
-	document.addEventListener("DOMContentLoaded", function () {
-		Components.init(); // Инициализация компонентов при загрузке документа
+	document.addEventListener("DOMContentLoaded", function() {
+		KTComponents.init();
 	});
-} else {
-	Components.init(); // Инициализация компонентов
-}
+ } else {
+	KTComponents.init();
+ }
 
-// Инициализация загрузчика страницы
-window.addEventListener("load", function () {
-	App.hidePageLoading(); // Скрытие загрузчика страницы
+ // Init page loader
+window.addEventListener("load", function() {
+    KTApp.hidePageLoading();
 });
 
-// Объявление App для поддержки Webpack
+// Declare KTApp for Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-	window.Components = module.exports = Components;
+	window.KTComponents = module.exports = KTComponents;
 }

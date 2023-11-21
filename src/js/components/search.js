@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var Search = function(element, options) {
+// Class definition
+var KTSearch = function(element, options) {
     ////////////////////////////
     // ** Private variables  ** //
     ////////////////////////////
@@ -27,8 +27,8 @@ var Search = function(element, options) {
 
     // Construct
     var _construct = function() {
-        if ( Util.data(element).has('search') === true ) {
-            the = Util.data(element).get('search');
+        if ( KTUtil.data(element).has('search') === true ) {
+            the = KTUtil.data(element).get('search');
         } else {
             _init();
         }
@@ -37,7 +37,7 @@ var Search = function(element, options) {
     // Init
     var _init = function() {
         // Variables
-        the.options = Util.deepExtend({}, defaultOptions, options);
+        the.options = KTUtil.deepExtend({}, defaultOptions, options);
         the.processing = false;
 
         // Elements
@@ -56,14 +56,14 @@ var Search = function(element, options) {
         the.emptyElement = _getElement('empty'); 
 
         // Set initialized
-        the.element.setAttribute('data-search', 'true');
+        the.element.setAttribute('data-kt-search', 'true');
         
         // Layout
         the.layout = _getOption('layout');
         
         // Menu
         if ( the.layout === 'menu' ) {
-            the.menuObject = new Menu(the.contentElement);
+            the.menuObject = new KTMenu(the.contentElement);
         } else {
             the.menuObject = null;
         }
@@ -75,7 +75,7 @@ var Search = function(element, options) {
         _handlers();
 
         // Bind Instance
-        Util.data(the.element).set('search', the);
+        KTUtil.data(the.element).set('search', the);
     }
 
     // Handlera
@@ -113,14 +113,14 @@ var Search = function(element, options) {
                 the.toggleElement.addEventListener('click', _show);
 
                 the.menuObject.on('kt.menu.dropdown.show', function(item) {
-                    if (Util.visible(the.toggleElement)) {
+                    if (KTUtil.visible(the.toggleElement)) {
                         the.toggleElement.classList.add('active');
                         the.toggleElement.classList.add('show');
                     } 
                 });
     
                 the.menuObject.on('kt.menu.dropdown.hide', function(item) {
-                    if (Util.visible(the.toggleElement)) {
+                    if (KTUtil.visible(the.toggleElement)) {
                         the.toggleElement.classList.remove('active');
                         the.toggleElement.classList.remove('show');
                     }
@@ -136,7 +136,7 @@ var Search = function(element, options) {
         window.addEventListener('resize', function() {
             var timer;
 
-            Util.throttle(timer, function() {
+            KTUtil.throttle(timer, function() {
                 _update();
             }, 200);
         });
@@ -202,7 +202,7 @@ var Search = function(element, options) {
             the.inputElement.focus();
 
             the.processing = true;
-            EventHandler.trigger(the.element, 'kt.search.process', the);
+            KTEventHandler.trigger(the.element, 'kt.search.process', the);
         }
     }
 
@@ -231,7 +231,7 @@ var Search = function(element, options) {
 
     // Clear
     var _clear = function() {
-        if ( EventHandler.trigger(the.element, 'kt.search.clear', the) === false )  {
+        if ( KTEventHandler.trigger(the.element, 'kt.search.clear', the) === false )  {
             return;
         }
 
@@ -254,7 +254,7 @@ var Search = function(element, options) {
             _hide();
         }
 
-        EventHandler.trigger(the.element, 'kt.search.cleared', the);
+        KTEventHandler.trigger(the.element, 'kt.search.cleared', the);
     }
 
     // Update
@@ -293,9 +293,9 @@ var Search = function(element, options) {
 
     // Get option
     var _getOption = function(name) {
-        if ( the.element.hasAttribute('data-search-' + name) === true ) {
-            var attr = the.element.getAttribute('data-search-' + name);
-            var value = Util.getResponsiveValue(attr);
+        if ( the.element.hasAttribute('data-kt-search-' + name) === true ) {
+            var attr = the.element.getAttribute('data-kt-search-' + name);
+            var value = KTUtil.getResponsiveValue(attr);
 
             if ( value !== null && String(value) === 'true' ) {
                 value = true;
@@ -305,10 +305,10 @@ var Search = function(element, options) {
 
             return value;
         } else {
-            var optionName = Util.snakeToCamel(name);
+            var optionName = KTUtil.snakeToCamel(name);
 
             if ( the.options[optionName] ) {
-                return Util.getResponsiveValue(the.options[optionName]);
+                return KTUtil.getResponsiveValue(the.options[optionName]);
             } else {
                 return null;
             }
@@ -317,19 +317,19 @@ var Search = function(element, options) {
 
     // Get element
     var _getElement = function(name) {
-        return the.element.querySelector('[data-search-element="' + name + '"]');
+        return the.element.querySelector('[data-kt-search-element="' + name + '"]');
     }
 
     // Check if responsive form mode is enabled
     var _getResponsiveFormMode = function() {
         var responsive = _getOption('responsive');
-        var width = Util.getViewPort().width;
+        var width = KTUtil.getViewPort().width;
 
         if (!responsive) {
             return null;
         }
 
-        var breakpoint = Util.getBreakpoint(responsive);
+        var breakpoint = KTUtil.getBreakpoint(responsive);
 
         if (!breakpoint ) {
             breakpoint = parseInt(responsive);
@@ -343,7 +343,7 @@ var Search = function(element, options) {
     }
 
     var _destroy = function() {
-        Util.data(the.element).remove('search');
+        KTUtil.data(the.element).remove('search');
     }    
 
     // Construct class
@@ -412,22 +412,22 @@ var Search = function(element, options) {
 
     // Event API
     the.on = function(name, handler) {
-        return EventHandler.on(the.element, name, handler);
+        return KTEventHandler.on(the.element, name, handler);
     }
 
     the.one = function(name, handler) {
-        return EventHandler.one(the.element, name, handler);
+        return KTEventHandler.one(the.element, name, handler);
     }
 
     the.off = function(name, handlerId) {
-        return EventHandler.off(the.element, name, handlerId);
+        return KTEventHandler.off(the.element, name, handlerId);
     }
 };
 
 // Static methods
-Search.getInstance = function(element) {
-    if ( element !== null && Util.data(element).has('search') ) {
-        return Util.data(element).get('search');
+KTSearch.getInstance = function(element) {
+    if ( element !== null && KTUtil.data(element).has('search') ) {
+        return KTUtil.data(element).get('search');
     } else {
         return null;
     }
@@ -435,5 +435,5 @@ Search.getInstance = function(element) {
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = Search;
+    module.exports = KTSearch;
 }

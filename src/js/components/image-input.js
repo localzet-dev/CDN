@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var ImageInput = function(element, options) {
+// Class definition
+var KTImageInput = function(element, options) {
     ////////////////////////////
     // ** Private Variables  ** //
     ////////////////////////////
@@ -21,8 +21,8 @@ var ImageInput = function(element, options) {
     ////////////////////////////
 
     var _construct = function() {
-        if ( Util.data(element).has('image-input') === true ) {
-            the = Util.data(element).get('image-input');
+        if ( KTUtil.data(element).has('image-input') === true ) {
+            the = KTUtil.data(element).get('image-input');
         } else {
             _init();
         }
@@ -30,33 +30,33 @@ var ImageInput = function(element, options) {
 
     var _init = function() {
         // Variables
-        the.options = Util.deepExtend({}, defaultOptions, options);
-        the.uid = Util.getUniqueId('image-input');
+        the.options = KTUtil.deepExtend({}, defaultOptions, options);
+        the.uid = KTUtil.getUniqueId('image-input');
 
         // Elements
         the.element = element;
-        the.inputElement = Util.find(element, 'input[type="file"]');
-        the.wrapperElement = Util.find(element, '.image-input-wrapper');
-        the.cancelElement = Util.find(element, '[data-image-input-action="cancel"]');
-        the.removeElement = Util.find(element, '[data-image-input-action="remove"]');
-        the.hiddenElement = Util.find(element, 'input[type="hidden"]');
-        the.src = Util.css(the.wrapperElement, 'backgroundImage');
+        the.inputElement = KTUtil.find(element, 'input[type="file"]');
+        the.wrapperElement = KTUtil.find(element, '.image-input-wrapper');
+        the.cancelElement = KTUtil.find(element, '[data-kt-image-input-action="cancel"]');
+        the.removeElement = KTUtil.find(element, '[data-kt-image-input-action="remove"]');
+        the.hiddenElement = KTUtil.find(element, 'input[type="hidden"]');
+        the.src = KTUtil.css(the.wrapperElement, 'backgroundImage');
 
         // Set initialized
-        the.element.setAttribute('data-image-input', 'true');
+        the.element.setAttribute('data-kt-image-input', 'true');
 
         // Event Handlers
         _handlers();
 
         // Bind Instance
-        Util.data(the.element).set('image-input', the);
+        KTUtil.data(the.element).set('image-input', the);
     }
 
     // Init Event Handlers
     var _handlers = function() {
-        Util.addEvent(the.inputElement, 'change', _change);
-        Util.addEvent(the.cancelElement, 'click', _cancel);
-        Util.addEvent(the.removeElement, 'click', _remove);
+        KTUtil.addEvent(the.inputElement, 'change', _change);
+        KTUtil.addEvent(the.cancelElement, 'click', _cancel);
+        KTUtil.addEvent(the.removeElement, 'click', _remove);
     }
 
     // Event Handlers
@@ -65,14 +65,14 @@ var ImageInput = function(element, options) {
 
         if ( the.inputElement !== null && the.inputElement.files && the.inputElement.files[0] ) {
             // Fire change event
-            if ( EventHandler.trigger(the.element, 'kt.imageinput.change', the) === false ) {
+            if ( KTEventHandler.trigger(the.element, 'kt.imageinput.change', the) === false ) {
                 return;
             }
 
             var reader = new FileReader();
 
             reader.onload = function(e) {
-                Util.css(the.wrapperElement, 'background-image', 'url('+ e.target.result +')');
+                KTUtil.css(the.wrapperElement, 'background-image', 'url('+ e.target.result +')');
             }
 
             reader.readAsDataURL(the.inputElement.files[0]);
@@ -81,7 +81,7 @@ var ImageInput = function(element, options) {
             the.element.classList.remove('image-input-empty');
 
             // Fire removed event
-            EventHandler.trigger(the.element, 'kt.imageinput.changed', the);
+            KTEventHandler.trigger(the.element, 'kt.imageinput.changed', the);
         }
     }
 
@@ -89,7 +89,7 @@ var ImageInput = function(element, options) {
         e.preventDefault();
 
         // Fire cancel event
-        if ( EventHandler.trigger(the.element, 'kt.imageinput.cancel', the) === false ) {
+        if ( KTEventHandler.trigger(the.element, 'kt.imageinput.cancel', the) === false ) {
             return;
         }
 
@@ -97,10 +97,10 @@ var ImageInput = function(element, options) {
         the.element.classList.remove('image-input-empty');
 
         if (the.src === 'none') {   
-            Util.css(the.wrapperElement, 'background-image', '');
+            KTUtil.css(the.wrapperElement, 'background-image', '');
             the.element.classList.add('image-input-empty');
         } else {
-            Util.css(the.wrapperElement, 'background-image', the.src);
+            KTUtil.css(the.wrapperElement, 'background-image', the.src);
         }
         
         the.inputElement.value = "";
@@ -110,21 +110,21 @@ var ImageInput = function(element, options) {
         }
 
         // Fire canceled event
-        EventHandler.trigger(the.element, 'kt.imageinput.canceled', the);
+        KTEventHandler.trigger(the.element, 'kt.imageinput.canceled', the);
     }
 
     var _remove = function(e) {
         e.preventDefault();
 
         // Fire remove event
-        if ( EventHandler.trigger(the.element, 'kt.imageinput.remove', the) === false ) {
+        if ( KTEventHandler.trigger(the.element, 'kt.imageinput.remove', the) === false ) {
             return;
         }
 
         the.element.classList.remove('image-input-changed');
         the.element.classList.add('image-input-empty');
 
-        Util.css(the.wrapperElement, 'background-image', "none");
+        KTUtil.css(the.wrapperElement, 'background-image', "none");
         the.inputElement.value = "";
 
         if ( the.hiddenElement !== null ) {
@@ -132,11 +132,11 @@ var ImageInput = function(element, options) {
         }
 
         // Fire removed event
-        EventHandler.trigger(the.element, 'kt.imageinput.removed', the);
+        KTEventHandler.trigger(the.element, 'kt.imageinput.removed', the);
     }
 
     var _destroy = function() {
-        Util.data(the.element).remove('image-input');
+        KTUtil.data(the.element).remove('image-input');
     }
 
     // Construct Class
@@ -161,49 +161,49 @@ var ImageInput = function(element, options) {
 
     // Event API
     the.on = function(name, handler) {
-        return EventHandler.on(the.element, name, handler);
+        return KTEventHandler.on(the.element, name, handler);
     }
 
     the.one = function(name, handler) {
-        return EventHandler.one(the.element, name, handler);
+        return KTEventHandler.one(the.element, name, handler);
     }
 
     the.off = function(name, handlerId) {
-        return EventHandler.off(the.element, name, handlerId);
+        return KTEventHandler.off(the.element, name, handlerId);
     }
 
     the.trigger = function(name, event) {
-        return EventHandler.trigger(the.element, name, event, the, event);
+        return KTEventHandler.trigger(the.element, name, event, the, event);
     }
 };
 
 // Static methods
-ImageInput.getInstance = function(element) {
-    if ( element !== null && Util.data(element).has('image-input') ) {
-        return Util.data(element).get('image-input');
+KTImageInput.getInstance = function(element) {
+    if ( element !== null && KTUtil.data(element).has('image-input') ) {
+        return KTUtil.data(element).get('image-input');
     } else {
         return null;
     }
 }
 
 // Create instances
-ImageInput.createInstances = function(selector = '[data-image-input]') {
+KTImageInput.createInstances = function(selector = '[data-kt-image-input]') {
     // Initialize Menus
     var elements = document.querySelectorAll(selector);
 
     if ( elements && elements.length > 0 ) {
         for (var i = 0, len = elements.length; i < len; i++) {
-            new ImageInput(elements[i]);
+            new KTImageInput(elements[i]);
         }
     }
 }
 
 // Global initialization
-ImageInput.init = function() {
-    ImageInput.createInstances();
+KTImageInput.init = function() {
+    KTImageInput.createInstances();
 };
 
 // Webpack Support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = ImageInput;
+    module.exports = KTImageInput;
 }

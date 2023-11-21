@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var PasswordMeter = function(element, options) {
+// Class definition
+var KTPasswordMeter = function(element, options) {
     ////////////////////////////
     // ** Private variables  ** //
     ////////////////////////////
@@ -27,8 +27,8 @@ var PasswordMeter = function(element, options) {
 
     // Constructor
     var _construct = function() {
-        if ( Util.data(element).has('password-meter') === true ) {
-            the = Util.data(element).get('password-meter');
+        if ( KTUtil.data(element).has('password-meter') === true ) {
+            the = KTUtil.data(element).get('password-meter');
         } else {
             _init();
         }
@@ -37,24 +37,24 @@ var PasswordMeter = function(element, options) {
     // Initialize
     var _init = function() {
         // Variables
-        the.options = Util.deepExtend({}, defaultOptions, options);
+        the.options = KTUtil.deepExtend({}, defaultOptions, options);
         the.score = 0;
         the.checkSteps = 5;
 
         // Elements
         the.element = element;
         the.inputElement = the.element.querySelector('input[type]');
-        the.visibilityElement = the.element.querySelector('[data-password-meter-control="visibility"]');
-        the.highlightElement = the.element.querySelector('[data-password-meter-control="highlight"]'); 
+        the.visibilityElement = the.element.querySelector('[data-kt-password-meter-control="visibility"]');
+        the.highlightElement = the.element.querySelector('[data-kt-password-meter-control="highlight"]'); 
 
         // Set initialized
-        the.element.setAttribute('data-password-meter', 'true');
+        the.element.setAttribute('data-kt-password-meter', 'true');
         
         // Event Handlers
         _handlers();
 
         // Bind Instance
-        Util.data(the.element).set('password-meter', the);
+        KTUtil.data(the.element).set('password-meter', the);
     }
 
     // Handlers
@@ -192,7 +192,7 @@ var PasswordMeter = function(element, options) {
     }
 
     var _destroy = function() {
-        Util.data(the.element).remove('password-meter');
+        KTUtil.data(the.element).remove('password-meter');
     }
 
     // Construct class
@@ -221,33 +221,33 @@ var PasswordMeter = function(element, options) {
 };
 
 // Static methods
-PasswordMeter.getInstance = function(element) {
-    if ( element !== null && Util.data(element).has('password-meter') ) {
-        return Util.data(element).get('password-meter');
+KTPasswordMeter.getInstance = function(element) {
+    if ( element !== null && KTUtil.data(element).has('password-meter') ) {
+        return KTUtil.data(element).get('password-meter');
     } else {
         return null;
     }
 }
 
 // Create instances
-PasswordMeter.createInstances = function(selector = '[data-password-meter]') {
+KTPasswordMeter.createInstances = function(selector = '[data-kt-password-meter]') {
     // Get instances
     var elements = document.body.querySelectorAll(selector);
 
     if ( elements && elements.length > 0 ) {
         for (var i = 0, len = elements.length; i < len; i++) {
             // Initialize instances
-            new PasswordMeter(elements[i]);
+            new KTPasswordMeter(elements[i]);
         }
     }
 }
 
 // Global initialization
-PasswordMeter.init = function() {
-    PasswordMeter.createInstances();
+KTPasswordMeter.init = function() {
+    KTPasswordMeter.createInstances();
 };
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = PasswordMeter;
+    module.exports = KTPasswordMeter;
 }

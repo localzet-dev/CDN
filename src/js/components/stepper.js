@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var Stepper = function(element, options) {
+// Class definition
+var KTStepper = function(element, options) {
     //////////////////////////////
     // ** Private variables  ** //
     //////////////////////////////
@@ -25,27 +25,27 @@ var Stepper = function(element, options) {
     ////////////////////////////
 
     var _construct = function() {
-        if ( Util.data(element).has('stepper') === true ) {
-            the = Util.data(element).get('stepper');
+        if ( KTUtil.data(element).has('stepper') === true ) {
+            the = KTUtil.data(element).get('stepper');
         } else {
             _init();
         }
     }
 
     var _init = function() {
-        the.options = Util.deepExtend({}, defaultOptions, options);
-        the.uid = Util.getUniqueId('stepper');
+        the.options = KTUtil.deepExtend({}, defaultOptions, options);
+        the.uid = KTUtil.getUniqueId('stepper');
 
         the.element = element;
 
         // Set initialized
-        the.element.setAttribute('data-stepper', 'true');
+        the.element.setAttribute('data-kt-stepper', 'true');
 
         // Elements
-        the.steps = Util.findAll(the.element, '[data-stepper-element="nav"]');
-        the.btnNext = Util.find(the.element, '[data-stepper-action="next"]');
-        the.btnPrevious = Util.find(the.element, '[data-stepper-action="previous"]');
-        the.btnSubmit = Util.find(the.element, '[data-stepper-action="submit"]');
+        the.steps = KTUtil.findAll(the.element, '[data-kt-stepper-element="nav"]');
+        the.btnNext = KTUtil.find(the.element, '[data-kt-stepper-action="next"]');
+        the.btnPrevious = KTUtil.find(the.element, '[data-kt-stepper-action="previous"]');
+        the.btnSubmit = KTUtil.find(the.element, '[data-kt-stepper-action="submit"]');
 
         // Variables
         the.totalStepsNumber = the.steps.length;
@@ -62,13 +62,13 @@ var Stepper = function(element, options) {
         the.nextListener = function(e) {
             e.preventDefault();
 
-            EventHandler.trigger(the.element, 'kt.stepper.next', the);
+            KTEventHandler.trigger(the.element, 'kt.stepper.next', the);
         };
 
         the.previousListener = function(e) {
             e.preventDefault();
 
-            EventHandler.trigger(the.element, 'kt.stepper.previous', the);
+            KTEventHandler.trigger(the.element, 'kt.stepper.previous', the);
         };
 
         the.stepListener = function(e) {
@@ -79,7 +79,7 @@ var Stepper = function(element, options) {
                     if ( the.steps[i] === this ) {
                         the.clickedStepIndex = i + 1;
 
-                        EventHandler.trigger(the.element, 'kt.stepper.click', the);
+                        KTEventHandler.trigger(the.element, 'kt.stepper.click', the);
 
                         return;
                     }
@@ -88,19 +88,19 @@ var Stepper = function(element, options) {
         };
 
         // Event Handlers
-        Util.addEvent(the.btnNext, 'click', the.nextListener);
+        KTUtil.addEvent(the.btnNext, 'click', the.nextListener);
 
-        Util.addEvent(the.btnPrevious, 'click', the.previousListener);
+        KTUtil.addEvent(the.btnPrevious, 'click', the.previousListener);
 
-        the.stepListenerId = Util.on(the.element, '[data-stepper-action="step"]', 'click', the.stepListener);
+        the.stepListenerId = KTUtil.on(the.element, '[data-kt-stepper-action="step"]', 'click', the.stepListener);
 
         // Bind Instance
-        Util.data(the.element).set('stepper', the);
+        KTUtil.data(the.element).set('stepper', the);
     }
 
     var _goTo = function(index) {
         // Trigger "change" event
-        EventHandler.trigger(the.element, 'kt.stepper.change', the);
+        KTEventHandler.trigger(the.element, 'kt.stepper.change', the);
 
         // Skip if this step is already shown
         if ( index === the.currentStepIndex || index > the.totalStepsNumber || index < 0 ) {
@@ -118,7 +118,7 @@ var Stepper = function(element, options) {
         _refreshUI();
 
         // Trigger "changed" event
-        EventHandler.trigger(the.element, 'kt.stepper.changed', the);
+        KTEventHandler.trigger(the.element, 'kt.stepper.changed', the);
 
         return the;
     }
@@ -151,38 +151,38 @@ var Stepper = function(element, options) {
         }
 
         // Set state class
-        Util.removeClass(the.element, 'last');
-        Util.removeClass(the.element, 'first');
-        Util.removeClass(the.element, 'between');
+        KTUtil.removeClass(the.element, 'last');
+        KTUtil.removeClass(the.element, 'first');
+        KTUtil.removeClass(the.element, 'between');
 
-        Util.addClass(the.element, state);
+        KTUtil.addClass(the.element, state);
 
         // Step Items
-        var elements = Util.findAll(the.element, '[data-stepper-element="nav"], [data-stepper-element="content"], [data-stepper-element="info"]');
+        var elements = KTUtil.findAll(the.element, '[data-kt-stepper-element="nav"], [data-kt-stepper-element="content"], [data-kt-stepper-element="info"]');
 
         if ( elements && elements.length > 0 ) {
             for (var i = 0, len = elements.length; i < len; i++) {
                 var element = elements[i];
-                var index = Util.index(element) + 1;
+                var index = KTUtil.index(element) + 1;
 
-                Util.removeClass(element, 'current');
-                Util.removeClass(element, 'completed');
-                Util.removeClass(element, 'pending');
+                KTUtil.removeClass(element, 'current');
+                KTUtil.removeClass(element, 'completed');
+                KTUtil.removeClass(element, 'pending');
 
                 if ( index == the.currentStepIndex ) {
-                    Util.addClass(element, 'current');
+                    KTUtil.addClass(element, 'current');
 
-                    if ( the.options.animation !== false && element.getAttribute('data-stepper-element') == 'content' ) {
-                        Util.css(element, 'animationDuration', the.options.animationSpeed);
+                    if ( the.options.animation !== false && element.getAttribute('data-kt-stepper-element') == 'content' ) {
+                        KTUtil.css(element, 'animationDuration', the.options.animationSpeed);
 
                         var animation = _getStepDirection(the.passedStepIndex) === 'previous' ?  the.options.animationPreviousClass : the.options.animationNextClass;
-                        Util.animateClass(element, animation);
+                        KTUtil.animateClass(element, animation);
                     }
                 } else {
                     if ( index < the.currentStepIndex ) {
-                        Util.addClass(element, 'completed');
+                        KTUtil.addClass(element, 'completed');
                     } else {
-                        Util.addClass(element, 'pending');
+                        KTUtil.addClass(element, 'pending');
                     }
                 }
             }
@@ -238,7 +238,7 @@ var Stepper = function(element, options) {
     }
 
     var _getStepContent = function(index) {
-        var content = Util.findAll(the.element, '[data-stepper-element="content"]');
+        var content = KTUtil.findAll(the.element, '[data-kt-stepper-element="content"]');
 
         if ( content[index-1] ) {
             return content[index-1];
@@ -249,13 +249,13 @@ var Stepper = function(element, options) {
 
     var _destroy = function() {
         // Event Handlers
-        Util.removeEvent(the.btnNext, 'click', the.nextListener);
+        KTUtil.removeEvent(the.btnNext, 'click', the.nextListener);
 
-        Util.removeEvent(the.btnPrevious, 'click', the.previousListener);
+        KTUtil.removeEvent(the.btnPrevious, 'click', the.previousListener);
 
-        Util.off(the.element, 'click', the.stepListenerId);
+        KTUtil.off(the.element, 'click', the.stepListenerId);
 
-        Util.data(the.element).remove('stepper');
+        KTUtil.data(the.element).remove('stepper');
     }
 
     // Construct Class
@@ -316,26 +316,26 @@ var Stepper = function(element, options) {
 
     // Event API
     the.on = function(name, handler) {
-        return EventHandler.on(the.element, name, handler);
+        return KTEventHandler.on(the.element, name, handler);
     }
 
     the.one = function(name, handler) {
-        return EventHandler.one(the.element, name, handler);
+        return KTEventHandler.one(the.element, name, handler);
     }
 
     the.off = function(name, handlerId) {
-        return EventHandler.off(the.element, name, handlerId);
+        return KTEventHandler.off(the.element, name, handlerId);
     }
 
     the.trigger = function(name, event) {
-        return EventHandler.trigger(the.element, name, event, the, event);
+        return KTEventHandler.trigger(the.element, name, event, the, event);
     }
 };
 
 // Static methods
-Stepper.getInstance = function(element) {
-    if ( element !== null && Util.data(element).has('stepper') ) {
-        return Util.data(element).get('stepper');
+KTStepper.getInstance = function(element) {
+    if ( element !== null && KTUtil.data(element).has('stepper') ) {
+        return KTUtil.data(element).get('stepper');
     } else {
         return null;
     }
@@ -343,5 +343,5 @@ Stepper.getInstance = function(element) {
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = Stepper;
+    module.exports = KTStepper;
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * @class Util  base utilize class that privides helper functions
+ * @class KTUtil  base utilize class that privides helper functions
  */
 
 // Polyfills
@@ -123,11 +123,11 @@ if (Element.prototype.getAttributeNames == undefined) {
 }
 
 // Global variables
-window.UtilElementDataStore = {};
-window.UtilElementDataStoreID = 0;
-window.UtilDelegatedEventHandlers = {};
+window.KTUtilElementDataStore = {};
+window.KTUtilElementDataStoreID = 0;
+window.KTUtilDelegatedEventHandlers = {};
 
-var Util = function() {
+var KTUtil = function() {
     var resizeHandlers = [];
 
     /**
@@ -146,7 +146,7 @@ var Util = function() {
         var timer;
 
         window.addEventListener('resize', function() {
-            Util.throttle(timer, function() {
+            KTUtil.throttle(timer, function() {
                 _runResizeHandlers();
             }, 200);
         });
@@ -242,7 +242,7 @@ var Util = function() {
          * @returns {boolean}
          */
         isDesktopDevice: function() {
-            return Util.isMobileDevice() ? false : true;
+            return KTUtil.isMobileDevice() ? false : true;
         },
 
         /**
@@ -359,14 +359,14 @@ var Util = function() {
                 // Ignore z-index if position is set to a value where z-index is ignored by the browser
                 // This makes behavior of this function consistent across browsers
                 // WebKit always returns auto if the element is positioned
-                position = Util.css(el, 'position');
+                position = KTUtil.css(el, 'position');
 
                 if (position === "absolute" || position === "relative" || position === "fixed") {
                     // IE returns 0 when zIndex is not specified
                     // other browsers return a string
                     // we ignore the case of nested elements with an explicit value of 0
                     // <div style="z-index: -10;"><div style="z-index: 0;"></div></div>
-                    value = parseInt(Util.css(el, 'z-index'));
+                    value = parseInt(KTUtil.css(el, 'z-index'));
 
                     if (!isNaN(value) && value !== 0) {
                         return value;
@@ -388,7 +388,7 @@ var Util = function() {
             var position;
 
             while (el && el !== document) {
-                position = Util.css(el, 'position');
+                position = KTUtil.css(el, 'position');
 
                 if (position === "fixed") {
                     return true;
@@ -445,7 +445,7 @@ var Util = function() {
 
                     // based on https://javascriptweblog.wordpress.com/2011/08/08/fixing-the-javascript-typeof-operator/
                     if ( Object.prototype.toString.call(obj[key]) === '[object Object]' ) {
-                        out[key] = Util.deepExtend(out[key], obj[key]);
+                        out[key] = KTUtil.deepExtend(out[key], obj[key]);
                         continue;
                     }
 
@@ -491,7 +491,7 @@ var Util = function() {
             var classesArr = classes.split(" ");
 
             for (var i = 0; i < classesArr.length; i++) {
-                if (Util.hasClass(el, Util.trim(classesArr[i])) == false) {
+                if (KTUtil.hasClass(el, KTUtil.trim(classesArr[i])) == false) {
                     return false;
                 }
             }
@@ -517,12 +517,12 @@ var Util = function() {
             if (el.classList) {
                 for (var i = 0; i < classNames.length; i++) {
                     if (classNames[i] && classNames[i].length > 0) {
-                        el.classList.add(Util.trim(classNames[i]));
+                        el.classList.add(KTUtil.trim(classNames[i]));
                     }
                 }
-            } else if (!Util.hasClass(el, className)) {
+            } else if (!KTUtil.hasClass(el, className)) {
                 for (var x = 0; x < classNames.length; x++) {
-                    el.className += ' ' + Util.trim(classNames[x]);
+                    el.className += ' ' + KTUtil.trim(classNames[x]);
                 }
             }
         },
@@ -536,11 +536,11 @@ var Util = function() {
 
             if (el.classList) {
                 for (var i = 0; i < classNames.length; i++) {
-                    el.classList.remove(Util.trim(classNames[i]));
+                    el.classList.remove(KTUtil.trim(classNames[i]));
                 }
-            } else if (Util.hasClass(el, className)) {
+            } else if (KTUtil.hasClass(el, className)) {
                 for (var x = 0; x < classNames.length; x++) {
-                    el.className = el.className.replace(new RegExp('\\b' + Util.trim(classNames[x]) + '\\b', 'g'), '');
+                    el.className = el.className.replace(new RegExp('\\b' + KTUtil.trim(classNames[x]) + '\\b', 'g'), '');
                 }
             }
         },
@@ -690,7 +690,7 @@ var Util = function() {
                 l = el.childNodes.length;
 
             for (var i; i < l; ++i) {
-                if (el.childNodes[i].nodeType == 1 && Util.matches(el.childNodes[i], selector, log)) {
+                if (el.childNodes[i].nodeType == 1 && KTUtil.matches(el.childNodes[i], selector, log)) {
                     result.push(el.childNodes[i]);
                 }
             }
@@ -699,7 +699,7 @@ var Util = function() {
         },
 
         child: function(el, selector, log) {
-            var children = Util.children(el, selector, log);
+            var children = KTUtil.children(el, selector, log);
 
             return children ? children[0] : null;
         },
@@ -725,15 +725,15 @@ var Util = function() {
                     }
 
                     if (el.customDataTag === undefined) {
-                        window.UtilElementDataStoreID++;
-                        el.customDataTag = window.UtilElementDataStoreID;
+                        window.KTUtilElementDataStoreID++;
+                        el.customDataTag = window.KTUtilElementDataStoreID;
                     }
 
-                    if (window.UtilElementDataStore[el.customDataTag] === undefined) {
-                        window.UtilElementDataStore[el.customDataTag] = {};
+                    if (window.KTUtilElementDataStore[el.customDataTag] === undefined) {
+                        window.KTUtilElementDataStore[el.customDataTag] = {};
                     }
 
-                    window.UtilElementDataStore[el.customDataTag][name] = data;
+                    window.KTUtilElementDataStore[el.customDataTag][name] = data;
                 },
 
                 get: function(name) {
@@ -745,7 +745,7 @@ var Util = function() {
                         return null;
                     }
 
-                    return this.has(name) ? window.UtilElementDataStore[el.customDataTag][name] : null;
+                    return this.has(name) ? window.KTUtilElementDataStore[el.customDataTag][name] : null;
                 },
 
                 has: function(name) {
@@ -757,12 +757,12 @@ var Util = function() {
                         return false;
                     }
 
-                    return (window.UtilElementDataStore[el.customDataTag] && window.UtilElementDataStore[el.customDataTag][name]) ? true : false;
+                    return (window.KTUtilElementDataStore[el.customDataTag] && window.KTUtilElementDataStore[el.customDataTag][name]) ? true : false;
                 },
 
                 remove: function(name) {
                     if (el && this.has(name)) {
-                        delete window.UtilElementDataStore[el.customDataTag][name];
+                        delete window.KTUtilElementDataStore[el.customDataTag][name];
                     }
                 }
             };
@@ -773,7 +773,7 @@ var Util = function() {
 
             if (margin === true) {
                 width = parseFloat(el.offsetWidth);
-                width += parseFloat(Util.css(el, 'margin-left')) + parseFloat(Util.css(el, 'margin-right'));
+                width += parseFloat(KTUtil.css(el, 'margin-left')) + parseFloat(KTUtil.css(el, 'margin-right'));
 
                 return parseFloat(width);
             } else {
@@ -811,7 +811,7 @@ var Util = function() {
         },
 
         height: function(el) {
-            return Util.css(el, 'height');
+            return KTUtil.css(el, 'height');
         },
 
         outerHeight: function(el, withMargin) {
@@ -941,7 +941,7 @@ var Util = function() {
                 return;
             }
 
-            if (!el.getAttribute('hidden-' + prop) || cache === false) {
+            if (!el.getAttribute('kt-hidden-' + prop) || cache === false) {
                 var value;
 
                 // the element is hidden so:
@@ -958,21 +958,21 @@ var Util = function() {
                 el.style.cssText = css;
 
                 // store it in cache
-                el.setAttribute('hidden-' + prop, value);
+                el.setAttribute('kt-hidden-' + prop, value);
 
                 return parseFloat(value);
             } else {
                 // store it in cache
-                return parseFloat(el.getAttribute('hidden-' + prop));
+                return parseFloat(el.getAttribute('kt-hidden-' + prop));
             }
         },
 
         actualHeight: function(el, cache) {
-            return Util.actualCss(el, 'height', cache);
+            return KTUtil.actualCss(el, 'height', cache);
         },
 
         actualWidth: function(el, cache) {
-            return Util.actualCss(el, 'width', cache);
+            return KTUtil.actualCss(el, 'width', cache);
         },
 
         getScroll: function(element, method) {
@@ -1035,47 +1035,47 @@ var Util = function() {
         },
 
         slide: function(el, dir, speed, callback, recalcMaxHeight) {
-            if (!el || (dir == 'up' && Util.visible(el) === false) || (dir == 'down' && Util.visible(el) === true)) {
+            if (!el || (dir == 'up' && KTUtil.visible(el) === false) || (dir == 'down' && KTUtil.visible(el) === true)) {
                 return;
             }
 
             speed = (speed ? speed : 600);
-            var calcHeight = Util.actualHeight(el);
+            var calcHeight = KTUtil.actualHeight(el);
             var calcPaddingTop = false;
             var calcPaddingBottom = false;
 
-            if (Util.css(el, 'padding-top') && Util.data(el).has('slide-padding-top') !== true) {
-                Util.data(el).set('slide-padding-top', Util.css(el, 'padding-top'));
+            if (KTUtil.css(el, 'padding-top') && KTUtil.data(el).has('slide-padding-top') !== true) {
+                KTUtil.data(el).set('slide-padding-top', KTUtil.css(el, 'padding-top'));
             }
 
-            if (Util.css(el, 'padding-bottom') && Util.data(el).has('slide-padding-bottom') !== true) {
-                Util.data(el).set('slide-padding-bottom', Util.css(el, 'padding-bottom'));
+            if (KTUtil.css(el, 'padding-bottom') && KTUtil.data(el).has('slide-padding-bottom') !== true) {
+                KTUtil.data(el).set('slide-padding-bottom', KTUtil.css(el, 'padding-bottom'));
             }
 
-            if (Util.data(el).has('slide-padding-top')) {
-                calcPaddingTop = parseInt(Util.data(el).get('slide-padding-top'));
+            if (KTUtil.data(el).has('slide-padding-top')) {
+                calcPaddingTop = parseInt(KTUtil.data(el).get('slide-padding-top'));
             }
 
-            if (Util.data(el).has('slide-padding-bottom')) {
-                calcPaddingBottom = parseInt(Util.data(el).get('slide-padding-bottom'));
+            if (KTUtil.data(el).has('slide-padding-bottom')) {
+                calcPaddingBottom = parseInt(KTUtil.data(el).get('slide-padding-bottom'));
             }
 
             if (dir == 'up') { // up
                 el.style.cssText = 'display: block; overflow: hidden;';
 
                 if (calcPaddingTop) {
-                    Util.animate(0, calcPaddingTop, speed, function(value) {
+                    KTUtil.animate(0, calcPaddingTop, speed, function(value) {
                         el.style.paddingTop = (calcPaddingTop - value) + 'px';
                     }, 'linear');
                 }
 
                 if (calcPaddingBottom) {
-                    Util.animate(0, calcPaddingBottom, speed, function(value) {
+                    KTUtil.animate(0, calcPaddingBottom, speed, function(value) {
                         el.style.paddingBottom = (calcPaddingBottom - value) + 'px';
                     }, 'linear');
                 }
 
-                Util.animate(0, calcHeight, speed, function(value) {
+                KTUtil.animate(0, calcHeight, speed, function(value) {
                     el.style.height = (calcHeight - value) + 'px';
                 }, 'linear', function() {
                     el.style.height = '';
@@ -1091,7 +1091,7 @@ var Util = function() {
                 el.style.cssText = 'display: block; overflow: hidden;';
 
                 if (calcPaddingTop) {
-                    Util.animate(0, calcPaddingTop, speed, function(value) {//
+                    KTUtil.animate(0, calcPaddingTop, speed, function(value) {//
                         el.style.paddingTop = value + 'px';
                     }, 'linear', function() {
                         el.style.paddingTop = '';
@@ -1099,14 +1099,14 @@ var Util = function() {
                 }
 
                 if (calcPaddingBottom) {
-                    Util.animate(0, calcPaddingBottom, speed, function(value) {
+                    KTUtil.animate(0, calcPaddingBottom, speed, function(value) {
                         el.style.paddingBottom = value + 'px';
                     }, 'linear', function() {
                         el.style.paddingBottom = '';
                     });
                 }
 
-                Util.animate(0, calcHeight, speed, function(value) {
+                KTUtil.animate(0, calcHeight, speed, function(value) {
                     el.style.height = value + 'px';
                 }, 'linear', function() {
                     el.style.height = '';
@@ -1121,11 +1121,11 @@ var Util = function() {
         },
 
         slideUp: function(el, speed, callback) {
-            Util.slide(el, 'up', speed, callback);
+            KTUtil.slide(el, 'up', speed, callback);
         },
 
         slideDown: function(el, speed, callback) {
-            Util.slide(el, 'down', speed, callback);
+            KTUtil.slide(el, 'down', speed, callback);
         },
 
         show: function(el, display) {
@@ -1157,9 +1157,9 @@ var Util = function() {
                 return;
             }
 
-            var eventId = Util.getUniqueId('event');
+            var eventId = KTUtil.getUniqueId('event');
 
-            window.UtilDelegatedEventHandlers[eventId] = function(e) {
+            window.KTUtilDelegatedEventHandlers[eventId] = function(e) {
                 var targets = element.querySelectorAll(selector);
                 var target = e.target;
 
@@ -1174,19 +1174,19 @@ var Util = function() {
                 }
             }
 
-            Util.addEvent(element, event, window.UtilDelegatedEventHandlers[eventId]);
+            KTUtil.addEvent(element, event, window.KTUtilDelegatedEventHandlers[eventId]);
 
             return eventId;
         },
 
         off: function(element, event, eventId) {
-            if (!element || !window.UtilDelegatedEventHandlers[eventId]) {
+            if (!element || !window.KTUtilDelegatedEventHandlers[eventId]) {
                 return;
             }
 
-            Util.removeEvent(element, event, window.UtilDelegatedEventHandlers[eventId]);
+            KTUtil.removeEvent(element, event, window.KTUtilDelegatedEventHandlers[eventId]);
 
-            delete window.UtilDelegatedEventHandlers[eventId];
+            delete window.KTUtilDelegatedEventHandlers[eventId];
         },
 
         one: function onetime(el, type, callback) {
@@ -1236,14 +1236,14 @@ var Util = function() {
                 }
             }
             
-            Util.addClass(el, animationName);
+            KTUtil.addClass(el, animationName);
 
-            Util.one(el, animation, function() {
-                Util.removeClass(el, animationName);
+            KTUtil.one(el, animation, function() {
+                KTUtil.removeClass(el, animationName);
             });
 
             if (callback) {
-                Util.one(el, animation, callback);
+                KTUtil.one(el, animation, callback);
             }
         },
 
@@ -1263,7 +1263,7 @@ var Util = function() {
                 }
             }
 
-            Util.one(el, transition, callback);
+            KTUtil.one(el, transition, callback);
         },
 
         animationEnd: function(el, callback) {
@@ -1282,26 +1282,26 @@ var Util = function() {
                 }
             }
 
-            Util.one(el, animation, callback);
+            KTUtil.one(el, animation, callback);
         },
 
         animateDelay: function(el, value) {
             var vendors = ['webkit-', 'moz-', 'ms-', 'o-', ''];
             for (var i = 0; i < vendors.length; i++) {
-                Util.css(el, vendors[i] + 'animation-delay', value);
+                KTUtil.css(el, vendors[i] + 'animation-delay', value);
             }
         },
 
         animateDuration: function(el, value) {
             var vendors = ['webkit-', 'moz-', 'ms-', 'o-', ''];
             for (var i = 0; i < vendors.length; i++) {
-                Util.css(el, vendors[i] + 'animation-duration', value);
+                KTUtil.css(el, vendors[i] + 'animation-duration', value);
             }
         },
 
         scrollTo: function(target, offset, duration) {
             var duration = duration ? duration : 500;
-            var targetPos = target ? Util.offset(target).top : 0;
+            var targetPos = target ? KTUtil.offset(target).top : 0;
             var scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
             var from, to;
 
@@ -1312,7 +1312,7 @@ var Util = function() {
             from = scrollPos;
             to = targetPos;
 
-            Util.animate(from, to, duration, function(value) {
+            KTUtil.animate(from, to, duration, function(value) {
                 document.documentElement.scrollTop = value;
                 document.body.parentNode.scrollTop = value;
                 document.body.scrollTop = value;
@@ -1320,7 +1320,7 @@ var Util = function() {
         },
 
         scrollTop: function(offset, duration) {
-            Util.scrollTo(null, offset, duration);
+            KTUtil.scrollTo(null, offset, duration);
         },
 
         isArray: function(obj) {
@@ -1466,7 +1466,7 @@ var Util = function() {
             var width = this.getViewPort().width;
             var result = null;
 
-            value = Util.parseJson(value);
+            value = KTUtil.parseJson(value);
 
             if (typeof value === 'object') {
                 var resultKey;
@@ -1504,7 +1504,7 @@ var Util = function() {
 
         getSelectorMatchValue: function(value) {
             var result = null;
-            value = Util.parseJson(value);
+            value = KTUtil.parseJson(value);
 
             if ( typeof value === 'object' ) {
                 // Match condition
@@ -1524,11 +1524,11 @@ var Util = function() {
         },
 
         getConditionalValue: function(value) {
-            var value = Util.parseJson(value);
-            var result = Util.getResponsiveValue(value);
+            var value = KTUtil.parseJson(value);
+            var result = KTUtil.getResponsiveValue(value);
 
             if ( result !== null && result['match'] !== undefined ) {
-                result = Util.getSelectorMatchValue(result);
+                result = KTUtil.getSelectorMatchValue(result);
             }
 
             if ( result === null && value !== null && value['default'] !== undefined ) {
@@ -1598,5 +1598,5 @@ var Util = function() {
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = Util;
+    module.exports = KTUtil;
 }

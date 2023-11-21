@@ -1,8 +1,8 @@
 "use strict";
 // DOCS: https://javascript.info/cookie
 
-// Определение класса
-var Cookie = function() {
+// Class definition
+var KTCookie = function() {
     return {
         // returns the cookie with the given name,
         // or undefined if not found
@@ -58,5 +58,5 @@ var Cookie = function() {
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = Cookie;
+    module.exports = KTCookie;
 }

@@ -1,9 +1,9 @@
 "use strict";
 
-var MenuHandlersInitialized = false;
+var KTMenuHandlersInitialized = false;
 
-// Определение класса
-var Menu = function(element, options) {
+// Class definition
+var KTMenu = function(element, options) {
     ////////////////////////////
     // ** Private Variables  ** //
     ////////////////////////////
@@ -31,27 +31,27 @@ var Menu = function(element, options) {
     ////////////////////////////
 
     var _construct = function() {
-        if ( Util.data(element).has('menu') === true ) {
-            the = Util.data(element).get('menu');
+        if ( KTUtil.data(element).has('menu') === true ) {
+            the = KTUtil.data(element).get('menu');
         } else {
             _init();
         }
     }
 
     var _init = function() {
-        the.options = Util.deepExtend({}, defaultOptions, options);
-        the.uid = Util.getUniqueId('menu');
+        the.options = KTUtil.deepExtend({}, defaultOptions, options);
+        the.uid = KTUtil.getUniqueId('menu');
         the.element = element;
         the.triggerElement;
         the.disabled = false;
 
         // Set initialized
-        the.element.setAttribute('data-menu', 'true');
+        the.element.setAttribute('data-kt-menu', 'true');
 
         _setTriggerElement();
         _update();
 
-        Util.data(the.element).set('menu', the);
+        KTUtil.data(the.element).set('menu', the);
     }
 
     var _destroy = function() {  // todo
@@ -86,14 +86,14 @@ var Menu = function(element, options) {
             return;
         }
         
-        if ( EventHandler.trigger(the.element, 'kt.menu.link.click', element) === false )  {
+        if ( KTEventHandler.trigger(the.element, 'kt.menu.link.click', element) === false )  {
             return;
         }
 
         // Dismiss all shown dropdowns
-        Menu.hideDropdowns();
+        KTMenu.hideDropdowns();
 
-        EventHandler.trigger(the.element, 'kt.menu.link.clicked', element);
+        KTEventHandler.trigger(the.element, 'kt.menu.link.clicked', element);
     }
 
     // Dismiss handler
@@ -131,10 +131,10 @@ var Menu = function(element, options) {
             return;
         }
 
-        if ( Util.data(item).get('hover') === '1' ) {
-            clearTimeout(Util.data(item).get('timeout'));
-            Util.data(item).remove('hover');
-            Util.data(item).remove('timeout');
+        if ( KTUtil.data(item).get('hover') === '1' ) {
+            clearTimeout(KTUtil.data(item).get('timeout'));
+            KTUtil.data(item).remove('hover');
+            KTUtil.data(item).remove('timeout');
         }
 
         _show(item);
@@ -157,13 +157,13 @@ var Menu = function(element, options) {
         }
 
         var timeout = setTimeout(function() {
-            if ( Util.data(item).get('hover') === '1' ) {
+            if ( KTUtil.data(item).get('hover') === '1' ) {
                 _hide(item);
             }
         }, the.options.dropdown.hoverTimeout);
 
-        Util.data(item).set('hover', '1');
-        Util.data(item).set('timeout', timeout);
+        KTUtil.data(item).set('hover', '1');
+        KTUtil.data(item).set('timeout', timeout);
     }
 
     // Toggle item sub
@@ -196,7 +196,7 @@ var Menu = function(element, options) {
         }
 
         // Remember last submenu type
-        Util.data(item).set('type', _getItemSubType(item));  // updated
+        KTUtil.data(item).set('type', _getItemSubType(item));  // updated
     }
 
     // Hide item sub
@@ -225,16 +225,16 @@ var Menu = function(element, options) {
         var sub = _getItemSubElement(item);
 
         // Reset sub state if sub type is changed during the window resize
-        if ( Util.data(item).has('type') && Util.data(item).get('type') !== _getItemSubType(item) ) {  // updated
-            Util.removeClass(item, 'hover'); 
-            Util.removeClass(item, 'show'); 
-            Util.removeClass(sub, 'show'); 
+        if ( KTUtil.data(item).has('type') && KTUtil.data(item).get('type') !== _getItemSubType(item) ) {  // updated
+            KTUtil.removeClass(item, 'hover'); 
+            KTUtil.removeClass(item, 'show'); 
+            KTUtil.removeClass(sub, 'show'); 
         }  // updated
     }
 
     // Update all item state classes if item sub type changed
     var _update = function() {
-        var items = the.element.querySelectorAll('.menu-item[data-menu-trigger]');
+        var items = the.element.querySelectorAll('.menu-item[data-kt-menu-trigger]');
 
         if ( items && items.length > 0 ) {
             for (var i = 0, len = items.length; i < len; i++) {
@@ -245,18 +245,18 @@ var Menu = function(element, options) {
 
     // Set external trigger element
     var _setTriggerElement = function() {
-        var target = document.querySelector('[data-menu-target="#' + the.element.getAttribute('id')  + '"]');
+        var target = document.querySelector('[data-kt-menu-target="#' + the.element.getAttribute('id')  + '"]');
 
         if ( target !== null ) {
             the.triggerElement = target;
-        } else if ( the.element.closest('[data-menu-trigger]') ) {
-            the.triggerElement = the.element.closest('[data-menu-trigger]');
-        } else if ( the.element.parentNode && Util.child(the.element.parentNode, '[data-menu-trigger]')) {
-            the.triggerElement = Util.child(the.element.parentNode, '[data-menu-trigger]');
+        } else if ( the.element.closest('[data-kt-menu-trigger]') ) {
+            the.triggerElement = the.element.closest('[data-kt-menu-trigger]');
+        } else if ( the.element.parentNode && KTUtil.child(the.element.parentNode, '[data-kt-menu-trigger]')) {
+            the.triggerElement = KTUtil.child(the.element.parentNode, '[data-kt-menu-trigger]');
         }
 
         if ( the.triggerElement ) {
-            Util.data(the.triggerElement).set('menu', the);
+            KTUtil.data(the.triggerElement).set('menu', the);
         }
     }
 
@@ -271,13 +271,13 @@ var Menu = function(element, options) {
 
         if ( sub !== null ) {
             if ( _getItemSubType(item) === 'dropdown' ) {
-                if ( Util.hasClass(sub, 'show') === true && sub.hasAttribute('data-popper-placement') === true ) {
+                if ( KTUtil.hasClass(sub, 'show') === true && sub.hasAttribute('data-popper-placement') === true ) {
                     return true;
                 } else {
                     return false;
                 }
             } else {
-                return Util.hasClass(item, 'show');
+                return KTUtil.hasClass(item, 'show');
             }
         } else {
             return false;
@@ -291,22 +291,22 @@ var Menu = function(element, options) {
 
     // Test if item's parent is shown
     var _isItemParentShown = function(item) {
-        return Util.parents(item, '.menu-item.show').length > 0;
+        return KTUtil.parents(item, '.menu-item.show').length > 0;
     }
 
     // Test of it is item sub element
     var _isItemSubElement = function(item) {
-        return Util.hasClass(item, 'menu-sub');
+        return KTUtil.hasClass(item, 'menu-sub');
     }
 
     // Test if item has sub
     var _hasItemSub = function(item) {
-        return (Util.hasClass(item, 'menu-item') && item.hasAttribute('data-menu-trigger'));
+        return (KTUtil.hasClass(item, 'menu-item') && item.hasAttribute('data-kt-menu-trigger'));
     }
 
     // Get link element
     var _getItemLinkElement = function(item) {
-        return Util.child(item, '.menu-link');
+        return KTUtil.child(item, '.menu-link');
     }
 
     // Get toggle element
@@ -324,10 +324,10 @@ var Menu = function(element, options) {
             return the.element;
         } if ( item.classList.contains('menu-sub') === true ) {
             return item;
-        } else if ( Util.data(item).has('sub') ) {
-            return Util.data(item).get('sub');
+        } else if ( KTUtil.data(item).has('sub') ) {
+            return KTUtil.data(item).get('sub');
         } else {
-            return Util.child(item, '.menu-sub');
+            return KTUtil.child(item, '.menu-sub');
         }
     }
 
@@ -335,7 +335,7 @@ var Menu = function(element, options) {
     var _getItemSubType = function(element) {
         var sub = _getItemSubElement(element);
 
-        if ( sub && parseInt(Util.css(sub, 'z-index')) > 0 ) {
+        if ( sub && parseInt(KTUtil.css(sub, 'z-index')) > 0 ) {
             return "dropdown";
         } else {
             return "accordion";
@@ -352,24 +352,24 @@ var Menu = function(element, options) {
         }   
 
         // Element has item toggler attribute
-        if ( element.hasAttribute('data-menu-trigger') ) {
+        if ( element.hasAttribute('data-kt-menu-trigger') ) {
             return element;
         }
 
         // Element has item DOM reference in it's data storage
-        if ( Util.data(element).has('item') ) {
-            return Util.data(element).get('item');
+        if ( KTUtil.data(element).has('item') ) {
+            return KTUtil.data(element).get('item');
         }
 
         // Item is parent of element
-        if ( (item = element.closest('.menu-item[data-menu-trigger]')) ) {
+        if ( (item = element.closest('.menu-item')) ) {
             return item;
         }
 
         // Element's parent has item DOM reference in it's data storage
         if ( (sub = element.closest('.menu-sub')) ) {
-            if ( Util.data(sub).has('item') === true ) {
-                return Util.data(sub).get('item')
+            if ( KTUtil.data(sub).has('item') === true ) {
+                return KTUtil.data(sub).get('item')
             } 
         }
     }
@@ -379,11 +379,11 @@ var Menu = function(element, options) {
         var sub = item.closest('.menu-sub');
         var parentItem;
 
-        if ( sub && Util.data(sub).has('item') ) {
-            return Util.data(sub).get('item');
+        if ( sub && KTUtil.data(sub).has('item') ) {
+            return KTUtil.data(sub).get('item');
         }
 
-        if ( sub && (parentItem = sub.closest('.menu-item[data-menu-trigger]')) ) {
+        if ( sub && (parentItem = sub.closest('.menu-item[data-kt-menu-trigger]')) ) {
             return parentItem;
         }
 
@@ -419,13 +419,13 @@ var Menu = function(element, options) {
         var selector = item;
         var element;
 
-        if ( Util.data(item).get('sub') ) {
-            selector = Util.data(item).get('sub');
+        if ( KTUtil.data(item).get('sub') ) {
+            selector = KTUtil.data(item).get('sub');
         }
 
         if ( selector !== null ) {
-            //element = selector.querySelector('.show.menu-item[data-menu-trigger]');
-            element = selector.querySelector('.menu-item[data-menu-trigger]');
+            //element = selector.querySelector('.show.menu-item[data-kt-menu-trigger]');
+            element = selector.querySelector('.menu-item[data-kt-menu-trigger]');
 
             if ( element ) {
                 return element;
@@ -460,12 +460,12 @@ var Menu = function(element, options) {
     // Show item dropdown
     var _showDropdown = function(item) {
         // Handle dropdown show event
-        if ( EventHandler.trigger(the.element, 'kt.menu.dropdown.show', item) === false )  {
+        if ( KTEventHandler.trigger(the.element, 'kt.menu.dropdown.show', item) === false )  {
             return;
         }
 
         // Hide all currently shown dropdowns except current one
-        Menu.hideDropdowns(item); 
+        KTMenu.hideDropdowns(item); 
 
         var toggle = _isTriggerElement(item) ? item : _getItemLinkElement(item);
         var sub = _getItemSubElement(item);
@@ -474,7 +474,7 @@ var Menu = function(element, options) {
         var height = _getOptionFromElementAttribute(item, 'height');
 
         var zindex = the.options.dropdown.zindex; // update
-        var parentZindex = Util.getHighestZindex(item); // update
+        var parentZindex = KTUtil.getHighestZindex(item); // update
 
         // Apply a new z-index if dropdown's toggle element or it's parent has greater z-index // update
         if ( parentZindex !== null && parentZindex >= zindex ) {
@@ -482,76 +482,76 @@ var Menu = function(element, options) {
         }
 
         if ( zindex > 0 ) {
-            Util.css(sub, 'z-index', zindex);
+            KTUtil.css(sub, 'z-index', zindex);
         }
 
         if ( width !== null ) {
-            Util.css(sub, 'width', width);
+            KTUtil.css(sub, 'width', width);
         }
 
         if ( height !== null ) {
-            Util.css(sub, 'height', height);
+            KTUtil.css(sub, 'height', height);
         }
 
-        Util.css(sub, 'display', '');
-        Util.css(sub, 'overflow', '');
+        KTUtil.css(sub, 'display', '');
+        KTUtil.css(sub, 'overflow', '');
 
         // Init popper(new)
         _initDropdownPopper(item, sub); 
 
-        Util.addClass(item, 'show');
-        Util.addClass(item, 'menu-dropdown');
-        Util.addClass(sub, 'show');
+        KTUtil.addClass(item, 'show');
+        KTUtil.addClass(item, 'menu-dropdown');
+        KTUtil.addClass(sub, 'show');
 
         // Append the sub the the root of the menu
         if ( _getOptionFromElementAttribute(item, 'overflow') === true ) {
             document.body.appendChild(sub);
-            Util.data(item).set('sub', sub);
-            Util.data(sub).set('item', item);
-            Util.data(sub).set('menu', the);
+            KTUtil.data(item).set('sub', sub);
+            KTUtil.data(sub).set('item', item);
+            KTUtil.data(sub).set('menu', the);
         } else {
-            Util.data(sub).set('item', item);
+            KTUtil.data(sub).set('item', item);
         }
 
         // Handle dropdown shown event
-        EventHandler.trigger(the.element, 'kt.menu.dropdown.shown', item);
+        KTEventHandler.trigger(the.element, 'kt.menu.dropdown.shown', item);
     }
 
     // Hide item dropdown
     var _hideDropdown = function(item) {
         // Handle dropdown hide event
-        if ( EventHandler.trigger(the.element, 'kt.menu.dropdown.hide', item) === false )  {
+        if ( KTEventHandler.trigger(the.element, 'kt.menu.dropdown.hide', item) === false )  {
             return;
         }
 
         var sub = _getItemSubElement(item);
 
-        Util.css(sub, 'z-index', '');
-        Util.css(sub, 'width', '');
-        Util.css(sub, 'height', '');
+        KTUtil.css(sub, 'z-index', '');
+        KTUtil.css(sub, 'width', '');
+        KTUtil.css(sub, 'height', '');
 
-        Util.removeClass(item, 'show');
-        Util.removeClass(item, 'menu-dropdown');
-        Util.removeClass(sub, 'show');
+        KTUtil.removeClass(item, 'show');
+        KTUtil.removeClass(item, 'menu-dropdown');
+        KTUtil.removeClass(sub, 'show');
 
         // Append the sub back to it's parent
         if ( _getOptionFromElementAttribute(item, 'overflow') === true ) {
             if (item.classList.contains('menu-item')) {
                 item.appendChild(sub);
             } else {
-                Util.insertAfter(the.element, item);
+                KTUtil.insertAfter(the.element, item);
             }
             
-            Util.data(item).remove('sub');
-            Util.data(sub).remove('item');
-            Util.data(sub).remove('menu');
+            KTUtil.data(item).remove('sub');
+            KTUtil.data(sub).remove('item');
+            KTUtil.data(sub).remove('menu');
         } 
 
         // Destroy popper(new)
         _destroyDropdownPopper(item);
         
         // Handle dropdown hidden event 
-        EventHandler.trigger(the.element, 'kt.menu.dropdown.hidden', item);
+        KTEventHandler.trigger(the.element, 'kt.menu.dropdown.hidden', item);
     }
 
     // Init dropdown popper(new)
@@ -571,14 +571,14 @@ var Menu = function(element, options) {
         }
 
         var popper = Popper.createPopper(reference, sub, _getDropdownPopperConfig(item)); 
-        Util.data(item).set('popper', popper);
+        KTUtil.data(item).set('popper', popper);
     }
 
     // Destroy dropdown popper(new)
     var _destroyDropdownPopper = function(item) {
-        if ( Util.data(item).has('popper') === true ) {
-            Util.data(item).get('popper').destroy();
-            Util.data(item).remove('popper');
+        if ( KTUtil.data(item).has('popper') === true ) {
+            KTUtil.data(item).get('popper').destroy();
+            KTUtil.data(item).remove('popper');
         }
     }
 
@@ -630,7 +630,7 @@ var Menu = function(element, options) {
 
     // Show item accordion
     var _showAccordion = function(item) {
-        if ( EventHandler.trigger(the.element, 'kt.menu.accordion.show', item) === false )  {
+        if ( KTEventHandler.trigger(the.element, 'kt.menu.accordion.show', item) === false )  {
             return;
         }
 
@@ -649,46 +649,51 @@ var Menu = function(element, options) {
             _hideAccordions(item);
         }
 
-        if ( Util.data(item).has('popper') === true ) {
+        if ( KTUtil.data(item).has('popper') === true ) {
             _hideDropdown(item);
         }
 
-        Util.addClass(item, 'hover');
+        KTUtil.addClass(item, 'hover');
 
-        Util.addClass(item, 'showing');
+        KTUtil.addClass(item, 'showing');
 
-        Util.slideDown(sub, the.options.accordion.slideSpeed, function() {
-            Util.removeClass(item, 'showing');
-            Util.addClass(item, 'show');
-            Util.addClass(sub, 'show');
+        KTUtil.slideDown(sub, the.options.accordion.slideSpeed, function() {
+            KTUtil.removeClass(item, 'showing');
+            KTUtil.addClass(item, 'show');
+            KTUtil.addClass(sub, 'show');
 
-            EventHandler.trigger(the.element, 'kt.menu.accordion.shown', item);
+            KTEventHandler.trigger(the.element, 'kt.menu.accordion.shown', item);
         });        
     }
 
     // Hide item accordion
     var _hideAccordion = function(item) {
-        if ( EventHandler.trigger(the.element, 'kt.menu.accordion.hide', item) === false )  {
+        if ( KTEventHandler.trigger(the.element, 'kt.menu.accordion.hide', item) === false )  {
             return;
         }
         
         var sub = _getItemSubElement(item);
 
-        Util.addClass(item, 'hiding');
+        KTUtil.addClass(item, 'hiding');
 
-        Util.slideUp(sub, the.options.accordion.slideSpeed, function() {
-            Util.removeClass(item, 'hiding');
-            Util.removeClass(item, 'show');
-            Util.removeClass(sub, 'show');
+        KTUtil.slideUp(sub, the.options.accordion.slideSpeed, function() {
+            KTUtil.removeClass(item, 'hiding');
+            KTUtil.removeClass(item, 'show');
+            KTUtil.removeClass(sub, 'show');
 
-            Util.removeClass(item, 'hover'); // update
+            KTUtil.removeClass(item, 'hover'); // update
 
-            EventHandler.trigger(the.element, 'kt.menu.accordion.hidden', item);
+            KTEventHandler.trigger(the.element, 'kt.menu.accordion.hidden', item);
         });
     }
 
     var _setActiveLink = function(link) {
         var item = _getItemElement(link);
+
+        if (!item) {
+            return;
+        }
+
         var parentItems = _getItemParentElements(item);
         var parentTabPane = link.closest('.tab-pane');
 
@@ -738,7 +743,7 @@ var Menu = function(element, options) {
     }
 
     var _getLinkByAttribute = function(value, name = "href") {
-        var link = the.element.querySelector('a[' + name + '="' + value + '"]');
+        var link = the.element.querySelector('.menu-link[' + name + '="' + value + '"]');
 
         if (link) {
             return link;
@@ -749,7 +754,7 @@ var Menu = function(element, options) {
 
     // Hide all shown accordions of item
     var _hideAccordions = function(item) {
-        var itemsToHide = Util.findAll(the.element, '.show[data-menu-trigger]');
+        var itemsToHide = KTUtil.findAll(the.element, '.show[data-kt-menu-trigger]');
         var itemToHide;
 
         if (itemsToHide && itemsToHide.length > 0) {
@@ -768,9 +773,9 @@ var Menu = function(element, options) {
         var attr;
         var value = null;
 
-        if ( item && item.hasAttribute('data-menu-' + name) ) {
-            attr = item.getAttribute('data-menu-' + name);
-            value = Util.getResponsiveValue(attr);
+        if ( item && item.hasAttribute('data-kt-menu-' + name) ) {
+            attr = item.getAttribute('data-kt-menu-' + name);
+            value = KTUtil.getResponsiveValue(attr);
 
             if ( value !== null && String(value) === 'true' ) {
                 value = true;
@@ -783,7 +788,7 @@ var Menu = function(element, options) {
     }
 
     var _destroy = function() {
-        Util.data(the.element).remove('menu');
+        KTUtil.data(the.element).remove('menu');
     }
 
     // Construct Class
@@ -906,20 +911,20 @@ var Menu = function(element, options) {
 
     // Event API
     the.on = function(name, handler) {
-        return EventHandler.on(the.element, name, handler);
+        return KTEventHandler.on(the.element, name, handler);
     }
 
     the.one = function(name, handler) {
-        return EventHandler.one(the.element, name, handler);
+        return KTEventHandler.one(the.element, name, handler);
     }
 
     the.off = function(name, handlerId) {
-        return EventHandler.off(the.element, name, handlerId);
+        return KTEventHandler.off(the.element, name, handlerId);
     }
 };
 
-// Get Menu instance by element
-Menu.getInstance = function(element) {
+// Get KTMenu instance by element
+KTMenu.getInstance = function(element) {
     var menu;
     var item;
 
@@ -928,23 +933,23 @@ Menu.getInstance = function(element) {
     }
 
     // Element has menu DOM reference in it's DATA storage
-    if ( Util.data(element).has('menu') ) {
-        return Util.data(element).get('menu');
+    if ( KTUtil.data(element).has('menu') ) {
+        return KTUtil.data(element).get('menu');
     }
 
     // Element has .menu parent 
     if ( menu = element.closest('.menu') ) {
-        if ( Util.data(menu).has('menu') ) {
-            return Util.data(menu).get('menu');
+        if ( KTUtil.data(menu).has('menu') ) {
+            return KTUtil.data(menu).get('menu');
         }
     }
     
     // Element has a parent with DOM reference to .menu in it's DATA storage
-    if ( Util.hasClass(element, 'menu-link') ) {
+    if ( KTUtil.hasClass(element, 'menu-link') ) {
         var sub = element.closest('.menu-sub');
 
-        if ( Util.data(sub).has('menu') ) {
-            return Util.data(sub).get('menu');
+        if ( KTUtil.data(sub).has('menu') ) {
+            return KTUtil.data(sub).get('menu');
         }
     } 
 
@@ -952,13 +957,13 @@ Menu.getInstance = function(element) {
 }
 
 // Hide all dropdowns and skip one if provided
-Menu.hideDropdowns = function(skip) {
-    var items = document.querySelectorAll('.show.menu-dropdown[data-menu-trigger]');
+KTMenu.hideDropdowns = function(skip) {
+    var items = document.querySelectorAll('.show.menu-dropdown[data-kt-menu-trigger]');
 
     if (items && items.length > 0) {
         for (var i = 0, len = items.length; i < len; i++) {
             var item = items[i];
-            var menu = Menu.getInstance(item);
+            var menu = KTMenu.getInstance(item);
 
             if ( menu && menu.getItemSubType(item) === 'dropdown' ) {
                 if ( skip ) {
@@ -974,25 +979,25 @@ Menu.hideDropdowns = function(skip) {
 }
 
 // Update all dropdowns popover instances
-Menu.updateDropdowns = function() {
-    var items = document.querySelectorAll('.show.menu-dropdown[data-menu-trigger]');
+KTMenu.updateDropdowns = function() {
+    var items = document.querySelectorAll('.show.menu-dropdown[data-kt-menu-trigger]');
 
     if (items && items.length > 0) {
         for (var i = 0, len = items.length; i < len; i++) {
             var item = items[i];
 
-            if ( Util.data(item).has('popper') ) {
-                Util.data(item).get('popper').forceUpdate();
+            if ( KTUtil.data(item).has('popper') ) {
+                KTUtil.data(item).get('popper').forceUpdate();
             }
         }
     }
 }
 
 // Global handlers
-Menu.initHandlers = function() {
+KTMenu.initHandlers = function() {
     // Dropdown handler
     document.addEventListener("click", function(e) {
-        var items = document.querySelectorAll('.show.menu-dropdown[data-menu-trigger]:not([data-menu-static="true"])');
+        var items = document.querySelectorAll('.show.menu-dropdown[data-kt-menu-trigger]:not([data-kt-menu-static="true"])');
         var menu;
         var item;
         var sub;
@@ -1001,7 +1006,7 @@ Menu.initHandlers = function() {
         if ( items && items.length > 0 ) {
             for ( var i = 0, len = items.length; i < len; i++ ) {
                 item = items[i];
-                menuObj = Menu.getInstance(item);
+                menuObj = KTMenu.getInstance(item);
 
                 if (menuObj && menuObj.getItemSubType(item) === 'dropdown') {
                     menu = menuObj.getElement();
@@ -1022,8 +1027,8 @@ Menu.initHandlers = function() {
     });
 
     // Sub toggle handler(updated)
-    Util.on(document.body,  '.menu-item[data-menu-trigger] > .menu-link, [data-menu-trigger]:not(.menu-item):not([data-menu-trigger="auto"])', 'click', function(e) {
-        var menu = Menu.getInstance(this);
+    KTUtil.on(document.body,  '.menu-item[data-kt-menu-trigger] > .menu-link, [data-kt-menu-trigger]:not(.menu-item):not([data-kt-menu-trigger="auto"])', 'click', function(e) {
+        var menu = KTMenu.getInstance(this);
 
         if ( menu !== null ) {
             return menu.click(this, e);
@@ -1031,8 +1036,8 @@ Menu.initHandlers = function() {
     });
 
     // Link handler
-    Util.on(document.body,  '.menu-item:not([data-menu-trigger]) > .menu-link', 'click', function(e) {
-        var menu = Menu.getInstance(this);
+    KTUtil.on(document.body,  '.menu-item:not([data-kt-menu-trigger]) > .menu-link', 'click', function(e) {
+        var menu = KTMenu.getInstance(this);
 
         if ( menu !== null ) {
             return menu.link(this, e);
@@ -1040,8 +1045,8 @@ Menu.initHandlers = function() {
     });
 
     // Dismiss handler
-    Util.on(document.body,  '[data-menu-dismiss="true"]', 'click', function(e) {
-        var menu = Menu.getInstance(this);
+    KTUtil.on(document.body,  '[data-kt-menu-dismiss="true"]', 'click', function(e) {
+        var menu = KTMenu.getInstance(this);
 
         if ( menu !== null ) {
             return menu.dismiss(this, e);
@@ -1049,8 +1054,8 @@ Menu.initHandlers = function() {
     });
 
     // Mouseover handler
-    Util.on(document.body,  '[data-menu-trigger], .menu-sub', 'mouseover', function(e) {
-        var menu = Menu.getInstance(this);
+    KTUtil.on(document.body,  '[data-kt-menu-trigger], .menu-sub', 'mouseover', function(e) {
+        var menu = KTMenu.getInstance(this);
 
         if ( menu !== null && menu.getItemSubType(this) === 'dropdown' ) {
             return menu.mouseover(this, e);
@@ -1058,8 +1063,8 @@ Menu.initHandlers = function() {
     });
 
     // Mouseout handler
-    Util.on(document.body,  '[data-menu-trigger], .menu-sub', 'mouseout', function(e) {
-        var menu = Menu.getInstance(this);
+    KTUtil.on(document.body,  '[data-kt-menu-trigger], .menu-sub', 'mouseout', function(e) {
+        var menu = KTMenu.getInstance(this);
 
         if ( menu !== null && menu.getItemSubType(this) === 'dropdown' ) {
             return menu.mouseout(this, e);
@@ -1071,13 +1076,13 @@ Menu.initHandlers = function() {
         var menu;
         var timer;
 
-        Util.throttle(timer, function() {
+        KTUtil.throttle(timer, function() {
             // Locate and update Offcanvas instances on window resize
-            var elements = document.querySelectorAll('[data-menu="true"]');
+            var elements = document.querySelectorAll('[data-kt-menu="true"]');
 
             if ( elements && elements.length > 0 ) {
                 for (var i = 0, len = elements.length; i < len; i++) {
-                    menu = Menu.getInstance(elements[i]);
+                    menu = KTMenu.getInstance(elements[i]);
                     if (menu) {
                         menu.update();
                     }
@@ -1088,16 +1093,16 @@ Menu.initHandlers = function() {
 }
 
 // Render menus by url
-Menu.updateByLinkAttribute = function(value, name = "href") {
+KTMenu.updateByLinkAttribute = function(value, name = "href") {
     // Set menu link active state by attribute value
-    var elements = document.querySelectorAll('[data-menu="true"]');
+    var elements = document.querySelectorAll('[data-kt-menu="true"]');
 
     if ( elements && elements.length > 0 ) {
         for (var i = 0, len = elements.length; i < len; i++) {
-            var menu = Menu.getInstance(elements[i]);
+            var menu = KTMenu.getInstance(elements[i]);
 
             if (menu) {
-                var link = menu.getLinkByAttribute(value, name);
+                var link = menu.getLinkByAttribute(value, name);                
                 if (link) {
                     menu.setActiveLink(link);
                 }
@@ -1107,28 +1112,28 @@ Menu.updateByLinkAttribute = function(value, name = "href") {
 }
 
 // Global instances
-Menu.createInstances = function(selector = '[data-menu="true"]') {
+KTMenu.createInstances = function(selector = '[data-kt-menu="true"]') {
     // Initialize menus
     var elements = document.querySelectorAll(selector);
     if ( elements && elements.length > 0 ) {
         for (var i = 0, len = elements.length; i < len; i++) {
-            new Menu(elements[i]);
+            new KTMenu(elements[i]);
         }
     }
 }
 
 // Global initialization
-Menu.init = function() {
-    Menu.createInstances();
+KTMenu.init = function() {
+    KTMenu.createInstances();
 
-    if (MenuHandlersInitialized === false) {
-        Menu.initHandlers();
+    if (KTMenuHandlersInitialized === false) {
+        KTMenu.initHandlers();
 
-        MenuHandlersInitialized = true;
+        KTMenuHandlersInitialized = true;
     }    
 };
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = Menu;
+    module.exports = KTMenu;
 }

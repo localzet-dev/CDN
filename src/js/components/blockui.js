@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var BlockUI = function(element, options) {
+// Class definition
+var KTBlockUI = function(element, options) {
     //////////////////////////////
     // ** Private variables  ** //
     //////////////////////////////
@@ -24,8 +24,8 @@ var BlockUI = function(element, options) {
     ////////////////////////////
 
     var _construct = function() {
-        if ( Util.data(element).has('blockui') ) {
-            the = Util.data(element).get('blockui');
+        if ( KTUtil.data(element).has('blockui') ) {
+            the = KTUtil.data(element).get('blockui');
         } else {
             _init();
         }
@@ -33,7 +33,7 @@ var BlockUI = function(element, options) {
 
     var _init = function() {
         // Variables
-        the.options = Util.deepExtend({}, defaultOptions, options);
+        the.options = KTUtil.deepExtend({}, defaultOptions, options);
         the.element = element;
         the.overlayElement = null;
         the.blocked = false;
@@ -41,37 +41,37 @@ var BlockUI = function(element, options) {
         the.overflowChanged = false;
 
         // Bind Instance
-        Util.data(the.element).set('blockui', the);
+        KTUtil.data(the.element).set('blockui', the);
     }
 
     var _block = function() {
-        if ( EventHandler.trigger(the.element, 'kt.blockui.block', the) === false ) {
+        if ( KTEventHandler.trigger(the.element, 'kt.blockui.block', the) === false ) {
             return;
         }
 
         var isPage = (the.element.tagName === 'BODY');
        
-        var position = Util.css(the.element, 'position');
-        var overflow = Util.css(the.element, 'overflow');
+        var position = KTUtil.css(the.element, 'position');
+        var overflow = KTUtil.css(the.element, 'overflow');
         var zIndex = isPage ? 10000 : 1;
 
         if (the.options.zIndex > 0) {
             zIndex = the.options.zIndex;
         } else {
-            if (Util.css(the.element, 'z-index') != 'auto') {
-                zIndex = Util.css(the.element, 'z-index');
+            if (KTUtil.css(the.element, 'z-index') != 'auto') {
+                zIndex = KTUtil.css(the.element, 'z-index');
             }
         }
 
         the.element.classList.add('blockui');
 
         if (position === "absolute" || position === "relative" || position === "fixed") {
-            Util.css(the.element, 'position', 'relative');
+            KTUtil.css(the.element, 'position', 'relative');
             the.positionChanged = true;
         }
 
         if (the.options.overflow === 'hidden' && overflow === 'visible') {           
-            Util.css(the.element, 'overflow', 'hidden');
+            KTUtil.css(the.element, 'overflow', 'hidden');
             the.overflowChanged = true;
         }
 
@@ -80,36 +80,36 @@ var BlockUI = function(element, options) {
         
         the.overlayElement.innerHTML = the.options.message;
 
-        Util.css(the.overlayElement, 'z-index', zIndex);
+        KTUtil.css(the.overlayElement, 'z-index', zIndex);
 
         the.element.append(the.overlayElement);
         the.blocked = true;
 
-        EventHandler.trigger(the.element, 'kt.blockui.after.blocked', the)
+        KTEventHandler.trigger(the.element, 'kt.blockui.after.blocked', the)
     }
 
     var _release = function() {
-        if ( EventHandler.trigger(the.element, 'kt.blockui.release', the) === false ) {
+        if ( KTEventHandler.trigger(the.element, 'kt.blockui.release', the) === false ) {
             return;
         }
 
         the.element.classList.add('blockui');
         
         if (the.positionChanged) {
-            Util.css(the.element, 'position', '');
+            KTUtil.css(the.element, 'position', '');
         }
 
         if (the.overflowChanged) {
-            Util.css(the.element, 'overflow', '');
+            KTUtil.css(the.element, 'overflow', '');
         }
 
         if (the.overlayElement) {
-            Util.remove(the.overlayElement);
+            KTUtil.remove(the.overlayElement);
         }        
 
         the.blocked = false;
 
-        EventHandler.trigger(the.element, 'kt.blockui.released', the);
+        KTEventHandler.trigger(the.element, 'kt.blockui.released', the);
     }
 
     var _isBlocked = function() {
@@ -117,7 +117,7 @@ var BlockUI = function(element, options) {
     }
 
     var _destroy = function() {
-        Util.data(the.element).remove('blockui');
+        KTUtil.data(the.element).remove('blockui');
     }
 
     // Construct class
@@ -146,26 +146,26 @@ var BlockUI = function(element, options) {
 
     // Event API
     the.on = function(name, handler) {
-        return EventHandler.on(the.element, name, handler);
+        return KTEventHandler.on(the.element, name, handler);
     }
 
     the.one = function(name, handler) {
-        return EventHandler.one(the.element, name, handler);
+        return KTEventHandler.one(the.element, name, handler);
     }
 
     the.off = function(name, handlerId) {
-        return EventHandler.off(the.element, name, handlerId);
+        return KTEventHandler.off(the.element, name, handlerId);
     }
 
     the.trigger = function(name, event) {
-        return EventHandler.trigger(the.element, name, event, the, event);
+        return KTEventHandler.trigger(the.element, name, event, the, event);
     }
 };
 
 // Static methods
-BlockUI.getInstance = function(element) {
-    if (element !== null && Util.data(element).has('blockui')) {
-        return Util.data(element).get('blockui');
+KTBlockUI.getInstance = function(element) {
+    if (element !== null && KTUtil.data(element).has('blockui')) {
+        return KTUtil.data(element).get('blockui');
     } else {
         return null;
     }
@@ -173,5 +173,5 @@ BlockUI.getInstance = function(element) {
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = BlockUI;
+    module.exports = KTBlockUI;
 }

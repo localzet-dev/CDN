@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var Dialer = function(element, options) {
+// Class definition
+var KTDialer = function(element, options) {
     ////////////////////////////
     // ** Private variables  ** //
     ////////////////////////////
@@ -27,8 +27,8 @@ var Dialer = function(element, options) {
 
     // Constructor
     var _construct = function() {
-        if ( Util.data(element).has('dialer') === true ) {
-            the = Util.data(element).get('dialer');
+        if ( KTUtil.data(element).has('dialer') === true ) {
+            the = KTUtil.data(element).get('dialer');
         } else {
             _init();
         }
@@ -37,12 +37,12 @@ var Dialer = function(element, options) {
     // Initialize
     var _init = function() {
         // Variables
-        the.options = Util.deepExtend({}, defaultOptions, options);
+        the.options = KTUtil.deepExtend({}, defaultOptions, options);
 
         // Elements
         the.element = element;
-        the.incElement = the.element.querySelector('[data-dialer-control="increase"]');
-        the.decElement = the.element.querySelector('[data-dialer-control="decrease"]');
+        the.incElement = the.element.querySelector('[data-kt-dialer-control="increase"]');
+        the.decElement = the.element.querySelector('[data-kt-dialer-control="decrease"]');
         the.inputElement = the.element.querySelector('input[type]'); 
         
         // Set Values
@@ -78,24 +78,24 @@ var Dialer = function(element, options) {
         _handlers();
 
         // Bind Instance
-        Util.data(the.element).set('dialer', the);
+        KTUtil.data(the.element).set('dialer', the);
     }
 
     // Handlers
     var _handlers = function() {
-        Util.addEvent(the.incElement, 'click', function(e) {
+        KTUtil.addEvent(the.incElement, 'click', function(e) {
             e.preventDefault();
         
             _increase();
         });
 
-        Util.addEvent(the.decElement, 'click', function(e) {
+        KTUtil.addEvent(the.decElement, 'click', function(e) {
             e.preventDefault();
 
             _decrease();
         });
 
-        Util.addEvent(the.inputElement, 'input', function(e) {
+        KTUtil.addEvent(the.inputElement, 'input', function(e) {
             e.preventDefault();
 
             _setValue();
@@ -105,27 +105,27 @@ var Dialer = function(element, options) {
     // Event handlers
     var _increase = function() {
         // Trigger "after.dialer" event
-        EventHandler.trigger(the.element, 'kt.dialer.increase', the);
+        KTEventHandler.trigger(the.element, 'kt.dialer.increase', the);
 
         the.inputElement.value = the.value + the.options.step;
         _setValue();
 
         // Trigger "before.dialer" event
-        EventHandler.trigger(the.element, 'kt.dialer.increased', the);
+        KTEventHandler.trigger(the.element, 'kt.dialer.increased', the);
 
         return the;
     }
 
     var _decrease = function() {
         // Trigger "after.dialer" event
-        EventHandler.trigger(the.element, 'kt.dialer.decrease', the);
+        KTEventHandler.trigger(the.element, 'kt.dialer.decrease', the);
 
         the.inputElement.value = the.value - the.options.step;      
 
         _setValue();
 
         // Trigger "before.dialer" event
-        EventHandler.trigger(the.element, 'kt.dialer.decreased', the);
+        KTEventHandler.trigger(the.element, 'kt.dialer.decreased', the);
 
         return the;
     }
@@ -133,7 +133,7 @@ var Dialer = function(element, options) {
     // Set Input Value
     var _setValue = function(value) {
         // Trigger "after.dialer" event
-        EventHandler.trigger(the.element, 'kt.dialer.change', the);
+        KTEventHandler.trigger(the.element, 'kt.dialer.change', the);
 
         if (value !== undefined) {
             the.value = value;
@@ -155,7 +155,7 @@ var Dialer = function(element, options) {
         the.inputElement.dispatchEvent(new Event('change'));
 
         // Trigger "after.dialer" event
-        EventHandler.trigger(the.element, 'kt.dialer.changed', the);
+        KTEventHandler.trigger(the.element, 'kt.dialer.changed', the);
     }
 
     var _parse = function(val) {
@@ -181,8 +181,8 @@ var Dialer = function(element, options) {
 
     // Get option
     var _getOption = function(name) {
-        if ( the.element.hasAttribute('data-dialer-' + name) === true ) {
-            var attr = the.element.getAttribute('data-dialer-' + name);
+        if ( the.element.hasAttribute('data-kt-dialer-' + name) === true ) {
+            var attr = the.element.getAttribute('data-kt-dialer-' + name);
             var value = attr;            
 
             return value;
@@ -192,7 +192,7 @@ var Dialer = function(element, options) {
     }
 
     var _destroy = function() {
-        Util.data(the.element).remove('dialer');
+        KTUtil.data(the.element).remove('dialer');
     }
 
     // Construct class
@@ -241,49 +241,49 @@ var Dialer = function(element, options) {
 
     // Event API
     the.on = function(name, handler) {
-        return EventHandler.on(the.element, name, handler);
+        return KTEventHandler.on(the.element, name, handler);
     }
 
     the.one = function(name, handler) {
-        return EventHandler.one(the.element, name, handler);
+        return KTEventHandler.one(the.element, name, handler);
     }
 
     the.off = function(name, handlerId) {
-        return EventHandler.off(the.element, name, handlerId);
+        return KTEventHandler.off(the.element, name, handlerId);
     }
 
     the.trigger = function(name, event) {
-        return EventHandler.trigger(the.element, name, event, the, event);
+        return KTEventHandler.trigger(the.element, name, event, the, event);
     }
 };
 
 // Static methods
-Dialer.getInstance = function(element) {
-    if ( element !== null && Util.data(element).has('dialer') ) {
-        return Util.data(element).get('dialer');
+KTDialer.getInstance = function(element) {
+    if ( element !== null && KTUtil.data(element).has('dialer') ) {
+        return KTUtil.data(element).get('dialer');
     } else {
         return null;
     }
 }
 
 // Create instances
-Dialer.createInstances = function(selector = '[data-dialer="true"]') {
+KTDialer.createInstances = function(selector = '[data-kt-dialer="true"]') {
     // Get instances
     var elements = document.querySelectorAll(selector);
 
     if ( elements && elements.length > 0 ) {
         for (var i = 0, len = elements.length; i < len; i++) {
-            new Dialer(elements[i]);
+            new KTDialer(elements[i]);
         }
     }
 }
 
 // Global initialization
-Dialer.init = function() {
-    Dialer.createInstances();
+KTDialer.init = function() {
+    KTDialer.createInstances();
 };
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = Dialer;
+    module.exports = KTDialer;
 }

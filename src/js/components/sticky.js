@@ -1,9 +1,9 @@
 "use strict";
 
-var StickyHandlersInitialized = false;
+var KTStickyHandlersInitialized = false;
 
-// Определение класса
-var Sticky = function(element, options) {
+// Class definition
+var KTSticky = function(element, options) {
     ////////////////////////////
     // ** Private Variables  ** //
     ////////////////////////////
@@ -27,8 +27,8 @@ var Sticky = function(element, options) {
     ////////////////////////////
 
     var _construct = function() {
-        if ( Util.data(element).has('sticky') === true ) {
-            the = Util.data(element).get('sticky');
+        if ( KTUtil.data(element).has('sticky') === true ) {
+            the = KTUtil.data(element).get('sticky');
         } else {
             _init();
         }
@@ -36,17 +36,17 @@ var Sticky = function(element, options) {
 
     var _init = function() {
         the.element = element;
-        the.options = Util.deepExtend({}, defaultOptions, options);
-        the.uid = Util.getUniqueId('sticky');
-        the.name = the.element.getAttribute('data-sticky-name');
-        the.attributeName = 'data-sticky-' + the.name;
-        the.attributeName2 = 'data-' + the.name;
+        the.options = KTUtil.deepExtend({}, defaultOptions, options);
+        the.uid = KTUtil.getUniqueId('sticky');
+        the.name = the.element.getAttribute('data-kt-sticky-name');
+        the.attributeName = 'data-kt-sticky-' + the.name;
+        the.attributeName2 = 'data-kt-' + the.name;
         the.eventTriggerState = true;
         the.lastScrollTop = 0;
         the.scrollHandler;
 
         // Set initialized
-        the.element.setAttribute('data-sticky', 'true');
+        the.element.setAttribute('data-kt-sticky', 'true');
 
         // Event Handlers
         window.addEventListener('scroll', _scroll);
@@ -55,7 +55,7 @@ var Sticky = function(element, options) {
         _scroll();
 
         // Bind Instance
-        Util.data(the.element).set('sticky', the);
+        KTUtil.data(the.element).set('sticky', the);
     }
 
     var _scroll = function(e) {
@@ -68,14 +68,15 @@ var Sticky = function(element, options) {
 
         // Exit if false
         if ( offset === false ) {
+            _disable();
             return;
         }
 
         offset = parseInt(offset);
         release = release ? document.querySelector(release) : null;
 
-        st = Util.getScrollTop();
-        diff = document.documentElement.scrollHeight - window.innerHeight - Util.getScrollTop();
+        st = KTUtil.getScrollTop();
+        diff = document.documentElement.scrollHeight - window.innerHeight - KTUtil.getScrollTop();
         
         var proceed = (!release || (release.offsetTop - release.clientHeight) > st);
 
@@ -89,12 +90,12 @@ var Sticky = function(element, options) {
 
                     document.body.setAttribute(the.attributeName, 'on');
                     document.body.setAttribute(the.attributeName2, 'on');
-                    the.element.setAttribute("data-sticky-enabled", "true");
+                    the.element.setAttribute("data-kt-sticky-enabled", "true");
                 }
 
                 if ( the.eventTriggerState === true ) {
-                    EventHandler.trigger(the.element, 'kt.sticky.on', the);
-                    EventHandler.trigger(the.element, 'kt.sticky.change', the);
+                    KTEventHandler.trigger(the.element, 'kt.sticky.on', the);
+                    KTEventHandler.trigger(the.element, 'kt.sticky.change', the);
 
                     the.eventTriggerState = false;
                 }
@@ -103,12 +104,12 @@ var Sticky = function(element, options) {
                     _disable();
                     document.body.removeAttribute(the.attributeName);
                     document.body.removeAttribute(the.attributeName2);
-                    the.element.removeAttribute("data-sticky-enabled");
+                    the.element.removeAttribute("data-kt-sticky-enabled");
                 }
 
                 if ( the.eventTriggerState === false ) {
-                    EventHandler.trigger(the.element, 'kt.sticky.off', the);
-                    EventHandler.trigger(the.element, 'kt.sticky.change', the);
+                    KTEventHandler.trigger(the.element, 'kt.sticky.off', the);
+                    KTEventHandler.trigger(the.element, 'kt.sticky.change', the);
                     the.eventTriggerState = true;
                 }
             }
@@ -124,12 +125,12 @@ var Sticky = function(element, options) {
                     
                     document.body.setAttribute(the.attributeName, 'on');
                     document.body.setAttribute(the.attributeName2, 'on');
-                    the.element.setAttribute("data-sticky-enabled", "true");
+                    the.element.setAttribute("data-kt-sticky-enabled", "true");
                 }
 
                 if ( the.eventTriggerState === true ) {
-                    EventHandler.trigger(the.element, 'kt.sticky.on', the);
-                    EventHandler.trigger(the.element, 'kt.sticky.change', the);
+                    KTEventHandler.trigger(the.element, 'kt.sticky.on', the);
+                    KTEventHandler.trigger(the.element, 'kt.sticky.change', the);
                     the.eventTriggerState = false;
                 }
             } else { // back scroll mode
@@ -137,12 +138,12 @@ var Sticky = function(element, options) {
                     _disable();
                     document.body.removeAttribute(the.attributeName);
                     document.body.removeAttribute(the.attributeName2);
-                    the.element.removeAttribute("data-sticky-enabled");
+                    the.element.removeAttribute("data-kt-sticky-enabled");
                 }
 
                 if ( the.eventTriggerState === false ) {
-                    EventHandler.trigger(the.element, 'kt.sticky.off', the);
-                    EventHandler.trigger(the.element, 'kt.sticky.change', the);
+                    KTEventHandler.trigger(the.element, 'kt.sticky.off', the);
+                    KTEventHandler.trigger(the.element, 'kt.sticky.change', the);
                     the.eventTriggerState = true;
                 }
             }
@@ -150,9 +151,9 @@ var Sticky = function(element, options) {
 
         if (release) {
             if ( release.offsetTop - release.clientHeight > st ) {
-                the.element.setAttribute('data-sticky-released', 'true');
+                the.element.setAttribute('data-kt-sticky-released', 'true');
             } else {
-                the.element.removeAttribute('data-sticky-released');
+                the.element.removeAttribute('data-kt-sticky-released');
             }
         } 
     }
@@ -172,53 +173,53 @@ var Sticky = function(element, options) {
         var heightOffset = _getOption('height-offset');
         heightOffset = heightOffset ? parseInt(heightOffset) : 0;
 
-        if (height + heightOffset + top > Util.getViewPort().height) {
+        if (height + heightOffset + top > KTUtil.getViewPort().height) {
             return false;
         }
         
         if ( update !== true && _getOption('animation') === true ) {
-            Util.css(the.element, 'animationDuration', _getOption('animationSpeed'));
-            Util.animateClass(the.element, 'animation ' + _getOption('animationClass'));
+            KTUtil.css(the.element, 'animationDuration', _getOption('animationSpeed'));
+            KTUtil.animateClass(the.element, 'animation ' + _getOption('animationClass'));
         }
 
         if ( classes !== null ) {
-            Util.addClass(the.element, classes);
+            KTUtil.addClass(the.element, classes);
         }
 
         if ( zindex !== null ) {
-            Util.css(the.element, 'z-index', zindex);
-            Util.css(the.element, 'position', 'fixed');
+            KTUtil.css(the.element, 'z-index', zindex);
+            KTUtil.css(the.element, 'position', 'fixed');
         }
 
         if ( top >= 0 ) {
-            Util.css(the.element, 'top', String(top) + 'px');
+            KTUtil.css(the.element, 'top', String(top) + 'px');
         }
 
         if ( width !== null ) {
             if (width['target']) {
                 var targetElement = document.querySelector(width['target']);
                 if (targetElement) {
-                    width = Util.css(targetElement, 'width');
+                    width = KTUtil.css(targetElement, 'width');
                 }
             }
 
-            Util.css(the.element, 'width', width);
+            KTUtil.css(the.element, 'width', width);
         }
 
         if ( left !== null ) {
             if ( String(left).toLowerCase() === 'auto' ) {
-                var offsetLeft = Util.offset(the.element).left;
+                var offsetLeft = KTUtil.offset(the.element).left;
 
                 if ( offsetLeft >= 0 ) {
-                    Util.css(the.element, 'left', String(offsetLeft) + 'px');
+                    KTUtil.css(the.element, 'left', String(offsetLeft) + 'px');
                 }
             } else {
-                Util.css(the.element, 'left', left);
+                KTUtil.css(the.element, 'left', left);
             }
         }
 
         if ( right !== null ) {
-            Util.css(the.element, 'right', right);
+            KTUtil.css(the.element, 'right', right);
         }        
 
         // Height dependencies
@@ -227,25 +228,25 @@ var Sticky = function(element, options) {
             
             if ( dependencyElements && dependencyElements.length > 0 ) {
                 for ( var i = 0, len = dependencyElements.length; i < len; i++ ) {
-                    Util.css(dependencyElements[i], 'padding-top', String(height) + 'px');
+                    KTUtil.css(dependencyElements[i], 'padding-top', String(height) + 'px');
                 }
             }
         }
     }
 
     var _disable = function() {
-        Util.css(the.element, 'top', '');
-        Util.css(the.element, 'width', '');
-        Util.css(the.element, 'left', '');
-        Util.css(the.element, 'right', '');
-        Util.css(the.element, 'z-index', '');
-        Util.css(the.element, 'position', '');
+        KTUtil.css(the.element, 'top', '');
+        KTUtil.css(the.element, 'width', '');
+        KTUtil.css(the.element, 'left', '');
+        KTUtil.css(the.element, 'right', '');
+        KTUtil.css(the.element, 'z-index', '');
+        KTUtil.css(the.element, 'position', '');
 
         var dependencies = _getOption('dependencies');
         var classes = _getOption('class');
 
         if ( classes !== null ) {
-            Util.removeClass(the.element, classes);
+            KTUtil.removeClass(the.element, classes);
         }
 
         // Height dependencies
@@ -254,7 +255,7 @@ var Sticky = function(element, options) {
 
             if ( dependencyElements && dependencyElements.length > 0 ) {
                 for ( var i = 0, len = dependencyElements.length; i < len; i++ ) {
-                    Util.css(dependencyElements[i], 'padding-top', '');
+                    KTUtil.css(dependencyElements[i], 'padding-top', '');
                 }
             }
         }
@@ -265,26 +266,26 @@ var Sticky = function(element, options) {
     }
 
     var _calculateHeight = function() {
-        var height = parseFloat(Util.css(the.element, 'height'));
+        var height = parseFloat(KTUtil.css(the.element, 'height'));
 
-        height = height + parseFloat(Util.css(the.element, 'margin-top'));
-        height = height + parseFloat(Util.css(the.element, 'margin-bottom'));
+        height = height + parseFloat(KTUtil.css(the.element, 'margin-top'));
+        height = height + parseFloat(KTUtil.css(the.element, 'margin-bottom'));
         
-        if (Util.css(element, 'border-top')) {
-            height = height + parseFloat(Util.css(the.element, 'border-top'));
+        if (KTUtil.css(element, 'border-top')) {
+            height = height + parseFloat(KTUtil.css(the.element, 'border-top'));
         }
 
-        if (Util.css(element, 'border-bottom')) {
-            height = height + parseFloat(Util.css(the.element, 'border-bottom'));
+        if (KTUtil.css(element, 'border-bottom')) {
+            height = height + parseFloat(KTUtil.css(the.element, 'border-bottom'));
         }
 
         return height;
     }
 
     var _getOption = function(name) {
-        if ( the.element.hasAttribute('data-sticky-' + name) === true ) {
-            var attr = the.element.getAttribute('data-sticky-' + name);
-            var value = Util.getResponsiveValue(attr);
+        if ( the.element.hasAttribute('data-kt-sticky-' + name) === true ) {
+            var attr = the.element.getAttribute('data-kt-sticky-' + name);
+            var value = KTUtil.getResponsiveValue(attr);
 
             if ( value !== null && String(value) === 'true' ) {
                 value = true;
@@ -294,10 +295,10 @@ var Sticky = function(element, options) {
 
             return value;
         } else {
-            var optionName = Util.snakeToCamel(name);
+            var optionName = KTUtil.snakeToCamel(name);
 
             if ( the.options[optionName] ) {
-                return Util.getResponsiveValue(the.options[optionName]);
+                return KTUtil.getResponsiveValue(the.options[optionName]);
             } else {
                 return null;
             }
@@ -306,7 +307,7 @@ var Sticky = function(element, options) {
 
     var _destroy = function() {
         window.removeEventListener('scroll', _scroll);
-        Util.data(the.element).remove('sticky');
+        KTUtil.data(the.element).remove('sticky');
     }
 
     // Construct Class
@@ -334,56 +335,56 @@ var Sticky = function(element, options) {
 
     // Event API
     the.on = function(name, handler) {
-        return EventHandler.on(the.element, name, handler);
+        return KTEventHandler.on(the.element, name, handler);
     }
 
     the.one = function(name, handler) {
-        return EventHandler.one(the.element, name, handler);
+        return KTEventHandler.one(the.element, name, handler);
     }
 
     the.off = function(name, handlerId) {
-        return EventHandler.off(the.element, name, handlerId);
+        return KTEventHandler.off(the.element, name, handlerId);
     }
 
     the.trigger = function(name, event) {
-        return EventHandler.trigger(the.element, name, event, the, event);
+        return KTEventHandler.trigger(the.element, name, event, the, event);
     }
 };
 
 // Static methods
-Sticky.getInstance = function(element) {
-    if ( element !== null && Util.data(element).has('sticky') ) {
-        return Util.data(element).get('sticky');
+KTSticky.getInstance = function(element) {
+    if ( element !== null && KTUtil.data(element).has('sticky') ) {
+        return KTUtil.data(element).get('sticky');
     } else {
         return null;
     }
 }
 
 // Create instances
-Sticky.createInstances = function(selector = '[data-sticky="true"]') {
+KTSticky.createInstances = function(selector = '[data-kt-sticky="true"]') {
     // Initialize Menus
     var elements = document.body.querySelectorAll(selector);
     var sticky;
 
     if ( elements && elements.length > 0 ) {
         for (var i = 0, len = elements.length; i < len; i++) {
-            sticky = new Sticky(elements[i]);
+            sticky = new KTSticky(elements[i]);
         }
     }
 }
 
 // Window resize handler
-Sticky.handleResize = function() {
+KTSticky.handleResize = function() {
     window.addEventListener('resize', function() {
         var timer;
     
-        Util.throttle(timer, function() {
+        KTUtil.throttle(timer, function() {
             // Locate and update Offcanvas instances on window resize
-            var elements = document.body.querySelectorAll('[data-sticky="true"]');
+            var elements = document.body.querySelectorAll('[data-kt-sticky="true"]');
     
             if ( elements && elements.length > 0 ) {
                 for (var i = 0, len = elements.length; i < len; i++) {
-                    var sticky = Sticky.getInstance(elements[i]);
+                    var sticky = KTSticky.getInstance(elements[i]);
                     if (sticky) {
                         sticky.update();
                     }
@@ -394,16 +395,16 @@ Sticky.handleResize = function() {
 }
 
 // Global initialization
-Sticky.init = function() {
-    Sticky.createInstances();
+KTSticky.init = function() {
+    KTSticky.createInstances();
 
-    if (StickyHandlersInitialized === false) {
-        Sticky.handleResize();
-        StickyHandlersInitialized = true;
+    if (KTStickyHandlersInitialized === false) {
+        KTSticky.handleResize();
+        KTStickyHandlersInitialized = true;
     }    
 };
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = Sticky;
+    module.exports = KTSticky;
 }

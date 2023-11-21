@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var EventHandler = function() {
+// Class definition
+var KTEventHandler = function() {
     ////////////////////////////
     // ** Private Variables  ** //
     ////////////////////////////
@@ -14,8 +14,8 @@ var EventHandler = function() {
         var returnValue = true;
         var eventValue;
 
-        if ( Util.data(element).has(name) === true ) {
-            var handlerIds = Util.data(element).get(name);
+        if ( KTUtil.data(element).has(name) === true ) {
+            var handlerIds = KTUtil.data(element).get(name);
             var handlerId;
 
             for (var i = 0; i < handlerIds.length; i++) {
@@ -48,8 +48,8 @@ var EventHandler = function() {
     }
 
     var _addEvent = function(element, name, callback, one) {
-        var handlerId = Util.getUniqueId('event');
-        var handlerIds = Util.data(element).get(name);
+        var handlerId = KTUtil.getUniqueId('event');
+        var handlerIds = KTUtil.data(element).get(name);
 
         if ( !handlerIds ) {
             handlerIds = [];
@@ -57,7 +57,7 @@ var EventHandler = function() {
 
         handlerIds.push(handlerId);
 
-        Util.data(element).set(name, handlerIds);
+        KTUtil.data(element).set(name, handlerIds);
 
         if ( !_handlers[name] ) {
             _handlers[name] = {};
@@ -74,12 +74,12 @@ var EventHandler = function() {
     }
 
     var _removeEvent = function(element, name, handlerId) {
-        var handlerIds = Util.data(element).get(name);
+        var handlerIds = KTUtil.data(element).get(name);
         var index = handlerIds && handlerIds.indexOf(handlerId);
         
         if (index !== -1) {
             handlerIds.splice(index, 1);
-            Util.data(element).set(name, handlerIds);
+            KTUtil.data(element).set(name, handlerIds);
         }
 
         if (_handlers[name] && _handlers[name][handlerId]) {
@@ -117,5 +117,5 @@ var EventHandler = function() {
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = EventHandler;
+    module.exports = KTEventHandler;
 }

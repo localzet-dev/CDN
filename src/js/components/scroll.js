@@ -1,9 +1,9 @@
 "use strict";
 
-var ScrollHandlersInitialized = false;
+var KTScrollHandlersInitialized = false;
 
-// Определение класса
-var Scroll = function(element, options) {
+// Class definition
+var KTScroll = function(element, options) {
     ////////////////////////////
     // ** Private Variables  ** //
     ////////////////////////////
@@ -23,8 +23,8 @@ var Scroll = function(element, options) {
     ////////////////////////////
 
     var _construct = function() {
-        if ( Util.data(element).has('scroll') ) {
-            the = Util.data(element).get('scroll');
+        if ( KTUtil.data(element).has('scroll') ) {
+            the = KTUtil.data(element).get('scroll');
         } else {
             _init();
         }
@@ -32,20 +32,20 @@ var Scroll = function(element, options) {
 
     var _init = function() {
         // Variables
-        the.options = Util.deepExtend({}, defaultOptions, options);
+        the.options = KTUtil.deepExtend({}, defaultOptions, options);
 
         // Elements
         the.element = element;        
         the.id = the.element.getAttribute('id');
 
         // Set initialized
-        the.element.setAttribute('data-scroll', 'true');
+        the.element.setAttribute('data-kt-scroll', 'true');
 
         // Update
         _update();
 
         // Bind Instance
-        Util.data(the.element).set('scroll', the);
+        KTUtil.data(the.element).set('scroll', the);
     }
 
     var _setupHeight = function() {
@@ -54,9 +54,9 @@ var Scroll = function(element, options) {
 
         // Set height
         if ( height !== null && height.length > 0 ) {
-            Util.css(the.element, heightType, height);
+            KTUtil.css(the.element, heightType, height);
         } else {
-            Util.css(the.element, heightType, '');
+            KTUtil.css(the.element, heightType, '');
         }
     }
 
@@ -78,7 +78,7 @@ var Scroll = function(element, options) {
     }
 
     var _getStorageNamespace = function(postfix) {
-        return document.body.hasAttribute("data-name") ? document.body.getAttribute("data-name") + "_" : "";
+        return document.body.hasAttribute("data-kt-name") ? document.body.getAttribute("data-kt-name") + "_" : "";
     }
 
     var _setupScrollHandler = function() {
@@ -94,7 +94,7 @@ var Scroll = function(element, options) {
     }
 
     var _resetHeight = function() {
-        Util.css(the.element, _getHeightType(), '');
+        KTUtil.css(the.element, _getHeightType(), '');
     }
 
     var _scrollHandler = function () {
@@ -104,7 +104,7 @@ var Scroll = function(element, options) {
 
     var _update = function() {
         // Activate/deactivate
-        if ( _getOption('activate') === true || the.element.hasAttribute('data-scroll-activate') === false ) {
+        if ( _getOption('activate') === true || the.element.hasAttribute('data-kt-scroll-activate') === false ) {
             _setupHeight();
             _setupStretchHeight();
             _setupScrollHandler();
@@ -128,9 +128,9 @@ var Scroll = function(element, options) {
                 var diff = _getElementHeight(element2) - _getElementHeight(element1);
 
                 if (diff > 0) {
-                    var height = parseInt(Util.css(the.element, _getHeightType())) + diff;
+                    var height = parseInt(KTUtil.css(the.element, _getHeightType())) + diff;
 
-                    Util.css(the.element, _getHeightType(), String(height) + 'px');
+                    KTUtil.css(the.element, _getHeightType(), String(height) + 'px');
                 }
             }
         }
@@ -149,7 +149,7 @@ var Scroll = function(element, options) {
     }
 
     var _getAutoHeight = function() {
-        var height = Util.getViewPort().height;
+        var height = KTUtil.getViewPort().height;
         var dependencies = _getOption('dependencies');
         var wrappers = _getOption('wrappers');
         var offset = _getOption('offset');
@@ -165,7 +165,7 @@ var Scroll = function(element, options) {
 
             if ( elements && elements.length > 0 ) {
                 for ( var i = 0, len = elements.length; i < len; i++ ) {
-                    if ( Util.visible(elements[i]) === false ) {
+                    if ( KTUtil.visible(elements[i]) === false ) {
                         continue;
                     }
 
@@ -179,7 +179,7 @@ var Scroll = function(element, options) {
             var elements = document.querySelectorAll(wrappers);
             if ( elements && elements.length > 0 ) {
                 for ( var i = 0, len = elements.length; i < len; i++ ) {
-                    if ( Util.visible(elements[i]) === false ) {
+                    if ( KTUtil.visible(elements[i]) === false ) {
                         continue;
                     }
 
@@ -200,16 +200,16 @@ var Scroll = function(element, options) {
         var height = 0;
 
         if (element !== null) {
-            height = height + parseInt(Util.css(element, 'height'));
-            height = height + parseInt(Util.css(element, 'margin-top'));
-            height = height + parseInt(Util.css(element, 'margin-bottom'));
+            height = height + parseInt(KTUtil.css(element, 'height'));
+            height = height + parseInt(KTUtil.css(element, 'margin-top'));
+            height = height + parseInt(KTUtil.css(element, 'margin-bottom'));
 
-            if (Util.css(element, 'border-top')) {
-                height = height + parseInt(Util.css(element, 'border-top'));
+            if (KTUtil.css(element, 'border-top')) {
+                height = height + parseInt(KTUtil.css(element, 'border-top'));
             }
 
-            if (Util.css(element, 'border-bottom')) {
-                height = height + parseInt(Util.css(element, 'border-bottom'));
+            if (KTUtil.css(element, 'border-bottom')) {
+                height = height + parseInt(KTUtil.css(element, 'border-bottom'));
             }
         } 
 
@@ -220,17 +220,17 @@ var Scroll = function(element, options) {
         var spacing = 0;
 
         if (element !== null) {
-            spacing = spacing + parseInt(Util.css(element, 'margin-top'));
-            spacing = spacing + parseInt(Util.css(element, 'margin-bottom'));
-            spacing = spacing + parseInt(Util.css(element, 'padding-top'));
-            spacing = spacing + parseInt(Util.css(element, 'padding-bottom'));
+            spacing = spacing + parseInt(KTUtil.css(element, 'margin-top'));
+            spacing = spacing + parseInt(KTUtil.css(element, 'margin-bottom'));
+            spacing = spacing + parseInt(KTUtil.css(element, 'padding-top'));
+            spacing = spacing + parseInt(KTUtil.css(element, 'padding-bottom'));
 
-            if (Util.css(element, 'border-top')) {
-                spacing = spacing + parseInt(Util.css(element, 'border-top'));
+            if (KTUtil.css(element, 'border-top')) {
+                spacing = spacing + parseInt(KTUtil.css(element, 'border-top'));
             }
 
-            if (Util.css(element, 'border-bottom')) {
-                spacing = spacing + parseInt(Util.css(element, 'border-bottom'));
+            if (KTUtil.css(element, 'border-bottom')) {
+                spacing = spacing + parseInt(KTUtil.css(element, 'border-bottom'));
             }
         } 
 
@@ -238,10 +238,10 @@ var Scroll = function(element, options) {
     }
 
     var _getOption = function(name) {
-        if ( the.element.hasAttribute('data-scroll-' + name) === true ) {
-            var attr = the.element.getAttribute('data-scroll-' + name);
+        if ( the.element.hasAttribute('data-kt-scroll-' + name) === true ) {
+            var attr = the.element.getAttribute('data-kt-scroll-' + name);
 
-            var value = Util.getResponsiveValue(attr);
+            var value = KTUtil.getResponsiveValue(attr);
 
             if ( value !== null && String(value) === 'true' ) {
                 value = true;
@@ -251,10 +251,10 @@ var Scroll = function(element, options) {
 
             return value;
         } else {
-            var optionName = Util.snakeToCamel(name);
+            var optionName = KTUtil.snakeToCamel(name);
 
             if ( the.options[optionName] ) {
-                return Util.getResponsiveValue(the.options[optionName]);
+                return KTUtil.getResponsiveValue(the.options[optionName]);
             } else {
                 return null;
             }
@@ -272,7 +272,7 @@ var Scroll = function(element, options) {
     }
 
     var _destroy = function() {
-        Util.data(the.element).remove('scroll');
+        KTUtil.data(the.element).remove('scroll');
     }
 
     // Construct Class
@@ -300,38 +300,38 @@ var Scroll = function(element, options) {
 };
 
 // Static methods
-Scroll.getInstance = function(element) {
-    if ( element !== null && Util.data(element).has('scroll') ) {
-        return Util.data(element).get('scroll');
+KTScroll.getInstance = function(element) {
+    if ( element !== null && KTUtil.data(element).has('scroll') ) {
+        return KTUtil.data(element).get('scroll');
     } else {
         return null;
     }
 }
 
 // Create instances
-Scroll.createInstances = function(selector = '[data-scroll="true"]') {
+KTScroll.createInstances = function(selector = '[data-kt-scroll="true"]') {
     // Initialize Menus
     var elements = document.body.querySelectorAll(selector);
 
     if ( elements && elements.length > 0 ) {
         for (var i = 0, len = elements.length; i < len; i++) {
-            new Scroll(elements[i]);
+            new KTScroll(elements[i]);
         }
     }
 }
 
 // Window resize handling
-Scroll.handleResize = function() {
+KTScroll.handleResize = function() {
     window.addEventListener('resize', function() {
         var timer;
     
-        Util.throttle(timer, function() {
+        KTUtil.throttle(timer, function() {
             // Locate and update Offcanvas instances on window resize
-            var elements = document.body.querySelectorAll('[data-scroll="true"]');
+            var elements = document.body.querySelectorAll('[data-kt-scroll="true"]');
     
             if ( elements && elements.length > 0 ) {
                 for (var i = 0, len = elements.length; i < len; i++) {
-                    var scroll = Scroll.getInstance(elements[i]);
+                    var scroll = KTScroll.getInstance(elements[i]);
                     if (scroll) {
                         scroll.update();
                     }
@@ -342,17 +342,17 @@ Scroll.handleResize = function() {
 }
 
 // Global initialization
-Scroll.init = function() {
-    Scroll.createInstances();
+KTScroll.init = function() {
+    KTScroll.createInstances();
 
-    if (ScrollHandlersInitialized === false) {
-        Scroll.handleResize();
+    if (KTScrollHandlersInitialized === false) {
+        KTScroll.handleResize();
 
-        ScrollHandlersInitialized = true;
+        KTScrollHandlersInitialized = true;
     }    
 };
 
 // Webpack Support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = Scroll;
+    module.exports = KTScroll;
 }
