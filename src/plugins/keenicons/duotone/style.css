@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'keenicons-duotone';
-  src:  url('fonts/keenicons-duotone.eot?eut7fk');
-  src:  url('fonts/keenicons-duotone.eot?eut7fk#iefix') format('embedded-opentype'),
-    url('fonts/keenicons-duotone.ttf?eut7fk') format('truetype'),
-    url('fonts/keenicons-duotone.woff?eut7fk') format('woff'),
-    url('fonts/keenicons-duotone.svg?eut7fk#keenicons-duotone') format('svg');
+  src:  url('fonts/keenicons/keenicons-duotone.eot?eut7fk');
+  src:  url('fonts/keenicons/keenicons-duotone.eot?eut7fk#iefix') format('embedded-opentype'),
+    url('fonts/keenicons/keenicons-duotone.ttf?eut7fk') format('truetype'),
+    url('fonts/keenicons/keenicons-duotone.woff?eut7fk') format('woff'),
+    url('fonts/keenicons/keenicons-duotone.svg?eut7fk#keenicons-duotone') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
