@@ -4,11 +4,14 @@
 
 // Desktop mode
 @include media-breakpoint-up(lg) {
-	.app-content {
-		padding-top: 0;
+	.content {
+		padding: divide(get($content-spacing, desktop), 2) 0 0 0;	
+	}
+}
 
-		[data-app-aside-enabled="true"] & {
-			padding-top: $app-content-padding-y;
-		}		
+// Tablet & mobile modes
+@include media-breakpoint-down(lg) {
+	.content {
+		padding: get($content-spacing, tablet-and-mobile) 0 0 0;
 	}
 }

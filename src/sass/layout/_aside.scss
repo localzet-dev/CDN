@@ -1,0 +1,107 @@
+//
+// Aside
+//
+
+// General mode(all devices)
+.aside {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--#{$prefix}aside-bg-color);
+	padding: 0;
+
+	// Aside menu
+	.aside-menu {
+		display: flex;
+		align-items: center;
+		width: 100%;
+
+		.menu {			
+			// Menu item
+			> .menu-item {
+				> .menu-link {
+					.menu-title {
+						font-size: 1.1rem;
+					}
+				}
+			
+				&.menu-accordion {
+					&.show,
+					&.showing {
+						> .menu-link {
+							> .menu-icon {
+								i,
+								.svg-icon {
+									@include menu-link-arrow-rotate(90deg, -90deg);
+								}						
+							}
+						}
+					}
+
+					&.hiding {
+						> .menu-link {
+							> .menu-icon {
+								i,
+								.svg-icon {
+									@include menu-link-arrow-rotate(0, 0);
+								}						
+							}
+						}
+					}	
+				}			
+			}
+
+			// Link colors
+			.menu-item {
+				@include menu-link-default-state( $title-color: var(--#{$prefix}gray-700), $icon-color: var(--#{$prefix}gray-600), $bullet-color: var(--#{$prefix}gray-400), $arrow-color: var(--#{$prefix}gray-400), $bg-color: transparent );
+				@include menu-link-hover-state( $title-color: var(--#{$prefix}gray-900), $icon-color: null, $bullet-color: null, $arrow-color: null, $bg-color: transparent );
+				@include menu-link-here-state( $title-color: var(--#{$prefix}gray-900), $icon-color: null, $bullet-color: null, $arrow-color: null, $bg-color: transparent );
+				@include menu-link-show-state( $title-color: var(--#{$prefix}gray-900), $icon-color: var(--#{$prefix}gray-900), $bullet-color: var(--#{$prefix}gray-900), $arrow-color: null, $bg-color: transparent );
+				@include menu-link-active-state( $title-color: var(--#{$prefix}gray-900), $icon-color: var(--#{$prefix}gray-900), $bullet-color: var(--#{$prefix}gray-900), $arrow-color: null, $bg-color: transparent );
+
+				> .menu-link.active {
+					.menu-title {
+						font-weight: $font-weight-bold;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+	.aside {
+		position: fixed;
+		top: get($content-spacing, desktop);
+		bottom: get($content-spacing, desktop);
+		left: get($content-spacing, desktop);
+		z-index: get($aside-config, z-index);
+		overflow: hidden;
+		width: get($aside-config, width);
+		@include border-radius(get($aside-config, border-radius));
+
+		.scroll-y,
+        .hover-scroll-overlay-y {        
+            @include scrollbar-color(var(--#{$prefix}gray-300), var(--#{$prefix}gray-400));
+        }
+
+		// Logo
+		.aside-logo {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+}
+
+// Tablet & mobile modes
+@include media-breakpoint-down(lg) {
+	.aside {
+		display: none;
+
+		// Logo
+		.aside-logo {
+			display: none;
+		}
+	}
+}

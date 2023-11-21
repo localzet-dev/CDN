@@ -2,12 +2,12 @@
 // Page loader
 //
 
-// CSS3 Transitions only after page load(data-app-page-loading="on" attribute added to body tag and removed with JS on page loaded)
-[data-app-page-loading="on"] {
+// CSS3 Transitions only after page load(data-kt-app-page-loading="on" attribute added to body tag and removed with JS on page loaded)
+[data-kt-app-page-loading="on"] {
 	overflow: hidden;
 }
 
-[data-app-page-loading="on"] * {
+[data-kt-app-page-loading="on"] * {
     transition: none !important;
 }
 
@@ -23,7 +23,7 @@
 	z-index: 10000;
    	display: none;
 
-   	[data-app-page-loading="on"] & {
+   	[data-kt-app-page-loading="on"] & {
 		display: flex;
 		justify-content: center;
    		align-items: center;

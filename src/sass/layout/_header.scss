@@ -2,51 +2,65 @@
 // Header
 //
 
+// Above Xxl
+@include media-breakpoint-up(xxl) {
+	.header {
+		// Sidebar enabled and header sticky modes
+		.sidebar-enabled[data-kt-sticky-header="on"] & {
+			right: get($sidebar-config, width) !important;
+		}
+	}
+}
+
 // Desktop mode
 @include media-breakpoint-up(lg) {
-	.app-header {
-		background-color: transparent;
-		box-shadow: none;
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: get($header-config, desktop, default, height);
 
-		[data-app-header-sticky="on"] & {
-			background-color: transparent;
-			box-shadow: none;
-			$offset: divide($app-container-padding-x, 2);
-
-			.app-container {
-				padding-right: 0 !important;	
-			}
-
-			.app-header-wrapper {
-				margin-left: -#{$offset};	
-				padding-left: $offset;
-				padding-right: $offset;
-				background-color: var(--#{$prefix}body-bg);
-				box-shadow: var(--#{$prefix}box-shadow-xs);
-				@include border-bottom-radius($card-border-radius);
-			}			
-
-			.btn.bg-body {
-				@include button-custom-variant(
-					$color: null, 
-					$icon-color: null, 
-					$border-color: null, 
-					$bg-color: var(--#{$prefix}gray-100) !important, 
-					$color-active: null, 
-					$icon-color-active: null, 
-					$border-color-active: null, 
-					$bg-color-active: var(--#{$prefix}gray-200), 
-				);	
-			}
+		// Fixed header & sticky header modes
+		.header-fixed[data-kt-sticky-header="on"] & {
+			position: fixed;
+			top: 0;
+			right: 0;
+			left: get($aside-config, width) + get($content-spacing, desktop);
+			z-index: get($header-config, desktop, fixed, z-index);
+			background-color: var(--#{$prefix}header-desktop-fixed-bg-color);
+			box-shadow: var(--#{$prefix}header-desktop-fixed-box-shadow);
+			height: get($header-config, desktop, fixed, height);
+			padding: 0;
+			@include border-bottom-radius($border-radius);
 		}
 	}
 }
 
 // Tablet & mobile modes
 @include media-breakpoint-down(lg) {
-	.app-header { 
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: get($header-config, tablet-and-mobile, default, height);
+
+		// Fixed header and header sticky modes
+		.header-tablet-and-mobile-fixed[data-kt-sticky-header="on"] & {
+			position: fixed;
+			top: 0;
+			right: 0;
+			left: 0;
+			z-index: get($header-config, tablet-and-mobile, fixed, z-index);
+			height: get($header-config, tablet-and-mobile, fixed, height);
+			min-height: get($header-config, tablet-and-mobile, fixed, height);
+			background-color: var(--#{$prefix}header-tablet-and-mobile-fixed-bg-color);
+			box-shadow: var(--#{$prefix}header-tablet-and-mobile-fixed-box-shadow);
+			@include border-bottom-radius($border-radius);
+		}
+
+		// Page title
 		.page-title {
-            display: none !important;    
-        }
+			display: none !important;
+		}
 	}
 }

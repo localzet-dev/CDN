@@ -46,7 +46,7 @@
         --#{$prefix}app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-base-gap-bottom};
     }
 
-    [data-app-sidebar-panel-minimize="on"] {
+    [data-kt-app-sidebar-panel-minimize="on"] {
         --#{$prefix}app-sidebar-panel-width: #{$app-sidebar-panel-minimize-width};
 
         --#{$prefix}app-sidebar-panel-gap-start: #{$app-sidebar-panel-minimize-gap-start};
@@ -55,7 +55,7 @@
         --#{$prefix}app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-minimize-gap-bottom};
     }    
 
-    [data-app-sidebar-panel-sticky="on"] {
+    [data-kt-app-sidebar-panel-sticky="on"] {
         --#{$prefix}app-sidebar-panel-width: #{$app-sidebar-panel-sticky-width};
 
         --#{$prefix}app-sidebar-panel-gap-start: #{$app-sidebar-panel-sticky-gap-start};
@@ -64,22 +64,22 @@
         --#{$prefix}app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-sticky-gap-bottom};
     }
 
-    [data-app-sidebar-panel-collapse="on"] {
+    [data-kt-app-sidebar-panel-collapse="on"] {
         --#{$prefix}app-sidebar-panel-width-actual: #{$app-sidebar-panel-base-width};
         --#{$prefix}app-sidebar-panel-width: 0px;        
     }
 
     // States
     .app-sidebar-panel {
-        [data-app-sidebar-panel-static="true"] & {
+        [data-kt-app-sidebar-panel-static="true"] & {
             position: relative;
         }
 
-        [data-app-sidebar-panel-offcanvas="true"] & {
+        [data-kt-app-sidebar-panel-offcanvas="true"] & {
             display: none;
         }
 
-        [data-app-sidebar-panel-fixed="true"] & {
+        [data-kt-app-sidebar-panel-fixed="true"] & {
             @include property( z-index, $app-sidebar-panel-fixed-z-index);
             position: fixed;
             left: calc(var(--#{$prefix}app-sidebar-width) + var(--#{$prefix}app-sidebar-gap-start, 0px) + var(--#{$prefix}app-sidebar-gap-end, 0px));
@@ -87,7 +87,7 @@
             bottom: 0;
         }  
 
-        [data-app-sidebar-panel-sticky="on"] & {
+        [data-kt-app-sidebar-panel-sticky="on"] & {
             position: fixed;
             left: calc(var(--#{$prefix}app-sidebar-width) + var(--#{$prefix}app-sidebar-gap-start, 0px) + var(--#{$prefix}app-sidebar-gap-end, 0px));
             top: 0;
@@ -105,7 +105,7 @@
             @include property( margin-bottom, $app-sidebar-panel-sticky-gap-bottom);
         }
 
-        [data-app-sidebar-panel-minimize="on"] & {
+        [data-kt-app-sidebar-panel-minimize="on"] & {
             transition: $app-sidebar-panel-base-transition;
 
             //background-color: var(--#{$prefix}app-sidebar-panel-minimize-bg-color);
@@ -119,19 +119,19 @@
             @include property( margin-bottom, $app-sidebar-panel-minimize-gap-bottom);
         }
 
-        [data-app-sidebar-panel-hoverable="true"] & {
+        [data-kt-app-sidebar-panel-hoverable="true"] & {
             .app-sidebar-panel-hoverable {
                 width: var(--#{$prefix}app-sidebar-panel-width-actual); 
             }
         }
 
-        [data-app-sidebar-panel-hoverable="true"][data-app-sidebar-panel-minimize="on"] &:hover:not(.animating) {
+        [data-kt-app-sidebar-panel-hoverable="true"][data-kt-app-sidebar-panel-minimize="on"] &:hover:not(.animating) {
             transition: $app-sidebar-panel-base-transition;
 			width: var(--#{$prefix}app-sidebar-panel-width-actual);
             box-shadow: var(--#{$prefix}app-sidebar-panel-minimize-hover-box-shadow);
         }
 
-        [data-app-sidebar-panel-collapse="on"] & {
+        [data-kt-app-sidebar-panel-collapse="on"] & {
             transition: $app-sidebar-panel-base-transition;
             width: var(--#{$prefix}app-sidebar-panel-width-actual);
             margin-left: calc( -1 * (var(--#{$prefix}app-sidebar-panel-width-actual) + var(--#{$prefix}app-sidebar-gap-start, 0px) + var(--#{$prefix}app-sidebar-gap-end, 0px)));
@@ -141,18 +141,18 @@
     // Integration
     .app-sidebar-panel {
         // Header
-        [data-app-sidebar-panel-fixed="true"][data-app-header-fixed="true"]:not([data-app-sidebar-panel-push-header="true"]) & {
+        [data-kt-app-sidebar-panel-fixed="true"][data-kt-app-header-fixed="true"]:not([data-kt-app-sidebar-panel-push-header="true"]) & {
             top: var(--#{$prefix}app-header-height);
         }
 
         // Toolbar
-        [data-app-sidebar-panel-fixed="true"][data-app-header-fixed="true"][data-app-toolbar-fixed="true"]:not([data-app-sidebar-panel-push-toolbar="true"]) & {
+        [data-kt-app-sidebar-panel-fixed="true"][data-kt-app-header-fixed="true"][data-kt-app-toolbar-fixed="true"]:not([data-kt-app-sidebar-panel-push-toolbar="true"]) & {
             top: calc(var(--#{$prefix}app-header-height) + var(--#{$prefix}app-toolbar-height, 0));
         }
     }
 
     // Utilities
-    [data-app-sidebar-panel-minimize="on"] {
+    [data-kt-app-sidebar-panel-minimize="on"] {
         .app-sidebar-panel-minimize-d-none {
             display: none !important;    
         }
@@ -162,7 +162,7 @@
         }
     }
 
-    [data-app-sidebar-panel-sticky="on"] {
+    [data-kt-app-sidebar-panel-sticky="on"] {
         .app-sidebar-panel-sticky-d-none {
             display: none !important;    
         }
@@ -172,7 +172,7 @@
         }
     }  
 
-    [data-app-sidebar-panel-collapse="on"] {
+    [data-kt-app-sidebar-panel-collapse="on"] {
         .app-sidebar-panel-collapse-d-none {
             display: none !important;    
         }
@@ -199,13 +199,16 @@
 
     // Vars
     :root {
+        --#{$prefix}app-sidebar-panel-width: #{$app-sidebar-panel-base-width-mobile};
+        --#{$prefix}app-sidebar-panel-width-actual: #{$app-sidebar-panel-base-width-mobile};
+
         --#{$prefix}app-sidebar-panel-gap-start: #{$app-sidebar-panel-base-gap-start-mobile};
         --#{$prefix}app-sidebar-panel-gap-end: #{$app-sidebar-panel-base-gap-end-mobile};
         --#{$prefix}app-sidebar-panel-gap-top: #{$app-sidebar-panel-base-gap-top-mobile};
         --#{$prefix}app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-base-gap-bottom-mobile};
     }
 
-    [data-app-sidebar-panel-minimize-mobile="on"] {
+    [data-kt-app-sidebar-panel-minimize-mobile="on"] {
         --#{$prefix}app-sidebar-panel-width: #{$app-sidebar-panel-minimize-width-mobile};
 
         --#{$prefix}app-sidebar-panel-gap-start: #{$app-sidebar-panel-minimize-gap-start-mobile};
@@ -214,14 +217,14 @@
         --#{$prefix}app-sidebar-panel-gap-bottom: #{$app-sidebar-panel-minimize-gap-bottom-mobile};
     }
 
-    [data-app-sidebar-panel-collapse-mobile="on"] {
+    [data-kt-app-sidebar-panel-collapse-mobile="on"] {
         --#{$prefix}app-sidebar-panel-width-actual: #{$app-sidebar-panel-base-width-mobile};
         --#{$prefix}app-sidebar-panel-width: 0px;
     }
 
     // States
     .app-sidebar-panel {            
-        [data-app-sidebar-panel-minimize-mobile="on"] & {
+        [data-kt-app-sidebar-panel-minimize-mobile="on"] & {
             transition: $app-sidebar-panel-base-transition;
 
             background-color: var(--#{$prefix}app-sidebar-panel-minimize-bg-color-mobile);
@@ -235,20 +238,20 @@
             @include property( margin-bottom, $app-sidebar-panel-minimize-gap-bottom-mobile);
         }
 
-        [data-app-sidebar-panel-hoverable-mobile="true"] & {
+        [data-kt-app-sidebar-panel-hoverable-mobile="true"] & {
             .app-sidebar-panel-hoverable {
                 width: var(--#{$prefix}app-sidebar-panel-width-actual); 
             }
         }
 
-        [data-app-sidebar-panel-hoverable-mobile="true"][data-app-sidebar-panel-minimize-mobile="on"] &:hover:not(.animating) {
+        [data-kt-app-sidebar-panel-hoverable-mobile="true"][data-kt-app-sidebar-panel-minimize-mobile="on"] &:hover:not(.animating) {
             transition: $app-sidebar-panel-base-transition;
 			width: var(--#{$prefix}app-sidebar-panel-width-actual);
 
             box-shadow: var(--#{$prefix}app-sidebar-panel-minimize-hover-box-shadow-mobile);
         }
 
-        [data-app-sidebar-panel-collapse-mobile="on"] & {
+        [data-kt-app-sidebar-panel-collapse-mobile="on"] & {
             transition: $app-sidebar-panel-base-transition;
             width: var(--#{$prefix}app-sidebar-panel-width-actual);
             margin-left: calc( -1 * var(--#{$prefix}app-sidebar-panel-width-actual));
@@ -256,7 +259,7 @@
     }
 
     // Utilities
-    [data-app-sidebar-panel-minimize-mobile="on"] {
+    [data-kt-app-sidebar-panel-minimize-mobile="on"] {
         .app-sidebar-panel-minimize-mobile-d-none {
             display: none !important;    
         }
@@ -266,7 +269,7 @@
         }
     }  
 
-    [data-app-sidebar-panel-collapse-mobile="on"] {
+    [data-kt-app-sidebar-panel-collapse-mobile="on"] {
         .app-sidebar-panel-collapse-mobile-d-none {
             display: none !important;    
         }

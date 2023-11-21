@@ -4,32 +4,58 @@
 
 // Light mode
 @include color-mode(light) {
-    // Reboot
-    --#{$prefix}app-bg-color: #{$app-bg-color};
-    --#{$prefix}app-blank-bg-color: #{$app-blank-bg-color};
+    // Page bg
+    --#{$prefix}page-bg: #{$page-bg};
 
-    // Header base     
-    --#{$prefix}app-header-base-bg-color-mobile: #{$app-header-base-bg-color-mobile};     
-    --#{$prefix}app-header-base-box-shadow-mobile: #{$app-header-base-box-shadow-mobile};
-     
-    // Aside base
-    --#{$prefix}app-aside-base-bg-color: #{$app-aside-base-bg-color};
-    --#{$prefix}app-aside-base-border-start: #{$app-aside-base-border-start};
-    --#{$prefix}app-toolbar-sticky-border-bottom: #{$app-toolbar-sticky-border-bottom};   
+    // App blank bg color
+    --#{$prefix}app-blank-bg: #{$app-blank-bg-color};
+
+    // Header
+    --#{$prefix}header-desktop-fixed-bg-color: #{get($header-config, desktop, fixed, bg-color)};
+    --#{$prefix}header-desktop-fixed-box-shadow: #{get($header-config, desktop, fixed, box-shadow)};
+
+    --#{$prefix}header-desktop-fixed-bg-color: #{get($header-config, tablet-and-mobile, fixed, bg-color)};
+    --#{$prefix}header-desktop-fixed-box-shadow: #{get($header-config, tablet-and-mobile, fixed, box-shadow)};
+
+    // Aside
+    --#{$prefix}aside-bg-color: #{get($aside-config, bg-color)};
+
+    // Sidebar
+    --#{$prefix}sidebar-bg-color: #{get($sidebar-config, bg-color)};
+    --#{$prefix}sidebar-tabs-link-bg-color-default: #{get($sidebar-config, tabs, link-bg-color, default)};
+    --#{$prefix}sidebar-tabs-link-bg-color-active: #{get($sidebar-config, tabs, link-bg-color, active)};
+    --#{$prefix}sidebar-tabs-link-icon-color-default: #{get($sidebar-config, tabs, link-icon-color, default)};
+    --#{$prefix}sidebar-tabs-link-icon-color-active: #{get($sidebar-config, tabs, link-icon-color, active)};
+    --#{$prefix}sidebar-dashed-border-color: #{get($sidebar-config, dashed-border-color)};
+    --#{$prefix}sidebar-muted-color: #{get($sidebar-config, muted-color)};
+    --#{$prefix}sidebar-muted-bg-color: #{get($sidebar-config, muted-bg-color)};
 }
 
 // Dark mode
 @include color-mode(dark) {
-	// Reboot
-    --#{$prefix}app-bg-color: #{$app-bg-color-dark};
-    --#{$prefix}app-blank-bg-color: #{$app-blank-bg-color-dark};
+    // Page bg
+    --#{$prefix}page-bg: #{$page-bg-dark};
 
-    // Header base     
-    --#{$prefix}app-header-base-bg-color-mobile: #{$app-header-base-bg-color-mobile-dark};     
-    --#{$prefix}app-header-base-box-shadow-mobile: #{$app-header-base-box-shadow-mobile-dark};
-     
-    // Aside base
-    --#{$prefix}app-aside-base-bg-color: #{$app-aside-base-bg-color-dark};
-    --#{$prefix}app-aside-base-border-start: #{$app-aside-base-border-start-dark};
-    --#{$prefix}app-toolbar-sticky-border-bottom: #{$app-toolbar-sticky-border-bottom-dark};
+    // App blank bg color
+    --#{$prefix}app-blank-bg: #{$app-blank-bg-color-dark};
+
+    // Header
+    --#{$prefix}header-desktop-fixed-bg-color: #{get($header-config, desktop, fixed, bg-color-dark)};
+    --#{$prefix}header-desktop-fixed-box-shadow: #{get($header-config, desktop, fixed, box-shadow-dark)};
+
+    --#{$prefix}header-desktop-fixed-bg-color: #{get($header-config, tablet-and-mobile, fixed, bg-color-dark)};
+    --#{$prefix}header-desktop-fixed-box-shadow: #{get($header-config, tablet-and-mobile, fixed, box-shadow-dark)};
+
+    // Aside
+    --#{$prefix}aside-bg-color: #{get($aside-config, bg-color-dark)};
+
+    // Sidebar
+    --#{$prefix}sidebar-bg-color: #{get($sidebar-config, bg-color-dark)};
+    --#{$prefix}sidebar-tabs-link-bg-color-default: #{get($sidebar-config, tabs, link-bg-color, default-dark)};
+    --#{$prefix}sidebar-tabs-link-bg-color-active: #{get($sidebar-config, tabs, link-bg-color, active-dark)};
+    --#{$prefix}sidebar-tabs-link-icon-color-default: #{get($sidebar-config, tabs, link-icon-color, default-dark)};
+    --#{$prefix}sidebar-tabs-link-icon-color-active: #{get($sidebar-config, tabs, link-icon-color, active-dark)};
+    --#{$prefix}sidebar-dashed-border-color: #{get($sidebar-config, dashed-border-color-dark)};
+    --#{$prefix}sidebar-muted-color: #{get($sidebar-config, muted-color-dark)};
+    --#{$prefix}sidebar-muted-bg-color: #{get($sidebar-config, muted-bg-color-dark)};
 }

@@ -60,6 +60,6 @@ body,
 }
 
 // Reset CSS3 Transitions for child elements
-[data-app-reset-transition="true"] * {
+[data-kt-app-reset-transition="true"] * {
     transition: none !important;
 }

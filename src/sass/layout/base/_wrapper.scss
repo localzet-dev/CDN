@@ -14,29 +14,29 @@
         transition: $app-wrapper-transition;
         
         // Header
-        [data-app-header-sticky="on"] & {
+        [data-kt-app-header-sticky="on"] & {
             margin-top: var(--#{$prefix}app-header-height-actual);
         }
 
-        [data-app-header-fixed="true"] & {
+        [data-kt-app-header-fixed="true"] & {
             margin-top: var(--#{$prefix}app-header-height);
         }
 
         // Toolbar
-        [data-app-toolbar-sticky="on"] & {
+        [data-kt-app-toolbar-sticky="on"] & {
             margin-top: var(--#{$prefix}app-toolbar-height);
         }
 
-        [data-app-header-fixed="true"][data-app-toolbar-sticky="on"] & {
+        [data-kt-app-header-fixed="true"][data-kt-app-toolbar-sticky="on"] & {
             margin-top: calc(var(--#{$prefix}app-header-height-actual) + var(--#{$prefix}app-toolbar-height-actual));
         }
 
-        [data-app-header-fixed="true"][data-app-toolbar-fixed="true"] & {
+        [data-kt-app-header-fixed="true"][data-kt-app-toolbar-fixed="true"] & {
             margin-top: calc(var(--#{$prefix}app-header-height) + var(--#{$prefix}app-toolbar-height));
         }
 
         // Sidebar
-        [data-app-sidebar-fixed="true"] & {
+        [data-kt-app-sidebar-fixed="true"] & {
             margin-left: calc(
                 var(--#{$prefix}app-sidebar-width) + 
                 var(--#{$prefix}app-sidebar-gap-start, 0px) + 
@@ -45,7 +45,7 @@
         }
 
         // Sidebar Panel
-        [data-app-sidebar-panel-fixed="true"] & {
+        [data-kt-app-sidebar-panel-fixed="true"] & {
             margin-left: calc(
                 var(--#{$prefix}app-sidebar-width) + 
                 var(--#{$prefix}app-sidebar-gap-start, 0px) + 
@@ -57,7 +57,7 @@
         }
 
         // Aside
-        [data-app-aside-fixed="true"] & {
+        [data-kt-app-aside-fixed="true"] & {
             margin-right: calc(
                 var(--#{$prefix}app-aside-width) + 
                 var(--#{$prefix}app-aside-gap-start, 0px) + 
@@ -66,7 +66,7 @@
         }
 
         // Footer
-        [data-app-footer-fixed="true"] & {
+        [data-kt-app-footer-fixed="true"] & {
             margin-bottom: var(--#{$prefix}app-footer-height);
         }  
     }
@@ -79,21 +79,21 @@
         transition: $app-wrapper-transition;
         
         // Header
-        [data-app-header-sticky="on"] & {
+        [data-kt-app-header-sticky="on"] & {
             margin-top: var(--#{$prefix}app-header-height-actual);
         }
 
-        [data-app-header-fixed-mobile="true"] & {
+        [data-kt-app-header-fixed-mobile="true"] & {
             margin-top: var(--#{$prefix}app-header-height);
         }
 
         // Toolbar
-        [data-app-header-fixed-mobile="true"][data-app-toolbar-sticky="on"] & {
+        [data-kt-app-header-fixed-mobile="true"][data-kt-app-toolbar-sticky="on"] & {
             margin-top: calc(var(--#{$prefix}app-header-height-actual) + var(--#{$prefix}app-toolbar-height-actual));
         }
 
         // Footer
-        [data-app-footer-fixed-mobile="true"] & {
+        [data-kt-app-footer-fixed-mobile="true"] & {
             margin-bottom: var(--#{$prefix}app-footer-height);
         }  
     }

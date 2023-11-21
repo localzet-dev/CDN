@@ -1,0 +1,101 @@
+//
+// Layout Config
+//
+
+// Root font Sizes
+$root-font-size:                                    13px; // Root font size for desktop mode
+$root-font-size-lg:                             	13px; // Root font size for tablet mode
+$root-font-size-md:                             	12px; // Root font size for mobile mode 
+
+// Page bg
+$page-bg: 											#f9fafb !default;
+$page-bg-dark:										#151521 !default;
+
+// App blank bg color
+$app-blank-bg-color: 								$white;
+$app-blank-bg-color-dark: 							#151521;
+
+// Content Spacing
+$content-spacing: (
+	desktop: 50px, // Padding for desktop mode
+	tablet-and-mobile: 20px // Padding for tablet and mobile modes
+) !default;
+	
+
+// Header
+$header-config: (
+	// Desktop Mode
+	desktop: (
+		// Default Mode
+		default: (
+			height: 80px
+		),
+
+		// Fixed Mode
+		fixed: (
+			height: 65px,
+			z-index: 97,
+			bg-color: $body-bg,
+			bg-color-dark: $body-bg-dark,
+			box-shadow: 0px 10px 30px 0px rgba(82,63,105,0.08),
+			box-shadow-dark: none
+		)
+	),
+
+	// Tablet & Mobile Modes
+	tablet-and-mobile: (
+		// Default Mode
+		default: (
+			height: 60px,
+		),
+
+		// Fixed Mode
+		fixed: (
+			z-index: 97,
+			height: 55px,
+			bg-color: $body-bg,
+			bg-color-dark: $body-bg-dark,
+			box-shadow: 0px 10px 30px 0px rgba(82,63,105,0.08),
+			box-shadow-dark: none
+		)
+	)
+) !default;
+
+
+// Aside
+$aside-config: (
+	z-index: 100, // Aside's z-index property
+	menu-indention: 0.75rem,
+	bg-color: #f2f3f5,
+	bg-color-dark: #1e1e2d,
+	width: 300px, // Aside width for desktop mode
+	border-radius: 2rem
+) !default;
+
+// Sidebar
+$sidebar-config: (
+	z-index: 101,
+	width: 400px,	
+	bg-color: #192440,
+	bg-color-dark: #1e1e2d,
+	tabs: (
+		link-bg-color: (
+			default: #0e172e,
+			default-dark: darken(#1e1e2d, 4%),
+			active: #07122d,
+			active-dark: darken(#1e1e2d, 6%)
+		),
+		link-icon-color: (
+			default: #5e6278,
+			default-dark: #5e6278,
+			active: $white,
+			active-dark: $white
+		),
+	),
+	dashed-border-color: #3e4a69,
+	dashed-border-color-dark: $gray-200-dark,
+	muted-color: #546182,
+	muted-color-dark: $text-muted-dark,
+	muted-bg-color: #0e172e,
+	muted-bg-color-dark: darken(#1e1e2d, 2%)
+) !default;

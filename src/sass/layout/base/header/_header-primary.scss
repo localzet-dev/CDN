@@ -20,19 +20,19 @@
     }    
 
     // Vars
-    [data-app-header-primary-enabled="true"] {
+    [data-kt-app-header-primary-enabled="true"] {
         --#{$prefix}app-header-primary-height: #{$app-header-primary-base-height};
     }
 
-    [data-app-header-primary-enabled="true"][data-app-header-sticky="on"] {
+    [data-kt-app-header-primary-enabled="true"][data-kt-app-header-sticky="on"] {
         --#{$prefix}app-header-primary-height: #{$app-header-primary-sticky-height};
     }
 
-    [data-app-header-primary-enabled="true"][data-app-header-minimize="on"] {
+    [data-kt-app-header-primary-enabled="true"][data-kt-app-header-minimize="on"] {
         --#{$prefix}app-header-primary-height: #{$app-header-primary-minimize-height};
     } 
 
-    [data-app-header-primary-enabled="true"][data-app-header-sticky="on"][data-app-header-primary-sticky-hide="true"] {
+    [data-kt-app-header-primary-enabled="true"][data-kt-app-header-sticky="on"][data-kt-app-header-primary-sticky-hide="true"] {
         --#{$prefix}app-header-primary-height: 0;
     }
 
@@ -40,7 +40,7 @@
     .app-header-primary {
         height: var(--#{$prefix}app-header-primary-height);
 
-        [data-app-header-primary-fixed="true"] & {
+        [data-kt-app-header-primary-fixed="true"] & {
             @include property( z-index, $app-header-primary-fixed-z-index);
             position: fixed;
             left: 0;
@@ -48,11 +48,11 @@
             top: 0;            
         }
 
-        [data-app-header-primary-static="true"] & {
+        [data-kt-app-header-primary-static="true"] & {
             position: relative;
         }
 
-        [data-app-header-primary-sticky="on"] & {
+        [data-kt-app-header-primary-sticky="on"] & {
             position: fixed;
             left: 0;
             right: 0;
@@ -65,7 +65,7 @@
             border-bottom: var(--#{$prefix}app-header-primary-sticky-border-bottom);
         }
 
-        [data-app-header-primary-minimize="on"] & {
+        [data-kt-app-header-primary-minimize="on"] & {
             transition: $app-header-primary-base-transition;
             @include property( height, $app-header-primary-minimize-height);
             @include property( z-index, $app-header-primary-minimize-z-index);
@@ -75,7 +75,7 @@
             border-bottom: var(--#{$prefix}app-header-primary-minimize-border-bottom);
         }
 
-        [data-app-header-sticky="on"][data-app-header-primary-sticky-hide="true"] & {
+        [data-kt-app-header-sticky="on"][data-kt-app-header-primary-sticky-hide="true"] & {
             display: none !important;
         }
     }
@@ -83,7 +83,7 @@
     // Integration
     .app-header-primary {
         // Sidebar
-        [data-app-header-primary-enabled="true"][data-app-sidebar-fixed="true"][data-app-sidebar-push-header="true"] & {
+        [data-kt-app-header-primary-enabled="true"][data-kt-app-sidebar-fixed="true"][data-kt-app-sidebar-push-header="true"] & {
             left: calc(
                 var(--#{$prefix}app-sidebar-width) + 
                 var(--#{$prefix}app-sidebar-gap-start, 0px) + 
@@ -92,7 +92,7 @@
         }  
 
         // Sidebar Panel
-        [data-app-header-primary-enabled="true"][data-app-sidebar-panel-fixed="true"][data-app-sidebar-panel-push-header="true"] & {
+        [data-kt-app-header-primary-enabled="true"][data-kt-app-sidebar-panel-fixed="true"][data-kt-app-sidebar-panel-push-header="true"] & {
             left: calc(
                 var(--#{$prefix}app-sidebar-width) + 
                 var(--#{$prefix}app-sidebar-gap-start, 0px) + 
@@ -121,15 +121,15 @@
     }  
 
     // Vars
-    [data-app-header-primary-enabled="true"] {
+    [data-kt-app-header-primary-enabled="true"] {
         --#{$prefix}app-header-primary-height: #{$app-header-primary-base-height-mobile};
     }
 
-    [data-app-header-primary-enabled="true"][data-app-header-sticky="on"] {
+    [data-kt-app-header-primary-enabled="true"][data-kt-app-header-sticky="on"] {
         --#{$prefix}app-header-primary-height: #{$app-header-primary-sticky-height-mobile};
     }
     
-    [data-app-header-primary-enabled="true"][data-app-header-minimize="on"] {
+    [data-kt-app-header-primary-enabled="true"][data-kt-app-header-minimize="on"] {
         --#{$prefix}app-header-primary-height: #{$app-header-primary-minimize-height-mobile};
     }
 }

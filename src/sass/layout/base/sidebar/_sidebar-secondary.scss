@@ -33,7 +33,7 @@
     }    
 
     // Vars
-    [data-app-sidebar-secondary-enabled="true"] {
+    [data-kt-app-sidebar-secondary-enabled="true"] {
         --#{$prefix}app-sidebar-secondary-width-actual: calc(
             #{$app-sidebar-base-width} - 
             #{$app-sidebar-primary-base-width} - 
@@ -44,7 +44,7 @@
         );
     }
 
-    [data-app-sidebar-secondary-enabled="true"][data-app-sidebar-stacked="true"] {
+    [data-kt-app-sidebar-secondary-enabled="true"][data-kt-app-sidebar-stacked="true"] {
         --#{$prefix}app-sidebar-secondary-width: calc(
             #{$app-sidebar-base-width} - 
             #{$app-sidebar-primary-base-width} - 
@@ -60,7 +60,7 @@
         --#{$prefix}app-sidebar-secondary-gap-bottom: #{$app-sidebar-secondary-base-gap-bottom};
     }
 
-    [data-app-sidebar-secondary-enabled="true"][data-app-sidebar-secondary-minimize="on"] {
+    [data-kt-app-sidebar-secondary-enabled="true"][data-kt-app-sidebar-secondary-minimize="on"] {
         --#{$prefix}app-sidebar-secondary-width: #{$app-sidebar-secondary-minimize-width};
 
         --#{$prefix}app-sidebar-secondary-gap-start: #{$app-sidebar-secondary-minimize-gap-start};
@@ -69,7 +69,7 @@
         --#{$prefix}app-sidebar-secondary-gap-bottom: #{$app-sidebar-secondary-minimize-gap-bottom};
     } 
 
-    [data-app-sidebar-secondary-enabled="true"][data-app-sidebar-secondary-collapse="on"] {
+    [data-kt-app-sidebar-secondary-enabled="true"][data-kt-app-sidebar-secondary-collapse="on"] {
         --#{$prefix}app-sidebar-secondary-width-actual: calc(
             #{$app-sidebar-base-width} - 
             #{$app-sidebar-primary-base-width} - 
@@ -86,13 +86,13 @@
     .app-sidebar-secondary {
         width: var(--#{$prefix}app-sidebar-secondary-width);
 
-        [data-app-sidebar-secondary-collapse="on"] & {
+        [data-kt-app-sidebar-secondary-collapse="on"] & {
             transition: $app-sidebar-secondary-base-transition;
             width: var(--#{$prefix}app-sidebar-secondary-width-actual);
             margin-left: calc( -1 * var(--#{$prefix}app-sidebar-secondary-width-actual));
         }
 
-        [data-app-sidebar-secondary-minimize="on"] & {
+        [data-kt-app-sidebar-secondary-minimize="on"] & {
             transition: $app-sidebar-secondary-base-transition;
             
             //background-color: var(--#{$prefix}app-sidebar-secondary-minimize-bg-color);
@@ -106,13 +106,13 @@
             @include property( margin-bottom, $app-sidebar-secondary-minimize-gap-bottom-mobile);
         }
 
-        [data-app-sidebar-secondary-hoverable="true"] & {
+        [data-kt-app-sidebar-secondary-hoverable="true"] & {
             .app-sidebar-secondary-hoverable {
                 width: var(--#{$prefix}app-sidebar-secondary-width-actual); 
             }
         }
 
-        [data-app-sidebar-secondary-hoverable="true"][data-app-sidebar-secondary-minimize="on"] &:hover:not(.animating) {
+        [data-kt-app-sidebar-secondary-hoverable="true"][data-kt-app-sidebar-secondary-minimize="on"] &:hover:not(.animating) {
             transition: $app-sidebar-secondary-base-transition;
 			width: var(--#{$prefix}app-sidebar-secondary-width-actual);
             box-shadow: var(--#{$prefix}app-sidebar-secondary-minimize-hover-box-shadow);
@@ -122,18 +122,18 @@
     // Integration
     .app-sidebar-secondary {
         // Header
-        [data-app-sidebar-fixed="true"][data-app-header-fixed="true"][data-app-sidebar-secondary-below-header="true"] & {
+        [data-kt-app-sidebar-fixed="true"][data-kt-app-header-fixed="true"][data-kt-app-sidebar-secondary-below-header="true"] & {
             top: var(--#{$prefix}app-header-height);
         }
 
         // Toolbar
-        [data-app-sidebar-fixed="true"][data-app-header-fixed="true"][data-app-toolbar-fixed="true"][data-app-sidebar-secondary-below-toolbar="true"] & {
+        [data-kt-app-sidebar-fixed="true"][data-kt-app-header-fixed="true"][data-kt-app-toolbar-fixed="true"][data-kt-app-sidebar-secondary-below-toolbar="true"] & {
             top: calc(var(--#{$prefix}app-header-height) + var(--#{$prefix}app-toolbar-height, 0));
         }
     }
 
     // Utilities
-    [data-app-sidebar-secondary-enabled="true"][data-app-sidebar-secondary-minimize="on"] {
+    [data-kt-app-sidebar-secondary-enabled="true"][data-kt-app-sidebar-secondary-minimize="on"] {
         .app-sidebar-secondary-minimize-d-none {
             display: none !important;    
         }
@@ -143,7 +143,7 @@
         }
     } 
 
-    [data-app-sidebar-secondary-enabled="true"][data-app-sidebar-secondary-collapse="on"] {
+    [data-kt-app-sidebar-secondary-enabled="true"][data-kt-app-sidebar-secondary-collapse="on"] {
         .app-sidebar-secondary-collapse-d-none {
             display: none !important;    
         }
@@ -166,7 +166,7 @@
     }    
 
     // Vars
-    [data-app-sidebar-secondary-enabled="true"] {
+    [data-kt-app-sidebar-secondary-enabled="true"] {
         --#{$prefix}app-sidebar-secondary-width-actual: calc(
             #{$app-sidebar-base-width-mobile} - 
             #{$app-sidebar-primary-base-width-mobile} - 
@@ -177,7 +177,7 @@
         );
     }
 
-    [data-app-sidebar-secondary-enabled="true"][data-app-sidebar-stacked="true"] {
+    [data-kt-app-sidebar-secondary-enabled="true"][data-kt-app-sidebar-stacked="true"] {
         --#{$prefix}app-sidebar-secondary-width: calc(
             #{$app-sidebar-base-width-mobile} - 
             #{$app-sidebar-primary-base-width-mobile} - 
@@ -193,7 +193,7 @@
         --#{$prefix}app-sidebar-secondary-gap-bottom: #{$app-sidebar-secondary-base-gap-bottom-mobile};
     }
 
-    [data-app-sidebar-secondary-enabled="true"][data-app-sidebar-secondary-minimize-mobile="on"] {
+    [data-kt-app-sidebar-secondary-enabled="true"][data-kt-app-sidebar-secondary-minimize-mobile="on"] {
         --#{$prefix}app-sidebar-secondary-width: #{$app-sidebar-secondary-minimize-width-mobile};
 
         --#{$prefix}app-sidebar-secondary-gap-start: #{$app-sidebar-secondary-minimize-gap-start-mobile};
@@ -202,7 +202,7 @@
         --#{$prefix}app-sidebar-secondary-gap-bottom: #{$app-sidebar-secondary-minimize-gap-bottom-mobile};
     }        
 
-    [data-app-sidebar-secondary-enabled="true"][data-app-sidebar-secondary-collapse-mobile="on"] {
+    [data-kt-app-sidebar-secondary-enabled="true"][data-kt-app-sidebar-secondary-collapse-mobile="on"] {
         --#{$prefix}app-sidebar-secondary-width-actual:  calc(
             #{$app-sidebar-base-width-mobile} - 
             #{$app-sidebar-primary-base-width-mobile} - 
@@ -219,13 +219,13 @@
     .app-sidebar-secondary {
         width: var(--#{$prefix}app-sidebar-secondary-width);
 
-        [data-app-sidebar-secondary-collapse-mobile="on"] & {
+        [data-kt-app-sidebar-secondary-collapse-mobile="on"] & {
             transition: $app-sidebar-secondary-base-transition;
             width: var(--#{$prefix}app-sidebar-secondary-width-actual);
             margin-left: calc( -1 * var(--#{$prefix}app-sidebar-secondary-width-actual));
         }
 
-        [data-app-sidebar-secondary-minimize-mobile="on"] & {
+        [data-kt-app-sidebar-secondary-minimize-mobile="on"] & {
             transition: $app-sidebar-secondary-base-transition;
             background-color: var(--#{$prefix}app-sidebar-secondary-minimize-bg-color-mobile);
             box-shadow: var(--#{$prefix}app-sidebar-secondary-minimize-box-shadow-mobile);
@@ -238,13 +238,13 @@
             //@include property( margin-bottom, $app-sidebar-secondary-minimize-gap-bottom-mobile);
         }
 
-        [data-app-sidebar-secondary-hoverable-mobile="true"] & {
+        [data-kt-app-sidebar-secondary-hoverable-mobile="true"] & {
             .app-sidebar-secondary-hoverable {
                 width: var(--#{$prefix}app-sidebar-secondary-width-actual); 
             }
         }
 
-        [data-app-sidebar-secondary-hoverable-mobile="true"][data-app-sidebar-secondary-minimize-mobile="on"] &:hover:not(.animating) {
+        [data-kt-app-sidebar-secondary-hoverable-mobile="true"][data-kt-app-sidebar-secondary-minimize-mobile="on"] &:hover:not(.animating) {
             transition: $app-sidebar-secondary-base-transition;
 			width: var(--#{$prefix}app-sidebar-secondary-width-actual);
             box-shadow: var(--#{$prefix}app-sidebar-secondary-minimize-hover-box-shadow-mobile);
@@ -252,7 +252,7 @@
     }
 
     // Utilities
-    [data-app-sidebar-secondary-enabled="true"][data-app-sidebar-secondary-minimize-mobile="on"] {
+    [data-kt-app-sidebar-secondary-enabled="true"][data-kt-app-sidebar-secondary-minimize-mobile="on"] {
         .app-sidebar-secondary-minimize-mobile-d-none {
             display: none !important;    
         }
@@ -262,7 +262,7 @@
         }
     } 
 
-    [data-app-sidebar-secondary-enabled="true"][data-app-sidebar-secondary-collapse="on"] {
+    [data-kt-app-sidebar-secondary-enabled="true"][data-kt-app-sidebar-secondary-collapse="on"] {
         .app-sidebar-secondary-collapse-mobile-d-none {
             display: none !important;    
         }

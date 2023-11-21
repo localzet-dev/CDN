@@ -164,21 +164,15 @@
     // Aside base
     @include property(--#{$prefix}app-aside-base-bg-color, $app-aside-base-bg-color);
     @include property(--#{$prefix}app-aside-base-box-shadow, $app-aside-base-box-shadow);
-    @include property(--#{$prefix}app-aside-base-border-start, $app-aside-base-border-start);
-    @include property(--#{$prefix}app-aside-base-border-end, $app-aside-base-border-end);
 
     // Aside sticky
     @include property(--#{$prefix}app-aside-sticky-bg-color, $app-aside-sticky-bg-color);
     @include property(--#{$prefix}app-aside-sticky-box-shadow, $app-aside-sticky-box-shadow);
-    @include property(--#{$prefix}app-aside-sticky-border-start, $app-aside-sticky-border-start);
-    @include property(--#{$prefix}app-aside-sticky-border-end, $app-aside-sticky-border-end);
 
     // Aside minimize
     @include property(--#{$prefix}app-aside-minimize-bg-color, $app-aside-minimize-bg-color);
     @include property(--#{$prefix}app-aside-minimize-box-shadow, $app-aside-minimize-box-shadow);
     @include property(--#{$prefix}app-aside-minimize-hover-box-shadow, $app-aside-minimize-hover-box-shadow);
-    @include property(--#{$prefix}app-aside-minimize-border-start, $app-aside-minimize-border-start);
-    @include property(--#{$prefix}app-aside-minimize-border-end, $app-aside-minimize-border-end);
 
     // Page
     @include property(--#{$prefix}app-page-bg-color, $app-page-bg-color);
@@ -352,20 +346,14 @@
     // Aside base
     @include property(--#{$prefix}app-aside-base-bg-color, $app-aside-base-bg-color-dark);
     @include property(--#{$prefix}app-aside-base-box-shadow, $app-aside-base-box-shadow-dark);
-    @include property(--#{$prefix}app-aside-base-border-start, $app-aside-base-border-start-dark);
-    @include property(--#{$prefix}app-aside-base-border-end, $app-aside-base-border-end-dark);
 
     // Aside sticky
     @include property(--#{$prefix}app-aside-sticky-bg-color, $app-aside-sticky-bg-color-dark);
-    @include property(--#{$prefix}app-aside-sticky-border-start, $app-aside-sticky-border-start-dark);
-    @include property(--#{$prefix}app-aside-sticky-border-end, $app-aside-sticky-border-end-dark);
 
     // Aside minimize
     @include property(--#{$prefix}app-aside-minimize-bg-color, $app-aside-minimize-bg-color-dark);
     @include property(--#{$prefix}app-aside-minimize-box-shadow, $app-aside-minimize-box-shadow-dark);
     @include property(--#{$prefix}app-aside-minimize-hover-box-shadow, $app-aside-minimize-hover-box-shadow-dark);
-    @include property(--#{$prefix}app-aside-minimize-border-start, $app-aside-minimize-border-start-dark);
-    @include property(--#{$prefix}app-aside-minimize-border-end, $app-aside-minimize-border-end-dark);
 
     // Page
     @include property(--#{$prefix}app-page-bg-color, $app-page-bg-color-dark);

@@ -1,36 +1,78 @@
 //
-// Root
+// Main
 //
 
-// Desktop mode
+
+body {
+	background-color: var(--#{$prefix}page-bg);
+}
+
+// Font color from Content background color
+.text-page-bg {
+	color: $page-bg;
+}
+
+.app-blank {
+	background-color: var(--#{$prefix}app-blank-bg) !important;
+}
+
+// Above Xxl
+@include media-breakpoint-up(xxl) {
+	// Wrapper
+	.wrapper {
+		// Sidebar enabled mode
+		.sidebar-enabled & {
+			padding-right: get($sidebar-config, width);
+		}
+	}
+
+	// Engage toolbar
+	.sidebar-enabled .engage-toolbar {
+		right: get($sidebar-config, width) !important;
+	}
+
+	// Engage toolbar
+	.sidebar-enabled .scrolltop {
+		right: get($sidebar-config, width) + 5px !important;
+	}
+}
+
+// Desktop Mode
 @include media-breakpoint-up(lg) {
-    // Base
-    .app-main {
-        [data-app-toolbar-enabled="true"] & {
-		    padding-top: $app-content-padding-y;
-	    }
-    }
+	// Containers
+	.container,
+	.container-xxl,
+	.container-fluid {
+		padding: 0 get($content-spacing, desktop) !important;
+	}
 
-    // Aside enabled mode
-    [data-app-aside-enabled="true"] {
-        // Engage toolbar
-        .engage-toolbar {
-            z-index: $app-engage-toolbar-z-index !important;
-        }
+	// Wrapper
+	.wrapper {
+		padding-top: get($content-spacing, desktop);
+		padding-left: get($aside-config, width) + get($content-spacing, desktop);
 
-        // Scrolltop
-        .scrolltop {
-            right: calc($scrolltop-end + var(--#{$prefix}app-aside-width, 0));
-        }
-    } 
+		// Fixed header mode
+		.header-fixed[data-kt-sticky-header="on"] & {
+			padding-top: get($content-spacing, desktop) + get($header-config, desktop, default, height);
+		}
+	}
 }
 
 // Tablet & mobile modes
 @include media-breakpoint-down(lg) {
-    // Base
-    .app-main {
-        [data-app-toolbar-enabled="true"] & {
-		    padding-top: $app-content-padding-y-mobile;
-	    }
-    }
+	// Containers
+	.container,
+	.container-xxl,
+	.container-fluid {
+		max-width: none;
+		padding: 0 get($content-spacing, tablet-and-mobile) !important;
+	}
+
+	// Wrapper
+	.wrapper {
+		// Fixed header mode
+		.header-tablet-and-mobile-fixed[data-kt-sticky-header="on"] & {
+			padding-top: get($header-config, tablet-and-mobile, fixed, height);
+		}
+	}
 }
