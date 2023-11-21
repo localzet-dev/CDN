@@ -140,7 +140,11 @@ const jsChannel = () => {
       return gulpif(jsMinify, terser());
     })
     .pipe(() => {
-      return gulpif(jsSourcemaps, sourcemaps.write("./"));
+      return gulpif(
+        jsSourcemaps,
+        sourcemaps.write("./"),
+        sourcemaps.write(null, { addComment: false })
+      );
     });
 };
 
@@ -165,13 +169,6 @@ const cssChannel = (includePaths) => {
         ),
         // outputStyle: config.cssMinify ? 'compressed' : '',
       }).on("error", sass.logError);
-    })
-    .pipe(() => {
-      return postcss([
-        tailwindcss('./tailwind.config.js'),
-        autoprefixer()
-      ]
-      );
     })
     .pipe(() => {
       return gulpif(cssMinify, cleancss());
@@ -335,6 +332,45 @@ const baseFileName = (path) => {
     return maybeFile;
   }
   return "";
+};
+
+const baseName = (str, extension) => {
+  let base = new String(str).substring(str.lastIndexOf("/") + 1);
+  if (!extension && base.lastIndexOf(".") != -1) {
+    base = base.substring(0, base.lastIndexOf("."));
+  }
+  return base;
+};
+
+/**
+ * Remove file name and get the path
+ */
+const pathOnly = (str) => {
+  const array = str.split("/");
+  if (array.length > 0) {
+    array.pop();
+  }
+
+  return array.join("/");
+};
+
+const getFolders = (dir) => {
+  try {
+    return fs.readdirSync(dir).filter((file) => {
+      return fs.statSync(path.join(dir, file)).isDirectory();
+    });
+  }catch(e) {
+    return [];
+  }
+};
+
+const getParameters = () => {
+  // remove first 2 unused elements from array
+  let argv = JSON.parse(process.env.npm_config_argv).cooked.slice(2);
+  argv = argv.map((arg) => {
+    return arg.replace(/--/i, "");
+  });
+  return argv;
 };
 
 const bundleStreams = [];
@@ -692,7 +728,7 @@ if (args.presets && fs.existsSync(build.config.path.src + '/sass/presets')) {
             presets.forEach(preset => {
               tasks.push((cb) => {
                 val.src.styles[0] = '{$config.path.src}/sass/presets/' + preset + '/style.scss';
-                val.dist.styles = '{$config.dist}/css/style.' + preset + '.bundle.css';
+                val.dist.styles = '{$config.dist}/css/style.' + preset + '.css';
                 bundle(val);
                 cb();
               });
@@ -706,7 +742,7 @@ if (args.presets && fs.existsSync(build.config.path.src + '/sass/presets')) {
               val.src.styles.forEach((file, i) => {
                 if (file.indexOf('plugins.scss') !== -1) {
                   val.src.styles[i] = '{$config.path.src}/sass/presets/' + preset + '/plugins.scss';
-                  val.dist.styles = '{$config.dist}/plugins/global/plugins.' + preset + '.bundle.css';
+                  val.dist.styles = '{$config.dist}/plugins/global/plugins.' + preset + '.css';
                   bundle(val);
                   cb();
                 }
