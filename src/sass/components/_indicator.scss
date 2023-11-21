@@ -5,13 +5,13 @@
 .indicator-progress {
     display: none;
 
-    [data-indicator="on"] > & {
+    [data-kt-indicator="on"] > & {
         display: inline-block;
     }
 }
 
 .indicator-label {
-    [data-indicator="on"] > & {
+    [data-kt-indicator="on"] > & {
         display: none;
     }
 }

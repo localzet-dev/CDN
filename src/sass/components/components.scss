@@ -6,7 +6,7 @@
 @import "utilities";
 
 // Bootstrap components
-@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../../tools/node_modules/bootstrap/scss/bootstrap";
 
 // Custom components
 @import "root";
@@ -63,5 +63,6 @@
 @import "engage";
 @import "cookiealert";
 @import "print";
-@import "helpers";@import "stepper/multistep";
+@import "helpers";
+@import "testimonials-slider";@import "stepper/multistep";
 @import "landing";

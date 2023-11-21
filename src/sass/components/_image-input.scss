@@ -26,14 +26,14 @@
 	}
 
 	// Actions
-	[data-image-input-action] {
+	[data-kt-image-input-action] {
 		cursor: pointer;
 		position: absolute;
 		transform: translate(-50%,-50%);
 	}
 
 	// Change Button
-	[data-image-input-action="change"] {
+	[data-kt-image-input-action="change"] {
 		left: 100%;
 		top: 0;
 
@@ -46,32 +46,32 @@
 	}
 
 	// Cancel & Remove Buttons
-	[data-image-input-action="cancel"],
-	[data-image-input-action="remove"] {
+	[data-kt-image-input-action="cancel"],
+	[data-kt-image-input-action="remove"] {
 		position: absolute;
 		left: 100%;
 		top: 100%;
 	}
 
-	[data-image-input-action="cancel"] {
+	[data-kt-image-input-action="cancel"] {
 		display: none;
 	}
 
 	// Input Changed State
 	&.image-input-changed {
-		[data-image-input-action="cancel"] {
+		[data-kt-image-input-action="cancel"] {
 			display: flex;
 		}
 
-		[data-image-input-action="remove"] {
+		[data-kt-image-input-action="remove"] {
 			display: none;
 		}
 	}
 
 	// Input Empty State
 	&.image-input-empty {
-		[data-image-input-action="remove"],
-		[data-image-input-action="cancel"] {
+		[data-kt-image-input-action="remove"],
+		[data-kt-image-input-action="cancel"] {
 			display: none;
 		}
 	}
@@ -86,15 +86,15 @@
 		}
 
 		// Change Control
-		[data-image-input-action="change"] {
+		[data-kt-image-input-action="change"] {
 			left: 100%;
 			top: 0;
 			transform: translate(-100%, 0%);
 		}
 
 		// Cancel & Remove Buttons
-		[data-image-input-action="cancel"],
-		[data-image-input-action="remove"] {
+		[data-kt-image-input-action="cancel"],
+		[data-kt-image-input-action="remove"] {
 			left: 100%;
 			top: 100%;
 			transform: translate(-100%,-100%);

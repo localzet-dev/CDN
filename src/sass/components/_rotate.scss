@@ -21,6 +21,10 @@ $rotate-transition: transform 0.3s ease;
         .active > & {
             transform: rotateZ(#{$value}deg);
             transition: $rotate-transition;
+
+            [direction="rtl"] & {
+                transform: rotateZ(-#{$value}deg);
+            }
         }
     }
 
@@ -34,6 +38,10 @@ $rotate-transition: transform 0.3s ease;
         .active > & {
             transform: rotateZ(-#{$value}deg);
             transition: $rotate-transition;
+
+            [direction="rtl"] & {
+                transform: rotateZ(#{$value}deg);
+            }
         }
     }
 }

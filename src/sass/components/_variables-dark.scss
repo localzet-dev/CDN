@@ -260,7 +260,7 @@ $menu-heading-color-dark: $text-muted-dark !default;
 	
 // Keenthemes scrollbar component 
 $scrollbar-color-dark: $gray-200-dark !default;
-$scrollbar-hover-color-dark: darken($gray-200-dark, 2%) !default;
+$scrollbar-hover-color-dark: $gray-300-dark !default;
 
 // Keenthemes overlay component 
 $overlay-bg-dark: rgba($white, 0.05) !default;

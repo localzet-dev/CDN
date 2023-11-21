@@ -13,15 +13,15 @@ $black:#000000 !default;
 
 // Bootstrap grey colors
 $gray-100: #F9F9F9 !default;
-$gray-200: #F4F4F4 !default;
-$gray-300: #E1E3EA !default;
+$gray-200: #F1F1F2 !default;
+$gray-300: #DBDFE9 !default;
 $gray-400: #B5B5C3 !default;
-$gray-500: #A1A5B7 !default;
-$gray-600: #7E8299 !default;
-$gray-700: #5E6278 !default;
-$gray-800: #3F4254 !default;
-$gray-900: #181C32 !default;
-
+$gray-500: #99A1B7 !default;
+$gray-600: #78829D !default;
+$gray-700: #4B5675 !default;
+$gray-800: #252F4A !default;
+$gray-900: #071437 !default;
+ 
 // Bootstrap muted color
 $text-muted: $gray-500 !default;
 
@@ -49,13 +49,14 @@ $primary-inverse: 				$white !default;
 $secondary: 					$gray-300 !default;
 $secondary-active: 				$gray-400 !default;
 $secondary-light: 				$gray-100 !default;
-$secondary-inverse:				$gray-800 !default;
+$secondary-inverse:				$gray-700 !default; 
 
 // Light colors
 $light: 						$gray-100 !default;
 $light-active: 					$gray-200 !default;
 $light-light: 					gba($gray-100, 0.75) !default;
 $light-inverse:					$gray-600 !default;
+
 
 // Success colors
 $success: 						#1BC5BD !default; 
@@ -376,7 +377,10 @@ $font-sizes: (
 	9: $font-size-base * 0.75,  // 9.75px
 	10: $font-size-base * 0.5,  // 6.50px
 
+	sm: $font-size-sm,
 	base: $font-size-base, // 13px
+	lg: $font-size-lg,
+	
 	fluid: 100%, // 100%
 
 	2x: $font-size-base * 2,  // 26px
@@ -561,6 +565,8 @@ $input-disabled-border-color:               $input-border-color !default;
 
 $input-placeholder-color:                   var(--#{$prefix}gray-500) !default;
 $input-plaintext-color:                     var(--#{$prefix}gray-700) !default;
+
+$inpur-autifill-bg-color:					var(--#{$prefix}gray-100) !default;
 
 // Keenthemes solid input style
 $input-solid-color:         	            var(--#{$prefix}gray-700) !default;
@@ -1150,7 +1156,7 @@ $scrollbar-size: 5px !default;
 $scrollbar-overlay-size: 19px !default;
 $scrollbar-overlay-space: 7px !default;
 $scrollbar-color: $gray-200 !default;
-$scrollbar-hover-color: darken($gray-200, 2%) !default;
+$scrollbar-hover-color: $gray-300 !default;
 
 // Keenthemes overlay component 
 $overlay-bg: rgba($black, 0.05)  !default;

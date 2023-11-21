@@ -61,7 +61,7 @@ $landing-header-sticky-height-tablet-and-mobile: 70px;
         }
 
         // Header menu sticky mode
-        [data-sticky-landing-header="on"] & {
+        [data-kt-sticky-landing-header="on"] & {
             // Menu link
             .menu-link {
                 &.active {
@@ -73,7 +73,7 @@ $landing-header-sticky-height-tablet-and-mobile: 70px;
     }
 
     // Sticky header modes
-    [data-sticky-landing-header="on"] & {        
+    [data-kt-sticky-landing-header="on"] & {        
         padding: 0;
         position: fixed;
         top: 0;
@@ -96,7 +96,7 @@ $landing-header-sticky-height-tablet-and-mobile: 70px;
 }
 
 // Fix body padding top when Landing sticky header is on
-body[data-sticky-landing-header="on"] {
+body[data-kt-sticky-landing-header="on"] {
     padding-top: $landing-header-height;
 }
 
@@ -113,7 +113,7 @@ body[data-sticky-landing-header="on"] {
         }
 
         // Sticky header modes
-        [data-sticky-landing-header="on"] & { 
+        [data-kt-sticky-landing-header="on"] & { 
             height: $landing-header-sticky-height-tablet-and-mobile;
         }
 
@@ -130,7 +130,7 @@ body[data-sticky-landing-header="on"] {
     }
 
     // Fix body padding top when Landing sticky header is on
-    body[data-sticky-landing-header="on"] {
+    body[data-kt-sticky-landing-header="on"] {
         padding-top: $landing-header-height-tablet-and-mobile;
     }
 }

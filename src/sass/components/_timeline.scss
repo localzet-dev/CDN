@@ -35,6 +35,11 @@
 		border-left-color: var(--#{$prefix}gray-300); 
 	}
 
+	// Line solid
+	.timeline-line-solid {				
+		border-left-style: solid !important;				
+	}
+
 	// Icon
 	.timeline-icon {
 		z-index: 1;

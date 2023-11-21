@@ -15,7 +15,7 @@
 	}
 
 	// Remove border
-	&:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon) {
+	&:not(.btn-outline):not(.btn-dashed):not(.btn-bordered):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon) {
 		border: 0;
 		padding: calc(#{$btn-padding-y} + #{$btn-border-width}) calc(#{$btn-padding-x} + #{$btn-border-width});
 
@@ -89,14 +89,6 @@
 		font-size: $font-size-base;
 		padding-right: 0.35rem;
 		vertical-align: middle;
-		//line-height: 0;
-	}
-
-	// Svg icon
-	.svg-icon {
-		flex-shrink: 0;
-		line-height: 0;
-		margin-right: 0.5rem;
 	}
 
 	// Icon only button
@@ -107,6 +99,11 @@
 		padding: 0;
 		height: $input-height;
 		width: $input-height;
+		line-height: 1;
+
+		i {
+			padding-right: 0;	
+		}
 
 		// Remove border
 		&:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush) {
@@ -127,13 +124,6 @@
 
 		&.btn-circle {
 			border-radius: 50%;
-		}
-
-		i,
-		.svg-icon {
-			padding: 0;
-			margin: 0;
-			line-height: 1;
 		}
 	}
 }
