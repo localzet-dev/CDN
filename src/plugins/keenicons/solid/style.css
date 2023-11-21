@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'keenicons-solid';
-  src:  url('fonts/keenicons/keenicons-solid.eot?812fv7');
-  src:  url('fonts/keenicons/keenicons-solid.eot?812fv7#iefix') format('embedded-opentype'),
-    url('fonts/keenicons/keenicons-solid.ttf?812fv7') format('truetype'),
-    url('fonts/keenicons/keenicons-solid.woff?812fv7') format('woff'),
-    url('fonts/keenicons/keenicons-solid.svg?812fv7#keenicons-solid') format('svg');
+  src:  url('fonts/keenicons-solid.eot?812fv7');
+  src:  url('fonts/keenicons-solid.eot?812fv7#iefix') format('embedded-opentype'),
+    url('fonts/keenicons-solid.ttf?812fv7') format('truetype'),
+    url('fonts/keenicons-solid.woff?812fv7') format('woff'),
+    url('fonts/keenicons-solid.svg?812fv7#keenicons-solid') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
