@@ -19,13 +19,10 @@ import path, * as pathDir from "path";
 import cleancss from "gulp-clean-css";
 import yargs from "yargs";
 import { hideBin } from 'yargs/helpers'
-import glob from "glob";
+import { glob } from "glob";
 import { fileURLToPath } from 'url';
 
 import connect from "gulp-connect";
-import postcss from "gulp-postcss";
-import autoprefixer from "autoprefixer";
-import tailwindcss from "tailwindcss";
 
 import { gulpConfig } from "./gulp.config.js";
 
@@ -359,7 +356,7 @@ const getFolders = (dir) => {
     return fs.readdirSync(dir).filter((file) => {
       return fs.statSync(path.join(dir, file)).isDirectory();
     });
-  }catch(e) {
+  } catch (e) {
     return [];
   }
 };
