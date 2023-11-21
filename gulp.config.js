@@ -27,7 +27,10 @@ const gulpConfig = {
             common_src: "src",
             node_modules: "node_modules",
         },
-        dist: ["public"],
+        dist: [
+            "public",
+            "8.2.0"
+        ],
     },
     build: {
         base: {
@@ -258,19 +261,19 @@ const gulpConfig = {
                         },
                         "@fontawesome": {
                             styles: [
-                                "{$config.path.src}/plugins/fontawesome/css/all.min.css",
+                                "{$config.path.common_src}/plugins/fontawesome/css/all.min.css",
                             ],
                             scripts: [
-                                "{$config.path.src}/plugins/fontawesome/js/all.min.js",
+                                "{$config.path.common_src}/plugins/fontawesome/js/all.min.js",
                             ],
                             sprites: [
-                                "{$config.path.src}/plugins/fontawesome/sprites/*.svg",
+                                "{$config.path.common_src}/plugins/fontawesome/sprites/*.svg",
                             ],
                             svgs: [
-                                "{$config.path.src}/plugins/fontawesome/svgs/**/*.svg",
+                                "{$config.path.common_src}/plugins/fontawesome/svgs/**/*.svg",
                             ],
                             fonts: [
-                                "{$config.path.src}/plugins/fontawesome/webfonts/**",
+                                "{$config.path.common_src}/plugins/fontawesome/webfonts/**",
                             ],
                         }
                     },
