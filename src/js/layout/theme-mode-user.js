@@ -1,13 +1,13 @@
 "use strict";
 
-// Определение класса
-var ThemeModeUser = function () {
+// Class definition
+var KTThemeModeUser = function () {
     
     var handleSubmit = function() {
 		// Update chart on theme mode change
-        ThemeMode.on("kt.thememode.change", function() {                
-            var menuMode = ThemeMode.getMenuMode();
-            var mode = ThemeMode.getMode();
+        KTThemeMode.on("kt.thememode.change", function() {                
+            var menuMode = KTThemeMode.getMenuMode();
+            var mode = KTThemeMode.getMode();
             console.log("user selected theme mode:" + menuMode);
             console.log("theme mode:" + mode);
 
@@ -25,11 +25,11 @@ var ThemeModeUser = function () {
 }();
 
 // Initialize app on document ready
-Util.onDOMContentLoaded(function () {
-    ThemeModeUser.init();
+KTUtil.onDOMContentLoaded(function () {
+    KTThemeModeUser.init();
 });
 
-// Declare ThemeModeUser for Webpack support
+// Declare KTThemeModeUser for Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = ThemeModeUser;
+    module.exports = KTThemeModeUser;
 }
