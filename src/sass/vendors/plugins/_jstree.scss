@@ -132,7 +132,8 @@
     }
 }
 
-.vakata-context .vakata-context-separator a {
+.vakata-context .vakata-context-separator a,
+.vakata-context-rtl .vakata-context-separator a {
     margin: 0;
     border: 0;
     height: 2px;

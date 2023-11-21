@@ -212,17 +212,22 @@ table.dataTable > tbody > tr.selected > * {
 // Scroll
 div.dataTables_scrollBody {
     border-left: 0 !important;
+
+    .sorting_disabled.sorting_asc,
+    .sorting_disabled.sorting_desc {
+        &:after {
+            display: none !important;
+        }
+    }
 }
 
-.dataTables_scroll .dataTables_scrollBody .table {
-    thead {
-        line-height: 0;    
-
-        .sorting {
-            &:after,
-            &:before {
-                display: none !important;
-            }
+.dataTables_scroll > .dataTables_scrollBody > .table > thead {
+    line-height: 0;
+    
+    .sorting {
+        &:after,
+        &:before {
+            display: none !important;
         }
     }
 }

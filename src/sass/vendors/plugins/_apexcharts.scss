@@ -24,7 +24,7 @@
 }
 
 .apexcharts-menu {
-	background-color: var(--#{$prefix}body-bg);
+	background: var(--#{$prefix}body-bg) !important;
 	border: 0 !important;
 	padding: 0.5rem 0 !important;
 	box-shadow: var(--#{$prefix}dropdown-box-shadow);

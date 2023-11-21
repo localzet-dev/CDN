@@ -39,7 +39,7 @@ $select2-input-padding-y-lg: $input-padding-y-lg - $select2-tag-padding-y-lg * 2
 .select2-container--bootstrap5 {
 	// Selection 
 	.select2-selection {
-		box-shadow: none !important;
+		box-shadow: none;
 		height: auto;
 		outline: none !important;
 	}
@@ -75,6 +75,8 @@ $select2-input-padding-y-lg: $input-padding-y-lg - $select2-tag-padding-y-lg * 2
 
 	// Search
 	.select2-search.select2-search--inline {
+		flex-grow: 1;
+
 		.select2-search__field {
 			color: $input-color;	
 			@include placeholder($input-placeholder-color);
@@ -317,7 +319,7 @@ $select2-input-padding-y-lg: $input-padding-y-lg - $select2-tag-padding-y-lg * 2
 		}
 
 		// Options
-		.select2-results__options {
+		.select2-results > .select2-results__options {
 			max-height: 250px;
 			overflow-y: auto;
 		}

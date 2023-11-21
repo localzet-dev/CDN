@@ -38,8 +38,19 @@
     }
 }
 
+.ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg {
+    right: 0;
+
+    [direction="rtl"] &,
+    [dir="rtl"] & {
+        left: 0;
+        right: auto;
+    }
+}
+
 .ql-editor {
     color: var(--#{$prefix}input-color);
+    text-align: initial;
 
     &.ql-blank {
         &:before {

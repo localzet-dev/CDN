@@ -210,8 +210,8 @@
 
             &.today,
             &.today.active {
-                background: var(--#{$prefix}component-hover-bg) !important;
-                color: var(--#{$prefix}component-hover-color) !important;
+                background: var(--#{$prefix}gray-200) !important;
+                color: var(--#{$prefix}gray-700) !important;
                 @include border-radius($border-radius);
             }
 

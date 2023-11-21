@@ -105,6 +105,31 @@
             margin: 0;    
         }
     }
+
+    &.tns-circle-nav {
+        .tns-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+
+            button {
+                display: block;
+                outline: none;            
+                width: 1.15rem;
+                height: 1.15rem;
+                background-color: var(--#{$prefix}gray-200);
+                margin: 0 0.55rem;
+                border: 0;
+                @include border-radius(50%);
+
+                &.tns-nav-active{
+                    background-color: var(--#{$prefix}gray-400);
+                }
+            }
+        }
+    }
 }
 
 
