@@ -1,7 +1,7 @@
 "use strict";
 
-// Определение класса
-var LayoutSearch = function() {
+// Class definition
+var KTLayoutSearch = function() {
     // Private variables
     var element;
     var formElement;
@@ -21,10 +21,10 @@ var LayoutSearch = function() {
     
     var searchObject;
 
-    // Приватные методы
+    // Private functions
     var processs = function(search) {
         var timeout = setTimeout(function() {
-            var number = Util.getRandomInt(1, 3);
+            var number = KTUtil.getRandomInt(1, 3);
 
             // Hide recently viewed
             mainElement.classList.add('d-none');
@@ -87,64 +87,67 @@ var LayoutSearch = function() {
 
     var handlePreferences = function() {
         // Preference show handler
-        preferencesShowElement.addEventListener('click', function() {
-            wrapperElement.classList.add('d-none');
-            preferencesElement.classList.remove('d-none');
-        });
+        if (preferencesShowElement) { 
+            preferencesShowElement.addEventListener('click', function() {
+                wrapperElement.classList.add('d-none');
+                preferencesElement.classList.remove('d-none');
+            });
+        }
 
         // Preference dismiss handler
-        preferencesDismissElement.addEventListener('click', function() {
-            wrapperElement.classList.remove('d-none');
-            preferencesElement.classList.add('d-none');
-        });
+        if (preferencesDismissElement) { 
+            preferencesDismissElement.addEventListener('click', function() {
+                wrapperElement.classList.remove('d-none');
+                preferencesElement.classList.add('d-none');
+            });
+        }
     }
 
     var handleAdvancedOptionsForm = function() {
         // Show
-        advancedOptionsFormShowElement.addEventListener('click', function() {
-            wrapperElement.classList.add('d-none');
-            advancedOptionsFormElement.classList.remove('d-none');
-        });
+        if (advancedOptionsFormShowElement) {            
+            advancedOptionsFormShowElement.addEventListener('click', function() {
+                wrapperElement.classList.add('d-none');
+                advancedOptionsFormElement.classList.remove('d-none');
+            });
+        }        
 
         // Cancel
-        advancedOptionsFormCancelElement.addEventListener('click', function() {
-            wrapperElement.classList.remove('d-none');
-            advancedOptionsFormElement.classList.add('d-none');
-        });
-
-        // Search
-        advancedOptionsFormSearchElement.addEventListener('click', function() {
-            
-        });
+        if (advancedOptionsFormCancelElement) {           
+            advancedOptionsFormCancelElement.addEventListener('click', function() {
+                wrapperElement.classList.remove('d-none');
+                advancedOptionsFormElement.classList.add('d-none');
+            });
+        }
     }
 
-    // Публичные методы
+    // Public methods
 	return {
 		init: function() {
             // Elements
-            element = document.querySelector('#header_search');
+            element = document.querySelector('#kt_header_search');
 
             if (!element) {
                 return;
             }
 
-            wrapperElement = element.querySelector('[data-search-element="wrapper"]');
-            formElement = element.querySelector('[data-search-element="form"]');
-            mainElement = element.querySelector('[data-search-element="main"]');
-            resultsElement = element.querySelector('[data-search-element="results"]');
-            emptyElement = element.querySelector('[data-search-element="empty"]');
+            wrapperElement = element.querySelector('[data-kt-search-element="wrapper"]');
+            formElement = element.querySelector('[data-kt-search-element="form"]');
+            mainElement = element.querySelector('[data-kt-search-element="main"]');
+            resultsElement = element.querySelector('[data-kt-search-element="results"]');
+            emptyElement = element.querySelector('[data-kt-search-element="empty"]');
 
-            preferencesElement = element.querySelector('[data-search-element="preferences"]');
-            preferencesShowElement = element.querySelector('[data-search-element="preferences-show"]');
-            preferencesDismissElement = element.querySelector('[data-search-element="preferences-dismiss"]');
+            preferencesElement = element.querySelector('[data-kt-search-element="preferences"]');
+            preferencesShowElement = element.querySelector('[data-kt-search-element="preferences-show"]');
+            preferencesDismissElement = element.querySelector('[data-kt-search-element="preferences-dismiss"]');
 
-            advancedOptionsFormElement = element.querySelector('[data-search-element="advanced-options-form"]');
-            advancedOptionsFormShowElement = element.querySelector('[data-search-element="advanced-options-form-show"]');
-            advancedOptionsFormCancelElement = element.querySelector('[data-search-element="advanced-options-form-cancel"]');
-            advancedOptionsFormSearchElement = element.querySelector('[data-search-element="advanced-options-form-search"]');
+            advancedOptionsFormElement = element.querySelector('[data-kt-search-element="advanced-options-form"]');
+            advancedOptionsFormShowElement = element.querySelector('[data-kt-search-element="advanced-options-form-show"]');
+            advancedOptionsFormCancelElement = element.querySelector('[data-kt-search-element="advanced-options-form-cancel"]');
+            advancedOptionsFormSearchElement = element.querySelector('[data-kt-search-element="advanced-options-form-search"]');
             
             // Initialize search handler
-            searchObject = new Search(element);
+            searchObject = new KTSearch(element);
 
             // Demo search handler
             searchObject.on('kt.search.process', processs);
@@ -156,13 +159,18 @@ var LayoutSearch = function() {
             searchObject.on('kt.search.clear', clear);
 
             // Custom handlers
-            handlePreferences();
-            handleAdvancedOptionsForm();            
+            if (preferencesElement) {
+                handlePreferences();
+            }            
+
+            if (advancedOptionsFormElement) {
+                handleAdvancedOptionsForm();
+            }                        
 		}
 	};
 }();
 
-// При загрузке документа
-Util.onDOMContentLoaded(function() {
-    LayoutSearch.init();
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTLayoutSearch.init();
 });
