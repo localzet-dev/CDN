@@ -24,8 +24,9 @@ const gulpConfig = {
             src: {
                 styles: ["{$config.path.src}/sass/styles.scss"],
                 scripts: [
-                    "{$config.path.src}/js/components/**/*.js",
-                    "{$config.path.src}/js/layout/**/*.js",
+                    "{$config.path.common_src}/js/components/**/*.js",
+                    "{$config.path.common_src}/js/layout/**/*.js",
+                    "{$config.path.src}/js/layout/**/*.js"
                 ]
             },
             dist: {
@@ -76,7 +77,7 @@ const gulpConfig = {
                             ],
                             scripts: [
                                 "{$config.path.node_modules}/select2/dist/js/select2.full.js",
-                                "{$config.path.src}/js/vendors/plugins/select2.init.js",
+                                "{$config.path.common_src}/js/vendors/plugins/select2.init.js",
                             ],
                         },
                         "tempus-dominus": {
@@ -85,7 +86,7 @@ const gulpConfig = {
                             ],
                             scripts: [
                                 "{$config.path.node_modules}/@eonasdan/tempus-dominus/dist/js/tempus-dominus.min.js",
-                                "{$config.path.src}/js/vendors/plugins/tempus-dominus.init.js",
+                                "{$config.path.common_src}/js/vendors/plugins/tempus-dominus.init.js",
                                 "{$config.path.node_modules}/@eonasdan/tempus-dominus/dist/locales/de.js",
                                 "{$config.path.node_modules}/@eonasdan/tempus-dominus/dist/plugins/customDateFormat.js",
                             ],
@@ -101,12 +102,13 @@ const gulpConfig = {
                         },
                         formvalidation: {
                             styles: [
-                                "{$config.path.src}/plugins/formvalidation/dist/css/formValidation.css",
+                                "{$config.path.common_src}/plugins/@form-validation/umd/styles/index.css",
                             ],
                             scripts: [
                                 "{$config.path.node_modules}/es6-shim/es6-shim.js",
-                                "{$config.path.src}/plugins/formvalidation/dist/js/FormValidation.full.min.js",
-                                "{$config.path.src}/plugins/formvalidation/dist/js/plugins/Bootstrap5.min.js"
+                                "{$config.path.common_src}/plugins/@form-validation/umd/bundle/popular.min.js",
+                                "{$config.path.common_src}/plugins/@form-validation/umd/bundle/full.min.js",
+                                "{$config.path.common_src}/plugins/@form-validation/umd/plugin-bootstrap5/index.min.js"
                             ],
                         },
                         bootstrapmaxlength: {
@@ -170,7 +172,7 @@ const gulpConfig = {
                             ],
                             scripts: [
                                 "{$config.path.node_modules}/dropzone/dist/dropzone.js",
-                                "{$config.path.src}/js/vendors/plugins/dropzone.init.js",
+                                "{$config.path.common_src}/js/vendors/plugins/dropzone.init.js",
                             ],
                         },
                         quil: {
@@ -187,8 +189,8 @@ const gulpConfig = {
                             ],
                         },
                         toastr: {
-                            styles: ["{$config.path.src}/plugins/toastr/build/toastr.css"],
-                            scripts: ["{$config.path.src}/plugins/toastr/build/toastr.min.js"],
+                            styles: ["{$config.path.common_src}/plugins/toastr/build/toastr.css"],
+                            scripts: ["{$config.path.common_src}/plugins/toastr/build/toastr.min.js"],
                         },
                         apexcharts: {
                             styles: [
@@ -199,7 +201,7 @@ const gulpConfig = {
                             ],
                         },
                         chartjs: {
-                            scripts: ["{$config.path.node_modules}/chart.js/dist/chart.js"],
+                            scripts: ["{$config.path.node_modules}/chart.js/dist/chart.umd.js"],
                         },
                         countupjs: {
                             scripts: [
@@ -213,19 +215,19 @@ const gulpConfig = {
                             scripts: [
                                 "{$config.path.node_modules}/es6-promise-polyfill/promise.min.js",
                                 "{$config.path.node_modules}/sweetalert2/dist/sweetalert2.min.js",
-                                "{$config.path.src}/js/vendors/plugins/sweetalert2.init.js",
+                                "{$config.path.common_src}/js/vendors/plugins/sweetalert2.init.js",
                             ],
                         },
                         keenicons: {
                             styles: [
-                                "{$config.path.src}/plugins/keenicons/duotone/style.css",
-                                "{$config.path.src}/plugins/keenicons/outline/style.css",
-                                "{$config.path.src}/plugins/keenicons/solid/style.css",
+                                "{$config.path.common_src}/plugins/keenicons/duotone/style.css",
+                                "{$config.path.common_src}/plugins/keenicons/outline/style.css",
+                                "{$config.path.common_src}/plugins/keenicons/solid/style.css",
                             ],
                             fonts: [
-                                "{$config.path.src}/plugins/keenicons/duotone/fonts/**",
-                                "{$config.path.src}/plugins/keenicons/outline/fonts/**",
-                                "{$config.path.src}/plugins/keenicons/solid/fonts/**",
+                                "{$config.path.common_src}/plugins/keenicons/duotone/fonts/**",
+                                "{$config.path.common_src}/plugins/keenicons/outline/fonts/**",
+                                "{$config.path.common_src}/plugins/keenicons/solid/fonts/**",
                             ],
                         },
                         "line-awesome": {
@@ -267,12 +269,12 @@ const gulpConfig = {
                     },
                 },
                 dist: {
-                    styles: "{$config.dist}/plugins/global/styles.css",
-                    scripts: "{$config.dist}/plugins/global/scripts.js",
-                    sprites: "{$config.dist}/plugins/global/sprites/",
-                    svgs: "{$config.dist}/media/svg/",
+                    styles: "{$config.dist}/plugins/global/plugins.css",
+                    scripts: "{$config.dist}/plugins/global/plugins.js",
+                    sprites: "{$config.dist}/plugins/global/sprites",
+                    svgs: "{$config.dist}/media/svg",
                     images: "{$config.dist}/plugins/global/images",
-                    fonts: "{$config.dist}/plugins/global/fonts/",
+                    fonts: "{$config.dist}/plugins/global/fonts",
                 },
             },
             custom: {
@@ -314,7 +316,7 @@ const gulpConfig = {
                             "{$config.path.node_modules}/prismjs/components/prism-python.js",
                             "{$config.path.node_modules}/prismjs/components/prism-aspnet.js",
                             "{$config.path.node_modules}/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js",
-                            "{$config.path.src}/js/vendors/plugins/prism.init.js",
+                            "{$config.path.common_src}/js/vendors/plugins/prism.init.js",
                         ],
                     },
                     dist: {
@@ -339,7 +341,7 @@ const gulpConfig = {
                         scripts: [
                             "{$config.path.node_modules}/datatables.net/js/jquery.dataTables.js",
                             "{$config.path.node_modules}/datatables.net-bs5/js/dataTables.bootstrap5.js",
-                            "{$config.path.src}/js/vendors/plugins/datatables.init.js",
+                            "{$config.path.common_src}/js/vendors/plugins/datatables.init.js",
                             "{$config.path.node_modules}/jszip/dist/jszip.min.js",
                             "{$config.path.node_modules}/pdfmake/build/pdfmake.min.js",
                             "{$config.path.node_modules}/pdfmake/build/vfs_fonts.js",
@@ -367,7 +369,7 @@ const gulpConfig = {
                             "{$config.path.node_modules}/datatables.net-select-bs5/js/dataTables.bootstrap5.js",
                             "{$config.path.node_modules}/datatables.net-datetime/dist/dataTables.dateTime.min.js",
                             "{$config.path.node_modules}/datatables.net-plugins/features/conditionalPaging/dataTables.conditionalPaging.js",
-                        ]
+                        ],
                     },
                     dist: {
                         styles: "{$config.dist}/plugins/custom/datatables.css",
@@ -403,7 +405,7 @@ const gulpConfig = {
                 },
                 typedjs: {
                     src: {
-                        scripts: ["{$config.path.node_modules}/typed.js/lib/typed.js"],
+                        scripts: ["{$config.path.node_modules}/typed.js/dist/typed.umd.js"],
                     },
                     dist: {
                         scripts: "{$config.dist}/plugins/custom/typedjs.js",
@@ -554,7 +556,7 @@ const gulpConfig = {
                             "{$config.path.node_modules}/jstree/dist/jstree.js"
                         ],
                         images: [
-                            "{$config.path.src}/media/plugins/jstree/32px.png",
+                            "{$config.path.common_src}/media/plugins/jstree/32px.png",
                             "{$config.path.node_modules}/jstree/dist/themes/default/throbber.gif"
                         ]
                     },
@@ -595,7 +597,7 @@ const gulpConfig = {
         widgets: {
             src: {
                 scripts: [
-                    "{$config.path.src}/js/widgets/**/*.js",
+                    "{$config.path.common_src}/js/widgets/**/*.js"
                 ]
             },
             dist: {
@@ -605,10 +607,13 @@ const gulpConfig = {
         custom: {
             src: {
                 styles: [
+                    "{$config.path.common_src}/sass/custom/**/*.scss",
+                    "{$config.path.common_src}/css/**/*.scss",
                     "{$config.path.src}/sass/custom/**/*.scss",
                     "{$config.path.src}/css/**/*.css",
                 ],
                 scripts: [
+                    "{$config.path.common_src}/js/custom/**/*.js",
                     "{$config.path.src}/js/custom/**/*.js",
                 ],
             },
@@ -620,6 +625,7 @@ const gulpConfig = {
         media: {
             src: {
                 media: [
+                    "{$config.path.common_src}/media/**/*.*",
                     "{$config.path.src}/media/**/*.*",
                 ],
             },
