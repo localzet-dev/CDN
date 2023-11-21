@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'keenicons-outline';
-  src:  url('fonts/keenicons/keenicons-outline.eot?fzo4bm');
-  src:  url('fonts/keenicons/keenicons-outline.eot?fzo4bm#iefix') format('embedded-opentype'),
-    url('fonts/keenicons/keenicons-outline.ttf?fzo4bm') format('truetype'),
-    url('fonts/keenicons/keenicons-outline.woff?fzo4bm') format('woff'),
-    url('fonts/keenicons/keenicons-outline.svg?fzo4bm#keenicons-outline') format('svg');
+  src:  url('fonts/keenicons-outline.eot?fzo4bm');
+  src:  url('fonts/keenicons-outline.eot?fzo4bm#iefix') format('embedded-opentype'),
+    url('fonts/keenicons-outline.ttf?fzo4bm') format('truetype'),
+    url('fonts/keenicons-outline.woff?fzo4bm') format('woff'),
+    url('fonts/keenicons-outline.svg?fzo4bm#keenicons-outline') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
