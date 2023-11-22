@@ -297,7 +297,7 @@ var KTAppEcommerceSaveProduct = function () {
                             }
                         }
                     },
-                    'sku': {
+                    'barcode': {
                         validators: {
                             notEmpty: {
                                 message: 'Product barcode is required'

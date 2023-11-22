@@ -101,7 +101,7 @@ var KTAppCalendar = function () {
                     start: YM + '-01',
                     end: YM + '-02',
                     description: 'Toto lorem ipsum dolor sit incid idunt ut',
-                    className: "fc-event-danger fc-event-solid-warning",
+                    className: "border-success bg-success text-inverse-success",
                     location: 'Federation Square'
                 },
                 {
@@ -110,7 +110,7 @@ var KTAppCalendar = function () {
                     start: YM + '-14T13:30:00',
                     description: 'Lorem ipsum dolor incid idunt ut labore',
                     end: YM + '-14T14:30:00',
-                    className: "fc-event-success",
+                    className: "border-warning bg-warning text-inverse-success",
                     location: 'Meeting Room 7.03'
                 },
                 {
@@ -119,9 +119,8 @@ var KTAppCalendar = function () {
                     start: YM + '-02',
                     description: 'Lorem ipsum dolor sit tempor incid',
                     end: YM + '-03',
-                    className: "fc-event-primary",
+                    className: "border-info bg-info text-info-success",
                     location: 'Seoul, Korea'
-
                 },
                 {
                     id: uid(),
