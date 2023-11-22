@@ -83,6 +83,10 @@
 			display: flex;
 		}
 
+		[data-kt-stepper-action="previous"][data-kt-stepper-state="hide-on-last-step"] {
+			display: none !important;
+		}
+
 		[data-kt-stepper-action="next"] {
 			display: none;
 		}

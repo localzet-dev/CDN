@@ -23,6 +23,22 @@
 		transform: translateX(100%);
 	}
 
+	&.drawer-bottom {
+		bottom: 0;
+		top: auto;
+		left: 0;
+		right: 0;
+		transform: translateY(100%);
+	}
+
+	&.drawer-top {
+		top: 0;
+		bottom: auto;
+		left: 0;
+		right: 0;
+		transform: translateY(-100%);
+	}
+
 	&.drawer-on {
 		transform: none;
 		box-shadow: var(--#{$prefix}drawer-box-shadow);

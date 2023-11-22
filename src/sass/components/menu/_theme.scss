@@ -358,6 +358,15 @@
     }
 }
 
+.menu-state-gray-900 {
+    .menu-item {
+        @include menu-link-hover-state( var(--#{$prefix}gray-900), var(--#{$prefix}gray-900), var(--#{$prefix}gray-900), var(--#{$prefix}gray-900), null );
+        @include menu-link-show-state( var(--#{$prefix}gray-900), var(--#{$prefix}gray-900), var(--#{$prefix}gray-900), var(--#{$prefix}gray-900), null );
+        @include menu-link-here-state( var(--#{$prefix}gray-900), var(--#{$prefix}gray-900), var(--#{$prefix}gray-900), var(--#{$prefix}gray-900), null );
+        @include menu-link-active-state( var(--#{$prefix}gray-900), var(--#{$prefix}gray-900), var(--#{$prefix}gray-900), var(--#{$prefix}gray-900), null );
+    }
+}
+
 // Primary title color states
 .menu-hover-title-primary {
     .menu-item {

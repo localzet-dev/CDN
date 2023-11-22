@@ -126,6 +126,15 @@
     }
 }
 
+// No wrap
+.menu-nowrap {
+    .menu-title,
+    .menu-link {
+        flex-wrap: nowrap;    
+        flex-shrink: 0;
+    }
+}
+
 // Center alignment
 .menu-center {
     justify-content: center;

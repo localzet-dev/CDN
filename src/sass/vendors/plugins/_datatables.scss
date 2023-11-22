@@ -114,7 +114,7 @@ div.dataTables_wrapper {
     div.dataTables_processing {
         @include border-radius($border-radius);
         box-shadow: var(--#{$prefix}dropdown-box-shadow);
-        background-color: var(--#{$prefix}tooltip-bg);
+        background-color: $tooltip-bg;
         color: var(--#{$prefix}gray-700);
         font-weight: $font-weight-semibold;
         margin: 0 !important;

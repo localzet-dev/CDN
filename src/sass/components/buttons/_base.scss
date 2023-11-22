@@ -15,7 +15,7 @@
 	}
 
 	// Remove border
-	&:not(.btn-outline):not(.btn-dashed):not(.btn-bordered):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon) {
+	&:not(.btn-outline):not(.btn-dashed):not(.btn-bordered):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon):not(.btn-hover-outline) {
 		border: 0;
 		padding: calc(#{$btn-padding-y} + #{$btn-border-width}) calc(#{$btn-padding-x} + #{$btn-border-width});
 

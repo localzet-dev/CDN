@@ -20,6 +20,24 @@
 	@include button-custom-variant($color, $icon-color, $border-color, $bg-color, $color-active, $icon-color-active, $border-color-active, $bg-color-active);
 }
 
+// Outline hover basic style
+.btn.btn-hover-outline {
+	border-width: 1px;
+	border-style: solid;	
+	
+	$color: null;
+	$icon-color: null;
+	$border-color: null;
+	$bg-color: null;
+
+	$color-active: null;
+	$icon-color-active: null;
+	$border-color-active: $input-border-color;
+	$bg-color-active: null;
+
+	@include button-custom-variant($color, $icon-color, $border-color, $bg-color, $color-active, $icon-color-active, $border-color-active, $bg-color-active);
+}
+
 // Theme colors
 @each $name, $value in $theme-colors {
 	// Base

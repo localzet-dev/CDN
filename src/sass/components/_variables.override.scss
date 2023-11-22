@@ -4,8 +4,12 @@
 // are not accessible in this file but you can override any global variable as shown below:
 //
 
-// Border Radiues
-$border-radius-sm:            						.55rem;
-$border-radius:               						.65rem;
-$border-radius-lg:            						1rem;
-$border-radius-xl:                                  1.25rem;
+// Body bg
+$body-bg-dark:						$coal-100;
+
+// Card
+$card-box-shadow:                   0px 3px 4px 0px rgba(0, 0, 0, 0.03);
+$card-box-shadow-dark:  			none;
+$card-border-enabled: 				true;
+$card-border-color:					$gray-200;
+$card-border-color-dark:			$dark-light-dark;

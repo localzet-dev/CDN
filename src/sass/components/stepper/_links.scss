@@ -28,7 +28,7 @@
 			}           
 
             .stepper-title {
-                color: var(--#{$prefix}dark);		
+                color: var(--#{$prefix}gray-900);		
                 font-weight: 600;
                 font-size: 1.25rem; 
             }             
@@ -49,7 +49,7 @@
 			&.current.mark-completed:last-child,
 			&.completed {
 				.stepper-title {
-					color: var(--#{$prefix}gray-400);
+					color: var(--#{$prefix}gray-500);
 				}  			
 			}
         }

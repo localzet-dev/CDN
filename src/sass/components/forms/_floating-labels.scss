@@ -7,6 +7,14 @@
         &::placeholder {
             color: transparent;    
         }
-    } 
+    }
+
+    &.form-control-solid-bg label,
+    > :disabled ~ label,
+    > :focus ~ label {
+        &::after {
+            background-color: transparent !important;
+        }
+    }
 }
      

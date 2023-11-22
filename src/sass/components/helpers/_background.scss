@@ -137,6 +137,13 @@
 		background-color: var(--#{$prefix}gray-#{$name});
 	}
 
+	.bg-hover-gray-#{$name} {
+		&:hover {
+			--#{$prefix}bg-rgb-color: var(--#{$prefix}gray-#{$name}-rgb);
+			background-color: var(--#{$prefix}gray-#{$name});	
+		}		
+	}
+
 	.bg-gray-#{$name}i {
 		--#{$prefix}bg-rgb-color: var(--#{$prefix}gray-#{$name}-rgb);
 		background-color: var(--#{$prefix}gray-#{$name}) !important;

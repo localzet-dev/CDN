@@ -1,17 +1,19 @@
+// Bootstrap color system
+
 //
 // Bootstrap & Custom Variables
 // Safely override any variable in _variables.custom.scss
 //
 
-$gray-100-dark:  #1b1b29 !default;
-$gray-200-dark:  #2B2B40 !default;
-$gray-300-dark:  #323248 !default;
-$gray-400-dark:  #474761 !default;
-$gray-500-dark:  #565674 !default;
-$gray-600-dark:  #6D6D80 !default;
-$gray-700-dark:  #92929F !default;
-$gray-800-dark:  #CDCDDE !default;
-$gray-900-dark:  #FFFFFF !default;
+$gray-100-dark:  #1B1C22 !default;
+$gray-200-dark:  #26272F !default;
+$gray-300-dark:  #363843 !default;
+$gray-400-dark:  #464852 !default;
+$gray-500-dark:  #636674 !default;
+$gray-600-dark:  #808290 !default;
+$gray-700-dark:  #9A9CAE !default;
+$gray-800-dark:  #B5B7C8 !default;
+$gray-900-dark:  #F5F5F5 !default;
 
 $grays-dark: (
 	"100": $gray-100-dark,
@@ -30,90 +32,131 @@ $text-muted-dark: $gray-500-dark !default;
 
 // Bootstrap contextual colors
 // Primary colors
-$primary-light-dark:			#212E48 !default;
+$primary-dark:						#006AE6 !default;
+$primary-active-dark:				#107EFF !default;
+$primary-light-dark: 				#172331 !default;
+$primary-clarity-dark: 				rgba(#006AE6, 0.2) !default;
+$primary-inverse-dark: 				$white !default;
 
 // Secondary colors
-$secondary-dark: 				$gray-300-dark !default;
-$secondary-active-dark: 		$gray-400-dark !default;
-$secondary-light-dark: 			$gray-100-dark !default;
-$secondary-inverse-dark:		$gray-700-dark !default;
+$secondary-dark: 					$gray-300-dark !default;
+$secondary-active-dark: 			$gray-400-dark !default;
+$secondary-light-dark: 				$gray-300-dark !default;
+$secondary-clarity-dark:			rgba($gray-300-dark, 0.2) !default; 
+$secondary-inverse-dark:			$white !default; 
 
 // Light colors
-$light-dark: 					$gray-200-dark !default; 
-$light-active-dark: 			$gray-300-dark !default;
-$light-inverse-dark: 			$gray-600-dark !default;
+$light-dark: 						$gray-100-dark !default;
+$light-active-dark: 				#1F212A !default;
+$light-light-dark: 					#1F212A !default;
+$light-clarity-dark: 				rgba(31, 33, 42, 0.20) !default;
+$light-inverse-dark:				$gray-600-dark !default;
 
 // Success colors
-$success-light-dark:			#1C3833 !default;
+$success-dark: 						#00A261 !default; 
+$success-active-dark: 				#01BF73 !default;
+$success-light-dark: 				#1F212A !default;
+$success-clarity-dark: 				rgba(#00A261, 0.2) !default;
+$success-inverse-dark: 				$white !default;
 
 // Info colors
-$info-light-dark: 				#2F264F !default;
+$info-dark: 						#883FFF !default; 
+$info-active-dark: 					#9E63FF !default;
+$info-light-dark: 					#272134 !default;
+$info-clarity-dark: 				rgba(#883FFF, 0.2) !default;
+$info-inverse-dark: 				$white !default;
 
 // Warning colors
-$warning-light-dark: 			#392F28 !default;
+$warning-dark: 						#C59A00 !default; 
+$warning-active-dark: 				#D9AA00 !default;
+$warning-light-dark: 				#242320 !default;
+$warning-clarity-dark: 				rgba(#C59A00, 0.2) !default;
+$warning-inverse-dark: 				$white !default;
 
 // Danger colors
-$danger-light-dark:				#3A2434 !default;
+$danger-dark: 						#E42855 !default; 
+$danger-active-dark: 				#FF3767 !default;
+$danger-light-dark: 				#302024 !default;
+$danger-clarity-dark: 				rgba(#E42855, 0.2) !default;
+$danger-inverse-dark: 				$white !default;
 
 // Dark colors
-$dark-dark: 					$gray-900-dark !default; 
-$dark-active-dark: 				lighten($gray-900-dark, 3%) !default;
-$dark-light-dark: 				$gray-200-dark !default;
-$dark-inverse-dark: 			$gray-100-dark !default; 
+$dark-dark: 						#272A34 !default;
+$dark-active-dark: 					#2D2F39 !default;
+$dark-light-dark: 					#1E2027 !default;
+$dark-clarity-dark: 				rgba(#272A34, 0.2) !default;
+$dark-inverse-dark: 				$white !default;
 
+// Contextual colors
 $theme-colors-dark: (
-	"white": $white,  // custom color type
 	"light": $light-dark,
-	"primary": $primary,
-	"success": $success,
-	"info": $info,
-	"warning": $warning,
-	"danger": $danger,
-	"dark": $dark-dark,
+	"primary": $primary-dark,
 	"secondary": $secondary-dark,
+	"success": $success-dark,
+	"info": $info-dark,
+	"warning": $warning-dark,
+	"danger": $danger-dark,
+	"dark": $dark-dark
 ) !default;
-
+	
+// Contextual active state colors
 $theme-active-colors-dark: (
-	"primary": $primary-active,
+	"primary": $primary-active-dark,
 	"secondary":  $secondary-active-dark,
 	"light":   $light-active-dark,
-	"success": $success-active,
-	"info":    $info-active,
-	"warning": $warning-active,
-	"danger":  $danger-active,
+	"success": $success-active-dark,
+	"info":    $info-active-dark,
+	"warning": $warning-active-dark,
+	"danger":  $danger-active-dark,
 	"dark":    $dark-active-dark
-) !default;
+) !default; 
 
+// Contextual inverse state colors
 $theme-inverse-colors-dark: (
-	"primary": $primary-inverse,
+	"primary": $primary-inverse-dark,
 	"secondary":  $secondary-inverse-dark,
-	"light":   $light-inverse,
-	"success": $success-inverse,
-	"info":    $info-inverse,
-	"warning": $warning-inverse,
-	"danger":  $danger-inverse,
+	"light":   $light-inverse-dark,
+	"success": $success-inverse-dark,
+	"info":    $info-inverse-dark,
+	"warning": $warning-inverse-dark,
+	"danger":  $danger-inverse-dark,
 	"dark":    $dark-inverse-dark
-) !default;
+) !default; 
 
+// Contextual light state colors
 $theme-light-colors-dark: (
 	"primary": $primary-light-dark,
+	"secondary": $secondary-light-dark,
 	"success": $success-light-dark,
 	"info":    $info-light-dark,
 	"warning": $warning-light-dark,
 	"danger":  $danger-light-dark,
 	"dark":    $dark-light-dark,
-	"secondary":  $secondary-light-dark
+	"light":   $light-light-dark
 ) !default; 
-	
+
+// Contextual light state colors
+$theme-clarity-colors-dark: (
+	"primary": $primary-clarity-dark,
+	"secondary": $secondary-clarity-dark,
+	"success": $success-clarity-dark,
+	"info":    $info-clarity-dark,
+	"warning": $warning-clarity-dark,
+	"danger":  $danger-clarity-dark,
+	"dark":    $dark-clarity-dark,
+	"light":   $light-clarity-dark,
+) !default; 
+
+// Text colors
 $theme-text-colors-dark: (
 	"white":   $white,
-	"primary": $primary,
+	"primary": $primary-dark,
 	"secondary":  $secondary-dark,
 	"light":   $light-dark,
-	"success": $success,
-	"info":    $info,
-	"warning": $warning,
-	"danger":  $danger,
+	"success": $success-dark,
+	"info":    $info-dark,
+	"warning": $warning-dark,
+	"danger":  $danger-dark,
 	"dark":    $dark-dark,
 	"muted":   $text-muted-dark,
 	"gray-100":   $gray-100-dark,
@@ -131,7 +174,7 @@ $theme-text-colors-dark: (
 // Body
 //
 // Settings for the `<body>` element.
-$body-bg-dark:              #1e1e2d !default;
+$body-bg-dark:              #1C1D22 !default;
 $body-bg-rgb-dark:          to-rgb($body-bg-dark) !default;
 $body-color-dark:           $gray-900-dark !default;
 
@@ -139,7 +182,7 @@ $body-color-dark:           $gray-900-dark !default;
 // Links
 //
 // Style anchor elements.
-$link-color-dark:           $primary !default;
+$link-color-dark:           $primary-dark !default;
 
 
 // Components
@@ -149,16 +192,16 @@ $border-color-dark:             $gray-200-dark !default;
 $border-dashed-color-dark:      $gray-300-dark !default; 
 
 // Keenthemes hover states
-$component-hover-color-dark: 	$primary !default;
+$component-hover-color-dark: 	$primary-dark !default;
 $component-hover-bg-dark: 		$gray-100-dark !default;
 
 // Keenthemes active states
 $component-active-color-dark:   $primary-inverse !default;
-$component-active-bg-dark:      $primary !default;
+$component-active-bg-dark:      $primary-dark !default;
 
 // Keenthemes checked states
 $component-checked-color-dark:   $primary-inverse !default;
-$component-checked-bg-dark:      $primary !default;
+$component-checked-bg-dark:      $primary-dark !default;
 
 $headings-color-dark: 			 $gray-900-dark !default;
 $blockquote-footer-color-dark:   $gray-600-dark !default;
@@ -174,7 +217,7 @@ $box-shadow-inset-dark: 		inset 0 1px 2px rgba($black, .075) !default;
 
 // Card
 $card-box-shadow-dark:                   			null !default;
-
+$card-border-color-dark:     						$border-color-dark !default;
 
 // Tables
 $table-striped-bg-dark:         					rgba($gray-100-dark, 0.75) !default;
@@ -191,7 +234,7 @@ $form-switch-bg-image-solid-dark:                   url("data:image/svg+xml,<svg
 
 // Accordion
 $accordion-icon-color-dark:                         $body-color-dark!default;
-$accordion-icon-active-color-dark:                  $primary !default;
+$accordion-icon-active-color-dark:                  $primary-dark !default;
 $accordion-button-icon-dark:         				url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-color-dark}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
 $accordion-button-active-icon-dark:  				url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-active-color-dark}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
 
@@ -216,9 +259,10 @@ $tooltip-bg-dark:                            		$gray-200-dark !default;
 $tooltip-box-shadow-dark:    						0px 0px 30px rgba(0, 0, 0, 0.15) !default;
 
 // Code
-$code-bg-dark:              $gray-200-dark !default; 
-$code-color-dark:           #b93993 !default; 
-$code-box-shadow-dark:      0px 3px 9px rgba(0, 0, 0, 0.08) !default;
+$code-bg-dark:                   #2b2b40 !default;
+$code-shadow-dark:               rgba(0, 0, 0, 0.08) 0px 3px 9px 0px !default;
+$code-color-dark:                #b93993 !default;
+$code-border-color-dark:         transparent  !default;
 
 // Symbol
 $symbol-border-color-dark: rgba($body-bg, 0.5);

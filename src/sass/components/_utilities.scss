@@ -5,6 +5,10 @@
 $utilities: map-merge(
     $utilities,
     (
+        "cursor": (
+            property: cursor,
+            values: help wait crosshair not-allowed zoom-in grab pointer
+        ),
         "position": (
             property: position,
             responsive: true,

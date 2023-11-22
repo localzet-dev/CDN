@@ -79,33 +79,41 @@
     @include scrollbar-color(transparent, var(--#{$prefix}scrollbar-color));
 }
 
-// Utilities  
-.scroll-ps {
-    padding-left: var(--#{$prefix}scrollbar-size) !important;
+// Utilities
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+        .scroll#{$infix}-ps {
+            padding-left: var(--#{$prefix}scrollbar-size) !important;
+        }
+
+        .scroll#{$infix}-ms {
+            margin-left: var(--#{$prefix}scrollbar-size) !important;
+        }
+
+        .scroll#{$infix}-mb {
+            margin-bottom: var(--#{$prefix}scrollbar-size) !important;
+        }
+
+        .scroll#{$infix}-pe {
+            padding-right: var(--#{$prefix}scrollbar-size) !important;
+        }
+
+        .scroll#{$infix}-me {
+            margin-right: var(--#{$prefix}scrollbar-size) !important;
+        }
+
+        .scroll#{$infix}-px {
+            padding-left: var(--#{$prefix}scrollbar-size) !important;
+            padding-right: var(--#{$prefix}scrollbar-size) !important;
+        }
+
+        .scroll#{$infix}-mx {
+            margin-left: var(--#{$prefix}scrollbar-size) !important;
+            margin-right: var(--#{$prefix}scrollbar-size) !important;
+        }
+    }
 }
 
-.scroll-ms {
-    margin-left: var(--#{$prefix}scrollbar-size) !important;
-}
-
-.scroll-mb {
-    margin-bottom: var(--#{$prefix}scrollbar-size) !important;
-}
-
-.scroll-pe {
-    padding-right: var(--#{$prefix}scrollbar-size) !important;
-}
-
-.scroll-me {
-    margin-right: var(--#{$prefix}scrollbar-size) !important;
-}
-
-.scroll-px {
-    padding-left: var(--#{$prefix}scrollbar-size) !important;
-    padding-right: var(--#{$prefix}scrollbar-size) !important;
-}
-
-.scroll-mx {
-    margin-left: var(--#{$prefix}scrollbar-size) !important;
-    margin-right: var(--#{$prefix}scrollbar-size) !important;
-}
+  

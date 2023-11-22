@@ -4,6 +4,9 @@
 
 // Base
 .card {    
+    --#{$prefix}card-box-shadow: var(--#{$prefix}root-card-box-shadow);
+    --#{$prefix}card-border-color: var(--#{$prefix}root-card-border-color);
+
     @if ($card-border-enabled)  {
         border: $card-border-width $card-border-style var(--#{$prefix}card-border-color);
     } @else {
@@ -59,7 +62,7 @@
             .card-label {
                 font-weight: 500;
                 font-size: 1.275rem;
-                color: var(--#{$prefix}text-dark);
+                color: var(--#{$prefix}text-gray-900);
             }
 
             .card-label {

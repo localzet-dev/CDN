@@ -2,65 +2,52 @@
 // Header
 //
 
-// Above Xxl
-@include media-breakpoint-up(xxl) {
-	.header {
-		// Sidebar enabled and header sticky modes
-		.sidebar-enabled[data-kt-sticky-header="on"] & {
-			right: get($sidebar-config, width) !important;
-		}
-	}
-}
+// General
+
 
 // Desktop mode
 @include media-breakpoint-up(lg) {
-	.header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		height: get($header-config, desktop, default, height);
+	.app-header {
+		.app-container {
+			[data-kt-app-header-sticky="on"] & {
+				margin-top: 0;	
+			}
+		}
+		
+		.header-search {
+			.search-input {
+				@include placeholder($gray-500);
+				background-color: transparent;	
+				border: 0;
+				padding-left: 0 !important;
+				margin-left: 26px !important;
+			}	
 
-		// Fixed header & sticky header modes
-		.header-fixed[data-kt-sticky-header="on"] & {
-			position: fixed;
-			top: 0;
-			right: 0;
-			left: get($aside-config, width) + get($content-spacing, desktop);
-			z-index: get($header-config, desktop, fixed, z-index);
-			background-color: var(--#{$prefix}header-desktop-fixed-bg-color);
-			box-shadow: var(--#{$prefix}header-desktop-fixed-box-shadow);
-			height: get($header-config, desktop, fixed, height);
-			padding: 0;
-			@include border-bottom-radius($border-radius);
+			.search-icon {
+				margin-left: 0 !important;
+				color: $gray-500;
+			}
+		}
+
+		[data-kt-app-header-sticky="on"]
+
+		.header { [data-kt-app-header-sticky="on"] & { 
+			border-bottom: var(--#{$prefix}app-separator-border);
+		}}
+	}
+}
+
+.app-header {
+	.app-navbar {
+		.badge.badge-custom {
+			color: var(--#{$prefix}white); 
+			background-color: var(--#{$prefix}gray-600); 
+			width: 16px;
+			height: 16px;
 		}
 	}
 }
 
-// Tablet & mobile modes
-@include media-breakpoint-down(lg) {
-	.header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		height: get($header-config, tablet-and-mobile, default, height);
 
-		// Fixed header and header sticky modes
-		.header-tablet-and-mobile-fixed[data-kt-sticky-header="on"] & {
-			position: fixed;
-			top: 0;
-			right: 0;
-			left: 0;
-			z-index: get($header-config, tablet-and-mobile, fixed, z-index);
-			height: get($header-config, tablet-and-mobile, fixed, height);
-			min-height: get($header-config, tablet-and-mobile, fixed, height);
-			background-color: var(--#{$prefix}header-tablet-and-mobile-fixed-bg-color);
-			box-shadow: var(--#{$prefix}header-tablet-and-mobile-fixed-box-shadow);
-			@include border-bottom-radius($border-radius);
-		}
 
-		// Page title
-		.page-title {
-			display: none !important;
-		}
-	}
-}
+

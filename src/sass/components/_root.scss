@@ -48,6 +48,11 @@
         --#{$prefix}#{$name}-inverse: #{$value};
     }
 
+    // Contextual clarity state colors
+    @each $name, $value in $theme-clarity-colors {
+        --#{$prefix}#{$name}-clarity: #{$value};
+    }
+
     // Contextual rbg colors
     @each $name, $value in $theme-colors {
         --#{$prefix}#{$name}-rgb: #{to-rgb($value)};
@@ -83,6 +88,9 @@
     --#{$prefix}input-solid-bg-focus: #{$input-solid-bg-focus};
     --#{$prefix}input-solid-placeholder-color: #{$input-solid-placeholder-color};
 
+    // Card
+    --#{$prefix}root-card-box-shadow: #{$card-box-shadow};
+    --#{$prefix}root-card-border-color: #{$card-border-color};
 
     // Tooltip
     --#{$prefix}tooltip-box-shadow: #{$tooltip-box-shadow-dark};
@@ -97,7 +105,8 @@
 
     // Code
     --#{$prefix}code-bg: #{$code-bg};
-    --#{$prefix}code-box-shadow: #{$code-box-shadow};
+    --#{$prefix}code-shadow: #{$code-shadow};
+    --#{$prefix}code-border-color: #{$code-border-color};
     --#{$prefix}code-color: #{$code-color};  
 
     // Symbol
@@ -195,6 +204,11 @@
         --#{$prefix}#{$name}-inverse: #{$value};
     }
 
+    // Contextual clarity state colors
+    @each $name, $value in $theme-clarity-colors-dark {
+        --#{$prefix}#{$name}-clarity: #{$value};
+    }
+
     // Contextual rbg colors
     @each $name, $value in $theme-colors-dark {
         --#{$prefix}#{$name}-rgb: #{to-rgb($value)};
@@ -234,7 +248,8 @@
     --#{$prefix}tooltip-box-shadow: #{$tooltip-box-shadow-dark};
 
     // Card
-    --#{$prefix}card-box-shadow: #{$card-box-shadow-dark};
+    --#{$prefix}root-card-box-shadow: #{$card-box-shadow-dark};
+    --#{$prefix}root-card-border-color: #{$card-border-color-dark};
 
     // Table
     --#{$prefix}table-striped-bg: #{$table-striped-bg-dark};
@@ -246,7 +261,8 @@
 
     // Code
     --#{$prefix}code-bg: #{$code-bg-dark};
-    --#{$prefix}code-box-shadow: #{$code-box-shadow-dark};
+    --#{$prefix}code-shadow: #{$code-shadow-dark};
+    --#{$prefix}code-border-color: #{$code-border-color-dark};
     --#{$prefix}code-color: #{$code-color-dark};  
 
     // Symbol

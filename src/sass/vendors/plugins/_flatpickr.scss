@@ -390,14 +390,14 @@ span.flatpickr-weekday {
     &.notAllowed,
     &.notAllowed.prevMonthDay,
     &.notAllowed.nextMonthDay {
-        color: var(--#{$prefix}gray-400);
+        color: var(--#{$prefix}gray-500);
         background: transparent;
         border-color: transparent;
     }
     &.flatpickr-disabled,
     &.flatpickr-disabled:hover {
         cursor: not-allowed;
-        color: var(--#{$prefix}gray-400);
+        color: var(--#{$prefix}gray-500);
     }
 }
 

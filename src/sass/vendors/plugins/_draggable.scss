@@ -9,7 +9,7 @@
     &.draggable-mirror {
         opacity: 0.8;
         transition: opacity 0.3s ease;
-        border: 2px dashed var(--#{$prefix}gray-300) !important;
+        border: 1px dashed var(--#{$prefix}gray-300) !important;
         @include border-radius($border-radius);
     }
 

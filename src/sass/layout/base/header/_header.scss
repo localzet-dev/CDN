@@ -25,6 +25,11 @@
         --#{$prefix}app-header-height-actual: #{$app-header-base-height};
     }
 
+    [data-kt-app-header-fixed="true"][data-kt-app-header-stacked="true"] {
+        --#{$prefix}app-header-height: calc(var(--#{$prefix}app-header-primary-height, 0px) + var(--#{$prefix}app-header-secondary-height, 0px) + var(--#{$prefix}app-header-tertiary-height, 0px));
+        --#{$prefix}app-header-height-actual: calc(#{$app-header-primary-base-height} + #{$app-header-secondary-base-height} + #{$app-header-tertiary-base-height});
+    }
+
     [data-kt-app-header-sticky="on"] {
         --#{$prefix}app-header-height: #{$app-header-sticky-height};
         --#{$prefix}app-header-height-actual: #{$app-header-base-height};
@@ -133,6 +138,16 @@
                 var(--#{$prefix}app-sidebar-panel-gap-end, 0px)
             );
         }        
+
+        // Aside
+        [data-kt-app-header-fixed="true"][data-kt-app-aside-fixed="true"][data-kt-app-aside-push-header="true"] &,
+        [data-kt-app-header-fixed="true"][data-kt-app-aside-sticky="on"][data-kt-app-aside-push-header="true"] & {
+            right: calc(
+                var(--#{$prefix}app-aside-width) + 
+                var(--#{$prefix}app-aside-gap-start, 0px) + 
+                var(--#{$prefix}app-aside-gap-end, 0px)
+            );
+        }
 
         // Toolbar
         [data-kt-app-header-fixed="true"][data-kt-app-toolbar-fixed="true"] & {
