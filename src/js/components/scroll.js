@@ -165,7 +165,7 @@ var KTScroll = function(element, options) {
 
             if ( elements && elements.length > 0 ) {
                 for ( var i = 0, len = elements.length; i < len; i++ ) {
-                    if ( KTUtil.visible(elements[i]) === false ) {
+                    if ( KTUtil.visible(elements[i]) === false || elements[i].style.display == 'none' || elements[i].style.display == 'none!important') {
                         continue;
                     }
 
