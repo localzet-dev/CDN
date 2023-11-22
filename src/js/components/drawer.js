@@ -42,6 +42,7 @@ var KTDrawer = function(element, options) {
         the.name = the.element.getAttribute('data-kt-drawer-name');
         the.shown = false;
         the.lastWidth;
+        the.lastHeight;
         the.toggleElement = null;
 
         // Set initialized
@@ -137,6 +138,7 @@ var KTDrawer = function(element, options) {
 
     var _update = function() {
         var width = _getWidth();
+        var height = _getHeight();
         var direction = _getOption('direction');
 
         var top = _getOption('top');
@@ -156,8 +158,15 @@ var KTDrawer = function(element, options) {
             KTUtil.addClass(the.element, the.options.baseClass);
             KTUtil.addClass(the.element, the.options.baseClass + '-' + direction);
             
-            KTUtil.css(the.element, 'width', width, true);
-            the.lastWidth = width;
+            if (width) {
+                KTUtil.css(the.element, 'width', width, true);
+                the.lastWidth = width;
+            }
+            
+            if (height) {
+                KTUtil.css(the.element, 'height', height, true);
+                the.lastHeight = height;
+            }
 
             if (top) {
                 KTUtil.css(the.element, 'top', top);
@@ -187,6 +196,7 @@ var KTDrawer = function(element, options) {
             KTUtil.removeClass(the.element, the.options.baseClass + '-' + direction);
 
             KTUtil.css(the.element, 'width', '');
+            KTUtil.css(the.element, 'height', '');
 
             if (top) {
                 KTUtil.css(the.element, 'top', '');
@@ -273,6 +283,16 @@ var KTDrawer = function(element, options) {
         }
 
         return width;
+    }
+
+    var _getHeight = function() {
+        var height = _getOption('height');
+
+        if ( height === 'auto') {
+            height = KTUtil.css(the.element, 'height');
+        }
+
+        return height;
     }
 
     var _destroy = function() {

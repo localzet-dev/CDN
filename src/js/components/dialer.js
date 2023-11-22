@@ -16,6 +16,7 @@ var KTDialer = function(element, options) {
         min: null,
         max: null,
         step: 1,
+        currency: false,
         decimals: 0,
         prefix: "",
         suffix: ""
@@ -46,6 +47,10 @@ var KTDialer = function(element, options) {
         the.inputElement = the.element.querySelector('input[type]'); 
         
         // Set Values
+        if (_getOption('currency') === 'true') {
+            the.options.currency = true;
+        }
+
         if (_getOption('decimals')) {
             the.options.decimals = parseInt(_getOption('decimals'));
         }
@@ -176,7 +181,13 @@ var KTDialer = function(element, options) {
 
     // Format
     var _format = function(val){
-        return the.options.prefix + parseFloat(val).toFixed(the.options.decimals) + the.options.suffix;              
+        val = parseFloat(val).toFixed(the.options.decimals);
+
+        if (the.options.currency) {
+            val = val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }        
+
+        return the.options.prefix + val + the.options.suffix;              
     }
 
     // Get option

@@ -61,6 +61,10 @@ var KTMenu = function(element, options) {
     // Event Handlers
     // Toggle handler
     var _click = function(element, e) {
+        if (element.hasAttribute('href') && element.getAttribute("href") !== "#") {
+            return;
+        }
+        
         e.preventDefault();
 
         if (the.disabled === true) {
