@@ -13,19 +13,20 @@
 @import "components/variables.custom";
 @import "components/variables";
 @import "components/variables-dark";
+@import "components/variables.override";
 
 // Bootstrap initializaton
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";
 
 // 3rd-Party plugins variables
 @import "vendors/plugins/variables";
 @import "vendors/plugins/variables-dark";
 
 // Custom layout variables
-@import "layout/variables";
-
+@import "layout/base/variables";
+@import "layout/variables.custom";
