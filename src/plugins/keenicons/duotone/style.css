@@ -19,10 +19,23 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-   position: relative;
   
+/* Better Font Rendering =========== */
  display: inline-flex; 
- direction: ltr;
+ direction: ltr; 
+ position: relative;
+ display: inline-flex; 
+ direction: ltr; 
+ position: relative;
+ display: inline-flex; 
+ direction: ltr; 
+ position: relative;
+ display: inline-flex; 
+ direction: ltr; 
+ position: relative;
+ display: inline-flex; 
+ direction: ltr; 
+ position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
