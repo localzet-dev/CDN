@@ -29,7 +29,7 @@ const gulpConfig = {
         },
         dist: [
             "public",
-            "8.2.0"
+            // "8.2.0"
         ],
     },
     build: {

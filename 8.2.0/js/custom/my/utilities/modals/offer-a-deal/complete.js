@@ -1,2 +1,0 @@
-"use strict";var ModalOfferADealComplete=function(){var e;return{init:function(){ModalOfferADeal.getForm(),e=ModalOfferADeal.getStepperObj(),ModalOfferADeal.getStepper().querySelector('[data-element="complete-start"]').addEventListener("click",(function(){e.goTo(1)}))}}}();"undefined"!=typeof module&&void 0!==module.exports&&(window.ModalOfferADealComplete=module.exports=ModalOfferADealComplete);
-//# sourceMappingURL=complete.js.map
