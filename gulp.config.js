@@ -1,7 +1,7 @@
 const gulpConfig = {
     name: 'localzet-cdn',
     desc: "Localzet CDN Project",
-    version: "8.2.0",
+    version: "8.2.1",
     config: {
         debug: false,
         compile: {
@@ -294,17 +294,7 @@ const gulpConfig = {
                 draggable: {
                     src: {
                         scripts: [
-                            "{$config.path.node_modules}/@shopify/draggable/lib/draggable.bundle.js",
-                            "{$config.path.node_modules}/@shopify/draggable/lib/draggable.bundle.legacy.js",
-                            "{$config.path.node_modules}/@shopify/draggable/lib/draggable.js",
-                            "{$config.path.node_modules}/@shopify/draggable/lib/sortable.js",
-                            "{$config.path.node_modules}/@shopify/draggable/lib/droppable.js",
-                            "{$config.path.node_modules}/@shopify/draggable/lib/swappable.js",
-                            "{$config.path.node_modules}/@shopify/draggable/lib/plugins.js",
-                            "{$config.path.node_modules}/@shopify/draggable/lib/plugins/collidable.js",
-                            "{$config.path.node_modules}/@shopify/draggable/lib/plugins/resize-mirror.js",
-                            "{$config.path.node_modules}/@shopify/draggable/lib/plugins/snappable.js",
-                            "{$config.path.node_modules}/@shopify/draggable/lib/plugins/swap-animation.js",
+                            "{$config.path.node_modules}/@shopify/draggable/build/umd/index.min.js",
                         ],
                     },
                     dist: {
@@ -651,13 +641,9 @@ const gulpConfig = {
                 styles: [
                     "{$config.path.node_modules}/tinymce/skins/**/*.css"
                 ],
-                media: [
-                    "{$config.path.node_modules}/tiny-slider/dist/sourcemaps/tiny-slider.css.map",
-                ],
             },
             dist: {
                 styles: "{$config.dist}/plugins/custom/tinymce/skins/",
-                media: "{$config.dist}/plugins/global/sourcemaps/",
             }
         }
     }
