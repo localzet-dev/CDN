@@ -209,7 +209,4 @@ if (typeof module !== 'undefined') {
 // On document ready
 KTUtil.onDOMContentLoaded(function() {
     KTTablesWidget14.init();
-});
-
-
- 
+}); 
