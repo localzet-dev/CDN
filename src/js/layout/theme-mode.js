@@ -32,6 +32,8 @@ var KTThemeMode = function () {
 			menuMode = mode;
 		}
 
+		var metaThemeColor = document.querySelector("meta[name=theme-color]");
+
 		// Read active menu mode value
 		var activeMenuItem = menu ? menu.querySelector('[data-kt-element="mode"][data-kt-value="' + menuMode + '"]') : null;
 
@@ -40,6 +42,12 @@ var KTThemeMode = function () {
 		
 		// Set mode to the target document.documentElement
 		document.documentElement.setAttribute("data-bs-theme", mode);
+
+        if(mode === 'dark') {
+            metaThemeColor.setAttribute("content", "#0f1014");
+        } else {
+            metaThemeColor.setAttribute("content", "#ffffff");
+        }
 
 		// Disable switching state
 		setTimeout(function() {
