@@ -28,8 +28,7 @@ const gulpConfig = {
             node_modules: "node_modules",
         },
         dist: [
-            "public",
-            // "8.2.0"
+            "../public/metronic",
         ],
     },
     build: {
