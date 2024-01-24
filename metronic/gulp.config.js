@@ -28,7 +28,7 @@ const gulpConfig = {
             node_modules: "node_modules",
         },
         dist: [
-            "../public/metronic",
+            "../public/metronic/assets",
         ],
     },
     build: {
