@@ -125,3 +125,17 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+/public/assets/scripts.js
+/public/assets/styles.css
+/public/assets/js
+/public/assets/css
+/public/assets/media
+
+/public/git/assets/js
+/public/git/assets/css
+/public/git/assets/fonts
+/public/git/assets/licenses.txt
+/public/git/assets/img/webpack
+
+/public/metronic
