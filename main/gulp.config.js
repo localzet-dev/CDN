@@ -13,7 +13,7 @@ const gulpConfig = {
             src: "src"
         },
         dist: [
-            "../public",
+            "../public/assets",
         ],
     },
     build: {
