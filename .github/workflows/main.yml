@@ -43,7 +43,7 @@ jobs:
           do
             if [ -d "$dir" ]; then
               cd "$dir"
-              if [ -f "package.js" ]; then
+              if [ -f "package.json" ]; then
                 echo "Building $dir"
                 yarn run build
               fi
