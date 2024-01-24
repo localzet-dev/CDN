@@ -43,9 +43,9 @@ jobs:
           do
             if [ -d "$dir" ]; then
               cd "$dir"
-              if [ -f "gulpfile.js" ]; then
+              if [ -f "package.js" ]; then
                 echo "Building $dir"
-                gulp
+                yarn run build
               fi
               cd ..
             fi
