@@ -95,7 +95,7 @@ dist
 .cache/
 # Comment in the public line in if your project uses Gatsby and not Next.js
 # https://nextjs.org/blog/next-9-1#public-directory-support
-public/
+# public/
 
 # vuepress build output
 .vuepress/dist
@@ -125,3 +125,17 @@ public/
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+/public/assets/scripts.js
+/public/assets/styles.css
+/public/assets/js
+/public/assets/css
+/public/assets/media
+
+/public/git/assets/js
+/public/git/assets/css
+/public/git/assets/fonts
+/public/git/assets/licenses.txt
+/public/git/assets/img/webpack
+
+/public/metronic

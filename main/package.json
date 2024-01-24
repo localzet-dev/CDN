@@ -1,0 +1,42 @@
+{
+  "name": "localzet-cdn-main",
+  "version": "1.0.0",
+  "description": "Main assets of Localzet Group",
+  "main": "gulpfile.js",
+  "repository": "https://github.com/localzet-dev/CDN",
+  "author": "Ivan Zorin <creator@localzet.com>",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/runtime": "^7.23.8",
+    "css-loader": "^6.9.0",
+    "del": "^7.1.0",
+    "extract-loader": "^5.1.0",
+    "file-loader": "^6.2.0",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.3.10",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-dart-sass": "^1.1.0",
+    "gulp-if": "^3.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-rewrite-css": "^1.1.2",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-terser": "^2.1.0",
+    "imports-loader": "^4.0.1",
+    "lazypipe": "^1.0.2",
+    "merge-stream": "^2.0.0",
+    "mini-css-extract-plugin": "^2.7.7",
+    "postcss-loader": "^7.3.4",
+    "sass-loader": "^13.3.3",
+    "url-loader": "^4.1.1",
+    "yargs": "^17.7.2"
+},
+  "scripts": {
+    "build": "gulp",
+    "localhost": "gulp localhost"
+}
+}

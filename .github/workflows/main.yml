@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+on: 
+  workflow_dispatch:
+  push: 
+    branches: 
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Setup Node 🔮
+        uses: actions/setup-node@v3
+        with: 
+          node-version: "20"
+
+      - name: Install Globals 🌟
+        run: |
+          npm install --global npm@latest
+          npm install --global yarn
+          npm install --global gulp-cli
+
+      - name: Install Dependencies 📦
+        run: |
+          for dir in ./*/
+          do
+            if [ -d "$dir" ]; then
+              cd "$dir"
+              if [ -f "package.json" ]; then
+                echo "Install Dependencies $dir"
+                yarn
+              fi
+              cd ..
+            fi
+          done
+
+      - name: Build modules 🔧
+        run: |
+          for dir in ./*/
+          do
+            if [ -d "$dir" ]; then
+              cd "$dir"
+              if [ -f "package.json" ]; then
+                echo "Building $dir"
+                yarn run build
+              fi
+              cd ..
+            fi
+          done
+
+      - name: Upload artifact ☁️
+        uses: actions/upload-pages-artifact@v1
+        with: 
+          path: ./public
+  deploy:
+    needs: build
+    permissions: 
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
