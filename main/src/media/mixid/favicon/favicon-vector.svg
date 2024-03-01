@@ -1,0 +1,41 @@
+<!--
+  - @package     MIX ID
+  - @link        https://auth.spb.ru
+  -
+  - @author      Ivan Zorin <creator@localzet.com>
+  - @copyright   Copyright (c) 2018-2024 Zorin Projects S.P.
+  - @license     https://www.gnu.org/licenses/agpl-3.0 GNU Affero General Public License v3.0
+  -
+  -              This program is free software: you can redistribute it and/or modify
+  -              it under the terms of the GNU Affero General Public License as published
+  -              by the Free Software Foundation, either version 3 of the License, or
+  -              (at your option) any later version.
+  -
+  -              This program is distributed in the hope that it will be useful,
+  -              but WITHOUT ANY WARRANTY; without even the implied warranty of
+  -              MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  -              GNU Affero General Public License for more details.
+  -
+  -              You should have received a copy of the GNU Affero General Public License
+  -              along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -
+  -              For any questions, please contact <creator@localzet.com>
+  -->
+
+<!-- Creator: Zorin DESIGNER 16 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="512px" height="512px"
+  version="1.1"
+  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+  viewBox="0 0 512 512"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:#A855F7}
+   ]]>
+  </style>
+ </defs>
+ <g>
+  <path class="fil0" d="M95.528 403.51c-11.809,0 -20.934,-3.287 -27.376,-9.863 -6.441,-6.575 -9.662,-15.902 -9.662,-27.979l0 -215.383c0,-12.346 3.221,-21.739 9.662,-28.181 6.442,-6.441 15.567,-9.661 27.376,-9.661 12.078,0 21.27,3.22 27.578,9.661 6.307,6.442 9.46,15.835 9.46,28.181l0 215.383c0,12.077 -3.087,21.404 -9.26,27.979 -6.172,6.576 -15.432,9.863 -27.778,9.863zm127.217 -3.623c-12.614,0 -22.209,-3.287 -28.784,-9.863 -6.576,-6.576 -9.864,-16.036 -9.864,-28.382l0 -207.332c0,-12.345 3.288,-21.806 9.864,-28.381 6.575,-6.576 16.17,-9.863 28.784,-9.863l78.907 0c49.384,0 87.562,12.345 114.535,37.037 26.973,24.692 40.461,59.582 40.461,104.671 0,22.546 -3.49,42.608 -10.468,60.188 -6.978,17.579 -17.042,32.474 -30.194,44.686 -13.151,12.212 -29.321,21.472 -48.511,27.779 -19.191,6.307 -41.131,9.46 -65.823,9.46l-78.907 0zm35.428 -59.985l38.649 0c14.223,0 26.502,-1.745 36.836,-5.233 10.332,-3.489 18.921,-8.589 25.766,-15.299 6.843,-6.709 11.942,-15.164 15.297,-25.363 3.355,-10.199 5.033,-22.276 5.033,-36.233 0,-27.912 -6.844,-48.51 -20.532,-61.796 -13.688,-13.285 -34.488,-19.928 -62.4,-19.928l-38.649 0 0 163.852zm-149.476 -292.379l294.606 0c59.783,0 108.697,48.913 108.697,108.696l0 200.373c0,59.783 -48.914,108.696 -108.697,108.696l-294.606 0c-59.782,0 -108.697,-48.913 -108.697,-108.696l0 -200.373c0,-59.783 48.915,-108.696 108.697,-108.696z"/>
+ </g>
+</svg>
