@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  - @package     MIX ID
+  - @link        https://auth.spb.ru
+  -
+  - @author      Ivan Zorin <creator@localzet.com>
+  - @copyright   Copyright (c) 2018-2024 Zorin Projects S.P.
+  - @license     https://www.gnu.org/licenses/agpl-3.0 GNU Affero General Public License v3.0
+  -
+  -              This program is free software: you can redistribute it and/or modify
+  -              it under the terms of the GNU Affero General Public License as published
+  -              by the Free Software Foundation, either version 3 of the License, or
+  -              (at your option) any later version.
+  -
+  -              This program is distributed in the hope that it will be useful,
+  -              but WITHOUT ANY WARRANTY; without even the implied warranty of
+  -              MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  -              GNU Affero General Public License for more details.
+  -
+  -              You should have received a copy of the GNU Affero General Public License
+  -              along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -
+  -              For any questions, please contact <creator@localzet.com>
+  -->
+
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="-155 247 300 300" style="enable-background:new -155 247 300 300;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_2_);fill:#FF1537;}
+	.st1{clip-path:url(#SVGID_2_);fill:#FF5072;}
+	.st2{clip-path:url(#SVGID_2_);}
+	.st3{fill:#FFFFFF;}
+</style>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="-155" y="247.2" width="300" height="299.8"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<rect x="-155" y="247.2" class="st0" width="300" height="299.8"/>
+	<circle class="st1" cx="86.5" cy="304.5" r="163.5"/>
+	<g class="st2">
+		<g id="Artwork_51_">
+			<g id="Layer_5_51_">
+				<path class="st3" d="M74.2,382.6c-16.6-7.2-32.6-34.2-48.7-34.2c-16.1,0-19.9,7.7-30.7,7.7c-10.7,0-14.6-7.7-30.7-7.7
+					c-16.1,0-33.3,28.9-48.2,34.8c-1.1,0.4,0.5,2,3.5,5.4c13.8,15.6,22.1,57,75.3,57c54.7,0,64.7-45.5,76.9-59.1
+					C73.9,384,74.9,382.9,74.2,382.6z M27.4,393.2c-5.3,2.1-16,14.6-32.4,14.6c-17.7,0-26.7-11.9-32.7-14.6c-0.2-0.1-0.2-0.4,0-0.5
+					c3.3-1.5,10.2-6.6,17.4-6.6c7.1,0,9.8,1.9,14.6,1.9c4.8,0,8.9-1.9,16.1-1.9c7.1,0,14.1,5.1,17.4,6.6
+					C27.9,392.8,27.8,393.1,27.4,393.2z"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

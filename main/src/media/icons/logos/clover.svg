@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  - @package     MIX ID
+  - @link        https://auth.spb.ru
+  -
+  - @author      Ivan Zorin <creator@localzet.com>
+  - @copyright   Copyright (c) 2018-2024 Zorin Projects S.P.
+  - @license     https://www.gnu.org/licenses/agpl-3.0 GNU Affero General Public License v3.0
+  -
+  -              This program is free software: you can redistribute it and/or modify
+  -              it under the terms of the GNU Affero General Public License as published
+  -              by the Free Software Foundation, either version 3 of the License, or
+  -              (at your option) any later version.
+  -
+  -              This program is distributed in the hope that it will be useful,
+  -              but WITHOUT ANY WARRANTY; without even the implied warranty of
+  -              MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  -              GNU Affero General Public License for more details.
+  -
+  -              You should have received a copy of the GNU Affero General Public License
+  -              along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -
+  -              For any questions, please contact <creator@localzet.com>
+  -->
+
+<!-- Generator: Adobe Illustrator 25.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#7F57F1;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#F9F9F9;}
+</style>
+<rect class="st0" width="300" height="300"/>
+<g>
+	<path class="st1" d="M122.4,131.3c-10.3-10.3-27.1-10.3-37.5,0c-10.3,10.3-10.3,27.1,0,37.5c10.3,10.3,27.1,10.3,37.5,0l18.7-18.7
+		L122.4,131.3z"/>
+	<path class="st1" d="M150,141.1l18.7-18.7c10.3-10.3,10.3-27.1,0-37.5c-10.3-10.3-27.1-10.3-37.5,0c-10.3,10.3-10.3,27.1,0,37.5
+		L150,141.1z"/>
+	<path class="st1" d="M150,158.9l-18.7,18.7c-10.3,10.3-10.3,27.1,0,37.5c10.3,10.3,27.1,10.3,37.5,0c10.3-10.3,10.3-27.1,0-37.5
+		L150,158.9z"/>
+	<path class="st1" d="M177.6,131.3L158.9,150l18.7,18.7c10.3,10.3,27.1,10.3,37.5,0c10.3-10.3,10.3-27.1,0-37.5
+		C204.7,120.9,187.9,120.9,177.6,131.3z"/>
+</g>
+</svg>

@@ -1,0 +1,25 @@
+<!--
+  - @package     MIX ID
+  - @link        https://auth.spb.ru
+  -
+  - @author      Ivan Zorin <creator@localzet.com>
+  - @copyright   Copyright (c) 2018-2024 Zorin Projects S.P.
+  - @license     https://www.gnu.org/licenses/agpl-3.0 GNU Affero General Public License v3.0
+  -
+  -              This program is free software: you can redistribute it and/or modify
+  -              it under the terms of the GNU Affero General Public License as published
+  -              by the Free Software Foundation, either version 3 of the License, or
+  -              (at your option) any later version.
+  -
+  -              This program is distributed in the hope that it will be useful,
+  -              but WITHOUT ANY WARRANTY; without even the implied warranty of
+  -              MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  -              GNU Affero General Public License for more details.
+  -
+  -              You should have received a copy of the GNU Affero General Public License
+  -              along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -
+  -              For any questions, please contact <creator@localzet.com>
+  -->
+
+<svg enable-background="new 0 0 32 32" height="512" viewBox="0 0 32 32" width="512" xmlns="http://www.w3.org/2000/svg"><g id="BG"><path d="m26 32h-20c-3.314 0-6-2.686-6-6v-20c0-3.314 2.686-6 6-6h20c3.314 0 6 2.686 6 6v20c0 3.314-2.686 6-6 6z" fill="#fff9dd"/></g><g id="bold"><g fill="#ffd200"><path d="m14.667 18.333c-.275 0-.333.272-.333.5v.167h.666v-.167c0-.228-.058-.5-.333-.5z"/><path d="m20.833 8h-9.667c-1.011 0-1.833.822-1.833 1.833v12.333c0 1.011.822 1.833 1.833 1.833h9.667c1.011 0 1.833-.822 1.833-1.833v-12.333c.001-1.011-.822-1.833-1.833-1.833zm-4.833 12.833c0 .276-.224.5-.5.5s-.5-.224-.5-.5v-.833h-.667v.833c0 .276-.224.5-.5.5s-.5-.224-.5-.5v-2c0-.883.548-1.5 1.333-1.5s1.334.617 1.334 1.5zm2.167 0c0 .276-.224.5-.5.5s-.5-.224-.5-.5v-3c0-.276.224-.5.5-.5s.5.224.5.5z"/></g></g></svg>
